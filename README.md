@@ -65,7 +65,19 @@ You can generate a PDF or an HTML copy of this guide using
     endings creeping in:
 
         $ git config --global core.autocrlf true
+        
+* Place all trailing parentheses on a single line.
 
+    ```Clojure
+    # good
+    (when something
+      (something-else))
+
+    # bad
+    (when something
+        (something-else)
+    )
+    ```
 
 * Use empty lines between `def`s.
 
@@ -80,6 +92,10 @@ You can generate a PDF or an HTML copy of this guide using
 
 ## Syntax
 
+* Use `when` instead of `(if ... (do ...)`.
+* Use `if-not` instead of `(if (not ...) ...)`.
+* Use `when-not` instead of `(when (not ...) ...)`.
+
 ## Naming
 
 > The only real difficulties in programming are cache invalidation and
@@ -92,7 +108,27 @@ You can generate a PDF or an HTML copy of this guide using
 * The names of predicate methods (methods that return a boolean value)
   should end in a question mark.
   (i.e. `even?`).
-* The names of destructive methods should end with an exclamation mark. (i.e. `reset!`)
+* The names of functions/macros that are not safe in STM transactions
+  should end with an exclamation mark. (i.e. `reset!`)
+* Use `*earmuffs*` for things intended for rebinding.
+* Don't use a special notation for constants; everything is assumed a constant
+  unless specified otherwise.
+* Use `_` for destructuring targets and formal arguments names whose
+  value will be ignored by the code at hand.
+* Follow `clojure.core`'s example for idiomatic names like `pred` and `coll`.
+    * in fns
+        * f, g, h - function input
+        * n - integer input usually a size
+        * index - integer index
+        * x, y - numbers
+        * s - string input
+        * coll - a collection
+        * pred - a predicate closure
+        * & more - variadic input
+    * in macros
+        * expr - an expression
+        * body - a macro body
+        * binding - a macro binding vector
 
 ## Comments
 
