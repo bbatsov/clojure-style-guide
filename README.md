@@ -78,6 +78,22 @@ You can generate a PDF or an HTML copy of this guide using
 * Keep lines up to 80 characters.
 * Avoid trailing whitespace.
 
+## Syntax
+
+## Naming
+
+> The only real difficulties in programming are cache invalidation and
+> naming things. <br/>
+> -- Phil Karlton
+
+* Use `lisp-case` for function and variable names.
+* Use `CamelCase` for protocols, records, structs and types. (Keep acronyms like HTTP,
+  RFC, XML uppercase.)
+* The names of predicate methods (methods that return a boolean value)
+  should end in a question mark.
+  (i.e. `even?`).
+* The names of destructive methods should end with an exclamation mark. (i.e. `reset!`)
+
 ## Comments
 
 > Good code is its own best documentation. As you're about to add a
