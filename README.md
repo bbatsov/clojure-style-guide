@@ -84,7 +84,7 @@ You can generate a PDF or an HTML copy of this guide using
 
     ```Clojure
     ; comas enhance the map literal's readability
-    {:name "Bruce Wayne", alter-ego: "Batman"}
+    {:name "Bruce Wayne", :alter-ego "Batman"}
     ```
 
 * Place all trailing parentheses on a single line.
