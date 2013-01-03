@@ -17,10 +17,10 @@ various highly regarded Clojure programming resources, such as
 ["Clojure Programming"](http://www.clojurebook.com/)
 and ["The Joy of Clojure"](http://joyofclojure.com/).
 
-The guide is still a work in progress - some rules are lacking
-examples, some rules don't have examples that illustrate them clearly
-enough. In due time these issues will be addressed - just keep them in
-mind for now.
+The guide is still a work in progress - some sections are missing,
+others are incomplete, some rules are lacking examples, some rules
+don't have examples that illustrate them clearly enough. In due time
+these issues will be addressed - just keep them in mind for now.
 
 You can generate a PDF or an HTML copy of this guide using
 [Transmuter](https://github.com/TechnoGate/transmuter).
@@ -49,14 +49,26 @@ You can generate a PDF or an HTML copy of this guide using
 * Use two **spaces** per indentation level. No hard tabs.
 
     ```Clojure
-    # good
+    ;; good
     (when something
       (something-else))
 
-    # bad - four spaces
+    ;; bad - four spaces
     (when something
         (something-else))
     ```
+
+* Align vertically function arguments.
+
+   ```Clojure
+   ;; good
+   (filter even?
+           (range 1 10))
+   
+   ;; bad
+   (filter even?
+     (range 1 10))           
+   ```
 
 * Use Unix-style line endings. (*BSD/Solaris/Linux/OSX users are covered by default,
   Windows users have to be extra careful.)
@@ -65,15 +77,24 @@ You can generate a PDF or an HTML copy of this guide using
     endings creeping in:
 
         $ git config --global core.autocrlf true
-        
+
+* Don't keep spaces around `(`, `)`, `[`, `]`, `{` and `}`.
+
+* Use comas liberally to enhance readability (it's considered whitespace by the Clojure compiler).
+
+    ```Clojure
+    ; comas enhance the map literal's readability
+    {:name "Bruce Wayne", alter-ego: "Batman"}
+    ```
+
 * Place all trailing parentheses on a single line.
 
     ```Clojure
-    # good
+    ;; good
     (when something
       (something-else))
 
-    # bad
+    ;; bad
     (when something
         (something-else)
     )
@@ -92,6 +113,7 @@ You can generate a PDF or an HTML copy of this guide using
 
 ## Syntax
 
+* Prefer higher-order functions like `map` to `loop/recur`.
 * Use `when` instead of `(if ... (do ...)`.
 * Use `if-not` instead of `(if (not ...) ...)`.
 * Use `when-not` instead of `(when (not ...) ...)`.
@@ -116,19 +138,19 @@ You can generate a PDF or an HTML copy of this guide using
 * Use `_` for destructuring targets and formal arguments names whose
   value will be ignored by the code at hand.
 * Follow `clojure.core`'s example for idiomatic names like `pred` and `coll`.
-    * in fns
-        * f, g, h - function input
-        * n - integer input usually a size
-        * index - integer index
-        * x, y - numbers
-        * s - string input
-        * coll - a collection
-        * pred - a predicate closure
-        * & more - variadic input
-    * in macros
-        * expr - an expression
-        * body - a macro body
-        * binding - a macro binding vector
+    * in functions:
+        * `f`, `g`, `h` - function input
+        * `n` - integer input usually a size
+        * `index` - integer index
+        * `x`, `y` - numbers
+        * `s` - string input
+        * `coll` - a collection
+        * `pred` - a predicate closure
+        * `& more` - variadic input
+    * in macros:
+        * `expr` - an expression
+        * `body` - a macro body
+        * `binding` - a macro binding vector
 
 ## Comments
 
@@ -144,7 +166,7 @@ You can generate a PDF or an HTML copy of this guide using
 * Avoid superfluous comments.
 
     ```Clojure
-    # bad
+    ;; bad
     (inc counter) ; increments counter by one
     ```
 
