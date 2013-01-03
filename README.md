@@ -80,10 +80,10 @@ You can generate a PDF or an HTML copy of this guide using
 
 * Don't keep spaces around `(`, `)`, `[`, `]`, `{` and `}`.
 
-* Use comas liberally to enhance readability (it's considered whitespace by the Clojure compiler).
+* Use commas liberally to enhance readability (they're considered whitespace by the Clojure compiler).
 
     ```Clojure
-    ; comas enhance the map literal's readability
+    ; commas enhance the map literal's readability
     {:name "Bruce Wayne", :alter-ego "Batman"}
     ```
 
