@@ -194,6 +194,36 @@ You can generate a PDF or an HTML copy of this guide using
         (bar)))
     ```
 
+* Use `if-let` instead of `let` + `if`.
+
+    ```Clojure
+    ;; good
+    (if-let [result :foo]
+      (do-something-with result)
+      (do-something-else))
+
+    ;; bad
+    (let [result :foo]
+      (if result
+        (do-something-with result)
+        (do-something-else)))
+    ```    
+
+* Use `when-let` instead of `let` + `when`.
+
+    ```Clojure
+    ;; good
+    (when-let [result :foo]
+      (do-something-with result)
+      (do-something-else-with result))
+
+    ;; bad
+    (let [result :foo]
+      (when result
+        (do-something-with result)
+        (do-something-else-with result)))
+    ```    
+
 * Use `if-not` instead of `(if (not ...) ...)`.
 
     ```Clojure
