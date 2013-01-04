@@ -355,7 +355,7 @@ at all.
     ```Clojure
     (defn bar
       []
-      (sleep 100)) ;; OPTIMIZE
+      (sleep 100)) ; OPTIMIZE
     ```
 
 * Use `TODO` to note missing features or functionality that should be
@@ -363,7 +363,7 @@ at all.
 * Use `FIXME` to note broken code that needs to be fixed.
 * Use `OPTIMIZE` to note slow or inefficient code that may cause
   performance problems.
-* Use `HACK` to note code smells where questionable coding practices
+* Use `HACK` to note "code smells" where questionable coding practices
   were used and should be refactored away.
 * Use `REVIEW` to note anything that should be looked at to confirm it
   is working as intended. For example: `REVIEW: Are we sure this is how the
