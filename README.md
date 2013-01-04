@@ -46,16 +46,16 @@ You can generate a PDF or an HTML copy of this guide using
 > probably right... <br/>
 > -- Jerry Coffin (on indentation)
 
-* Use two **spaces** per indentation level. No hard tabs.
+* Use **one tab** per indentation level. Because we're not in the 1970s anymore and editors can handle them.
 
     ```Clojure
-    ;; good
+    ;; good 1 tab
     (when something
-      (something-else))
+    \t(something-else))
 
-    ;; bad - four spaces
+    ;; bad - 2 tabs
     (when something
-        (something-else))
+    \t\t(something-else))
     ```
 
 * Align vertically function arguments.
