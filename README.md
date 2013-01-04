@@ -116,11 +116,18 @@ You can generate a PDF or an HTML copy of this guide using
 
 * Don't keep spaces around `(`, `)`, `[`, `]`, `{` and `}`.
 
-* Use commas liberally to enhance readability (they're considered whitespace by the Clojure compiler).
+* Limit the use of commas in collection literals.
 
     ```Clojure
-    ; commas enhance the map literal's readability
+    ;; bad
     {:name "Bruce Wayne", :alter-ego "Batman"}
+    
+    ;; good
+    {:name "Bruce Wayne" :alter-ego "Batman"}
+    
+    ;; good and arguably a bit more readable
+    {:name "Bruce Wayne"
+     :alter-ego "Batman"}
     ```
 
 * Place all trailing parentheses on a single line.
