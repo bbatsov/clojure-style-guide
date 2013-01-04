@@ -139,7 +139,7 @@ You can generate a PDF or an HTML copy of this guide using
 
     ;; bad
     (when something
-        (something-else)
+      (something-else)
     )
     ```
 
