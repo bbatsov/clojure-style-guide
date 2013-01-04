@@ -192,6 +192,13 @@ You can generate a PDF or an HTML copy of this guide using
         * `body` - a macro body
         * `binding` - a macro binding vector
 
+## Macros
+
+* Don't write a macro if a function will do.
+* Create an example of a macro usage first and the macro afterwards.
+* Break complicated macros into smaller functions whenever possible.
+* Prefer syntax quoted forms over building lists manually.
+
 ## Comments
 
 > Good code is its own best documentation. As you're about to add a
