@@ -179,6 +179,23 @@ You can generate a PDF or an HTML copy of this guide using
   environment.
 * Use `declare` to enable forward references.
 * Prefer higher-order functions like `map` to `loop/recur`.
+* Use `seq` as a terminating condition to test whether a sequence is
+  empty (this technique is sometimes called *nil punning*).
+
+    ```Clojure
+    ;; good
+    (defn print-seq [s]
+      (when (seq s)
+        (prn (first s))
+        (recur (rest s))))
+
+    ;; bad    
+    (defn print-seq [s]
+      (when-not (empty? s)
+        (prn (first s))
+        (recur (rest s))))
+    ```    
+
 * Use `when` instead of `(if ... (do ...)`.
 
     ```Clojure
