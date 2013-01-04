@@ -69,6 +69,22 @@ You can generate a PDF or an HTML copy of this guide using
    (filter even?
      (range 1 10))           
    ```
+   
+* Align let bindings and map keywords.
+
+  ```Clojure
+  ;; good
+  (let [thing1 "some stuff"
+        thing2 "other stuff"]
+    {:thing1 thing1
+     :thing2 thing2})
+     
+  ;; bad
+  (let [thing1 "some stuff"
+    thing2 "other stuff"]
+    {:thing1 thing1
+    :thing2 thing2})
+  ```
 
 * Indent each line of multi-line docstrings.
 
