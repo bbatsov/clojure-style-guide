@@ -77,12 +77,14 @@ You can generate a PDF or an HTML copy of this guide using
     (defn foo
       "Hello there. This is
       a multi-line docstring."
+      []
       (bar))
 
     ;; bad
     (defn foo
       "Hello there. This is
     a multi-line docstring."
+      []
       (bar))
     ```
 
