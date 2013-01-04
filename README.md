@@ -182,40 +182,40 @@ You can generate a PDF or an HTML copy of this guide using
 * Use `when` instead of `(if ... (do ...)`.
 
     ```Clojure
+    ;; good
+    (when pred
+      (foo)
+      (bar))
+      
     ;; bad
     (if pred
       (do
         (foo)
         (bar)))
-
-    ;; good
-    (when pred
-      (foo)
-      (bar))
     ```
 
 * Use `if-not` instead of `(if (not ...) ...)`.
 
     ```Clojure
-    ;; bad
-    (if (not pred)
-        (foo))
-
     ;; good
     (if-not (pred)
+      (foo))
+      
+    ;; bad
+    (if (not pred)
       (foo))
     ```
 
 * Use `when-not` instead of `(when (not ...) ...)`.
 
     ```Clojure
-    ;; bad
-    (when (not pred)
-        (foo)
-        (bar))
-
     ;; good
     (when-not pred
+      (foo)
+      (bar))
+      
+    ;; bad
+    (when (not pred)
       (foo)
       (bar))
     ```
@@ -223,21 +223,21 @@ You can generate a PDF or an HTML copy of this guide using
 * Don't wrap functions in anonymous functions when you don't need to.
 
     ```Clojure
-    ;; bad
-    (filter #(even? %) (range 1 10))
-
     ;; good
     (filter even? (range 1 10))
+    
+    ;; bad
+    (filter #(even? %) (range 1 10))
     ```
 
 * Favor the use of `complement` versus the use of an anonymous function. 
 
     ```Clojure
-    ;; bad
-    (filter #(not (some-pred? %)) coll)
-
     ;; good
     (filter (complement some-pred?) coll)
+    
+    ;; bad
+    (filter #(not (some-pred? %)) coll)
     ```
 
     This rule should obviously be ignored if the complementing predicate
@@ -257,10 +257,10 @@ You can generate a PDF or an HTML copy of this guide using
 
     ```Clojure
     ;; good
-    (map (partial + 5) (range 1 10))
-
-    ;; good
     (map #(+ 5 %) (range 1 10))
+    
+    ;; (arguably) better
+    (map (partial + 5) (range 1 10))
     ```
 
 ## Naming
