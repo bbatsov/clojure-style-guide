@@ -160,9 +160,8 @@ You can generate a PDF or an HTML copy of this guide using
 
 ## Naming
 
-> The only real difficulties in programming are cache invalidation and
-> naming things. <br/>
-> -- Phil Karlton
+> There are 2 hard problems in computer science: caching, naming, and off-by-1 errors
+> -- @t (via Phil Karlton)
 
 * Use `lisp-case` for function and variable names.
 * Use `CamelCase` for protocols, records, structs and types. (Keep acronyms like HTTP,
