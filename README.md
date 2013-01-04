@@ -240,8 +240,18 @@ You can generate a PDF or an HTML copy of this guide using
     (filter (complement some-pred?) coll)
     ```
 
-This rule should obviously be ignored if the complementing predicate
-exists in the form of a separate function (e.g. `even?` and `odd?`).
+    This rule should obviously be ignored if the complementing predicate
+    exists in the form of a separate function (e.g. `even?` and `odd?`).
+    
+* Leverage `comp` when it would yield simpler code.
+
+    ```Clojure
+    ;; good
+    (map #(capitalize (trim %)) ["top " " test "])
+
+    ;; better
+    (map (comp capitalize trim) ["top " " test "])
+    ```
 
 ## Naming
 
