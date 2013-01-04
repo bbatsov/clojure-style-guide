@@ -27,7 +27,7 @@ You can generate a PDF or an HTML copy of this guide using
 
 ## Table of Contents
 
-* [Source Code Layout & Organization](#source-code-layout-and-organization)
+* [Source Code Layout & Organization](#source-code-layout--organization)
 * [Syntax](#syntax)
 * [Naming](#naming)
 * [Comments](#comments)
