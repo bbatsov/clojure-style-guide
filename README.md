@@ -27,7 +27,7 @@ You can generate a PDF or an HTML copy of this guide using
 
 ## Table of Contents
 
-* [Source Code Layout](#source-code-layout)
+* [Source Code Layout & Organization](#source-code-layout-and-organization)
 * [Syntax](#syntax)
 * [Naming](#naming)
 * [Comments](#comments)
@@ -39,7 +39,7 @@ You can generate a PDF or an HTML copy of this guide using
 * [Macros](#macros)
 * [Misc](#misc)
 
-## Source Code Layout
+## Source Code Layout & Organization
 
 > Nearly everybody is convinced that every style but their own is
 > ugly and unreadable. Leave out the "but their own" and they're
@@ -128,9 +128,31 @@ You can generate a PDF or an HTML copy of this guide using
 
 * Keep lines up to 80 characters.
 * Avoid trailing whitespace.
+* Use one file per namespace.
+* Use underscores in filenames when namespaces contain dashes.
+* Start every namespace with a comprehensive `ns` form, comprised of `import`s, `require`s, `refer`s and `use`s.
+
+    ```Clojure
+    (ns examples.ns
+    (:refer-clojure :exclude [next replace remove])
+    (:require (clojure [string :as string]
+                       [set :as set])
+              [clojure.java.shell :as sh])
+    (:use (clojure zip xml))
+    (:import java.util.Date 
+             java.text.SimpleDateFormat
+             (java.util.concurrent Executors
+                                   LinkedBlockingQueue)))
+    ```
+
+* Avoid single-segment namespaces.
 
 ## Syntax
 
+* Avoid the use of namespace-manipulating functions like `require` and
+  `refer`. They are entirely unnecessary outside of a REPL
+  environment.
+* Use `declare` to enable forward references.
 * Prefer higher-order functions like `map` to `loop/recur`.
 * Use `when` instead of `(if ... (do ...)`.
 * Use `if-not` instead of `(if (not ...) ...)`.
