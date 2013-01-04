@@ -252,6 +252,16 @@ You can generate a PDF or an HTML copy of this guide using
     ;; better
     (map (comp capitalize trim) ["top " " test "])
     ```
+    
+* Leverage `partial` when it would yield simpler code.
+
+    ```Clojure
+    ;; good
+    (map (partial + 5) (range 1 10))
+
+    ;; good
+    (map #(+ 5 %) (range 1 10))
+    ```
 
 ## Naming
 
