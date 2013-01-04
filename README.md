@@ -220,6 +220,29 @@ You can generate a PDF or an HTML copy of this guide using
       (bar))
     ```
 
+* Don't wrap functions in anonymous functions when you don't need to.
+
+    ```Clojure
+    ;; bad
+    (filter #(even? %) (range 1 10))
+
+    ;; good
+    (filter even? (range 1 10))
+    ```
+
+* Favor the use of `complement` versus the use of an anonymous function. 
+
+    ```Clojure
+    ;; bad
+    (filter #(not (some-pred? %)) coll)
+
+    ;; good
+    (filter (complement some-pred?) coll)
+    ```
+
+This rule should obviously be ignored if the complementing predicate
+exists in the form of a separate function (e.g. `even?` and `odd?`).
+
 ## Naming
 
 > The only real difficulties in programming are cache invalidation and
