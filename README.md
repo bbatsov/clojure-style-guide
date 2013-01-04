@@ -180,8 +180,45 @@ You can generate a PDF or an HTML copy of this guide using
 * Use `declare` to enable forward references.
 * Prefer higher-order functions like `map` to `loop/recur`.
 * Use `when` instead of `(if ... (do ...)`.
+
+    ```Clojure
+    ;; bad
+    (if pred
+      (do
+        (foo)
+        (bar)))
+
+    ;; good
+    (when pred
+      (foo)
+      (bar))
+    ```
+
 * Use `if-not` instead of `(if (not ...) ...)`.
+
+    ```Clojure
+    ;; bad
+    (if (not pred)
+        (foo))
+
+    ;; good
+    (if-not (pred)
+      (foo))
+    ```
+
 * Use `when-not` instead of `(when (not ...) ...)`.
+
+    ```Clojure
+    ;; bad
+    (when (not pred)
+        (foo)
+        (bar))
+
+    ;; good
+    (when-not pred
+      (foo)
+      (bar))
+    ```
 
 ## Naming
 
