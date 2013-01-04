@@ -31,7 +31,7 @@ You can generate a PDF or an HTML copy of this guide using
 * [Syntax](#syntax)
 * [Naming](#naming)
 * [Comments](#comments)
-* [Annotations](#annotations)
+    * [Comment Annotations](#comment-annotations)
 * [Exceptions](#exceptions)
 * [Collections](#collections)
 * [Strings](#strings)
@@ -378,23 +378,23 @@ at all.
 * Avoid writing comments to explain bad code. Refactor the code to
   make it self-explanatory. (Do or do not - there is no try. --Yoda)
 
-## Annotations
+### Comment Annotations
 
 * Annotations should usually be written on the line immediately above
   the relevant code.
 * The annotation keyword is followed by a colon and a space, then a note
   describing the problem.
 * If multiple lines are required to describe the problem, subsequent
-  lines should be indented two spaces after the `;;`.
+  lines should be indented as much as the first one.
 
     ```Clojure
     (defn some-fun
       []
       ;; FIXME: This has crashed occasionally since v1.2.3. It may
-      ;; be related to the BarBazUtil upgrade.
+      ;;        be related to the BarBazUtil upgrade.
       (baz))
     ```
-
+    
 * In cases where the problem is so obvious that any documentation would
   be redundant, annotations may be left at the end of the offending line
   with no note. This usage should be the exception and not the rule.
