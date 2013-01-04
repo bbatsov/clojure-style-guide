@@ -70,6 +70,22 @@ You can generate a PDF or an HTML copy of this guide using
      (range 1 10))           
    ```
 
+* Indent each line of multi-line docstrings.
+
+    ```Clojure
+    ;; good
+    (defn foo
+      "Hello there. This is
+      a multi-line docstring."
+      (bar))
+
+    ;; bad
+    (defn foo
+      "Hello there. This is
+    a multi-line docstring."
+      (bar))
+    ```
+
 * Use Unix-style line endings. (*BSD/Solaris/Linux/OSX users are covered by default,
   Windows users have to be extra careful.)
     * If you're using Git you might want to add the following
