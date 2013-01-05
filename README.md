@@ -339,6 +339,32 @@ You can generate a PDF or an HTML copy of this guide using
       :dunno)
     ```
 
+* Prefer `case` instead of `cond` or `condp` when test expressions are
+compile time constants.
+
+    ```Clojure
+    ;; good
+    (cond
+      (= x 10) :ten
+      (= x 20) :twenty
+      (= x 30) :forty
+      :else :dunno)
+
+    ;; better
+    (condp = x
+      10 :ten
+      20 :twenty
+      30 :forty
+      :dunno)
+
+    ;; best
+    (case x
+      10 :ten
+      20 :twenty
+      30 :forty
+      :dunno)
+    ```
+
 ## Naming
 
 > The only real difficulties in programming are cache invalidation and
