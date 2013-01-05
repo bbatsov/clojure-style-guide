@@ -365,6 +365,27 @@ compile time constants.
       :dunno)
     ```
 
+* Use a `set` as a predicate when appropriate.
+
+    ```Clojure
+    ;; bad
+    (remove #(= % 0) [0 1 2 3 4 5])
+
+    ;; good
+    (remove #{0} [0 1 2 3 4 5])
+
+    ;; bad
+    (count (filter #(or (= % \a)
+                        (= % \e)
+                        (= % \i)
+                        (= % \o)
+                        (= % \u))
+                   "mary had a little lamb"))
+
+    ;; good
+    (count (filter #{\a \e \i \o \u} "mary had a little lamb"))
+    ```
+
 ## Naming
 
 > The only real difficulties in programming are cache invalidation and
