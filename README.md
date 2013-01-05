@@ -386,6 +386,8 @@ compile time constants.
     (count (filter #{\a \e \i \o \u} "mary had a little lamb"))
     ```
 
+* Use `(inc x)` & `(dec x)` instead of `(+ x 1)` and `(- x 1)`.
+
 ## Naming
 
 > The only real difficulties in programming are cache invalidation and
