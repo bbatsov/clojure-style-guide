@@ -64,12 +64,12 @@ You can generate a PDF or an HTML copy of this guide using
     ;; good
     (filter even?
             (range 1 10))
-   
+
     ;; bad
     (filter even?
-      (range 1 10))           
+      (range 1 10))
     ```
-   
+
 * Align let bindings and map keywords.
 
     ```Clojure
@@ -78,7 +78,7 @@ You can generate a PDF or an HTML copy of this guide using
           thing2 "other stuff"]
       {:thing1 thing1
        :thing2 thing2})
-     
+
     ;; bad
     (let [thing1 "some stuff"
       thing2 "other stuff"]
@@ -121,10 +121,10 @@ You can generate a PDF or an HTML copy of this guide using
     ```Clojure
     ;; bad
     {:name "Bruce Wayne", :alter-ego "Batman"}
-    
+
     ;; good
     {:name "Bruce Wayne" :alter-ego "Batman"}
-    
+
     ;; good and arguably a bit more readable
     {:name "Bruce Wayne"
      :alter-ego "Batman"}
@@ -147,7 +147,7 @@ You can generate a PDF or an HTML copy of this guide using
 
     ```Clojure
     (def x ...)
-    
+
     (def y ...)
     ```
 
@@ -164,7 +164,7 @@ You can generate a PDF or an HTML copy of this guide using
                          [set :as set])
                 [clojure.java.shell :as sh])
       (:use (clojure zip xml))
-      (:import java.util.Date 
+      (:import java.util.Date
                java.text.SimpleDateFormat
                (java.util.concurrent Executors
                                      LinkedBlockingQueue)))
@@ -189,12 +189,12 @@ You can generate a PDF or an HTML copy of this guide using
         (prn (first s))
         (recur (rest s))))
 
-    ;; bad    
+    ;; bad
     (defn print-seq [s]
       (when-not (empty? s)
         (prn (first s))
         (recur (rest s))))
-    ```    
+    ```
 
 * Use `when` instead of `(if ... (do ...)`.
 
@@ -203,7 +203,7 @@ You can generate a PDF or an HTML copy of this guide using
     (when pred
       (foo)
       (bar))
-      
+
     ;; bad
     (if pred
       (do
@@ -224,7 +224,7 @@ You can generate a PDF or an HTML copy of this guide using
       (if result
         (do-something-with result)
         (do-something-else)))
-    ```    
+    ```
 
 * Use `when-let` instead of `let` + `when`.
 
@@ -239,7 +239,7 @@ You can generate a PDF or an HTML copy of this guide using
       (when result
         (do-something-with result)
         (do-something-else-with result)))
-    ```    
+    ```
 
 * Use `if-not` instead of `(if (not ...) ...)`.
 
@@ -247,7 +247,7 @@ You can generate a PDF or an HTML copy of this guide using
     ;; good
     (if-not (pred)
       (foo))
-      
+
     ;; bad
     (if (not pred)
       (foo))
@@ -260,7 +260,7 @@ You can generate a PDF or an HTML copy of this guide using
     (when-not pred
       (foo)
       (bar))
-      
+
     ;; bad
     (when (not pred)
       (foo)
@@ -272,24 +272,24 @@ You can generate a PDF or an HTML copy of this guide using
     ```Clojure
     ;; good
     (filter even? (range 1 10))
-    
+
     ;; bad
     (filter #(even? %) (range 1 10))
     ```
 
-* Favor the use of `complement` versus the use of an anonymous function. 
+* Favor the use of `complement` versus the use of an anonymous function.
 
     ```Clojure
     ;; good
     (filter (complement some-pred?) coll)
-    
+
     ;; bad
     (filter #(not (some-pred? %)) coll)
     ```
 
     This rule should obviously be ignored if the complementing predicate
     exists in the form of a separate function (e.g. `even?` and `odd?`).
-    
+
 * Leverage `comp` when it would yield simpler code.
 
     ```Clojure
@@ -299,16 +299,94 @@ You can generate a PDF or an HTML copy of this guide using
     ;; better
     (map (comp capitalize trim) ["top " " test "])
     ```
-    
+
 * Leverage `partial` when it would yield simpler code.
 
     ```Clojure
     ;; good
     (map #(+ 5 %) (range 1 10))
-    
+
     ;; (arguably) better
     (map (partial + 5) (range 1 10))
     ```
+
+* Prefer `..` to `->` when chaining method calls in Java interop.
+
+    ```Clojure
+    ;; good
+    (-> (System/getProperties) (.get "os.name"))
+
+    ;; better
+    (.. System getProperties (get "os.name"))
+    ```
+
+* Prefer `condp` instead of `cond` when the predicate & expression don't
+  change.
+
+    ```Clojure
+    ;; good
+    (cond
+      (= x 10) :ten
+      (= x 20) :twenty
+      (= x 30) :forty
+      :else :dunno)
+
+    ;; much better
+    (condp = x
+      10 :ten
+      20 :twenty
+      30 :forty
+      :dunno)
+    ```
+
+* Prefer `case` instead of `cond` or `condp` when test expressions are
+compile time constants.
+
+    ```Clojure
+    ;; good
+    (cond
+      (= x 10) :ten
+      (= x 20) :twenty
+      (= x 30) :forty
+      :else :dunno)
+
+    ;; better
+    (condp = x
+      10 :ten
+      20 :twenty
+      30 :forty
+      :dunno)
+
+    ;; best
+    (case x
+      10 :ten
+      20 :twenty
+      30 :forty
+      :dunno)
+    ```
+
+* Use a `set` as a predicate when appropriate.
+
+    ```Clojure
+    ;; bad
+    (remove #(= % 0) [0 1 2 3 4 5])
+
+    ;; good
+    (remove #{0} [0 1 2 3 4 5])
+
+    ;; bad
+    (count (filter #(or (= % \a)
+                        (= % \e)
+                        (= % \i)
+                        (= % \o)
+                        (= % \u))
+                   "mary had a little lamb"))
+
+    ;; good
+    (count (filter #{\a \e \i \o \u} "mary had a little lamb"))
+    ```
+
+* Use `(inc x)` & `(dec x)` instead of `(+ x 1)` and `(- x 1)`.
 
 ## Naming
 
@@ -324,7 +402,7 @@ You can generate a PDF or an HTML copy of this guide using
   (i.e. `even?`).
 * The names of functions/macros that are not safe in STM transactions
   should end with an exclamation mark. (i.e. `reset!`)
-* Use `*earmuffs*` for things intended for rebinding.
+* Use `*earmuffs*` for things intended for rebinding (ie. are dynamic).
 * Don't use a special notation for constants; everything is assumed a constant
   unless specified otherwise.
 * Use `_` for destructuring targets and formal arguments names whose
@@ -349,6 +427,9 @@ You can generate a PDF or an HTML copy of this guide using
 * Don't write a macro if a function will do.
 * Create an example of a macro usage first and the macro afterwards.
 * Break complicated macros into smaller functions whenever possible.
+* A macro should usually just provide syntactic sugar and the core of
+  the macro should be a plain function. Doing so will improve
+  composability.
 * Prefer syntax quoted forms over building lists manually.
 
 ## Comments
@@ -394,7 +475,7 @@ at all.
       ;;        be related to the BarBazUtil upgrade.
       (baz))
     ```
-    
+
 * In cases where the problem is so obvious that any documentation would
   be redundant, annotations may be left at the end of the offending line
   with no note. This usage should be the exception and not the rule.
