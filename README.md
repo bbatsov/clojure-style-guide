@@ -310,6 +310,16 @@ You can generate a PDF or an HTML copy of this guide using
     (map (partial + 5) (range 1 10))
     ```
 
+* Prefer `..` to `->` when chaining method calls in Java interop.
+
+    ```Clojure
+    ;; good
+    (-> (System/getProperties) (.get "os.name"))
+
+    ;; better
+    (.. System getProperties (get "os.name"))
+    ```
+
 ## Naming
 
 > The only real difficulties in programming are cache invalidation and
