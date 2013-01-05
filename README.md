@@ -402,7 +402,7 @@ compile time constants.
   (i.e. `even?`).
 * The names of functions/macros that are not safe in STM transactions
   should end with an exclamation mark. (i.e. `reset!`)
-* Use `*earmuffs*` for things intended for rebinding.
+* Use `*earmuffs*` for things intended for rebinding (ie. are dynamic).
 * Don't use a special notation for constants; everything is assumed a constant
   unless specified otherwise.
 * Use `_` for destructuring targets and formal arguments names whose
@@ -427,6 +427,9 @@ compile time constants.
 * Don't write a macro if a function will do.
 * Create an example of a macro usage first and the macro afterwards.
 * Break complicated macros into smaller functions whenever possible.
+* A macro should usually just provide syntactic sugar and the core of
+  the macro should be a plain function. Doing so will improve
+  composability.
 * Prefer syntax quoted forms over building lists manually.
 
 ## Comments
