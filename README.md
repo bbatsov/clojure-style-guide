@@ -310,6 +310,23 @@ You can generate a PDF or an HTML copy of this guide using
     (map (partial + 5) (range 1 10))
     ```
 
+* Prefer the use of the threading macros `->` (thread-first) and `->>` (thread-last)
+to heavy form nesting.
+
+    ```Clojure
+    ;; good
+    (-> [1 2 3] reverse (conj 4) prn)
+
+    ;; not so good
+    (prn (conj (reverse [1 2 3]) 4))
+
+    ;; good
+    (->> (range 1 10) (filter even?) (map (partial * 2)))
+
+    ;; not so good
+    (map (partial * 2) (filter even? (range 1 10)))
+    ```
+
 * Prefer `..` to `->` when chaining method calls in Java interop.
 
     ```Clojure
