@@ -12,7 +12,7 @@ assumed that is pretty obvious).
 
 I didn't come up with all the rules out of nowhere - they are mostly
 based on my extensive career as a professional software engineer,
-feedback and suggestions from members of the Clojure community and
+feedback and suggestions from members of the Clojure community, and
 various highly regarded Clojure programming resources, such as
 ["Clojure Programming"](http://www.clojurebook.com/)
 and ["The Joy of Clojure"](http://joyofclojure.com/).
