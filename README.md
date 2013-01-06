@@ -216,14 +216,14 @@ You can generate a PDF or an HTML copy of this guide using
     ```Clojure
     ;; good
     (if-let [result :foo]
-      (do-something-with result)
-      (do-something-else))
+      (something-with result)
+      (something-else))
 
     ;; bad
     (let [result :foo]
       (if result
-        (do-something-with result)
-        (do-something-else)))
+        (something-with result)
+        (something-else)))
     ```
 
 * Use `when-let` instead of `let` + `when`.
@@ -232,13 +232,13 @@ You can generate a PDF or an HTML copy of this guide using
     ;; good
     (when-let [result :foo]
       (do-something-with result)
-      (do-something-else-with result))
+      (do-something-more-with result))
 
     ;; bad
     (let [result :foo]
       (when result
         (do-something-with result)
-        (do-something-else-with result)))
+        (do-something-more-with result)))
     ```
 
 * Use `if-not` instead of `(if (not ...) ...)`.
