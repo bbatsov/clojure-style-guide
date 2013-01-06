@@ -422,6 +422,53 @@ compile time constants.
         * `body` - a macro body
         * `binding` - a macro binding vector
 
+## Collections
+
+* Avoid the use of lists for generic data storage (unless a list is exactly what you need).
+* Prefer the use of keywords for hash keys.
+* Prefer the use of the literal collection syntax.
+
+    ```Clojure
+    ;; good
+    [1 2 3]
+
+    ;; bad
+    (vector 1 2 3)
+    ```
+
+* Leverage the fact that most collections are functions of their elements.
+
+    ```Clojure
+    ;; good
+    (filter #{\a \e \o \i \u} "this is a test")
+
+    ;; bad - too ugly to share
+    ```
+
+* Leverage the fact that keywords can used as functions of a collection.
+
+    ```Clojure
+    ((juxt :a :b) {:a "ala" :b "bala"})
+    ```
+
+* Avoid the use of transient collections, except for performance-critical portions
+of the code.
+
+## Strings
+
+* Prefer the string manipulation functions from `clojure.string` next to
+using the Java interop or unrolling your own.
+
+    ```Clojure
+    ;; good
+    (clojure.string/upper-case "bruce")
+
+    ;; bad
+    (.toUpperCase "bruce")
+    ```
+
+## Exceptions
+
 ## Macros
 
 * Don't write a macro if a function will do.
