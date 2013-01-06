@@ -441,8 +441,8 @@ compile time constants.
 > -- Steve McConnell
 
 * Write self-documenting code and ignore the rest of this section. Seriously!
-* Comments longer than a word are capitalized and use punctuation. Use [one
-  space](http://en.wikipedia.org/wiki/Sentence_spacing) after periods.
+* Comments longer than a word begin with a capital letter and use punctuation. Separate
+  sentences with [one space](http://en.wikipedia.org/wiki/Sentence_spacing).
 * Avoid superfluous comments.
 
     ```Clojure
