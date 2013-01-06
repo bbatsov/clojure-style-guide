@@ -405,6 +405,45 @@ compile time constants.
 
 * Use `(inc x)` & `(dec x)` instead of `(+ x 1)` and `(- x 1)`.
 
+* Use the sugared Java interop forms.
+
+    ```Clojure
+    ;;; object creation
+    ;; good
+    (java.util.ArrayList. 100)
+
+    ;; bad
+    (new java.util.ArrayList 100)
+
+    ;;; static method invocation
+    ;; good
+    (Math/pow 2 10)
+
+    ;; bad
+    (. Math pow 2 10)
+
+    ;;; instance method invocation
+    ;; good
+    (.substring "hello" 1 3)
+
+    ;; bad
+    (. "hello" substring 1 3)
+
+    ;;; static field access
+    ;; good
+    Integer/MAX_VALUE
+
+    ;; bad
+    (. Integer MAX_VALUE)
+
+    ;;; instance field access
+    ;; good
+    (.someField some-object)
+
+    ;; bad
+    (. some-object some-field)
+    ```
+
 ## Naming
 
 > The only real difficulties in programming are cache invalidation and
