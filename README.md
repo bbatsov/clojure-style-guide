@@ -119,15 +119,15 @@ You can generate a PDF or an HTML copy of this guide using
 * Limit the use of commas in collection literals.
 
     ```Clojure
-    ;; bad
-    {:name "Bruce Wayne", :alter-ego "Batman"}
-
     ;; good
     {:name "Bruce Wayne" :alter-ego "Batman"}
 
     ;; good and arguably a bit more readable
     {:name "Bruce Wayne"
      :alter-ego "Batman"}
+
+    ;; bad
+    {:name "Bruce Wayne", :alter-ego "Batman"}
     ```
 
 * Place all trailing parentheses on a single line.
