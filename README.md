@@ -557,6 +557,34 @@ using the Java interop or unrolling your own.
 > -- Steve McConnell
 
 * Write self-documenting code and ignore the rest of this section. Seriously!
+
+* Write heading comments with at least four semicolons.
+
+* Write top-level comments with three semicolons.
+
+* Write comments on a particular fragment of code before that fragment
+and aligned with it, using two semicolons.
+
+* Write margin comments with one semicolon.
+
+* The only comments in which omission of a space between the semicolon
+and the text is acceptable are margin comments.
+
+    ```Clojure
+    ;;;; Frob Grovel
+
+    ;;; This section of code has some important implications:
+    ;;;   1. Foo.
+    ;;;   2. Bar.
+    ;;;   3. Baz.
+
+    (defn fnord [zarquon]
+      ;; If zob, then veeblefitz.
+      (quux zot
+            mumble             ;Zibblefrotz.
+            frotz))
+    ```
+
 * Comments longer than a word begin with a capital letter and use punctuation. Separate
   sentences with [one space](http://en.wikipedia.org/wiki/Sentence_spacing).
 * Avoid superfluous comments.
