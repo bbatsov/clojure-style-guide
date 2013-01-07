@@ -114,7 +114,20 @@ You can generate a PDF or an HTML copy of this guide using
         $ git config --global core.autocrlf true
         ```
 
-* Don't keep spaces around `(`, `)`, `[`, `]`, `{` and `}`.
+* If any text precedes an opening bracket(`(`, `{` and
+`[`) or follows a closing bracket(`)`, `}` and `]`), separate that
+text from that bracket with a space. Conversely, leave no space after
+an opening bracket and before following text, or after preceding text
+and before a closing bracket.
+
+    ```Clojure
+    ;; good
+    (foo (bar baz) quux)
+
+    ;; bad
+    (foo(bar baz)quux)
+    (foo ( bar baz ) quux)
+    ```
 
 * Limit the use of commas in collection literals.
 
