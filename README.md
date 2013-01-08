@@ -167,7 +167,6 @@ and before a closing bracket.
 * Keep lines up to 80 characters.
 * Avoid trailing whitespace.
 * Use one file per namespace.
-* Use underscores in filenames when namespaces contain dashes.
 * Start every namespace with a comprehensive `ns` form, comprised of `import`s, `require`s, `refer`s and `use`s.
 
     ```Clojure
