@@ -184,6 +184,16 @@ and before a closing bracket.
 
 * Avoid single-segment namespaces.
 
+    ```Clojure
+    ;; good
+    (ns example.ns)
+
+    ;; bad
+    (ns example)
+    ```
+
+* Avoid the use of overly long namespaces(i.e. with more than 5 segments).
+
 ## Syntax
 
 * Avoid the use of namespace-manipulating functions like `require` and
@@ -462,6 +472,10 @@ compile time constants.
 > naming things. <br/>
 > -- Phil Karlton
 
+* When naming namespaces favor the following two schemas:
+    * `project.module`
+    * `organization.project.module`
+* Use `lisp-case` in composite namespace segments(e.g. `bruce.project-euler`)    
 * Use `lisp-case` for function and variable names.
 * Use `CamelCase` for protocols, records, structs and types. (Keep acronyms like HTTP,
   RFC, XML uppercase.)
