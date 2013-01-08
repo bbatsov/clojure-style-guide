@@ -337,16 +337,23 @@ to heavy form nesting.
 
     ```Clojure
     ;; good
-    (-> [1 2 3] reverse (conj 4) prn)
+    (-> [1 2 3]
+        reverse
+        (conj 4)
+        prn)
 
-    ;; not so good
-    (prn (conj (reverse [1 2 3]) 4))
+    ;; not as good
+    (prn (conj (reverse [1 2 3])
+               4))
 
     ;; good
-    (->> (range 1 10) (filter even?) (map (partial * 2)))
+    (->> (range 1 10)
+         (filter even?)
+         (map (partial * 2)))
 
-    ;; not so good
-    (map (partial * 2) (filter even? (range 1 10)))
+    ;; not as good
+    (map (partial * 2)
+         (filter even? (range 1 10)))
     ```
 
 * Prefer `..` to `->` when chaining method calls in Java interop.
