@@ -482,7 +482,7 @@ compile time constants.
 * When naming namespaces favor the following two schemas:
     * `project.module`
     * `organization.project.module`
-* Use `lisp-case` in composite namespace segments(e.g. `bruce.project-euler`)    
+* Use `lisp-case` in composite namespace segments(e.g. `bruce.project-euler`)
 * Use `lisp-case` for function and variable names.
 * Use `CamelCase` for protocols, records, structs and types. (Keep acronyms like HTTP,
   RFC, XML uppercase.)
@@ -515,12 +515,12 @@ compile time constants.
 
 * Avoid the use of lists for generic data storage (unless a list is exactly what you need).
 * Prefer the use of keywords for hash keys.
-* Prefer the use of the literal collection syntax where applicable. However, when defining 
+* Prefer the use of the literal collection syntax where applicable. However, when defining
   sets, only use literal syntax when the values are compile time constants
 
     ```Clojure
     ;; good
-    [1 2 3] 
+    [1 2 3]
     #{1 2 3}
     (hash-set (func1) (func2)) ; values determined at runtime
 
@@ -562,6 +562,13 @@ using the Java interop or unrolling your own.
     ```
 
 ## Exceptions
+
+* Reuse existing exception types. Idiomatic Clojure code, when it does
+  throw an exception, throws an exception of a standard type
+  (e.g. `java.lang.IllegalArgumentException`,
+  `java.lang.UnsupportedOperationException`,
+  `java.lang.IllegalStateException`, `java.io.IOException`).
+* Favor the use of `with-open` over the use of `finally`.
 
 ## Macros
 
