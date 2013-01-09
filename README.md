@@ -515,14 +515,19 @@ compile time constants.
 
 * Avoid the use of lists for generic data storage (unless a list is exactly what you need).
 * Prefer the use of keywords for hash keys.
-* Prefer the use of the literal collection syntax.
+* Prefer the use of the literal collection syntax where applicable. However, when defining 
+  sets, only use literal syntax when the values are compile time constants
 
     ```Clojure
     ;; good
-    [1 2 3]
+    [1 2 3] 
+    #{1 2 3}
+    (hash-set (func1) (func2)) ; values determined at runtime
 
     ;; bad
     (vector 1 2 3)
+    (hash-set 1 2 3)
+    #{(func1) (func2)} ; will throw runtime exception if (func1) = (func2)
     ```
 
 * Leverage the fact that most collections are functions of their elements.
