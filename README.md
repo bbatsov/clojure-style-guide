@@ -548,6 +548,11 @@ compile time constants.
 * Avoid the use of transient collections, except for performance-critical portions
 of the code.
 
+* Avoid the use of Java collections.
+
+* Avoid the use of Java arrays, except for interop scenarios and performance-critical
+code dealing heavily with primitive types.
+
 ## Strings
 
 * Prefer the string manipulation functions from `clojure.string` next to
