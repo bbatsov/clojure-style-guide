@@ -156,12 +156,17 @@ and before a closing bracket.
     )
     ```
 
-* Use empty lines between `def`s.
+* Use empty lines between top level forms.
 
     ```Clojure
+    ;; good
     (def x ...)
 
-    (def y ...)
+    (defn foo ...)
+
+    ;; bad
+    (def x ...)
+    (defn foo ...)
     ```
 
 * Keep lines up to 80 characters.
