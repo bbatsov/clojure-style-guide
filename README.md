@@ -496,6 +496,16 @@ compile time constants.
   (i.e. `even?`).
 * The names of functions/macros that are not safe in STM transactions
   should end with an exclamation mark. (i.e. `reset!`)
+* Use `->` instead of `to` in the names of conversion functions.
+
+    ```Clojure
+    ;; good
+    (defn f->c ...)
+
+    ;; not so good
+    (defn f-to-c ...)
+    ```
+
 * Use `*earmuffs*` for things intended for rebinding (ie. are dynamic).
 * Don't use a special notation for constants; everything is assumed a constant
   unless specified otherwise.
