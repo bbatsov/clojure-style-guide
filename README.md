@@ -371,6 +371,22 @@ to heavy form nesting.
     (.. System getProperties (get "os.name"))
     ```
 
+* Use `:else` as the catch-all test expression in `cond` and `condp`.
+
+    ```Clojure
+    ;; good
+    (cond
+      (< n 0) "negative"
+      (> n 0) "positive"
+      :else "zero"))
+
+    ;; bad
+    (cond
+      (< n 0) "negative"
+      (> n 0) "positive"
+      true "zero"))
+    ```
+
 * Prefer `condp` instead of `cond` when the predicate & expression don't
   change.
 
