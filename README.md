@@ -169,7 +169,7 @@ and before a closing bracket.
     (defn foo ...)
     ```
 
-* Keep lines up to 80 characters.
+* Where feasible, avoid making lines longer than 80 characters.
 * Avoid trailing whitespace.
 * Use one file per namespace.
 * Start every namespace with a comprehensive `ns` form, comprised of `import`s, `require`s, `refer`s and `use`s.
