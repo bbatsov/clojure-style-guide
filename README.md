@@ -668,6 +668,18 @@ and the text that follows it.
 
 * Keep existing comments up-to-date. An outdated is worse than no comment
 at all.
+* Prefer the use of the `#_` reader macro over a regular comment when
+you need to comment out a particular form.
+
+    ```Clojure
+    ;; good
+    (+ foo #_(bar x) delta)
+
+    ;; bad
+    (+ foo
+       ;; (bar x)
+       delta)
+    ```
 
 > Good code is like a good joke - it needs no explanation. <br/>
 > -- Russ Olsen
