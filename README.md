@@ -639,8 +639,8 @@ and aligned with it, using two semicolons.
 
 * Write margin comments with one semicolon.
 
-* The only comments in which omission of a space between the semicolon
-and the text is acceptable are margin comments.
+* Always have at least one space between the semicolon
+and the text that follows it.
 
     ```Clojure
     ;;;; Frob Grovel
@@ -653,7 +653,7 @@ and the text is acceptable are margin comments.
     (defn fnord [zarquon]
       ;; If zob, then veeblefitz.
       (quux zot
-            mumble             ;Zibblefrotz.
+            mumble             ; Zibblefrotz.
             frotz))
     ```
 
