@@ -86,6 +86,48 @@ You can generate a PDF or an HTML copy of this guide using
       :thing2 thing2})
     ```
 
+* Optionally omit the new line between the function name and argument vector for `defn` when there is no docstring.
+
+    ```Clojure
+    ;; good
+    (defn foo
+      [x]
+      (bar x))
+   
+    ;; good
+    (defn foo [x]
+      (bar x))
+
+    ;; bad
+    (defn foo
+      [x] (bar x))
+    ```
+
+* Optionally omit the new line between the argument vector and a short function body.
+
+    ```Clojure
+    ;; good
+    (defn foo [x]
+      (bar x))
+
+    ;; good for a small function body
+    (defn goo [x] (bar x))
+
+    ;; good for multi-arity functions
+    (defn foo
+      ([x] (bar x))
+      ([x y]
+        (if (predicate? x)
+          (bar x)
+          (baz x))))
+    
+    ;; bad
+    (defn foo
+      [x] (if (predicate? x)
+            (bar x)
+            (baz x)))
+    ```
+
 * Indent each line of multi-line docstrings.
 
     ```Clojure
