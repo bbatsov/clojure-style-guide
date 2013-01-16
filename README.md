@@ -632,6 +632,13 @@ of the code.
 * Avoid the use of Java arrays, except for interop scenarios and performance-critical
 code dealing heavily with primitive types.
 
+## Mutation
+
+* Consider wrapping all IO calls with the `io!` macro to avoid nasty surprises if you
+accidentally end up calling such code in a transaction.
+* Avoid the use of `ref-set` whenever possible.
+* Avoid the use of `reset!` whenever possible.
+
 ## Strings
 
 * Prefer the string manipulation functions from `clojure.string` next to
