@@ -338,6 +338,16 @@ macro definition.
       (bar))
     ```
 
+* Use `not=` instead of `(not (= ...))`.
+
+    ```Clojure
+    ;; good
+    (not= foo bar)
+
+    ;; bad
+    (not (= foo bar))
+    ```
+
 * Don't wrap functions in anonymous functions when you don't need to.
 
     ```Clojure
