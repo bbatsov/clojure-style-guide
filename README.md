@@ -93,7 +93,7 @@ You can generate a PDF or an HTML copy of this guide using
     (defn foo
       [x]
       (bar x))
-   
+
     ;; good
     (defn foo [x]
       (bar x))
@@ -120,7 +120,7 @@ You can generate a PDF or an HTML copy of this guide using
         (if (predicate? x)
           (bar x)
           (baz x))))
-    
+
     ;; bad
     (defn foo
       [x] (if (predicate? x)
@@ -211,6 +211,8 @@ and before a closing bracket.
     (defn foo ...)
     ```
 
+* Do not place blank lines in the middle of a function or
+macro definition.
 * Where feasible, avoid making lines longer than 80 characters.
 * Avoid trailing whitespace.
 * Use one file per namespace.
