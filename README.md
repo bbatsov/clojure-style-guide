@@ -354,6 +354,26 @@ macro definition.
     (not (= foo bar))
     ```
 
+* Prefer `%` over `%1` in function literals with only one parameter.
+
+    ```Clojure
+    ;; good
+    #(Math/round %)
+
+    ;; bad
+    #(Math/round %1)
+    ```
+
+* Prefer `%1` over `%` in function literals with more than one parameter.
+
+    ```Clojure
+    ;; good
+    #(Math/pow %1 %2)
+
+    ;; bad
+    #(Math/pow % %2)
+    ```
+
 * Don't wrap functions in anonymous functions when you don't need to.
 
     ```Clojure
@@ -362,6 +382,19 @@ macro definition.
 
     ;; bad
     (filter #(even? %) (range 1 10))
+    ```
+
+* Don't use function literals if the function body will consist of more than one form.
+
+    ```Clojure
+    ;; good
+    (fn [x]
+      (println x)
+      (* x 2))
+
+    ;; bad (you need an explicit do form)
+    #(do (println %)
+         (* % 2))
     ```
 
 * Favor the use of `complement` versus the use of an anonymous function.
@@ -514,6 +547,9 @@ compile time constants.
     ```
 
 * Use `(inc x)` & `(dec x)` instead of `(+ x 1)` and `(- x 1)`.
+
+* Use `(pos? x)`, `(neg? x)` & `(zero? x)` instead of `(> x 0)`,
+`(< x 0)` & `(= x 0)`.
 
 * Use the sugared Java interop forms.
 
