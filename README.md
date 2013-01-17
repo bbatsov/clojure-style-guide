@@ -34,6 +34,7 @@ You can generate a PDF or an HTML copy of this guide using
     * [Comment Annotations](#comment-annotations)
 * [Exceptions](#exceptions)
 * [Collections](#collections)
+* [Mutation](#mutation)
 * [Strings](#strings)
 * [Regular Expressions](#regular-expressions)
 * [Macros](#macros)
