@@ -645,9 +645,27 @@ code dealing heavily with primitive types.
 
 ## Mutation
 
-* Consider wrapping all IO calls with the `io!` macro to avoid nasty surprises if you
-accidentally end up calling such code in a transaction.
+### Refs
+
+* Consider wrapping all IO calls with the `io!` macro to avoid nasty
+surprises if you accidentally end up calling such code in a
+transaction.
 * Avoid the use of `ref-set` whenever possible.
+* Try to keep the size of transactions (the amount of work encapsulated in them)
+as small as possible.
+* Avoid having both short- and long-running transactions interacting
+  with the same Ref.
+
+### Agents
+
+* Use `send` only for actions that are CPU bound and don't block on IO
+  or other threads.
+* Use `send-off` for actions that might block, sleep, or otherwise tie
+  up the thread.
+
+### Atoms
+
+* Avoid atom updates inside STM transactions.
 * Avoid the use of `reset!` whenever possible.
 
 ## Strings
