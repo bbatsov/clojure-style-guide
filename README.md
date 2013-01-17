@@ -38,7 +38,7 @@ You can generate a PDF or an HTML copy of this guide using
 * [Strings](#strings)
 * [Regular Expressions](#regular-expressions)
 * [Macros](#macros)
-* [Misc](#misc)
+* [Existential](#existential)
 
 ## Source Code Layout & Organization
 
@@ -243,6 +243,11 @@ macro definition.
     ```
 
 * Avoid the use of overly long namespaces(i.e. with more than 5 segments).
+
+* Avoid functions longer than 10 LOC (lines of code). Ideally, most
+  functions will be shorter than 5 LOC.
+
+* Avoid parameter lists with more than three or four positional parameters.
 
 ## Syntax
 
@@ -807,14 +812,9 @@ you need to comment out a particular form.
 * Use other custom annotation keywords if it feels appropriate, but be
   sure to document them in your project's `README` or similar.
 
-## Misc
+## Existential
 
-* Avoid functions longer than 10 LOC (lines of code). Ideally, most
-  functions will be shorter than 5 LOC. Empty lines do not contribute
-  to the relevant LOC.
-* Avoid parameter lists longer than three or four parameters.
 * Code in a functional way, avoiding mutation when that makes sense.
-* Avoid more than three levels of block nesting.
 * Be consistent. In an ideal world, be consistent with these guidelines.
 * Use common sense.
 
