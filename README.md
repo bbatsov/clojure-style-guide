@@ -172,7 +172,20 @@ and before a closing bracket.
     (foo ( bar baz ) quux)
     ```
 
-* Limit the use of commas in collection literals.
+* Don't use commas between the elements of sequential collection literals.
+
+    ```Clojure
+    ;; good
+    [1 2 3]
+    (1 2 3)
+
+    ;; bad
+    [1, 2, 3]
+    (1, 2, 3)
+    ```
+
+* Consider enhancing the readability of map literals via judicious use of commas
+line breaks.
 
     ```Clojure
     ;; good
@@ -182,7 +195,7 @@ and before a closing bracket.
     {:name "Bruce Wayne"
      :alter-ego "Batman"}
 
-    ;; bad
+    ;; good and arguably more compact
     {:name "Bruce Wayne", :alter-ego "Batman"}
     ```
 
@@ -256,6 +269,39 @@ macro definition.
   environment.
 * Use `declare` to enable forward references.
 * Prefer higher-order functions like `map` to `loop/recur`.
+
+* Prefer function pre and post conditions to checks inside a function's body.
+
+    ```Clojure
+    ;; good
+    (defn foo [x]
+      {:pre [(pos? x)]}
+      (bar x))
+
+    ;; bad
+    (defn foo [x]
+      (if (pos? x)
+        (bar x)
+        (throw (IllegalArgumentException "x must be a positive number!")))
+    ```
+
+* Don't define vars inside functions.
+
+    ```Clojure
+    ;; very bad
+    (defn foo []
+      (def x 5)
+      ...)
+    ```
+
+* Don't shadow `clojure.core` names with local bindings.
+
+    ```Clojure
+    ;; bad - you're forced to used clojure.core/map fully qualified inside
+    (defn foo [map]
+      ...)
+    ```
+
 * Use `seq` as a terminating condition to test whether a sequence is
   empty (this technique is sometimes called *nil punning*).
 
@@ -646,8 +692,18 @@ compile time constants.
 
 * Avoid the use of lists for generic data storage (unless a list is exactly what you need).
 * Prefer the use of keywords for hash keys.
-* Prefer the use of the literal collection syntax where applicable. However, when defining
-  sets, only use literal syntax when the values are compile time constants
+
+    ```Clojure
+    ;; good
+    {:name "Bruce" :age 30}
+
+    ;; bad
+    {"name" "Bruce" "age" 30}
+    ```
+
+* Prefer the use of the literal collection syntax where
+  applicable. However, when defining sets, only use literal syntax
+  when the values are compile time constants
 
     ```Clojure
     ;; good
@@ -659,6 +715,24 @@ compile time constants.
     (vector 1 2 3)
     (hash-set 1 2 3)
     #{(func1) (func2)} ; will throw runtime exception if (func1) = (func2)
+    ```
+
+* Avoid accessing collection members by index whenever possible.
+
+* Prefer the use of keywords as functions for retrieving values from
+  maps, where applicable.
+
+    ```Clojure
+    (def m {:name "Bruce" :age 30})
+
+    ;; good
+    (:name m)
+
+    ;; bad - too verbose
+    (get m :name)
+
+    ;; bad - susceptible to NPEs
+    (m :name)
     ```
 
 * Leverage the fact that most collections are functions of their elements.
