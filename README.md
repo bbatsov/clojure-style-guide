@@ -71,7 +71,7 @@ You can generate a PDF or an HTML copy of this guide using
       (range 1 10))
     ```
 
-* Align let bindings and map keywords.
+* Align `let` bindings and map keywords.
 
     ```Clojure
     ;; good
