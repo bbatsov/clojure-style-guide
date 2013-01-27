@@ -184,8 +184,8 @@ and before a closing bracket.
     (1, 2, 3)
     ```
 
-* Consider enhancing the readability of map literals via judicious use of commas
-line breaks.
+* Consider enhancing the readability of map literals via judicious use
+of commas and line breaks.
 
     ```Clojure
     ;; good
