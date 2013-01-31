@@ -890,12 +890,14 @@ you need to comment out a particular form.
   describing the problem.
 * If multiple lines are required to describe the problem, subsequent
   lines should be indented as much as the first one.
+* Tag the annotation with your initials and a date so its relevance can
+  be easily verified.
 
     ```Clojure
     (defn some-fun
       []
       ;; FIXME: This has crashed occasionally since v1.2.3. It may
-      ;;        be related to the BarBazUtil upgrade.
+      ;;        be related to the BarBazUtil upgrade. (xz 13-1-31)
       (baz))
     ```
 
