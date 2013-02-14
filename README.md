@@ -861,7 +861,7 @@ and the text that follows it.
     (inc counter) ; increments counter by one
     ```
 
-* Keep existing comments up-to-date. An outdated is worse than no comment
+* Keep existing comments up-to-date. An outdated comment is worse than no comment
 at all.
 * Prefer the use of the `#_` reader macro over a regular comment when
 you need to comment out a particular form.
