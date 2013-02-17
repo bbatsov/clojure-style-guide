@@ -30,14 +30,13 @@ You can generate a PDF or an HTML copy of this guide using
 * [Source Code Layout & Organization](#source-code-layout--organization)
 * [Syntax](#syntax)
 * [Naming](#naming)
-* [Comments](#comments)
-    * [Comment Annotations](#comment-annotations)
-* [Exceptions](#exceptions)
 * [Collections](#collections)
 * [Mutation](#mutation)
 * [Strings](#strings)
-* [Regular Expressions](#regular-expressions)
+* [Exceptions](#exceptions)
 * [Macros](#macros)
+* [Comments](#comments)
+    * [Comment Annotations](#comment-annotations)
 * [Existential](#existential)
 
 ## Source Code Layout & Organization
