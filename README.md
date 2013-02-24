@@ -743,7 +743,7 @@ compile time constants.
     ;; bad - too ugly to share
     ```
 
-* Leverage the fact that keywords can used as functions of a collection.
+* Leverage the fact that keywords can be used as functions of a collection.
 
     ```Clojure
     ((juxt :a :b) {:a "ala" :b "bala"})
