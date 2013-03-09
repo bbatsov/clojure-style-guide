@@ -800,6 +800,16 @@ as small as possible.
 * Avoid atom updates inside STM transactions.
 * Avoid the use of `reset!` whenever possible.
 
+    ```Clojure
+    (def a (atom 0))
+
+    ;; good
+    (swap! a + 5)
+
+    ;; bad
+    (reset! a 5)
+    ```
+
 ## Strings
 
 * Prefer the string manipulation functions from `clojure.string` next to
