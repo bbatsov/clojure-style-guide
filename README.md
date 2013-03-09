@@ -783,6 +783,17 @@ code dealing heavily with primitive types.
 surprises if you accidentally end up calling such code in a
 transaction.
 * Avoid the use of `ref-set` whenever possible.
+
+    ```Clojure
+    (def r (ref 0))
+
+    ;; good
+    (dosync (alter r + 5))
+
+    ;; bad
+    (dosync (ref-set r 5))
+    ```
+
 * Try to keep the size of transactions (the amount of work encapsulated in them)
 as small as possible.
 * Avoid having both short- and long-running transactions interacting
