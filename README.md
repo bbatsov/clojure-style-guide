@@ -705,11 +705,33 @@ compile time constants.
     * `organization.project.module`
 * Use `lisp-case` in composite namespace segments(e.g. `bruce.project-euler`)
 * Use `lisp-case` for function and variable names.
+
+    ```Clojure
+    ;; good
+    (def some-var ...)
+    (defn some-fun ...)
+
+    ;; bad
+    (def someVar ...)
+    (defn somefun ...)
+    (def some_fun ...)
+    ```
+
 * Use `CamelCase` for protocols, records, structs and types. (Keep
   acronyms like HTTP, RFC, XML uppercase.)
 * The names of predicate methods (methods that return a boolean value)
   should end in a question mark.
   (i.e. `even?`).
+
+    ```Clojure
+    ;; good
+    (defn palindrome? ...)
+
+    ;; bad
+    (defn palindrome-p ...) ; Common Lisp style
+    (defn is-palindrome ...) ; Java style
+    ```
+
 * The names of functions/macros that are not safe in STM transactions
   should end with an exclamation mark. (i.e. `reset!`)
 * Use `->` instead of `to` in the names of conversion functions.
@@ -723,10 +745,30 @@ compile time constants.
     ```
 
 * Use `*earmuffs*` for things intended for rebinding (ie. are dynamic).
+
+    ```Clojure
+    ;; good
+    (def ^:dynamic *a* 10)
+
+    ;; bad
+    (def ^:dynamic a 10)
+    ```
+
 * Don't use a special notation for constants; everything is assumed a constant
   unless specified otherwise.
 * Use `_` for destructuring targets and formal arguments names whose
   value will be ignored by the code at hand.
+
+    ```Clojure
+    ;; good
+    (let [[a b _ c] [1 2 3 4]]
+      (println a b c))
+
+    ;; bad
+    (let [[a b c d] [1 2 3 4]]
+      (println a b d))
+    ```
+
 * Follow `clojure.core`'s example for idiomatic names like `pred` and `coll`.
     * in functions:
         * `f`, `g`, `h` - function input
