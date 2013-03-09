@@ -790,7 +790,8 @@ compile time constants.
 > than to have 10 functions operate on 10 data structures. <br/>
 > -- Alan J. Perlis
 
-* Avoid the use of lists for generic data storage (unless a list is exactly what you need).
+* Avoid the use of lists for generic data storage (unless a list is
+  exactly what you need).
 * Prefer the use of keywords for hash keys.
 
     ```Clojure
@@ -850,13 +851,13 @@ compile time constants.
     ((juxt :a :b) {:a "ala" :b "bala"})
     ```
 
-* Avoid the use of transient collections, except for performance-critical portions
-of the code.
+* Avoid the use of transient collections, except for
+performance-critical portions of the code.
 
 * Avoid the use of Java collections.
 
-* Avoid the use of Java arrays, except for interop scenarios and performance-critical
-code dealing heavily with primitive types.
+* Avoid the use of Java arrays, except for interop scenarios and
+performance-critical code dealing heavily with primitive types.
 
 ## Mutation
 
@@ -973,8 +974,9 @@ and the text that follows it.
             frotz))
     ```
 
-* Comments longer than a word begin with a capital letter and use punctuation. Separate
-  sentences with [one space](http://en.wikipedia.org/wiki/Sentence_spacing).
+* Comments longer than a word begin with a capital letter and use
+  punctuation. Separate sentences with
+  [one space](http://en.wikipedia.org/wiki/Sentence_spacing).
 * Avoid superfluous comments.
 
     ```Clojure
@@ -1064,7 +1066,8 @@ advance for your help!
 # License
 
 ![Creative Commons License](http://i.creativecommons.org/l/by/3.0/88x31.png)
-This work is licensed under a [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/deed.en_US)
+This work is licensed under a
+[Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/deed.en_US)
 
 # Spread the Word
 
