@@ -86,7 +86,8 @@ You can generate a PDF or an HTML copy of this guide using
       :thing2 thing2})
     ```
 
-* Optionally omit the new line between the function name and argument vector for `defn` when there is no docstring.
+* Optionally omit the new line between the function name and argument
+  vector for `defn` when there is no docstring.
 
     ```Clojure
     ;; good
@@ -103,7 +104,8 @@ You can generate a PDF or an HTML copy of this guide using
       [x] (bar x))
     ```
 
-* Optionally omit the new line between the argument vector and a short function body.
+* Optionally omit the new line between the argument vector and a short
+  function body.
 
     ```Clojure
     ;; good
@@ -146,8 +148,8 @@ You can generate a PDF or an HTML copy of this guide using
       (bar))
     ```
 
-* Use Unix-style line endings. (*BSD/Solaris/Linux/OSX users are covered by default,
-  Windows users have to be extra careful.)
+* Use Unix-style line endings. (*BSD/Solaris/Linux/OSX users are
+  covered by default, Windows users have to be extra careful.)
     * If you're using Git you might want to add the following
     configuration setting to protect your project from Windows line
     endings creeping in:
@@ -429,7 +431,8 @@ macro definition.
     (filter #(even? %) (range 1 10))
     ```
 
-* Don't use function literals if the function body will consist of more than one form.
+* Don't use function literals if the function body will consist of
+  more than one form.
 
     ```Clojure
     ;; good
@@ -475,8 +478,8 @@ macro definition.
     (map (partial + 5) (range 1 10))
     ```
 
-* Prefer the use of the threading macros `->` (thread-first) and `->>` (thread-last)
-to heavy form nesting.
+* Prefer the use of the threading macros `->` (thread-first) and `->>`
+(thread-last) to heavy form nesting.
 
     ```Clojure
     ;; good
@@ -646,8 +649,8 @@ compile time constants.
     * `organization.project.module`
 * Use `lisp-case` in composite namespace segments(e.g. `bruce.project-euler`)
 * Use `lisp-case` for function and variable names.
-* Use `CamelCase` for protocols, records, structs and types. (Keep acronyms like HTTP,
-  RFC, XML uppercase.)
+* Use `CamelCase` for protocols, records, structs and types. (Keep
+  acronyms like HTTP, RFC, XML uppercase.)
 * The names of predicate methods (methods that return a boolean value)
   should end in a question mark.
   (i.e. `even?`).
