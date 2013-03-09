@@ -653,6 +653,47 @@ compile time constants.
     (. some-object some-field)
     ```
 
+* Use the compact metadata notation for metadata that contains only
+  slots whose keys are keywords and whose value is boolean `true`.
+
+    ```Clojure
+    ;; good
+    (def ^:private a 5)
+
+    ;; bad
+    (def ^{:private true} a 5)
+    ```
+
+* Denote private parts of your code.
+
+    ```Clojure
+    ;; good
+    (defn- private-fun [] ...)
+
+    (def ^:private private-var ...)
+
+    ;; bad
+    (defn private-fun [] ...) ; not private at all
+
+    (defn ^:private private fun [] ...) ; overly verbose
+
+    (def private-var ...) ; not private at all
+    ```
+
+* Be careful regarding what exactly do you attach metadata to.
+
+    ```Clojure
+    ;; we attach the metadata to the var referenced by a
+    (def ^:private a 5)
+    (meta a) ;=> nil
+    (meta #'a) ;=> {:private true}
+
+    ;; we attach the metadata to the value 5
+    (def a ^:private 5)
+    (meta a) ;=> {:private true}
+    (meta #'a) ;=> nil
+    ```
+
 ## Naming
 
 > The only real difficulties in programming are cache invalidation and
