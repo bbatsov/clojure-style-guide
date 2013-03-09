@@ -391,6 +391,21 @@ macro definition.
       (bar))
     ```
 
+* Use `when-not` instead of `(if-not ... (do ...)`.
+
+    ```Clojure
+    ;; good
+    (when-not pred
+      (foo)
+      (bar))
+
+    ;; bad
+    (if-not pred
+      (do
+        (foo)
+        (bar)))
+    ```
+
 * Use `not=` instead of `(not (= ...))`.
 
     ```Clojure
