@@ -213,7 +213,7 @@ of commas and line breaks.
     )
     ```
 
-* Use empty lines between top level forms.
+* Use empty lines between top-level forms.
 
     ```Clojure
     ;; good
@@ -224,6 +224,15 @@ of commas and line breaks.
     ;; bad
     (def x ...)
     (defn foo ...)
+    ```
+
+    An exception to the rule is the grouping of related `def`s together.
+
+    ```Clojure
+    (def min-rows 10)
+    (def max-rows 20)
+    (def min-cols 15)
+    (def max-cols 30)
     ```
 
 * Do not place blank lines in the middle of a function or
