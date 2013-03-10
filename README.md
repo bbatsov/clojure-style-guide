@@ -241,7 +241,8 @@ macro definition.
 * Where feasible, avoid making lines longer than 80 characters.
 * Avoid trailing whitespace.
 * Use one file per namespace.
-* Start every namespace with a comprehensive `ns` form, comprised of `import`s, `require`s, `refer`s and `use`s.
+* Start every namespace with a comprehensive `ns` form, comprised of
+  `import`s, `require`s, `refer`s and `use`s.
 
     ```Clojure
     (ns examples.ns
