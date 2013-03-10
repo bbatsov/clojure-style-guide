@@ -38,6 +38,7 @@ You can generate a PDF or an HTML copy of this guide using
 * [Comments](#comments)
     * [Comment Annotations](#comment-annotations)
 * [Existential](#existential)
+* [Tooling](#tooling)
 
 ## Source Code Layout & Organization
 
@@ -1063,6 +1064,20 @@ you need to comment out a particular form.
 * Code in a functional way, avoiding mutation when that makes sense.
 * Be consistent. In an ideal world, be consistent with these guidelines.
 * Use common sense.
+
+## Tooling
+
+There are some tools created by the Clojure community that might aid you
+in your endeavor to write idiomatic Clojure code.
+
+* [Slamhound](https://github.com/technomancy/slamhound) is a tool that
+will automatically generate proper `ns` declarations from your
+existing code.
+* [kibit](https://github.com/jonase/kibit) is a static code analyzer
+  for Clojure which uses
+  [core.logic](https://github.com/clojure/core.logic) to search for
+  patterns of code for which there might exist a more idiomatic
+  function or macro.
 
 # Contributing
 
