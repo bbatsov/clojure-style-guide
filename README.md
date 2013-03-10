@@ -229,6 +229,7 @@ of commas and line breaks.
     An exception to the rule is the grouping of related `def`s together.
 
     ```Clojure
+    ;; good
     (def min-rows 10)
     (def max-rows 20)
     (def min-cols 15)
