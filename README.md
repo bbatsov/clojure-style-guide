@@ -776,9 +776,15 @@ compile time constants.
     (let [[a b _ c] [1 2 3 4]]
       (println a b c))
 
+    (dotimes [_ 3]
+      (println "Hello!"))
+
     ;; bad
     (let [[a b c d] [1 2 3 4]]
       (println a b d))
+
+    (dotimes [i 3]
+      (println "Hello!"))
     ```
 
 * Follow `clojure.core`'s example for idiomatic names like `pred` and `coll`.
