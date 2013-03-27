@@ -850,7 +850,7 @@ compile time constants.
     ;; bad - too verbose
     (get m :name)
 
-    ;; bad - susceptible to NPEs
+    ;; bad - susceptible to NullPointerException
     (m :name)
     ```
 
