@@ -114,7 +114,7 @@ You can generate a PDF or an HTML copy of this guide using
       (bar x))
 
     ;; good for a small function body
-    (defn goo [x] (bar x))
+    (defn foo [x] (bar x))
 
     ;; good for multi-arity functions
     (defn foo
