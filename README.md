@@ -238,7 +238,9 @@ of commas and line breaks.
     ```
 
 * Do not place blank lines in the middle of a function or
-macro definition.
+macro definition.  An exception can be made to indicate grouping of
+pairwise constructs as found in e.g. `let` and `cond`.
+
 * Where feasible, avoid making lines longer than 80 characters.
 * Avoid trailing whitespace.
 * Use one file per namespace.
@@ -598,6 +600,37 @@ compile time constants.
       20 :twenty
       30 :forty
       :dunno)
+    ```
+
+* Use short forms in `cond` and related.  If not possible give visual
+hints for the pairwise grouping with comments or empty lines.
+
+    ```Clojure
+    ;; good
+	(cond
+	  (test1) (action1)
+	  (test2) (action2)
+	  :else   (default-action))
+
+	;; okish
+	(cond
+	;; test case 1
+	(test1)
+	(long-function-name-which-requires-a-new-line
+       (complicated-sub-form
+          (-> 'which-spans
+              multiple-lines)))
+
+	(test2)
+	(another-very-long-function-name
+       (yet-another-sub-form
+          (-> 'which-spans
+              multiple-lines)))
+
+    :else
+    (the-fall-through-default-case
+      (which-also-spans 'multiple
+                        'lines)))
     ```
 
 * Use a `set` as a predicate when appropriate.
