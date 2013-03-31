@@ -925,8 +925,7 @@ as small as possible.
 
 ## Strings
 
-* Prefer the string manipulation functions from `clojure.string` next to
-using the Java interop or unrolling your own.
+* Prefer string manipulation functions from `clojure.string` over Java interop or rolling your own.
 
     ```Clojure
     ;; good
@@ -943,7 +942,7 @@ using the Java interop or unrolling your own.
   (e.g. `java.lang.IllegalArgumentException`,
   `java.lang.UnsupportedOperationException`,
   `java.lang.IllegalStateException`, `java.io.IOException`).
-* Favor the use of `with-open` over the use of `finally`.
+* Favor `with-open` over `finally`.
 
 ## Macros
 
