@@ -575,7 +575,7 @@ macro definition.
     ```
 
 * Prefer `case` instead of `cond` or `condp` when test expressions are
-compile time constants.
+compile-time constants.
 
     ```Clojure
     ;; good
@@ -822,7 +822,7 @@ compile time constants.
 
 * Prefer the use of the literal collection syntax where
   applicable. However, when defining sets, only use literal syntax
-  when the values are compile time constants
+  when the values are compile-time constants
 
     ```Clojure
     ;; good
@@ -953,7 +953,7 @@ using the Java interop or unrolling your own.
 * A macro should usually just provide syntactic sugar and the core of
   the macro should be a plain function. Doing so will improve
   composability.
-* Prefer syntax quoted forms over building lists manually.
+* Prefer syntax-quoted forms over building lists manually.
 
 ## Comments
 
