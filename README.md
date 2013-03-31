@@ -687,7 +687,7 @@ compile time constants.
     ;; bad
     (defn private-fun [] ...) ; not private at all
 
-    (defn ^:private private fun [] ...) ; overly verbose
+    (defn ^:private private-fun [] ...) ; overly verbose
 
     (def private-var ...) ; not private at all
     ```
