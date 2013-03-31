@@ -881,7 +881,7 @@ performance-critical code dealing heavily with primitive types.
 
 ### Refs
 
-* Consider wrapping all IO calls with the `io!` macro to avoid nasty
+* Consider wrapping all I/O calls with the `io!` macro to avoid nasty
 surprises if you accidentally end up calling such code in a
 transaction.
 * Avoid the use of `ref-set` whenever possible.
@@ -903,7 +903,7 @@ as small as possible.
 
 ### Agents
 
-* Use `send` only for actions that are CPU bound and don't block on IO
+* Use `send` only for actions that are CPU bound and don't block on I/O
   or other threads.
 * Use `send-off` for actions that might block, sleep, or otherwise tie
   up the thread.
