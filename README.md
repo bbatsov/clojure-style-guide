@@ -729,12 +729,12 @@ hints for the pairwise grouping with comments or empty lines.
 
     ```Clojure
     ;; we attach the metadata to the var referenced by a
-    (def ^:private a 5)
+    (def ^:private a {})
     (meta a) ;=> nil
     (meta #'a) ;=> {:private true}
 
     ;; we attach the metadata to the value 5
-    (def a ^:private 5)
+    (def a ^:private {})
     (meta a) ;=> {:private true}
     (meta #'a) ;=> nil
     ```
