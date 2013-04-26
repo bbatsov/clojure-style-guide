@@ -636,11 +636,14 @@ hints for the pairwise grouping with comments or empty lines.
 * Use a `set` as a predicate when appropriate.
 
     ```Clojure
+    ;; good
+    (remove #{0} [0 1 2 3 4 5])
+
     ;; bad
     (remove #(= % 0) [0 1 2 3 4 5])
 
     ;; good
-    (remove #{0} [0 1 2 3 4 5])
+    (count (filter #{\a \e \i \o \u} "mary had a little lamb"))
 
     ;; bad
     (count (filter #(or (= % \a)
@@ -649,9 +652,6 @@ hints for the pairwise grouping with comments or empty lines.
                         (= % \o)
                         (= % \u))
                    "mary had a little lamb"))
-
-    ;; good
-    (count (filter #{\a \e \i \o \u} "mary had a little lamb"))
     ```
 
 * Use `(inc x)` & `(dec x)` instead of `(+ x 1)` and `(- x 1)`.
