@@ -944,7 +944,7 @@ as small as possible.
 ### Atoms
 
 * Avoid atom updates inside STM transactions.
-* Avoid the use of `reset!` whenever possible.
+* Try to use `swap!` rather than `reset!`, where possible.
 
     ```Clojure
     (def a (atom 0))
@@ -952,7 +952,7 @@ as small as possible.
     ;; good
     (swap! a + 5)
 
-    ;; bad
+    ;; not as good
     (reset! a 5)
     ```
 
