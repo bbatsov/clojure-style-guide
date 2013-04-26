@@ -733,7 +733,7 @@ hints for the pairwise grouping with comments or empty lines.
     (meta a) ;=> nil
     (meta #'a) ;=> {:private true}
 
-    ;; we attach the metadata to the value 5
+    ;; we attach the metadata to the empty hash-map value
     (def a ^:private {})
     (meta a) ;=> {:private true}
     (meta #'a) ;=> nil
