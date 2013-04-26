@@ -490,11 +490,13 @@ pairwise constructs as found in e.g. `let` and `cond`.
 * Leverage `comp` when it would yield simpler code.
 
     ```Clojure
+    ;; Assuming `(:require [clojure.string :as str])`...
+    
     ;; good
-    (map #(capitalize (trim %)) ["top " " test "])
+    (map #(str/capitalize (str/trim %)) ["top " " test "])
 
     ;; better
-    (map (comp capitalize trim) ["top " " test "])
+    (map (comp str/capitalize str/trim) ["top " " test "])
     ```
 
 * Leverage `partial` when it would yield simpler code.
