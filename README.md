@@ -353,12 +353,12 @@ pairwise constructs as found in e.g. `let` and `cond`.
 
     ```Clojure
     ;; good
-    (if-let [result :foo]
+    (if-let [result (foo x)]
       (something-with result)
       (something-else))
 
     ;; bad
-    (let [result :foo]
+    (let [result (foo x)]
       (if result
         (something-with result)
         (something-else)))
@@ -368,12 +368,12 @@ pairwise constructs as found in e.g. `let` and `cond`.
 
     ```Clojure
     ;; good
-    (when-let [result :foo]
+    (when-let [result (foo x)]
       (do-something-with result)
       (do-something-more-with result))
 
     ;; bad
-    (let [result :foo]
+    (let [result (foo x)]
       (when result
         (do-something-with result)
         (do-something-more-with result)))
