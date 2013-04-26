@@ -997,7 +997,7 @@ as small as possible.
 > it even clearer. <br/>
 > -- Steve McConnell
 
-* Write self-documenting code and ignore the rest of this section. Seriously!
+* Endeavor to make your code as self-documenting as possible.
 
 * Write heading comments with at least four semicolons.
 
