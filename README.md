@@ -612,7 +612,7 @@ hints for the pairwise grouping with comments or empty lines.
 	  (test2) (action2)
 	  :else   (default-action))
 
-	;; okish
+	;; ok-ish
 	(cond
 	;; test case 1
 	(test1)
@@ -728,7 +728,7 @@ hints for the pairwise grouping with comments or empty lines.
 * Be careful regarding what exactly do you attach metadata to.
 
     ```Clojure
-    ;; we attach the metadata to the var referenced by a
+    ;; we attach the metadata to the var referenced by `a`
     (def ^:private a {})
     (meta a) ;=> nil
     (meta #'a) ;=> {:private true}
@@ -762,7 +762,7 @@ hints for the pairwise grouping with comments or empty lines.
     (def some_fun ...)
     ```
 
-* Use `CamelCase` for protocols, records, structs and types. (Keep
+* Use `CamelCase` for protocols, records, structs, and types. (Keep
   acronyms like HTTP, RFC, XML uppercase.)
 * The names of predicate methods (methods that return a boolean value)
   should end in a question mark.
@@ -855,7 +855,7 @@ hints for the pairwise grouping with comments or empty lines.
 
 * Prefer the use of the literal collection syntax where
   applicable. However, when defining sets, only use literal syntax
-  when the values are compile-time constants
+  when the values are compile-time constants.
 
     ```Clojure
     ;; good
@@ -1053,7 +1053,7 @@ you need to comment out a particular form.
 > -- Russ Olsen
 
 * Avoid writing comments to explain bad code. Refactor the code to
-  make it self-explanatory. (Do or do not - there is no try. --Yoda)
+  make it self-explanatory. ("Do, or do not. There is no try." --Yoda)
 
 ### Comment Annotations
 
