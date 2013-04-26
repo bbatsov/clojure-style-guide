@@ -880,7 +880,7 @@ hints for the pairwise grouping with comments or empty lines.
     ;; good
     (:name m)
 
-    ;; bad - too verbose
+    ;; more verbose than necessary
     (get m :name)
 
     ;; bad - susceptible to NullPointerException
