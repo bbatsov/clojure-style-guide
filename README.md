@@ -517,7 +517,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
         (conj 4)
         prn)
 
-    ;; not as good
+    ;; ok
     (prn (conj (reverse [1 2 3])
                4))
 
@@ -526,7 +526,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
          (filter even?)
          (map (partial * 2)))
 
-    ;; not as good
+    ;; ok
     (map (partial * 2)
          (filter even? (range 1 10)))
     ```
