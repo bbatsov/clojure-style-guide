@@ -1,5 +1,8 @@
 # The Clojure Style Guide
 
+> Role models are important. <br/>
+> -- Officer Alex J. Murphy / RoboCop
+
 This Clojure style guide recommends best practices so that real-world Clojure
 programmers can write code that can be maintained by other real-world Clojure
 programmers. A style guide that reflects real-world usage gets used, and a
