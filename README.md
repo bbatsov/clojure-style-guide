@@ -433,6 +433,17 @@ pairwise constructs as found in e.g. `let` and `cond`.
     (not (= foo bar))
     ```
 
+* When doing comparisons keep in mind that Clojure's functions `<`,
+  `>`, etc accept variable number of arguments.
+
+    ```Clojure
+    ;; good
+    (< 5 x 10)
+
+    ;; bad
+    (and (> x 5) (< x 10))
+    ```
+
 * Prefer `%` over `%1` in function literals with only one parameter.
 
     ```Clojure
@@ -494,7 +505,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
 
     ```Clojure
     ;; Assuming `(:require [clojure.string :as str])`...
-    
+
     ;; good
     (map #(str/capitalize (str/trim %)) ["top " " test "])
 
