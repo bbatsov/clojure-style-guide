@@ -711,7 +711,7 @@ hints for the pairwise grouping with comments or empty lines.
     (.someField some-object)
 
     ;; bad
-    (. some-object some-field)
+    (. some-object someField)
     ```
 
 * Use the compact metadata notation for metadata that contains only
