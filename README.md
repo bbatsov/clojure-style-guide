@@ -263,6 +263,18 @@ pairwise constructs as found in e.g. `let` and `cond`.
                                      LinkedBlockingQueue)))
     ```
 
+* Prefer using `:require :refer :all` over `:use` in ns macro.
+
+    ```Clojure
+    ;; good
+    (ns examlpes.ns
+        (:require [clojure.zip :refer :all]))
+
+    ;; bad
+    (ns examlpes.ns
+        (:use [clojure.zip]))
+    ```
+
 * Avoid single-segment namespaces.
 
     ```Clojure
