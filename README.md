@@ -253,14 +253,14 @@ pairwise constructs as found in e.g. `let` and `cond`.
     ```Clojure
     (ns examples.ns
       (:refer-clojure :exclude [next replace remove])
-      (:require (clojure [string :as string]
-                         [set :as set])
+      (:require [clojure.string :as s :refer [blank?]]
+                [clojure.set :as set]
                 [clojure.java.shell :as sh])
-      (:use (clojure zip xml))
+      (:use [clojure xml zip])
       (:import java.util.Date
                java.text.SimpleDateFormat
-               (java.util.concurrent Executors
-                                     LinkedBlockingQueue)))
+               [java.util.concurrent Executors
+                                     LinkedBlockingQueue]))
     ```
 
 * Prefer using `:require :refer :all` over `:use` in ns macro.
