@@ -268,11 +268,11 @@ pairwise constructs as found in e.g. `let` and `cond`.
     ```Clojure
     ;; good
     (ns examlpes.ns
-        (:require [clojure.zip :refer :all]))
+      (:require [clojure.zip :refer :all]))
 
     ;; bad
     (ns examlpes.ns
-        (:use [clojure.zip]))
+      (:use [clojure.zip]))
     ```
 
 * Avoid single-segment namespaces.
