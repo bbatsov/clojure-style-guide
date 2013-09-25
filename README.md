@@ -272,7 +272,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
 
     ;; bad
     (ns examples.ns
-      (:use [clojure.zip]))
+      (:use clojure.zip))
     ```
 
 * Avoid single-segment namespaces.
