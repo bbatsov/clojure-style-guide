@@ -260,7 +260,9 @@ pairwise constructs as found in e.g. `let` and `cond`.
       (:import java.util.Date
                java.text.SimpleDateFormat
                [java.util.concurrent Executors
-                                     LinkedBlockingQueue]))
+                                     LinkedBlockingQueue]
+      )
+    )
     ```
 
 * Prefer using `:require :refer :all` over `:use` in ns macro.
@@ -268,11 +270,13 @@ pairwise constructs as found in e.g. `let` and `cond`.
     ```Clojure
     ;; good
     (ns examples.ns
-      (:require [clojure.zip :refer :all]))
+      (:require [clojure.zip :refer :all])
+    )
 
     ;; bad
     (ns examples.ns
-      (:use clojure.zip))
+      (:use clojure.zip)
+    )
     ```
 
 * Avoid single-segment namespaces.
