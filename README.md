@@ -204,14 +204,14 @@ of commas and line breaks.
     {:name "Bruce Wayne", :alter-ego "Batman"}
     ```
 
-* Place all trailing parentheses on a single line.
+* Place all trailing parentheses on a single line instead of distinct lines.
 
     ```Clojure
-    ;; good
+    ;; good; single line
     (when something
       (something-else))
 
-    ;; bad
+    ;; bad; distinct lines
     (when something
       (something-else)
     )
