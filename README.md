@@ -158,9 +158,9 @@ You can generate a PDF or an HTML copy of this guide using
     configuration setting to protect your project from Windows line
     endings creeping in:
 
-        ```bash
-        $ git config --global core.autocrlf true
-        ```
+    ```
+    bash$ git config --global core.autocrlf true
+    ```
 
 * If any text precedes an opening bracket(`(`, `{` and
 `[`) or follows a closing bracket(`)`, `}` and `]`), separate that
