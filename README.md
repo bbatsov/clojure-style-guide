@@ -569,7 +569,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
     (.. System getProperties (get "os.name"))
     ```
 
-* Use `:else` as the catch-all test expression in `cond` and `condp`.
+* Use `:else` as the catch-all test expression in `cond`.
 
     ```Clojure
     ;; good
