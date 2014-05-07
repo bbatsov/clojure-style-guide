@@ -7,23 +7,23 @@ This Clojure style guide recommends best practices so that real-world Clojure
 programmers can write code that can be maintained by other real-world Clojure
 programmers. A style guide that reflects real-world usage gets used, and a
 style guide that holds to an ideal that has been rejected by the people it is
-supposed to help risks not getting used at all &ndash; no matter how good it is.
+supposed to help risks not getting used at all &mdash; no matter how good it is.
 
 The guide is separated into several sections of related rules. I've
-tried to add the rationale behind the rules (if it's omitted I've
-assumed that is pretty obvious).
+tried to add the rationale behind the rules (if it's omitted, I've
+assumed that it's pretty obvious).
 
-I didn't come up with all the rules out of nowhere - they are mostly
+I didn't come up with all the rules out of nowhere; they are mostly
 based on my extensive career as a professional software engineer,
 feedback and suggestions from members of the Clojure community, and
 various highly regarded Clojure programming resources, such as
 ["Clojure Programming"](http://www.clojurebook.com/)
 and ["The Joy of Clojure"](http://joyofclojure.com/).
 
-The guide is still a work in progress - some sections are missing,
+The guide is still a work in progress; some sections are missing,
 others are incomplete, some rules are lacking examples, some rules
 don't have examples that illustrate them clearly enough. In due time
-these issues will be addressed - just keep them in mind for now.
+these issues will be addressed &mdash; just keep them in mind for now.
 
 You can generate a PDF or an HTML copy of this guide using
 [Transmuter](https://github.com/TechnoGate/transmuter).
