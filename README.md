@@ -7,23 +7,23 @@ This Clojure style guide recommends best practices so that real-world Clojure
 programmers can write code that can be maintained by other real-world Clojure
 programmers. A style guide that reflects real-world usage gets used, and a
 style guide that holds to an ideal that has been rejected by the people it is
-supposed to help risks not getting used at all &ndash; no matter how good it is.
+supposed to help risks not getting used at all &mdash; no matter how good it is.
 
 The guide is separated into several sections of related rules. I've
-tried to add the rationale behind the rules (if it's omitted I've
-assumed that is pretty obvious).
+tried to add the rationale behind the rules (if it's omitted, I've
+assumed that it's pretty obvious).
 
-I didn't come up with all the rules out of nowhere - they are mostly
+I didn't come up with all the rules out of nowhere; they are mostly
 based on my extensive career as a professional software engineer,
 feedback and suggestions from members of the Clojure community, and
 various highly regarded Clojure programming resources, such as
 ["Clojure Programming"](http://www.clojurebook.com/)
 and ["The Joy of Clojure"](http://joyofclojure.com/).
 
-The guide is still a work in progress - some sections are missing,
+The guide is still a work in progress; some sections are missing,
 others are incomplete, some rules are lacking examples, some rules
 don't have examples that illustrate them clearly enough. In due time
-these issues will be addressed - just keep them in mind for now.
+these issues will be addressed &mdash; just keep them in mind for now.
 
 You can generate a PDF or an HTML copy of this guide using
 [Transmuter](https://github.com/TechnoGate/transmuter).
@@ -62,7 +62,7 @@ You can generate a PDF or an HTML copy of this guide using
         (something-else))
     ```
 
-* Align vertically function arguments.
+* Vertically align function arguments.
 
     ```Clojure
     ;; good
@@ -74,7 +74,7 @@ You can generate a PDF or an HTML copy of this guide using
       (range 1 10))
     ```
 
-* Align `let` bindings and map keywords.
+* Vertically align `let` bindings and map keywords.
 
     ```Clojure
     ;; good
@@ -245,8 +245,11 @@ macro definition.  An exception can be made to indicate grouping of
 pairwise constructs as found in e.g. `let` and `cond`.
 
 * Where feasible, avoid making lines longer than 80 characters.
+
 * Avoid trailing whitespace.
+
 * Use one file per namespace.
+
 * Start every namespace with a comprehensive `ns` form, comprised of
   `import`s, `require`s, `refer`s and `use`s.
 
@@ -285,7 +288,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
     (ns example)
     ```
 
-* Avoid the use of overly long namespaces(i.e. with more than 5 segments).
+* Avoid the use of overly long namespaces (i.e., more than 5 segments).
 
 * Avoid functions longer than 10 LOC (lines of code). Ideally, most
   functions will be shorter than 5 LOC.
@@ -297,7 +300,9 @@ pairwise constructs as found in e.g. `let` and `cond`.
 * Avoid the use of namespace-manipulating functions like `require` and
   `refer`. They are entirely unnecessary outside of a REPL
   environment.
+
 * Use `declare` to enable forward references.
+
 * Prefer higher-order functions like `map` to `loop/recur`.
 
 * Prefer function pre and post conditions to checks inside a function's body.
@@ -445,8 +450,8 @@ pairwise constructs as found in e.g. `let` and `cond`.
     (not (= foo bar))
     ```
 
-* When doing comparisons keep in mind that Clojure's functions `<`,
-  `>`, etc accept variable number of arguments.
+* When doing comparisons, keep in mind that Clojure's functions `<`,
+  `>`, etc. accept a variable number of arguments.
 
     ```Clojure
     ;; good
@@ -776,7 +781,9 @@ hints for the pairwise grouping with comments or empty lines.
 * When naming namespaces favor the following two schemas:
     * `project.module`
     * `organization.project.module`
+
 * Use `lisp-case` in composite namespace segments(e.g. `bruce.project-euler`)
+
 * Use `lisp-case` for function and variable names.
 
     ```Clojure
@@ -792,9 +799,10 @@ hints for the pairwise grouping with comments or empty lines.
 
 * Use `CamelCase` for protocols, records, structs, and types. (Keep
   acronyms like HTTP, RFC, XML uppercase.)
+
 * The names of predicate methods (methods that return a boolean value)
-  should end in a question mark.
-  (i.e. `even?`).
+  should end in a question mark
+  (e.g., `even?`).
 
     ```Clojure
     ;; good
@@ -806,7 +814,8 @@ hints for the pairwise grouping with comments or empty lines.
     ```
 
 * The names of functions/macros that are not safe in STM transactions
-  should end with an exclamation mark. (i.e. `reset!`)
+  should end with an exclamation mark (e.g. `reset!`).
+
 * Use `->` instead of `to` in the names of conversion functions.
 
     ```Clojure
@@ -998,21 +1007,26 @@ as small as possible.
 
 ## Exceptions
 
-* Reuse existing exception types. Idiomatic Clojure code, when it does
-  throw an exception, throws an exception of a standard type
+* Reuse existing exception types. Idiomatic Clojure code &mdash; when it does
+  throw an exception &mdash; throws an exception of a standard type
   (e.g. `java.lang.IllegalArgumentException`,
   `java.lang.UnsupportedOperationException`,
   `java.lang.IllegalStateException`, `java.io.IOException`).
+
 * Favor `with-open` over `finally`.
 
 ## Macros
 
 * Don't write a macro if a function will do.
+
 * Create an example of a macro usage first and the macro afterwards.
+
 * Break complicated macros into smaller functions whenever possible.
+
 * A macro should usually just provide syntactic sugar and the core of
   the macro should be a plain function. Doing so will improve
   composability.
+
 * Prefer syntax-quoted forms over building lists manually.
 
 ## Comments
@@ -1055,6 +1069,7 @@ and the text that follows it.
 * Comments longer than a word begin with a capital letter and use
   punctuation. Separate sentences with
   [one space](http://en.wikipedia.org/wiki/Sentence_spacing).
+
 * Avoid superfluous comments.
 
     ```Clojure
@@ -1064,6 +1079,7 @@ and the text that follows it.
 
 * Keep existing comments up-to-date. An outdated comment is worse than no comment
 at all.
+
 * Prefer the use of the `#_` reader macro over a regular comment when
 you need to comment out a particular form.
 
@@ -1087,10 +1103,13 @@ you need to comment out a particular form.
 
 * Annotations should usually be written on the line immediately above
   the relevant code.
+
 * The annotation keyword is followed by a colon and a space, then a note
   describing the problem.
+
 * If multiple lines are required to describe the problem, subsequent
   lines should be indented as much as the first one.
+
 * Tag the annotation with your initials and a date so its relevance can
   be easily verified.
 
@@ -1114,14 +1133,19 @@ you need to comment out a particular form.
 
 * Use `TODO` to note missing features or functionality that should be
   added at a later date.
+
 * Use `FIXME` to note broken code that needs to be fixed.
+
 * Use `OPTIMIZE` to note slow or inefficient code that may cause
   performance problems.
+
 * Use `HACK` to note "code smells" where questionable coding practices
   were used and should be refactored away.
+
 * Use `REVIEW` to note anything that should be looked at to confirm it
   is working as intended. For example: `REVIEW: Are we sure this is how the
   client does X currently?`
+
 * Use other custom annotation keywords if it feels appropriate, but be
   sure to document them in your project's `README` or similar.
 
