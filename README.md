@@ -62,7 +62,7 @@ You can generate a PDF or an HTML copy of this guide using
         (something-else))
     ```
 
-* Align vertically function arguments.
+* Vertically align function arguments.
 
     ```Clojure
     ;; good
@@ -74,7 +74,7 @@ You can generate a PDF or an HTML copy of this guide using
       (range 1 10))
     ```
 
-* Align `let` bindings and map keywords.
+* Vertically align `let` bindings and map keywords.
 
     ```Clojure
     ;; good
@@ -245,8 +245,11 @@ macro definition.  An exception can be made to indicate grouping of
 pairwise constructs as found in e.g. `let` and `cond`.
 
 * Where feasible, avoid making lines longer than 80 characters.
+
 * Avoid trailing whitespace.
+
 * Use one file per namespace.
+
 * Start every namespace with a comprehensive `ns` form, comprised of
   `import`s, `require`s, `refer`s and `use`s.
 
@@ -285,7 +288,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
     (ns example)
     ```
 
-* Avoid the use of overly long namespaces(i.e. with more than 5 segments).
+* Avoid the use of overly long namespaces (i.e., more than 5 segments).
 
 * Avoid functions longer than 10 LOC (lines of code). Ideally, most
   functions will be shorter than 5 LOC.
@@ -297,7 +300,9 @@ pairwise constructs as found in e.g. `let` and `cond`.
 * Avoid the use of namespace-manipulating functions like `require` and
   `refer`. They are entirely unnecessary outside of a REPL
   environment.
+
 * Use `declare` to enable forward references.
+
 * Prefer higher-order functions like `map` to `loop/recur`.
 
 * Prefer function pre and post conditions to checks inside a function's body.
@@ -445,8 +450,8 @@ pairwise constructs as found in e.g. `let` and `cond`.
     (not (= foo bar))
     ```
 
-* When doing comparisons keep in mind that Clojure's functions `<`,
-  `>`, etc accept variable number of arguments.
+* When doing comparisons, keep in mind that Clojure's functions `<`,
+  `>`, etc. accept a variable number of arguments.
 
     ```Clojure
     ;; good
