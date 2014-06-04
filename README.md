@@ -25,6 +25,9 @@ others are incomplete, some rules are lacking examples, some rules
 don't have examples that illustrate them clearly enough. In due time
 these issues will be addressed &mdash; just keep them in mind for now.
 
+Please note, that the Clojure developing community maintains a list of
+[coding standards for libraries](http://dev.clojure.org/display/community/Library+Coding+Standards), too.
+
 You can generate a PDF or an HTML copy of this guide using
 [Transmuter](https://github.com/TechnoGate/transmuter).
 
