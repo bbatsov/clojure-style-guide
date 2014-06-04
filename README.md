@@ -177,6 +177,9 @@ and before a closing bracket.
     (foo ( bar baz ) quux)
     ```
 
+> Syntactic sugar causes semicolon cancer. <br/>
+> -- Alan Perlis
+
 * Don't use commas between the elements of sequential collection literals.
 
     ```Clojure
