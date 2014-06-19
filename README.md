@@ -273,7 +273,8 @@ pairwise constructs as found in e.g. `let` and `cond`.
                                      LinkedBlockingQueue]))
     ```
 
-* Prefer using `:require :refer :all` over `:use` in ns macro.
+* If you want to refer to names without having to qualify them with any
+  namespace at all, prefer using `:require :refer :all` over `:use` in ns macro.
 
     ```Clojure
     ;; good
