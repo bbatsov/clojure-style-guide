@@ -54,7 +54,7 @@ You can generate a PDF or an HTML copy of this guide using
 > probably right... <br/>
 > -- Jerry Coffin (on indentation)
 
-* Use two **spaces** per indentation level. No hard tabs.
+* <a name="two-spaces"></a>Use two **spaces** per indentation level. No hard tabs.<sup>[[link](#two-spaces)]</sup>
 
     ```Clojure
     ;; good
