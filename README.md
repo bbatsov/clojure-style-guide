@@ -54,7 +54,9 @@ You can generate a PDF or an HTML copy of this guide using
 > probably right... <br/>
 > -- Jerry Coffin (on indentation)
 
-* <a name="two-spaces"></a>Use two **spaces** per indentation level. No hard tabs.<sup>[[link](#two-spaces)]</sup>
+* <a name="two-spaces"></a>
+  Use two **spaces** per indentation level. No hard tabs.
+<sup>[[link](#two-spaces)]</sup>
 
     ```Clojure
     ;; good
@@ -66,7 +68,9 @@ You can generate a PDF or an HTML copy of this guide using
         (something-else))
     ```
 
-* Vertically align function arguments.
+* <a name="vertically-align-fn-args"></a>
+  Vertically align function arguments.
+<sup>[[link](#vertically-align-fn-args)]</sup>
 
     ```Clojure
     ;; good
@@ -78,7 +82,9 @@ You can generate a PDF or an HTML copy of this guide using
       (range 1 10))
     ```
 
-* Vertically align `let` bindings and map keywords.
+* <a name="vertically-align-let-and-map"></a>
+  Vertically align `let` bindings and map keywords.
+<sup>[[link](#vertically-align-let-and-map)]</sup>
 
     ```Clojure
     ;; good
@@ -94,8 +100,10 @@ You can generate a PDF or an HTML copy of this guide using
       :thing2 thing2})
     ```
 
-* Optionally omit the new line between the function name and argument
+* <a name="optional-new-line-after-fn-name"></a>
+  Optionally omit the new line between the function name and argument
   vector for `defn` when there is no docstring.
+<sup>[[link](#optional-new-line-after-fn-name)]</sup>
 
     ```Clojure
     ;; good
@@ -112,8 +120,10 @@ You can generate a PDF or an HTML copy of this guide using
       [x] (bar x))
     ```
 
-* Optionally omit the new line between the argument vector and a short
+* <a name="oneline-short-fn"></a>
+  Optionally omit the new line between the argument vector and a short
   function body.
+<sup>[[link](#oneline-short-fn)]</sup>
 
     ```Clojure
     ;; good
@@ -138,7 +148,9 @@ You can generate a PDF or an HTML copy of this guide using
             (baz x)))
     ```
 
-* Indent each line of multi-line docstrings.
+* <a name="align-docstring-lines"></a>
+  Indent each line of multi-line docstrings.
+<sup>[[link](#align-docstring-lines)]</sup>
 
     ```Clojure
     ;; good
@@ -156,8 +168,11 @@ You can generate a PDF or an HTML copy of this guide using
       (bar))
     ```
 
-* Use Unix-style line endings. (*BSD/Solaris/Linux/OSX users are
+* <a name="crlf"></a>
+  Use Unix-style line endings. (*BSD/Solaris/Linux/OSX users are
   covered by default, Windows users have to be extra careful.)
+<sup>[[link](#crlf)]</sup>
+
     * If you're using Git you might want to add the following
     configuration setting to protect your project from Windows line
     endings creeping in:
@@ -166,11 +181,13 @@ You can generate a PDF or an HTML copy of this guide using
     bash$ git config --global core.autocrlf true
     ```
 
-* If any text precedes an opening bracket(`(`, `{` and
+* <a name="bracket-spacing"></a>
+  If any text precedes an opening bracket(`(`, `{` and
 `[`) or follows a closing bracket(`)`, `}` and `]`), separate that
 text from that bracket with a space. Conversely, leave no space after
 an opening bracket and before following text, or after preceding text
 and before a closing bracket.
+<sup>[[link](#bracket-spacing)]</sup>
 
     ```Clojure
     ;; good
@@ -184,7 +201,9 @@ and before a closing bracket.
 > Syntactic sugar causes semicolon cancer. <br/>
 > -- Alan Perlis
 
-* Don't use commas between the elements of sequential collection literals.
+* <a name="no-commas-for-seq-literals"></a>
+  Don't use commas between the elements of sequential collection literals.
+<sup>[[link](#no-commas-for-seq-literals)]</sup>
 
     ```Clojure
     ;; good
@@ -196,8 +215,10 @@ and before a closing bracket.
     (1, 2, 3)
     ```
 
-* Consider enhancing the readability of map literals via judicious use
+* <a name="opt-commas-in-map-literals"></a>
+  Consider enhancing the readability of map literals via judicious use
 of commas and line breaks.
+<sup>[[link](#opt-commas-in-map-literals)]</sup>
 
     ```Clojure
     ;; good
@@ -211,7 +232,9 @@ of commas and line breaks.
     {:name "Bruce Wayne", :alter-ego "Batman"}
     ```
 
-* Place all trailing parentheses on a single line instead of distinct lines.
+* <a name="gather-trailing-parens"></a>
+  Place all trailing parentheses on a single line instead of distinct lines.
+<sup>[[link](#gather-trailing-parens)]</sup>
 
     ```Clojure
     ;; good; single line
@@ -224,7 +247,9 @@ of commas and line breaks.
     )
     ```
 
-* Use empty lines between top-level forms.
+* <a name="empty-lines-between-top-level-forms"></a>
+  Use empty lines between top-level forms.
+<sup>[[link](#empty-lines-between-top-level-forms)]</sup>
 
     ```Clojure
     ;; good
@@ -247,18 +272,28 @@ of commas and line breaks.
     (def max-cols 30)
     ```
 
-* Do not place blank lines in the middle of a function or
+* <a name="no-blank-lines-within-def-forms"></a>
+  Do not place blank lines in the middle of a function or
 macro definition.  An exception can be made to indicate grouping of
 pairwise constructs as found in e.g. `let` and `cond`.
+<sup>[[link](#no-blank-lines-within-def-forms)]</sup>
 
-* Where feasible, avoid making lines longer than 80 characters.
+* <a name="80-character-limits"></a>
+  Where feasible, avoid making lines longer than 80 characters.
+<sup>[[link](#80-character-limits)]</sup>
 
-* Avoid trailing whitespace.
+* <a name="no-trailing-whitespace"></a>
+  Avoid trailing whitespace.
+<sup>[[link](#no-trailing-whitespace)]</sup>
 
-* Use one file per namespace.
+* <a name="one-file-per-namespace"></a>
+  Use one file per namespace.
+<sup>[[link](#one-file-per-namespace)]</sup>
 
-* Start every namespace with a comprehensive `ns` form, comprised of
+* <a name="comprehensive-ns-declaration"></a>
+  Start every namespace with a comprehensive `ns` form, comprised of
   `import`s, `require`s, `refer`s and `use`s.
+<sup>[[link](#comprehensive-ns-declaration)]</sup>
 
     ```Clojure
     (ns examples.ns
@@ -273,7 +308,9 @@ pairwise constructs as found in e.g. `let` and `cond`.
                                      LinkedBlockingQueue]))
     ```
 
-* Prefer using `:require :refer :all` over `:use` in ns macro.
+* <a name="prefer-require-over-use"></a>
+  Prefer using `:require :refer :all` over `:use` in ns macro.
+<sup>[[link](#prefer-require-over-use)]</sup>
 
     ```Clojure
     ;; good
@@ -285,7 +322,9 @@ pairwise constructs as found in e.g. `let` and `cond`.
       (:use clojure.zip))
     ```
 
-* Avoid single-segment namespaces.
+* <a name="no-single-segment-namespaces"></a>
+  Avoid single-segment namespaces.
+<sup>[[link](#no-single-segment-namespaces)]</sup>
 
     ```Clojure
     ;; good
@@ -295,24 +334,38 @@ pairwise constructs as found in e.g. `let` and `cond`.
     (ns example)
     ```
 
-* Avoid the use of overly long namespaces (i.e., more than 5 segments).
+* <a name="namespaces-with-5-segments-max"></a>
+  Avoid the use of overly long namespaces (i.e., more than 5 segments).
+<sup>[[link](#namespaces-with-5-segments-max)]</sup>
 
-* Avoid functions longer than 10 LOC (lines of code). Ideally, most
+* <a name="10-loc-per-fn-limit"></a>
+  Avoid functions longer than 10 LOC (lines of code). Ideally, most
   functions will be shorter than 5 LOC.
+<sup>[[link](#10-loc-per-fn-limit)]</sup>
 
-* Avoid parameter lists with more than three or four positional parameters.
+* <a name="4-positional-fn-params-limit"></a>
+  Avoid parameter lists with more than three or four positional parameters.
+<sup>[[link](#4-positional-fn-params-limit)]</sup>
 
 ## Syntax
 
-* Avoid the use of namespace-manipulating functions like `require` and
+* <a name="ns-fns-only-in-repl"></a>
+  Avoid the use of namespace-manipulating functions like `require` and
   `refer`. They are entirely unnecessary outside of a REPL
   environment.
+<sup>[[link](#ns-fns-only-in-repl)]</sup>
 
-* Use `declare` to enable forward references.
+* <a name="declare"></a>
+  Use `declare` to enable forward references.
+<sup>[[link](#declare)]</sup>
 
-* Prefer higher-order functions like `map` to `loop/recur`.
+* <a name="higher-order-fns"></a>
+  Prefer higher-order functions like `map` to `loop/recur`.
+<sup>[[link](#higher-order-fns)]</sup>
 
-* Prefer function pre and post conditions to checks inside a function's body.
+* <a name="pre-post-conditions"></a>
+  Prefer function pre and post conditions to checks inside a function's body.
+<sup>[[link](#pre-post-conditions)]</sup>
 
     ```Clojure
     ;; good
@@ -327,7 +380,9 @@ pairwise constructs as found in e.g. `let` and `cond`.
         (throw (IllegalArgumentException "x must be a positive number!")))
     ```
 
-* Don't define vars inside functions.
+* <a name="dont-def-vars-inside-fns"></a>
+  Don't define vars inside functions.
+<sup>[[link](#dont-def-vars-inside-fns)]</sup>
 
     ```Clojure
     ;; very bad
@@ -336,7 +391,9 @@ pairwise constructs as found in e.g. `let` and `cond`.
       ...)
     ```
 
-* Don't shadow `clojure.core` names with local bindings.
+* <a name="dont-shadow-clojure-core"></a>
+  Don't shadow `clojure.core` names with local bindings.
+<sup>[[link](#dont-shadow-clojure-core)]</sup>
 
     ```Clojure
     ;; bad - you're forced to used clojure.core/map fully qualified inside
@@ -344,8 +401,10 @@ pairwise constructs as found in e.g. `let` and `cond`.
       ...)
     ```
 
-* Use `seq` as a terminating condition to test whether a sequence is
+* <a name="nil-punning"></a>
+  Use `seq` as a terminating condition to test whether a sequence is
   empty (this technique is sometimes called *nil punning*).
+<sup>[[link](#nil-punning)]</sup>
 
     ```Clojure
     ;; good
@@ -361,7 +420,9 @@ pairwise constructs as found in e.g. `let` and `cond`.
         (recur (rest s))))
     ```
 
-* Use `when` instead of `(if ... (do ...)`.
+* <a name="when-instead-of-single-branch-if"></a>
+  Use `when` instead of `(if ... (do ...)`.
+<sup>[[link](#when-instead-of-single-branch-if)]</sup>
 
     ```Clojure
     ;; good
@@ -376,7 +437,9 @@ pairwise constructs as found in e.g. `let` and `cond`.
         (bar)))
     ```
 
-* Use `if-let` instead of `let` + `if`.
+* <a name="if-let"></a>
+  Use `if-let` instead of `let` + `if`.
+<sup>[[link](#if-let)]</sup>
 
     ```Clojure
     ;; good
@@ -391,7 +454,9 @@ pairwise constructs as found in e.g. `let` and `cond`.
         (something-else)))
     ```
 
-* Use `when-let` instead of `let` + `when`.
+* <a name="when-let"></a>
+  Use `when-let` instead of `let` + `when`.
+<sup>[[link](#when-let)]</sup>
 
     ```Clojure
     ;; good
@@ -406,7 +471,9 @@ pairwise constructs as found in e.g. `let` and `cond`.
         (do-something-more-with result)))
     ```
 
-* Use `if-not` instead of `(if (not ...) ...)`.
+* <a name="if-not"></a>
+  Use `if-not` instead of `(if (not ...) ...)`.
+<sup>[[link](#if-not)]</sup>
 
     ```Clojure
     ;; good
@@ -418,7 +485,9 @@ pairwise constructs as found in e.g. `let` and `cond`.
       (foo))
     ```
 
-* Use `when-not` instead of `(when (not ...) ...)`.
+* <a name="when-not"></a>
+  Use `when-not` instead of `(when (not ...) ...)`.
+<sup>[[link](#when-not)]</sup>
 
     ```Clojure
     ;; good
@@ -432,7 +501,9 @@ pairwise constructs as found in e.g. `let` and `cond`.
       (bar))
     ```
 
-* Use `when-not` instead of `(if-not ... (do ...)`.
+* <a name="when-not-instead-of-single-branch-if-not"></a>
+  Use `when-not` instead of `(if-not ... (do ...)`.
+<sup>[[link](#when-not-instead-of-single-branch-if-not)]</sup>
 
     ```Clojure
     ;; good
@@ -447,7 +518,9 @@ pairwise constructs as found in e.g. `let` and `cond`.
         (bar)))
     ```
 
-* Use `not=` instead of `(not (= ...))`.
+* <a name="not-equal"></a>
+  Use `not=` instead of `(not (= ...))`.
+<sup>[[link](#not-equal)]</sup>
 
     ```Clojure
     ;; good
@@ -457,8 +530,10 @@ pairwise constructs as found in e.g. `let` and `cond`.
     (not (= foo bar))
     ```
 
-* When doing comparisons, keep in mind that Clojure's functions `<`,
+* <a name="multiple-arity-of-gt-and-ls-fns"></a>
+  When doing comparisons, keep in mind that Clojure's functions `<`,
   `>`, etc. accept a variable number of arguments.
+<sup>[[link](#multiple-arity-of-gt-and-ls-fns)]</sup>
 
     ```Clojure
     ;; good
@@ -468,7 +543,9 @@ pairwise constructs as found in e.g. `let` and `cond`.
     (and (> x 5) (< x 10))
     ```
 
-* Prefer `%` over `%1` in function literals with only one parameter.
+* <a name="single-param-fn-literal"></a>
+  Prefer `%` over `%1` in function literals with only one parameter.
+<sup>[[link](#single-param-fn-literal)]</sup>
 
     ```Clojure
     ;; good
@@ -478,7 +555,9 @@ pairwise constructs as found in e.g. `let` and `cond`.
     #(Math/round %1)
     ```
 
-* Prefer `%1` over `%` in function literals with more than one parameter.
+* <a name="multiple-params-fn-literal"></a>
+  Prefer `%1` over `%` in function literals with more than one parameter.
+<sup>[[link](#multiple-params-fn-literal)]</sup>
 
     ```Clojure
     ;; good
@@ -488,7 +567,9 @@ pairwise constructs as found in e.g. `let` and `cond`.
     #(Math/pow % %2)
     ```
 
-* Don't wrap functions in anonymous functions when you don't need to.
+* <a name="no-useless-anonymous-fns"></a>
+  Don't wrap functions in anonymous functions when you don't need to.
+<sup>[[link](#no-useless-anonymous-fns)]</sup>
 
     ```Clojure
     ;; good
@@ -498,8 +579,10 @@ pairwise constructs as found in e.g. `let` and `cond`.
     (filter #(even? %) (range 1 10))
     ```
 
-* Don't use function literals if the function body will consist of
+* <a name="no-multiple-forms-fn-literals"></a>
+  Don't use function literals if the function body will consist of
   more than one form.
+<sup>[[link](#no-multiple-forms-fn-literals)]</sup>
 
     ```Clojure
     ;; good
@@ -512,7 +595,9 @@ pairwise constructs as found in e.g. `let` and `cond`.
          (* % 2))
     ```
 
-* Favor the use of `complement` versus the use of an anonymous function.
+* <a name="complement"></a>
+  Favor the use of `complement` versus the use of an anonymous function.
+<sup>[[link](#complement)]</sup>
 
     ```Clojure
     ;; good
@@ -525,7 +610,9 @@ pairwise constructs as found in e.g. `let` and `cond`.
     This rule should obviously be ignored if the complementing predicate
     exists in the form of a separate function (e.g. `even?` and `odd?`).
 
-* Leverage `comp` when it would yield simpler code.
+* <a name="comp"></a>
+  Leverage `comp` when it would yield simpler code.
+<sup>[[link](#comp)]</sup>
 
     ```Clojure
     ;; Assuming `(:require [clojure.string :as str])`...
@@ -537,7 +624,9 @@ pairwise constructs as found in e.g. `let` and `cond`.
     (map (comp str/capitalize str/trim) ["top " " test "])
     ```
 
-* Leverage `partial` when it would yield simpler code.
+* <a name="partial"></a>
+  Leverage `partial` when it would yield simpler code.
+<sup>[[link](#partial)]</sup>
 
     ```Clojure
     ;; good
@@ -547,8 +636,10 @@ pairwise constructs as found in e.g. `let` and `cond`.
     (map (partial + 5) (range 1 10))
     ```
 
-* Prefer the use of the threading macros `->` (thread-first) and `->>`
+* <a name="threading-macros"></a>
+  Prefer the use of the threading macros `->` (thread-first) and `->>`
 (thread-last) to heavy form nesting.
+<sup>[[link](#threading-macros)]</sup>
 
     ```Clojure
     ;; good
@@ -571,7 +662,9 @@ pairwise constructs as found in e.g. `let` and `cond`.
          (filter even? (range 1 10)))
     ```
 
-* Prefer `..` to `->` when chaining method calls in Java interop.
+* <a name="dot-dot-macro"></a>
+  Prefer `..` to `->` when chaining method calls in Java interop.
+<sup>[[link](#dot-dot-macro)]</sup>
 
     ```Clojure
     ;; good
@@ -581,7 +674,9 @@ pairwise constructs as found in e.g. `let` and `cond`.
     (.. System getProperties (get "os.name"))
     ```
 
-* Use `:else` as the catch-all test expression in `cond`.
+* <a name="else-keyword-in-cond"></a>
+  Use `:else` as the catch-all test expression in `cond`.
+<sup>[[link](#else-keyword-in-cond)]</sup>
 
     ```Clojure
     ;; good
@@ -597,8 +692,10 @@ pairwise constructs as found in e.g. `let` and `cond`.
       true "zero"))
     ```
 
-* Prefer `condp` instead of `cond` when the predicate & expression don't
+* <a name="condp"></a>
+  Prefer `condp` instead of `cond` when the predicate & expression don't
   change.
+<sup>[[link](#condp)]</sup>
 
     ```Clojure
     ;; good
@@ -616,8 +713,10 @@ pairwise constructs as found in e.g. `let` and `cond`.
       :dunno)
     ```
 
-* Prefer `case` instead of `cond` or `condp` when test expressions are
+* <a name="case"></a>
+  Prefer `case` instead of `cond` or `condp` when test expressions are
 compile-time constants.
+<sup>[[link](#case)]</sup>
 
     ```Clojure
     ;; good
@@ -642,8 +741,10 @@ compile-time constants.
       :dunno)
     ```
 
-* Use short forms in `cond` and related.  If not possible give visual
+* <a name="shor-forms-in-cond"></a>
+  Use short forms in `cond` and related.  If not possible give visual
 hints for the pairwise grouping with comments or empty lines.
+<sup>[[link](#shor-forms-in-cond)]</sup>
 
     ```Clojure
     ;; good
@@ -673,7 +774,9 @@ hints for the pairwise grouping with comments or empty lines.
                         'lines)))
     ```
 
-* Use a `set` as a predicate when appropriate.
+* <a name="set-as-predicate"></a>
+  Use a `set` as a predicate when appropriate.
+<sup>[[link](#set-as-predicate)]</sup>
 
     ```Clojure
     ;; good
@@ -694,12 +797,18 @@ hints for the pairwise grouping with comments or empty lines.
                    "mary had a little lamb"))
     ```
 
-* Use `(inc x)` & `(dec x)` instead of `(+ x 1)` and `(- x 1)`.
+* <a name="inc-and-dec"></a>
+  Use `(inc x)` & `(dec x)` instead of `(+ x 1)` and `(- x 1)`.
+<sup>[[link](#inc-and-dec)]</sup>
 
-* Use `(pos? x)`, `(neg? x)` & `(zero? x)` instead of `(> x 0)`,
+* <a name="pos-and-neg"></a>
+  Use `(pos? x)`, `(neg? x)` & `(zero? x)` instead of `(> x 0)`,
 `(< x 0)` & `(= x 0)`.
+<sup>[[link](#pos-and-neg)]</sup>
 
-* Use `list*` instead of a series of nested `cons` invocations.
+* <a name="list-star-instead-of-nested-cons"></a>
+  Use `list*` instead of a series of nested `cons` invocations.
+<sup>[[link](#list-star-instead-of-nested-cons)]</sup>
 
     ```Clojure
     # good
@@ -710,7 +819,9 @@ hints for the pairwise grouping with comments or empty lines.
 
     ```
 
-* Use the sugared Java interop forms.
+* <a name="sugared-java-interop"></a>
+  Use the sugared Java interop forms.
+<sup>[[link](#sugared-java-interop)]</sup>
 
     ```Clojure
     ;;; object creation
@@ -749,8 +860,10 @@ hints for the pairwise grouping with comments or empty lines.
     (. some-object someField)
     ```
 
-* Use the compact metadata notation for metadata that contains only
+* <a name="compact-metadata-notation-for-true-flags"></a>
+  Use the compact metadata notation for metadata that contains only
   slots whose keys are keywords and whose value is boolean `true`.
+<sup>[[link](#compact-metadata-notation-for-true-flags)]</sup>
 
     ```Clojure
     ;; good
@@ -760,7 +873,9 @@ hints for the pairwise grouping with comments or empty lines.
     (def ^{:private true} a 5)
     ```
 
-* Denote private parts of your code.
+* <a name="private"></a>
+  Denote private parts of your code.
+<sup>[[link](#private)]</sup>
 
     ```Clojure
     ;; good
@@ -776,7 +891,9 @@ hints for the pairwise grouping with comments or empty lines.
     (def private-var ...) ; not private at all
     ```
 
-* Be careful regarding what exactly do you attach metadata to.
+* <a name="attach-metadata-carefully"></a>
+  Be careful regarding what exactly do you attach metadata to.
+<sup>[[link](#attach-metadata-carefully)]</sup>
 
     ```Clojure
     ;; we attach the metadata to the var referenced by `a`
@@ -796,13 +913,20 @@ hints for the pairwise grouping with comments or empty lines.
 > naming things. <br/>
 > -- Phil Karlton
 
-* When naming namespaces favor the following two schemas:
+* <a name="ns-naming-schemas"></a>
+  When naming namespaces favor the following two schemas:
+<sup>[[link](#ns-naming-schemas)]</sup>
+
     * `project.module`
     * `organization.project.module`
 
-* Use `lisp-case` in composite namespace segments(e.g. `bruce.project-euler`)
+* <a name="lisp-case-ns"></a>
+  Use `lisp-case` in composite namespace segments(e.g. `bruce.project-euler`)
+<sup>[[link](#lisp-case-ns)]</sup>
 
-* Use `lisp-case` for function and variable names.
+* <a name="lisp-case"></a>
+  Use `lisp-case` for function and variable names.
+<sup>[[link](#lisp-case)]</sup>
 
     ```Clojure
     ;; good
@@ -815,12 +939,16 @@ hints for the pairwise grouping with comments or empty lines.
     (def some_fun ...)
     ```
 
-* Use `CamelCase` for protocols, records, structs, and types. (Keep
+* <a name="CamelCase-for-protocols-records-structs-and-types"></a>
+  Use `CamelCase` for protocols, records, structs, and types. (Keep
   acronyms like HTTP, RFC, XML uppercase.)
+<sup>[[link](#CamelCase-for-protocols-records-structs-and-types)]</sup>
 
-* The names of predicate methods (methods that return a boolean value)
+* <a name="pred-with-question-mark"></a>
+  The names of predicate methods (methods that return a boolean value)
   should end in a question mark
   (e.g., `even?`).
+<sup>[[link](#pred-with-question-mark)]</sup>
 
     ```Clojure
     ;; good
@@ -831,10 +959,14 @@ hints for the pairwise grouping with comments or empty lines.
     (defn is-palindrome ...) ; Java style
     ```
 
-* The names of functions/macros that are not safe in STM transactions
+* <a name="changing-state-fns-with-exclamation-mark"></a>
+  The names of functions/macros that are not safe in STM transactions
   should end with an exclamation mark (e.g. `reset!`).
+<sup>[[link](#changing-state-fns-with-exclamation-mark)]</sup>
 
-* Use `->` instead of `to` in the names of conversion functions.
+* <a name="arrow-instead-of-to"></a>
+  Use `->` instead of `to` in the names of conversion functions.
+<sup>[[link](#arrow-instead-of-to)]</sup>
 
     ```Clojure
     ;; good
@@ -844,7 +976,9 @@ hints for the pairwise grouping with comments or empty lines.
     (defn f-to-c ...)
     ```
 
-* Use `*earmuffs*` for things intended for rebinding (ie. are dynamic).
+* <a name="earmuffs-for-dynamic-vars"></a>
+  Use `*earmuffs*` for things intended for rebinding (ie. are dynamic).
+<sup>[[link](#earmuffs-for-dynamic-vars)]</sup>
 
     ```Clojure
     ;; good
@@ -854,10 +988,15 @@ hints for the pairwise grouping with comments or empty lines.
     (def ^:dynamic a 10)
     ```
 
-* Don't use a special notation for constants; everything is assumed a constant
+* <a name="dont-flag-constants"></a>
+  Don't use a special notation for constants; everything is assumed a constant
   unless specified otherwise.
-* Use `_` for destructuring targets and formal arguments names whose
+<sup>[[link](#dont-flag-constants)]</sup>
+
+* <a name="underscore-for-unused-bindings"></a>
+  Use `_` for destructuring targets and formal arguments names whose
   value will be ignored by the code at hand.
+<sup>[[link](#underscore-for-unused-bindings)]</sup>
 
     ```Clojure
     ;; good
@@ -875,7 +1014,10 @@ hints for the pairwise grouping with comments or empty lines.
       (println "Hello!"))
     ```
 
-* Follow `clojure.core`'s example for idiomatic names like `pred` and `coll`.
+* <a name="idiomatic-names"></a>
+  Follow `clojure.core`'s example for idiomatic names like `pred` and `coll`.
+<sup>[[link](#idiomatic-names)]</sup>
+
     * in functions:
         * `f`, `g`, `h` - function input
         * `n` - integer input usually a size
@@ -896,9 +1038,14 @@ hints for the pairwise grouping with comments or empty lines.
 > than to have 10 functions operate on 10 data structures. <br/>
 > -- Alan J. Perlis
 
-* Avoid the use of lists for generic data storage (unless a list is
+* <a name="avoid-lists"></a>
+  Avoid the use of lists for generic data storage (unless a list is
   exactly what you need).
-* Prefer the use of keywords for hash keys.
+<sup>[[link](#avoid-lists)]</sup>
+
+* <a name="keywords-for-hash-keys"></a>
+  Prefer the use of keywords for hash keys.
+<sup>[[link](#keywords-for-hash-keys)]</sup>
 
     ```Clojure
     ;; good
@@ -908,9 +1055,11 @@ hints for the pairwise grouping with comments or empty lines.
     {"name" "Bruce" "age" 30}
     ```
 
-* Prefer the use of the literal collection syntax where
+* <a name="literal-col-syntax"></a>
+  Prefer the use of the literal collection syntax where
   applicable. However, when defining sets, only use literal syntax
   when the values are compile-time constants.
+<sup>[[link](#literal-col-syntax)]</sup>
 
     ```Clojure
     ;; good
@@ -924,10 +1073,14 @@ hints for the pairwise grouping with comments or empty lines.
     #{(func1) (func2)} ; will throw runtime exception if (func1) = (func2)
     ```
 
-* Avoid accessing collection members by index whenever possible.
+* <a name="avoid-index-based-coll-access"></a>
+  Avoid accessing collection members by index whenever possible.
+<sup>[[link](#avoid-index-based-coll-access)]</sup>
 
-* Prefer the use of keywords as functions for retrieving values from
+* <a name="keywords-as-fn-to-get-map-values"></a>
+  Prefer the use of keywords as functions for retrieving values from
   maps, where applicable.
+<sup>[[link](#keywords-as-fn-to-get-map-values)]</sup>
 
     ```Clojure
     (def m {:name "Bruce" :age 30})
@@ -942,7 +1095,9 @@ hints for the pairwise grouping with comments or empty lines.
     (m :name)
     ```
 
-* Leverage the fact that most collections are functions of their elements.
+* <a name="colls-as-fns"></a>
+  Leverage the fact that most collections are functions of their elements.
+<sup>[[link](#colls-as-fns)]</sup>
 
     ```Clojure
     ;; good
@@ -951,28 +1106,41 @@ hints for the pairwise grouping with comments or empty lines.
     ;; bad - too ugly to share
     ```
 
-* Leverage the fact that keywords can be used as functions of a collection.
+* <a name="keywords-as-fns"></a>
+  Leverage the fact that keywords can be used as functions of a collection.
+<sup>[[link](#keywords-as-fns)]</sup>
 
     ```Clojure
     ((juxt :a :b) {:a "ala" :b "bala"})
     ```
 
-* Avoid the use of transient collections, except for
+* <a name="avoid-transient-colls"></a>
+  Avoid the use of transient collections, except for
 performance-critical portions of the code.
+<sup>[[link](#avoid-transient-colls)]</sup>
 
-* Avoid the use of Java collections.
+* <a name="avoid-java-colls"></a>
+  Avoid the use of Java collections.
+<sup>[[link](#avoid-java-colls)]</sup>
 
-* Avoid the use of Java arrays, except for interop scenarios and
+* <a name="avoid-java-arrays"></a>
+  Avoid the use of Java arrays, except for interop scenarios and
 performance-critical code dealing heavily with primitive types.
+<sup>[[link](#avoid-java-arrays)]</sup>
 
 ## Mutation
 
 ### Refs
 
-* Consider wrapping all I/O calls with the `io!` macro to avoid nasty
+* <a name="refs-io-macro"></a>
+  Consider wrapping all I/O calls with the `io!` macro to avoid nasty
 surprises if you accidentally end up calling such code in a
 transaction.
-* Avoid the use of `ref-set` whenever possible.
+<sup>[[link](#refs-io-macro)]</sup>
+
+* <a name="refs-avoid-ref-set"></a>
+  Avoid the use of `ref-set` whenever possible.
+<sup>[[link](#refs-avoid-ref-set)]</sup>
 
     ```Clojure
     (def r (ref 0))
@@ -984,22 +1152,37 @@ transaction.
     (dosync (ref-set r 5))
     ```
 
-* Try to keep the size of transactions (the amount of work encapsulated in them)
+* <a name="refs-small-transactions"></a>
+  Try to keep the size of transactions (the amount of work encapsulated in them)
 as small as possible.
-* Avoid having both short- and long-running transactions interacting
+<sup>[[link](#refs-small-transactions)]</sup>
+
+* <a name="refs-avoid-short-long-transactions-with-same-ref"></a>
+  Avoid having both short- and long-running transactions interacting
   with the same Ref.
+<sup>[[link](#refs-avoid-short-long-transactions-with-same-ref)]</sup>
 
 ### Agents
 
-* Use `send` only for actions that are CPU bound and don't block on I/O
+* <a name="agents-send"></a>
+  Use `send` only for actions that are CPU bound and don't block on I/O
   or other threads.
-* Use `send-off` for actions that might block, sleep, or otherwise tie
+<sup>[[link](#agents-send)]</sup>
+
+* <a name="agents-send-off"></a>
+  Use `send-off` for actions that might block, sleep, or otherwise tie
   up the thread.
+<sup>[[link](#agents-send-off)]</sup>
 
 ### Atoms
 
-* Avoid atom updates inside STM transactions.
-* Try to use `swap!` rather than `reset!`, where possible.
+* <a name="atoms-no-update-within-transactions"></a>
+  Avoid atom updates inside STM transactions.
+<sup>[[link](#atoms-no-update-within-transactions)]</sup>
+
+* <a name="atoms-prefer-swap-over-reset"></a>
+  Try to use `swap!` rather than `reset!`, where possible.
+<sup>[[link](#atoms-prefer-swap-over-reset)]</sup>
 
     ```Clojure
     (def a (atom 0))
@@ -1013,7 +1196,9 @@ as small as possible.
 
 ## Strings
 
-* Prefer string manipulation functions from `clojure.string` over Java interop or rolling your own.
+* <a name="prefer-clojure-string-over-interop"></a>
+  Prefer string manipulation functions from `clojure.string` over Java interop or rolling your own.
+<sup>[[link](#prefer-clojure-string-over-interop)]</sup>
 
     ```Clojure
     ;; good
@@ -1025,27 +1210,41 @@ as small as possible.
 
 ## Exceptions
 
-* Reuse existing exception types. Idiomatic Clojure code &mdash; when it does
+* <a name="reuse-existing-exception-types"></a>
+  Reuse existing exception types. Idiomatic Clojure code &mdash; when it does
   throw an exception &mdash; throws an exception of a standard type
   (e.g. `java.lang.IllegalArgumentException`,
   `java.lang.UnsupportedOperationException`,
   `java.lang.IllegalStateException`, `java.io.IOException`).
+<sup>[[link](#reuse-existing-exception-types)]</sup>
 
-* Favor `with-open` over `finally`.
+* <a name="prefer-with-open-over-finally"></a>
+  Favor `with-open` over `finally`.
+<sup>[[link](#prefer-with-open-over-finally)]</sup>
 
 ## Macros
 
-* Don't write a macro if a function will do.
+* <a name="dont-write-macro-if-fn-will-do"></a>
+  Don't write a macro if a function will do.
+<sup>[[link](#dont-write-macro-if-fn-will-do)]</sup>
 
-* Create an example of a macro usage first and the macro afterwards.
+* <a name="write-macro-usage-before-writing-the-macro"></a>
+  Create an example of a macro usage first and the macro afterwards.
+<sup>[[link](#write-macro-usage-before-writing-the-macro)]</sup>
 
-* Break complicated macros into smaller functions whenever possible.
+* <a name="break-complicated-macros"></a>
+  Break complicated macros into smaller functions whenever possible.
+<sup>[[link](#break-complicated-macros)]</sup>
 
-* A macro should usually just provide syntactic sugar and the core of
+* <a name="macros-as-syntactic-sugar"></a>
+  A macro should usually just provide syntactic sugar and the core of
   the macro should be a plain function. Doing so will improve
   composability.
+<sup>[[link](#macros-as-syntactic-sugar)]</sup>
 
-* Prefer syntax-quoted forms over building lists manually.
+* <a name="syntax-quoted-forms"></a>
+  Prefer syntax-quoted forms over building lists manually.
+<sup>[[link](#syntax-quoted-forms)]</sup>
 
 ## Comments
 
@@ -1055,19 +1254,31 @@ as small as possible.
 > it even clearer. <br/>
 > -- Steve McConnell
 
-* Endeavor to make your code as self-documenting as possible.
+* <a name="self-documenting-code"></a>
+  Endeavor to make your code as self-documenting as possible.
+<sup>[[link](#self-documenting-code)]</sup>
 
-* Write heading comments with at least four semicolons.
+* <a name="four-semicolons-for-heading-comments"></a>
+  Write heading comments with at least four semicolons.
+<sup>[[link](#four-semicolons-for-heading-comments)]</sup>
 
-* Write top-level comments with three semicolons.
+* <a name="three-semicolons-for-top-level-comments"></a>
+  Write top-level comments with three semicolons.
+<sup>[[link](#three-semicolons-for-top-level-comments)]</sup>
 
-* Write comments on a particular fragment of code before that fragment
+* <a name="two-semicolons-for-code-fragment"></a>
+  Write comments on a particular fragment of code before that fragment
 and aligned with it, using two semicolons.
+<sup>[[link](#two-semicolons-for-code-fragment)]</sup>
 
-* Write margin comments with one semicolon.
+* <a name="one-semicolon-for-margin-comments"></a>
+  Write margin comments with one semicolon.
+<sup>[[link](#one-semicolon-for-margin-comments)]</sup>
 
-* Always have at least one space between the semicolon
+* <a name="semicolon-space"></a>
+  Always have at least one space between the semicolon
 and the text that follows it.
+<sup>[[link](#semicolon-space)]</sup>
 
     ```Clojure
     ;;;; Frob Grovel
@@ -1084,22 +1295,30 @@ and the text that follows it.
             frotz))
     ```
 
-* Comments longer than a word begin with a capital letter and use
+* <a name="english-syntax"></a>
+  Comments longer than a word begin with a capital letter and use
   punctuation. Separate sentences with
   [one space](http://en.wikipedia.org/wiki/Sentence_spacing).
+<sup>[[link](#english-syntax)]</sup>
 
-* Avoid superfluous comments.
+* <a name="no-superfluous-comments"></a>
+  Avoid superfluous comments.
+<sup>[[link](#no-superfluous-comments)]</sup>
 
     ```Clojure
     ;; bad
     (inc counter) ; increments counter by one
     ```
 
-* Keep existing comments up-to-date. An outdated comment is worse than no comment
+* <a name="comment-upkeep"></a>
+  Keep existing comments up-to-date. An outdated comment is worse than no comment
 at all.
+<sup>[[link](#comment-upkeep)]</sup>
 
-* Prefer the use of the `#_` reader macro over a regular comment when
+* <a name="dash-underscore-reader-macro"></a>
+  Prefer the use of the `#_` reader macro over a regular comment when
 you need to comment out a particular form.
+<sup>[[link](#dash-underscore-reader-macro)]</sup>
 
     ```Clojure
     ;; good
@@ -1114,22 +1333,32 @@ you need to comment out a particular form.
 > Good code is like a good joke - it needs no explanation. <br/>
 > -- Russ Olsen
 
-* Avoid writing comments to explain bad code. Refactor the code to
+* <a name="refactor-dont-comment"></a>
+  Avoid writing comments to explain bad code. Refactor the code to
   make it self-explanatory. ("Do, or do not. There is no try." --Yoda)
+<sup>[[link](#refactor-dont-comment)]</sup>
 
 ### Comment Annotations
 
-* Annotations should usually be written on the line immediately above
+* <a name="annotate-above"></a>
+  Annotations should usually be written on the line immediately above
   the relevant code.
+<sup>[[link](#annotate-above)]</sup>
 
-* The annotation keyword is followed by a colon and a space, then a note
+* <a name="annotate-keywords"></a>
+  The annotation keyword is followed by a colon and a space, then a note
   describing the problem.
+<sup>[[link](#annotate-keywords)]</sup>
 
-* If multiple lines are required to describe the problem, subsequent
+* <a name="indent-annotations"></a>
+  If multiple lines are required to describe the problem, subsequent
   lines should be indented as much as the first one.
+<sup>[[link](#indent-annotations)]</sup>
 
-* Tag the annotation with your initials and a date so its relevance can
+* <a name="sing-and-date-annotations"></a>
+  Tag the annotation with your initials and a date so its relevance can
   be easily verified.
+<sup>[[link](#sing-and-date-annotations)]</sup>
 
     ```Clojure
     (defn some-fun
@@ -1139,9 +1368,11 @@ you need to comment out a particular form.
       (baz))
     ```
 
-* In cases where the problem is so obvious that any documentation would
+* <a name="rare-eol-annotations"></a>
+  In cases where the problem is so obvious that any documentation would
   be redundant, annotations may be left at the end of the offending line
   with no note. This usage should be the exception and not the rule.
+<sup>[[link](#rare-eol-annotations)]</sup>
 
     ```Clojure
     (defn bar
@@ -1149,29 +1380,49 @@ you need to comment out a particular form.
       (sleep 100)) ; OPTIMIZE
     ```
 
-* Use `TODO` to note missing features or functionality that should be
+* <a name="todo"></a>
+  Use `TODO` to note missing features or functionality that should be
   added at a later date.
+<sup>[[link](#todo)]</sup>
 
-* Use `FIXME` to note broken code that needs to be fixed.
+* <a name="fixme"></a>
+  Use `FIXME` to note broken code that needs to be fixed.
+<sup>[[link](#fixme)]</sup>
 
-* Use `OPTIMIZE` to note slow or inefficient code that may cause
+* <a name="optimize"></a>
+  Use `OPTIMIZE` to note slow or inefficient code that may cause
   performance problems.
+<sup>[[link](#optimize)]</sup>
 
-* Use `HACK` to note "code smells" where questionable coding practices
+* <a name="hack"></a>
+  Use `HACK` to note "code smells" where questionable coding practices
   were used and should be refactored away.
+<sup>[[link](#hack)]</sup>
 
-* Use `REVIEW` to note anything that should be looked at to confirm it
+* <a name="review"></a>
+  Use `REVIEW` to note anything that should be looked at to confirm it
   is working as intended. For example: `REVIEW: Are we sure this is how the
   client does X currently?`
+<sup>[[link](#review)]</sup>
 
-* Use other custom annotation keywords if it feels appropriate, but be
+* <a name="document-annotations"></a>
+  Use other custom annotation keywords if it feels appropriate, but be
   sure to document them in your project's `README` or similar.
+<sup>[[link](#document-annotations)]</sup>
 
 ## Existential
 
-* Code in a functional way, avoiding mutation when that makes sense.
-* Be consistent. In an ideal world, be consistent with these guidelines.
-* Use common sense.
+* <a name="be-functional"></a>
+  Code in a functional way, avoiding mutation when that makes sense.
+<sup>[[link](#be-functional)]</sup>
+
+* <a name="be-consistent"></a>
+  Be consistent. In an ideal world, be consistent with these guidelines.
+<sup>[[link](#be-consistent)]</sup>
+
+* <a name="common-sense"></a>
+  Use common sense.
+<sup>[[link](#common-sense)]</sup>
 
 ## Tooling
 
