@@ -477,7 +477,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
 
     ```Clojure
     ;; good
-    (if-not (pred)
+    (if-not pred
       (foo))
 
     ;; bad
