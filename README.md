@@ -1413,7 +1413,7 @@ you need to comment out a particular form.
 ## Existential
 
 * <a name="be-functional"></a>
-  Code in a functional way, avoiding mutation when that makes sense.
+  Code in a functional way, using mutation only when it makes sense.
 <sup>[[link](#be-functional)]</sup>
 
 * <a name="be-consistent"></a>
