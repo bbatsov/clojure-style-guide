@@ -347,6 +347,19 @@ pairwise constructs as found in e.g. `let` and `cond`.
   Avoid parameter lists with more than three or four positional parameters.
 <sup>[[link](#4-positional-fn-params-limit)]</sup>
 
+* <a name="prefer-equally-distrib-parens"></a>
+  Prefer ordering of code so that parens are more equally distributed.
+  It's easier to find the matching parens.
+<sup>[[link](#prefer-equally-distrib-parens)]</sup>
+
+    ```Clojure
+    ;; good
+    (= false (= true (fn? true?)))
+    
+    ;; arguably better
+    (= (= (fn? true?) true) false)
+    ```
+
 ## Syntax
 
 * <a name="ns-fns-only-in-repl"></a>
