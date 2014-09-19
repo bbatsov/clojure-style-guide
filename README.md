@@ -420,6 +420,18 @@ pairwise constructs as found in e.g. `let` and `cond`.
         (recur (rest s))))
     ```
 
+* <a name="to-vector"></a>
+  Prefer `vec` over `into` when you need to convert a sequence into a vector.
+<sup>[[link](#to-vector)]</sup>
+
+    ```Clojure
+    ;; good
+    (vec some-seq)
+
+    ;; bad
+    (into [] some-seq)
+    ```
+
 * <a name="when-instead-of-single-branch-if"></a>
   Use `when` instead of `(if ... (do ...)`.
 <sup>[[link](#when-instead-of-single-branch-if)]</sup>
