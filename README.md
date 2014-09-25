@@ -396,7 +396,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
 <sup>[[link](#dont-shadow-clojure-core)]</sup>
 
     ```Clojure
-    ;; bad - you're forced to used clojure.core/map fully qualified inside
+    ;; bad - you're forced to use clojure.core/map fully qualified inside
     (defn foo [map]
       ...)
     ```
