@@ -377,7 +377,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
     (defn foo [x]
       (if (pos? x)
         (bar x)
-        (throw (IllegalArgumentException "x must be a positive number!")))
+        (throw (IllegalArgumentException. "x must be a positive number!")))
     ```
 
 * <a name="dont-def-vars-inside-fns"></a>
