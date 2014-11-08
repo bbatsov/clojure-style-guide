@@ -903,6 +903,10 @@ hints for the pairwise grouping with comments or empty lines.
     (def private-var ...) ; not private at all
     ```
 
+* <a name="access-private-var"></a>
+  To access a private var (e.g. for testing), use the `@#'some.ns/var` form.
+<sup>[[link](#access-private-var)]</sup>
+
 * <a name="attach-metadata-carefully"></a>
   Be careful regarding what exactly do you attach metadata to.
 <sup>[[link](#attach-metadata-carefully)]</sup>
