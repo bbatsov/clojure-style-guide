@@ -137,9 +137,9 @@ You can generate a PDF or an HTML copy of this guide using
     (defn foo
       ([x] (bar x))
       ([x y]
-        (if (predicate? x)
-          (bar x)
-          (baz x))))
+       (if (predicate? x)
+         (bar x)
+         (baz x))))
 
     ;; bad
     (defn foo
@@ -147,6 +147,28 @@ You can generate a PDF or an HTML copy of this guide using
             (bar x)
             (baz x)))
     ```
+
+* <a name="multiple-arity-indentation"></a>
+  Indent each arity form of a function definition vertically aligned with its
+  parameters.<sup>[[link](#multiple-arity-indentation)]</sup>
+
+```Clojure
+;; good
+(defn foo
+  "I have two arities."
+  ([x]
+   (foo x 1))
+  ([x y]
+   (+ x y)))
+
+;; bad - extra indentation
+(defn foo
+  "I have two arities."
+  ([x]
+    (foo x 1))
+  ([x y]
+    (+ x y)))
+```
 
 * <a name="align-docstring-lines"></a>
   Indent each line of multi-line docstrings.
