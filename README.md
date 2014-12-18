@@ -678,9 +678,9 @@ pairwise constructs as found in e.g. `let` and `cond`.
     ```Clojure
     ;; good
     (-> [1 2 3]
-        reverse
-        (conj 4)
-        prn)
+      reverse
+      (conj 4)
+      prn)
 
     ;; not as good
     (prn (conj (reverse [1 2 3])
@@ -688,8 +688,8 @@ pairwise constructs as found in e.g. `let` and `cond`.
 
     ;; good
     (->> (range 1 10)
-         (filter even?)
-         (map (partial * 2)))
+      (filter even?)
+      (map (partial * 2)))
 
     ;; not as good
     (map (partial * 2)
@@ -793,14 +793,12 @@ hints for the pairwise grouping with comments or empty lines.
 	(test1)
 	(long-function-name-which-requires-a-new-line
        (complicated-sub-form
-          (-> 'which-spans
-              multiple-lines)))
+          (-> 'which-spans multiple-lines)))
 
 	(test2)
 	(another-very-long-function-name
        (yet-another-sub-form
-          (-> 'which-spans
-              multiple-lines)))
+          (-> 'which-spans multiple-lines)))
 
     :else
     (the-fall-through-default-case
