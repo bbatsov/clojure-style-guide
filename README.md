@@ -54,22 +54,40 @@ You can generate a PDF or an HTML copy of this guide using
 > probably right... <br/>
 > -- Jerry Coffin (on indentation)
 
-* <a name="two-spaces"></a>
-  Use two **spaces** per indentation level. No hard tabs.
-<sup>[[link](#two-spaces)]</sup>
+* <a name="spaces"></a>
+  Use **spaces** for indentation. No hard tabs.
+<sup>[[link](#spaces)]</sup>
+
+* <a name="body-indentation"></a>
+Use 2 spaces to indent the bodies of
+forms that have body parameters.  This covers all `def` forms, special
+forms and macros that introduce local bindings (e.g. `loop`, `let`,
+`when-let`) and many macros like `when`, `cond`, `->`, `->>`, `as->`, `case`,
+`with-*`, etc.
+<sup>[[link](#body-indentation)]</sup>
+
 
     ```Clojure
     ;; good
     (when something
       (something-else))
 
+    (with-out-str
+      (println "Hello, ")
+      (println "world!"))
+
     ;; bad - four spaces
     (when something
         (something-else))
+
+    ;; bad - one space
+    (with-out-str
+     (println "Hello, ")
+     (println "world!"))
     ```
 
 * <a name="vertically-align-fn-args"></a>
-  Vertically align function arguments.
+  Vertically align function (macro) arguments spanning multiple lines.
 <sup>[[link](#vertically-align-fn-args)]</sup>
 
     ```Clojure
@@ -80,6 +98,33 @@ You can generate a PDF or an HTML copy of this guide using
     ;; bad
     (filter even?
       (range 1 10))
+    ```
+
+* <a name="one-space-indent"></a>
+Use a single space indentation for function (macro) arguments
+when there are no arguments on the same line as the function name.
+<sup>[[link](#one-space-indent)]</sup>
+
+    ```Clojure
+    ;; good
+    (filter
+     even?
+     (range 1 10))
+
+    (or
+     ala
+     bala
+     portokala)
+
+    ;; bad - two-space indent
+    (filter
+      even?
+      (range 1 10))
+
+    (or
+      ala
+      bala
+      portokala)
     ```
 
 * <a name="vertically-align-let-and-map"></a>
