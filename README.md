@@ -62,7 +62,7 @@ You can generate a PDF or an HTML copy of this guide using
 Use 2 spaces to indent the bodies of
 forms that have body parameters.  This covers all `def` forms, special
 forms and macros that introduce local bindings (e.g. `loop`, `let`,
-`when-let`) and many macros like `when`, `cond`, `->`, `->>`, `as->`, `case`,
+`when-let`) and many macros like `when`, `cond`, `as->`, `cond->`, `case`,
 `with-*`, etc.
 <sup>[[link](#body-indentation)]</sup>
 
@@ -723,9 +723,9 @@ pairwise constructs as found in e.g. `let` and `cond`.
     ```Clojure
     ;; good
     (-> [1 2 3]
-      reverse
-      (conj 4)
-      prn)
+        reverse
+        (conj 4)
+        prn)
 
     ;; not as good
     (prn (conj (reverse [1 2 3])
@@ -733,8 +733,8 @@ pairwise constructs as found in e.g. `let` and `cond`.
 
     ;; good
     (->> (range 1 10)
-      (filter even?)
-      (map (partial * 2)))
+         (filter even?)
+         (map (partial * 2)))
 
     ;; not as good
     (map (partial * 2)
