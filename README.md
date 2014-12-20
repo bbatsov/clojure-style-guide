@@ -359,7 +359,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
 
 * <a name="comprehensive-ns-declaration"></a>
   Start every namespace with a comprehensive `ns` form, comprised of
-  `import`s, `require`s, `refer`s and `use`s.
+  `refer`s, `require`s, and `import`s, conventionally in that order.
 <sup>[[link](#comprehensive-ns-declaration)]</sup>
 
     ```Clojure
@@ -368,7 +368,6 @@ pairwise constructs as found in e.g. `let` and `cond`.
       (:require [clojure.string :as s :refer [blank?]]
                 [clojure.set :as set]
                 [clojure.java.shell :as sh])
-      (:use [clojure xml zip])
       (:import java.util.Date
                java.text.SimpleDateFormat
                [java.util.concurrent Executors
@@ -376,11 +375,21 @@ pairwise constructs as found in e.g. `let` and `cond`.
     ```
 
 * <a name="prefer-require-over-use"></a>
-  Prefer using `:require :refer :all` over `:use` in ns macro.
+  In the `ns` form prefer `:require :as` over `:require :refer` over `:require
+  :refer :all`.  Prefer `:require` over `:use`; the latter form should be
+  considered deprecated for new code.
 <sup>[[link](#prefer-require-over-use)]</sup>
 
     ```Clojure
     ;; good
+    (ns examples.ns
+      (:require [clojure.zip :as zip]))
+
+    ;; good
+    (ns examples.ns
+      (:require [clojure.zip :refer [lefts rights]))
+
+    ;; acceptable as warranted
     (ns examples.ns
       (:require [clojure.zip :refer :all]))
 
