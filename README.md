@@ -866,10 +866,10 @@ hints for the pairwise grouping with comments or empty lines.
 
     ```Clojure
     ;; good
-    (remove #{0} [0 1 2 3 4 5])
+    (remove #{1} [0 1 2 3 4 5])
 
     ;; bad
-    (remove #(= % 0) [0 1 2 3 4 5])
+    (remove #(= % 1) [0 1 2 3 4 5])
 
     ;; good
     (count (filter #{\a \e \i \o \u} "mary had a little lamb"))
