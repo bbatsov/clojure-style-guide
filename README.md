@@ -197,23 +197,23 @@ when there are no arguments on the same line as the function name.
   Indent each arity form of a function definition vertically aligned with its
   parameters.<sup>[[link](#multiple-arity-indentation)]</sup>
 
-```Clojure
-;; good
-(defn foo
-  "I have two arities."
-  ([x]
-   (foo x 1))
-  ([x y]
-   (+ x y)))
+    ```Clojure
+    ;; good
+    (defn foo
+      "I have two arities."
+      ([x]
+       (foo x 1))
+      ([x y]
+       (+ x y)))
 
-;; bad - extra indentation
-(defn foo
-  "I have two arities."
-  ([x]
-    (foo x 1))
-  ([x y]
-    (+ x y)))
-```
+    ;; bad - extra indentation
+    (defn foo
+      "I have two arities."
+      ([x]
+        (foo x 1))
+      ([x y]
+        (+ x y)))
+    ```
 
 * <a name="align-docstring-lines"></a>
   Indent each line of multi-line docstrings.
