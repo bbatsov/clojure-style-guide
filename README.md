@@ -389,18 +389,6 @@ pairwise constructs as found in e.g. `let` and `cond`.
       (:use clojure.zip))
     ```
 
-* <a name="no-single-segment-namespaces"></a>
-  Avoid single-segment namespaces.
-<sup>[[link](#no-single-segment-namespaces)]</sup>
-
-    ```Clojure
-    ;; good
-    (ns example.ns)
-
-    ;; bad
-    (ns example)
-    ```
-
 * <a name="namespaces-with-5-segments-max"></a>
   Avoid the use of overly long namespaces (i.e., more than 5 segments).
 <sup>[[link](#namespaces-with-5-segments-max)]</sup>
