@@ -741,18 +741,6 @@ pairwise constructs as found in e.g. `let` and `cond`.
          (filter even? (range 1 10)))
     ```
 
-* <a name="dot-dot-macro"></a>
-  Prefer `..` to `->` when chaining method calls in Java interop.
-<sup>[[link](#dot-dot-macro)]</sup>
-
-    ```Clojure
-    ;; good
-    (-> (System/getProperties) (.get "os.name"))
-
-    ;; better
-    (.. System getProperties (get "os.name"))
-    ```
-
 * <a name="else-keyword-in-cond"></a>
   Use `:else` as the catch-all test expression in `cond`.
 <sup>[[link](#else-keyword-in-cond)]</sup>
