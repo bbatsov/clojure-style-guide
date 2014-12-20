@@ -147,7 +147,9 @@ when there are no arguments on the same line as the function name.
 
 * <a name="optional-new-line-after-fn-name"></a>
   Optionally omit the new line between the function name and argument
-  vector for `defn` when there is no docstring.
+  vector for `defn` when there is no docstring.  Consider _not_ doing so as the
+  omitted newline creates a false affordance for incorrect later docstring
+  addition.
 <sup>[[link](#optional-new-line-after-fn-name)]</sup>
 
     ```Clojure
@@ -157,11 +159,21 @@ when there are no arguments on the same line as the function name.
       (bar x))
 
     ;; good
+    (defn foo
+      [x] (bar x))
+
+    ;; acceptable
     (defn foo [x]
       (bar x))
 
     ;; bad
+    (defn foo [x]
+      "Incorrectly-placed docstring."
+      (bar x))
+
+    ;; good
     (defn foo
+      "Correctly-placed docstring."
       [x] (bar x))
     ```
 
@@ -172,10 +184,15 @@ when there are no arguments on the same line as the function name.
 
     ```Clojure
     ;; good
-    (defn foo [x]
+    (defn foo
+      [x]
       (bar x))
 
     ;; good for a small function body
+    (defn foo
+      [x] (bar x))
+
+    ;; good for a small function body with no docstring
     (defn foo [x] (bar x))
 
     ;; good for multi-arity functions
