@@ -197,23 +197,23 @@ when there are no arguments on the same line as the function name.
   Indent each arity form of a function definition vertically aligned with its
   parameters.<sup>[[link](#multiple-arity-indentation)]</sup>
 
-```Clojure
-;; good
-(defn foo
-  "I have two arities."
-  ([x]
-   (foo x 1))
-  ([x y]
-   (+ x y)))
+    ```Clojure
+    ;; good
+    (defn foo
+      "I have two arities."
+      ([x]
+       (foo x 1))
+      ([x y]
+       (+ x y)))
 
-;; bad - extra indentation
-(defn foo
-  "I have two arities."
-  ([x]
-    (foo x 1))
-  ([x y]
-    (+ x y)))
-```
+    ;; bad - extra indentation
+    (defn foo
+      "I have two arities."
+      ([x]
+        (foo x 1))
+      ([x y]
+        (+ x y)))
+    ```
 
 * <a name="align-docstring-lines"></a>
   Indent each line of multi-line docstrings.
@@ -827,21 +827,21 @@ hints for the pairwise grouping with comments or empty lines.
 
     ```Clojure
     ;; good
-	(cond
-	  (test1) (action1)
-	  (test2) (action2)
-	  :else   (default-action))
+    (cond
+      (test1) (action1)
+      (test2) (action2)
+      :else   (default-action))
 
-	;; ok-ish
-	(cond
-	;; test case 1
-	(test1)
-	(long-function-name-which-requires-a-new-line
+    ;; ok-ish
+    (cond
+    ;; test case 1
+    (test1)
+    (long-function-name-which-requires-a-new-line
        (complicated-sub-form
           (-> 'which-spans multiple-lines)))
 
-	(test2)
-	(another-very-long-function-name
+    (test2)
+    (another-very-long-function-name
        (yet-another-sub-form
           (-> 'which-spans multiple-lines)))
 
