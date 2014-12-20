@@ -827,21 +827,21 @@ hints for the pairwise grouping with comments or empty lines.
 
     ```Clojure
     ;; good
-	(cond
-	  (test1) (action1)
-	  (test2) (action2)
-	  :else   (default-action))
+    (cond
+      (test1) (action1)
+      (test2) (action2)
+      :else   (default-action))
 
-	;; ok-ish
-	(cond
-	;; test case 1
-	(test1)
-	(long-function-name-which-requires-a-new-line
+    ;; ok-ish
+    (cond
+    ;; test case 1
+    (test1)
+    (long-function-name-which-requires-a-new-line
        (complicated-sub-form
           (-> 'which-spans multiple-lines)))
 
-	(test2)
-	(another-very-long-function-name
+    (test2)
+    (another-very-long-function-name
        (yet-another-sub-form
           (-> 'which-spans multiple-lines)))
 
