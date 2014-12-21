@@ -165,7 +165,7 @@ when there are no arguments on the same line as the function name.
       [x] (bar x))
     ```
 
-* <a name="docstring-after-fn-name">
+* <a name="docstring-after-fn-name"></a>
   When adding a docstring – especially to a function using the above form – take
   care to correctly place the docstring after the function name, not after the
   argument vector.  The latter is not invalid syntax and won’t cause an error,
