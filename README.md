@@ -444,6 +444,11 @@ pairwise constructs as found in e.g. `let` and `cond`.
   Avoid parameter lists with more than three or four positional parameters.
 <sup>[[link](#4-positional-fn-params-limit)]</sup>
 
+* <a name="forward-references"></a>
+  Avoid forward references.  They are occasionally necessary, but such occasions
+  are rare in practice.
+<sup>[[link](#forward-references)]</sup>
+
 ## Syntax
 
 * <a name="ns-fns-only-in-repl"></a>
@@ -453,7 +458,8 @@ pairwise constructs as found in e.g. `let` and `cond`.
 <sup>[[link](#ns-fns-only-in-repl)]</sup>
 
 * <a name="declare"></a>
-  Use `declare` to enable forward references.
+  Use `declare` to enable forward references when forward references are
+  necessary.
 <sup>[[link](#declare)]</sup>
 
 * <a name="higher-order-fns"></a>
