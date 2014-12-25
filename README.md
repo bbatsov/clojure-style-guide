@@ -645,6 +645,18 @@ pairwise constructs as found in e.g. `let` and `cond`.
     (not (= foo bar))
     ```
 
+* <a name="printf"></a>
+  Use `printf` instead of `(print (format ...))`.
+<sup>[[link](#printf)]</sup>
+
+    ```Clojure
+    ;; good
+    (printf "Hello, %s!\n" name)
+
+    ;; ok
+    (println (format "Hello, %s!" name))
+    ```
+
 * <a name="multiple-arity-of-gt-and-ls-fns"></a>
   When doing comparisons, keep in mind that Clojure's functions `<`,
   `>`, etc. accept a variable number of arguments.
