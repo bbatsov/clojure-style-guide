@@ -165,6 +165,31 @@ when there are no arguments on the same line as the function name.
       [x] (bar x))
     ```
 
+* <a name="multimethod-dispatch-val-placement"></a>
+  Place the `dispatch-val` of a multimethod on the same line as the
+  function name.
+<sup>[[link](#multimethod-dispatch-val-placement)]</sup>
+
+
+    ```Clojure
+    ;; good
+    (defmethod foo :bar [x] (baz x))
+
+    (defmethod foo :bar
+      [x]
+      (baz x))
+
+    ;; bad
+    (defmethod foo
+      :bar
+      [x]
+      (baz x))
+
+    (defmethod foo
+      :bar [x]
+      (baz x))
+    ```
+
 * <a name="docstring-after-fn-name"></a>
   When adding a docstring – especially to a function using the above form – take
   care to correctly place the docstring after the function name, not after the
