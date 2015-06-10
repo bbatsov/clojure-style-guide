@@ -1226,12 +1226,16 @@ hints for the pairwise grouping with comments or empty lines.
     * in functions:
         * `f`, `g`, `h` - function input
         * `n` - integer input usually a size
-        * `index` - integer index
+        * `index`, `i` - integer index
         * `x`, `y` - numbers
+        * `xs` - sequence
+        * `m` - map
         * `s` - string input
+        * `re` - regular expression
         * `coll` - a collection
         * `pred` - a predicate closure
         * `& more` - variadic input
+        * `xf` - xform, a transducer
     * in macros:
         * `expr` - an expression
         * `body` - a macro body
