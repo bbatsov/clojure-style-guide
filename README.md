@@ -259,7 +259,7 @@ when there are no arguments on the same line as the function name.
         (foo x 1))
       ([x y]
         (+ x y)))
-	```
+    ```
 
 * <a name="multiple-arity-order"></a> Sort the arities of a function
   from fewest to most arguments. The common case of multi-arity
@@ -281,18 +281,18 @@ when there are no arguments on the same line as the function name.
     (defn foo
       "I have two arities."
       ([x y]
-        (+ x y))
+       (+ x y))
       ([x]
-        (foo x 1))
-	  ([x y z & more]
-	    (reduce foo (foo x (foo y z)) more)))
-	  
-	;; bad - unordered for no apparent reason
-	(defn foo
-	  ([x] 1)
-	  ([x y z] (foo x (foo y z)))
-	  ([x y] (+ x y))
-	  ([w x y z & more] (reduce foo (foo w (foo x (foo y z))) more)))
+       (foo x 1))
+      ([x y z & more]
+       (reduce foo (foo x (foo y z)) more)))
+
+    ;; bad - unordered for no apparent reason
+    (defn foo
+      ([x] 1)
+      ([x y z] (foo x (foo y z)))
+      ([x y] (+ x y))
+      ([w x y z & more] (reduce foo (foo w (foo x (foo y z))) more)))
     ```
 
 * <a name="align-docstring-lines"></a>
