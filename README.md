@@ -962,21 +962,22 @@ hints for the pairwise grouping with comments or empty lines.
 
     ;; ok-ish
     (cond
-    ;; test case 1
-    (test1)
-    (long-function-name-which-requires-a-new-line
-       (complicated-sub-form
+      ;; test case 1
+      (test1)
+      (long-function-name-which-requires-a-new-line
+        (complicated-sub-form
           (-> 'which-spans multiple-lines)))
 
-    (test2)
-    (another-very-long-function-name
-       (yet-another-sub-form
+      ;; test case 2
+      (test2)
+      (another-very-long-function-name
+        (yet-another-sub-form
           (-> 'which-spans multiple-lines)))
 
-    :else
-    (the-fall-through-default-case
-      (which-also-spans 'multiple
-                        'lines)))
+      :else
+      (the-fall-through-default-case
+        (which-also-spans 'multiple
+                          'lines)))
     ```
 
 * <a name="set-as-predicate"></a>
