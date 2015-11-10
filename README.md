@@ -32,6 +32,10 @@ too.
 You can generate a PDF or an HTML copy of this guide using
 [Transmuter](https://github.com/TechnoGate/transmuter).
 
+Translations of the guide are available in the following languages:
+
+* [Korean](https://github.com/kwakbab/clojure-style-guide/blob/master/README-koKO.md)
+
 ## Table of Contents
 
 * [Source Code Layout & Organization](#source-code-layout--organization)
@@ -277,7 +281,7 @@ when there are no arguments on the same line as the function name.
       ([x y]
        (+ x y)))
 
-    ;; okay - the other arities are applications of the two-arity 
+    ;; okay - the other arities are applications of the two-arity
     (defn foo
       "I have two arities."
       ([x y]
