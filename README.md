@@ -34,6 +34,7 @@ You can generate a PDF or an HTML copy of this guide using
 
 Translations of the guide are available in the following languages:
 
+* [Japanese](https://github.com/totakke/clojure-style-guide/blob/ja/README.md)
 * [Korean](https://github.com/kwakbab/clojure-style-guide/blob/master/README-koKO.md)
 
 ## Table of Contents
