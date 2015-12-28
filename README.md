@@ -1018,12 +1018,11 @@ hints for the pairwise grouping with comments or empty lines.
 <sup>[[link](#list-star-instead-of-nested-cons)]</sup>
 
     ```Clojure
-    # good
+    ;; good
     (list* 1 2 3 [4 5])
 
-    # bad
+    ;; bad
     (cons 1 (cons 2 (cons 3 [4 5])))
-
     ```
 
 * <a name="sugared-java-interop"></a>
