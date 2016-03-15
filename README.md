@@ -1192,7 +1192,7 @@ hints for the pairwise grouping with comments or empty lines.
 <sup>[[link](#dont-flag-constants)]</sup>
 
 * <a name="underscore-for-unused-bindings"></a>
-  Use `_` for destructuring targets and formal arguments names whose
+  Use `_` for destructuring targets and formal argument names whose
   value will be ignored by the code at hand.
 <sup>[[link](#underscore-for-unused-bindings)]</sup>
 
