@@ -898,14 +898,14 @@ pairwise constructs as found in e.g. `let` and `cond`.
     (cond
       (= x 10) :ten
       (= x 20) :twenty
-      (= x 30) :forty
+      (= x 30) :thirty
       :else :dunno)
 
     ;; much better
     (condp = x
       10 :ten
       20 :twenty
-      30 :forty
+      30 :thirty
       :dunno)
     ```
 
