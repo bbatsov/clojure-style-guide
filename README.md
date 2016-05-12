@@ -1631,13 +1631,12 @@ you need to comment out a particular form.
 There are some tools created by the Clojure community that might aid you
 in your endeavor to write idiomatic Clojure code.
 
-* [Slamhound](https://github.com/technomancy/slamhound) is a tool that
-will automatically generate proper `ns` declarations from your
-existing code.
 * [kibit](https://github.com/jonase/kibit) is a static code analyzer
   for Clojure which uses
   [core.logic](https://github.com/clojure/core.logic) to search for
   patterns of code for which there might exist a more idiomatic
+* [Slamhound](https://github.com/technomancy/slamhound) is a tool that will
+  automatically generate proper `ns` declarations from your existing code.
   function or macro.
 
 # Contributing
