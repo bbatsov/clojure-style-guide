@@ -51,6 +51,7 @@ Translations of the guide are available in the following languages:
     * [Comment Annotations](#comment-annotations)
 * [Existential](#existential)
 * [Tooling](#tooling)
+* [Testing](#Testing)
 
 ## Source Code Layout & Organization
 
@@ -1638,6 +1639,36 @@ in your endeavor to write idiomatic Clojure code.
   Clojure which uses [core.logic](https://github.com/clojure/core.logic) to
   search for patterns of code for which there might exist a more idiomatic
   function or macro.
+
+## Testing
+
+ * <a name="test-directory-structure"></a>
+   Store your tests in a separate directory, typically `test/yourproject/` (as
+   opposed to `src/yourproject/`). Your build tool is responsible for making
+   them available in the contexts where they are necessary; most templates
+   will do this for you automatically.
+   <sup>[[link](#test-directory-structure)]</sup>
+
+ * <a name="test-ns-naming"></a>
+   Name your ns `yourproject.something-test`, a file which usually lives in
+   `test/yourproject/something_test.clj` (or `.cljc`, `cljs`).
+   <sup>[[link](#test-ns-naming)]</sup>
+
+ * <a name="test-naming"></a> When using `clojure.test`, define your tests
+   with `deftest` and name them `something-test`. For example:
+
+   ```clojure
+   ;; good
+   (deftest something-test ...)
+
+   ;; bad
+   (deftest something-tests ...)
+   (deftest test-something ...)
+   (deftest something ...)
+   ```
+
+   <sup>[[link](#test-naming)]</sup>
+
 
 # Contributing
 
