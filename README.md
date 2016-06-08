@@ -820,7 +820,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
     exists in the form of a separate function (e.g. `even?` and `odd?`).
 
 * <a name="comp"></a>
-  Leverage `comp` when it would yield simpler code.
+  Leverage `comp` when doing so yields simpler code.
 <sup>[[link](#comp)]</sup>
 
     ```Clojure
@@ -834,7 +834,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
     ```
 
 * <a name="partial"></a>
-  Leverage `partial` when it would yield simpler code.
+  Leverage `partial` when doing so yields simpler code.
 <sup>[[link](#partial)]</sup>
 
     ```Clojure
