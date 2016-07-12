@@ -51,7 +51,7 @@ Translations of the guide are available in the following languages:
     * [Comment Annotations](#comment-annotations)
 * [Existential](#existential)
 * [Tooling](#tooling)
-* [Testing](#Testing)
+* [Testing](#testing)
 
 ## Source Code Layout & Organization
 
