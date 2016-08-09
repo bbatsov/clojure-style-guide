@@ -36,7 +36,7 @@ Translations of the guide are available in the following languages:
 
 * [Japanese](https://github.com/totakke/clojure-style-guide/blob/ja/README.md)
 * [Korean](https://github.com/kwakbab/clojure-style-guide/blob/master/README-koKO.md)
-* [Portuguese](https://github.com/kwakbab/clojure-style-guide/blob/master/README-koKO.md) (Under progress)
+* [Portuguese](https://github.com/theSkilled/clojure-style-guide/tree/pt-BR) (Under progress)
 
 ## Table of Contents
 
