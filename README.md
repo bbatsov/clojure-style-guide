@@ -37,6 +37,7 @@ Translations of the guide are available in the following languages:
 * [Chinese](https://github.com/geekerzp/clojure-style-guide/blob/master/README-zhCN.md)
 * [Japanese](https://github.com/totakke/clojure-style-guide/blob/ja/README.md)
 * [Korean](https://github.com/kwakbab/clojure-style-guide/blob/master/README-koKO.md)
+* [Portuguese](https://github.com/theSkilled/clojure-style-guide/blob/pt-BR/README.md) (Under progress)
 
 ## Table of Contents
 
