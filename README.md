@@ -475,7 +475,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
 
     ;; good
     (ns examples.ns
-      (:require [clojure.zip :refer [lefts rights]))
+      (:require [clojure.zip :refer [lefts rights]]))
 
     ;; acceptable as warranted
     (ns examples.ns
