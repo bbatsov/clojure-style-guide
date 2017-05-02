@@ -1535,6 +1535,19 @@ you need to comment out a particular form.
        delta)
     ```
 
+* Use an extra newline to avoid code structure breaks caused by `#_`.
+
+    ```Clojure
+    ;; good
+    #_
+    (defn foo [x]
+      (do-something))
+
+    ;; bad
+    #_(defn foo [x]
+      (do-something))
+    ```
+
 > Good code is like a good joke - it needs no explanation. <br/>
 > -- Russ Olsen
 
