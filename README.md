@@ -1110,9 +1110,8 @@ hints for the pairwise grouping with comments or empty lines.
 
 ## Naming
 
-> The only real difficulties in programming are cache invalidation and
-> naming things. <br/>
-> -- Phil Karlton
+> There are 2 hard problems in computer science: caching, naming, and off-by-1 errors
+> -- @t (via Phil Karlton)
 
 * <a name="ns-naming-schemas"></a>
   When naming namespaces favor the following two schemas:
