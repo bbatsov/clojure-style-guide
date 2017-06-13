@@ -54,6 +54,7 @@ Translations of the guide are available in the following languages:
 * [Existential](#existential)
 * [Tooling](#tooling)
 * [Testing](#testing)
+* [Library Organization](#library-orgnization)
 
 ## Source Code Layout & Organization
 
@@ -1671,6 +1672,29 @@ in your endeavor to write idiomatic Clojure code.
 
    <sup>[[link](#test-naming)]</sup>
 
+## Library Organization
+
+ * If you are publishing libraries to be used by others, make sure to
+   follow the [Central Repository
+   guidelines](http://central.sonatype.org/pages/choosing-your-coordinates.html)
+   for choosing your `groupId` and `artifactId`. This helps to prevent
+   name conflicts and facilitates the widest possible use. A good
+   example is [Component](https://github.com/stuartsierra/component).
+   <sup>[[link](#lib-coordinates)]</sup>
+
+ * Avoid unnecessary dependencies. For example, a three-line utility
+   function copied into a project is usually better than a dependency
+   that drags in hundreds of vars you do not plan to use.
+   <sup>[[link](#lib-min-dependencies)]</sup>
+
+ * Deliver core functionality and integration points in separate
+   artifacts.  That way, consumers can consume your library without
+   being constrained by your unrelated tooling prefences. For example,
+   [Component](https://github.com/stuartsierra/component) provides
+   core functionality, and
+   [reloaded](https://github.com/stuartsierra/reloaded) provides leiningen
+   integration.
+   <sup>[[link](#lib-core-separate-from-tools)]</sup>
 
 # Contributing
 
