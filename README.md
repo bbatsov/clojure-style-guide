@@ -54,7 +54,7 @@ Translations of the guide are available in the following languages:
 * [Existential](#existential)
 * [Tooling](#tooling)
 * [Testing](#testing)
-* [Library Organization](#library-orgnization)
+* [Library Organization](#library-organization)
 
 ## Source Code Layout & Organization
 
