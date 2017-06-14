@@ -1674,7 +1674,8 @@ in your endeavor to write idiomatic Clojure code.
 
 ## Library Organization
 
- * If you are publishing libraries to be used by others, make sure to
+ * <a name="lib-coordinates"></a>
+   If you are publishing libraries to be used by others, make sure to
    follow the [Central Repository
    guidelines](http://central.sonatype.org/pages/choosing-your-coordinates.html)
    for choosing your `groupId` and `artifactId`. This helps to prevent
@@ -1682,12 +1683,14 @@ in your endeavor to write idiomatic Clojure code.
    example is [Component](https://github.com/stuartsierra/component).
    <sup>[[link](#lib-coordinates)]</sup>
 
- * Avoid unnecessary dependencies. For example, a three-line utility
+ * <a name="lib-min-dependencies"></a>
+   Avoid unnecessary dependencies. For example, a three-line utility
    function copied into a project is usually better than a dependency
    that drags in hundreds of vars you do not plan to use.
    <sup>[[link](#lib-min-dependencies)]</sup>
 
- * Deliver core functionality and integration points in separate
+ * <a name="lib-core-separate-from-tools"></a>
+   Deliver core functionality and integration points in separate
    artifacts.  That way, consumers can consume your library without
    being constrained by your unrelated tooling prefences. For example,
    [Component](https://github.com/stuartsierra/component) provides
