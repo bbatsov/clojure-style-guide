@@ -881,14 +881,14 @@ pairwise constructs as found in e.g. `let` and `cond`.
     ```Clojure
     ;; good
     (cond
-      (< n 0) "negative"
-      (> n 0) "positive"
+      (neg?) "negative"
+      (pos?) "positive"
       :else "zero")
 
     ;; bad
     (cond
-      (< n 0) "negative"
-      (> n 0) "positive"
+      (neg?) "negative"
+      (pos?) "positive"
       true "zero")
     ```
 
