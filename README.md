@@ -51,6 +51,7 @@ Translations of the guide are available in the following languages:
 * [Macros](#macros)
 * [Comments](#comments)
     * [Comment Annotations](#comment-annotations)
+* [Doc strings](#doc-strings)
 * [Existential](#existential)
 * [Tooling](#tooling)
 * [Testing](#testing)
@@ -1615,6 +1616,40 @@ you need to comment out a particular form.
   Use other custom annotation keywords if it feels appropriate, but be
   sure to document them in your project's `README` or similar.
 <sup>[[link](#document-annotations)]</sup>
+
+## Doc strings
+<a name="doc-strings"></a>
+Doc strings are available for both `def` and `defn`. They follow directly after the
+name of the var:
+
+```clojure
+(defn foo
+  "This function provides fooish stuff."
+  []
+  ...)
+```
+When writing doc strings the following is considered good style:
+
+* Let the first line in the doc string be a complete sentence which
+concisely describes var. This makes it easy for tooling to display
+a short a propos.
+
+* Document all positional arguments, and quote them with \` so that 
+tooling can identify them.
+
+* Also quote any other vars in the doc string with back-tics \` so that tooling
+can identify them.
+
+* Let all sentences end with a period, and let the period be followed by a 
+space for all but the last sentence.
+
+* Consider keeping your doc string lines shorter than 80 chars, so that they
+fit nicely into an editor.
+
+* Don't indent your doc strings as that makes it harder for tooling to 
+format them correctly.
+
+* Neither start nor end your doc strings with spaces.
 
 ## Existential
 
