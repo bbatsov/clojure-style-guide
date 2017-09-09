@@ -1619,7 +1619,7 @@ you need to comment out a particular form.
 
 ## Doc strings
 <a name="doc-strings"></a>
-Doc strings are available for both `def` and `defn`. They follow directly after the
+Doc strings are available for at least `def`, `defn`, `defmacro` and `ns`. They follow directly after the
 name of the var:
 
 ```clojure
@@ -1630,26 +1630,75 @@ name of the var:
 ```
 When writing doc strings the following is considered good style:
 
-* Let the first line in the doc string be a complete sentence which
-concisely describes var. This makes it easy for tooling to display
+* Let the first line in the doc string be a complete, capitalized
+sentence which concisely describes var. This makes it easy for tooling to display
 a short a propos.
+
+```clojure
+(defn frobnitz
+  "This function does a frobnitz.
+It will do gnorwatz to achieve this, but only under certain
+cricumstances"
+  []
+  ...)
+```  
 
 * Document all positional arguments, and quote them with \` so that 
 tooling can identify them.
 
-* Also quote any other vars in the doc string with back-tics \` so that tooling
+```clojure
+(defn watsitz
+  "Watsitz takes a `frob` and converts it to a znoot.
+When the `frob` is negative, the znoot becomes angry."
+  [frob]
+  ...)
+```  
+ 
+* Also quote any other vars in the doc string with \` so that tooling
 can identify them.
+
+```clojure
+(defn wombat
+  "Acts much like `clojure.core/identiy` except when it doesn't.
+Takes `x` as an argument and returns that. If it feels like it."
+  [x]
+  ...)
+```
 
 * Let all sentences end with a period, and let the period be followed by a 
 space for all but the last sentence.
 
+```clojure
+(def foo "All sentences should end with a period. And the period should be
+followed by a space, unless it's the last sentence")
+```
+
 * Consider keeping your doc string lines shorter than 80 chars, so that they
 fit nicely into an editor.
 
+```clojure
+(defmacro very-long
+  "Very long doc strings are annoying.
+They make reading the docs hard in reasonably sized terminals (i.e. terminals with 80 columns). Therefore it is nice to keep them shorter than 80 chars."
+  ...)
+```
 * Don't indent your doc strings as that makes it harder for tooling to 
 format them correctly.
 
+```clojure
+(ns my.ns
+  "It is actually possible to document a ns.
+It's a nice place to describe the purpose of the namespace and maybe even
+the overall conventions used. Note how _not_ indenting the doc string makes
+it easier for tooling to display it correctly.")
+```
+
 * Neither start nor end your doc strings with spaces.
+
+```clojure
+(def silly "    It's just silly to start a doc string with spaces.
+Just as silly as it is to end it with a bunch of them      ")
+```
 
 ## Existential
 
