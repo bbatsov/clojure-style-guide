@@ -113,6 +113,10 @@ forms and macros that introduce local bindings (e.g. `loop`, `let`,
 Use a single space indentation for function (macro) arguments
 when there are no arguments on the same line as the function name.
 <sup>[[link](#one-space-indent)]</sup>
+    * This one is used by default by [Emacs](https://github.com/clojure-emacs/clojure-mode#indentation-of-macro-forms),
+    while Cursive and Vim default to the alternative.
+    Pick one and stick to that.
+    <sup>[[Discussion]](https://github.com/bbatsov/clojure-style-guide/issues/126)</sup>
 
     ```Clojure
     ;; good
@@ -125,7 +129,11 @@ when there are no arguments on the same line as the function name.
      bala
      portokala)
 
-    ;; bad - two-space indent
+    #(or
+      %1
+      %2)
+
+    ;; option - two-space indent
     (filter
       even?
       (range 1 10))
@@ -134,6 +142,10 @@ when there are no arguments on the same line as the function name.
       ala
       bala
       portokala)
+
+    #(or
+       %1
+       %2)
     ```
 
 * <a name="vertically-align-let-and-map"></a>
