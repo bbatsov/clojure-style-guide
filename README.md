@@ -51,7 +51,7 @@ Translations of the guide are available in the following languages:
 * [Macros](#macros)
 * [Comments](#comments)
     * [Comment Annotations](#comment-annotations)
-* [Doc strings](#doc-strings)
+* [Documentation](#documentation)
 * [Existential](#existential)
 * [Tooling](#tooling)
 * [Testing](#testing)
@@ -1617,85 +1617,158 @@ you need to comment out a particular form.
   sure to document them in your project's `README` or similar.
 <sup>[[link](#document-annotations)]</sup>
 
-## Doc strings
-<a name="doc-strings"></a>
-Doc strings are available for at least `def`, `defn`, `defmacro` and `ns`. They follow directly after the
-name of the var:
+## Documentation
+
+Docstrings are the primary way to document Clojure code. Many definition forms
+(e.g. `def`, `defn`, `defmacro`, `ns`)
+support docstrings and usually it's a good idea to make good use of them, regardless
+of whether the var in question is something public or private.
+
+If a definition form doesn't support docstrings directly you can still supply them via
+the `:doc` metadata attribute.
+
+This section outlines some of the common conventions and best
+practices for documenting Clojure code.
+
+<a name="prefer-docstrings"></a>
+If a form supports docstrings directly prefer them over using `:doc` metadata:
+<sup>[[link](#prefer-docstrings)]</sup>
 
 ```clojure
+# good
 (defn foo
-  "This function provides fooish stuff."
+  "This function doesn't do much."
   []
   ...)
-```
-When writing doc strings the following is considered good style:
 
-* Let the first line in the doc string be a complete, capitalized
-sentence which concisely describes var. This makes it easy for tooling to display
-a short a propos.
+(ns foo.bar.core
+  "That's an awesome library.")
+
+# bad
+(defn foo
+  ^{:doc "This function doesn't do much."}
+  []
+  ...)
+
+(ns ^{:doc "That's an awesome library.")
+  foo.bar.core)
+```
+
+* <a name="docstring-summary"></a>
+Let the first line in the doc string be a complete, capitalized
+sentence which concisely describes the var in question. This makes it
+easy for tooling (Clojure editors and IDEs) to display a short a summary of
+the docstring at various places.
+<sup>[[link](#docstring-summary)]</sup>
 
 ```clojure
+# good
 (defn frobnitz
   "This function does a frobnitz.
 It will do gnorwatz to achieve this, but only under certain
 cricumstances"
   []
   ...)
-```  
 
-* Document all positional arguments, and quote them with \` so that 
-tooling can identify them.
+# bad
+(defn frobnitz
+  "This function does a frobnitz. It will do gnorwatz to
+  achieve this, but only under certain cricumstances"
+  []
+  ...)
+```
+
+* <a name="document-pos-arguments"></a>
+Document all positional arguments, and wrap them them with backticks
+(\`) so that editors and IDEs can identify them and potentially provide extra
+functionality for them.
+<sup>[[link](#document-pos-arguments)]</sup>
 
 ```clojure
+# good
 (defn watsitz
   "Watsitz takes a `frob` and converts it to a znoot.
 When the `frob` is negative, the znoot becomes angry."
   [frob]
   ...)
-```  
- 
-* Also quote any other vars in the doc string with \` so that tooling
+
+# bad
+(defn watsitz
+  "Watsitz takes a frob and converts it to a znoot.
+When the frob is negative, the znoot becomes angry."
+  [frob]
+  ...)
+```
+
+* <a name="document-references"></a>
+Wrap any var references in the docstring with \` so that tooling
 can identify them.
+<sup>[[link](#document-references)]</sup>
 
 ```clojure
+# good
 (defn wombat
-  "Acts much like `clojure.core/identiy` except when it doesn't.
+  "Acts much like `clojure.core/identity` except when it doesn't.
+Takes `x` as an argument and returns that. If it feels like it."
+  [x]
+  ...)
+
+# bad
+(defn wombat
+  "Acts much like clojure.core/identity except when it doesn't.
 Takes `x` as an argument and returns that. If it feels like it."
   [x]
   ...)
 ```
 
-* Let all sentences end with a period, and let the period be followed by a 
-space for all but the last sentence.
+* <a name="docstring-grammar"></a> Docstrings should be comprised from
+proper English sentences - this means every sentences should start
+with an capitalized word and should end with the proper punctuation. Sentences
+should be separated with a single space.
+<sup>[[link](#docstring)]</sup>
 
 ```clojure
-(def foo "All sentences should end with a period. And the period should be
-followed by a space, unless it's the last sentence")
+# good
+(def foo
+  "All sentences should end with a period (or maybe an exclamation mark).
+And the period should be followed by a space, unless it's the last sentence.")
+
+# bad
+(def foo
+  "all sentences should end with a period (or maybe an exclamation mark).
+And the period should be followed by a space, unless it's the last sentence")
 ```
 
-* Consider keeping your doc string lines shorter than 80 chars, so that they
-fit nicely into an editor.
-
-```clojure
-(defmacro very-long
-  "Very long doc strings are annoying.
-They make reading the docs hard in reasonably sized terminals (i.e. terminals with 80 columns). Therefore it is nice to keep them shorter than 80 chars."
-  ...)
-```
-* Don't indent your doc strings as that makes it harder for tooling to 
+* <a name="docstring-indentation"></a>
+Don't indent your docstrings as that makes it harder for tooling to
 format them correctly.
+<sup>[[link](#docstring-indentation)]</sup>
 
 ```clojure
+# good
 (ns my.ns
   "It is actually possible to document a ns.
 It's a nice place to describe the purpose of the namespace and maybe even
 the overall conventions used. Note how _not_ indenting the doc string makes
 it easier for tooling to display it correctly.")
+
+# bad
+(ns my.ns
+  "It is actually possible to document a ns.
+  It's a nice place to describe the purpose of the namespace and maybe even
+  the overall conventions used. Note how _not_ indenting the doc string makes
+  it easier for tooling to display it correctly.")
 ```
 
-* Neither start nor end your doc strings with spaces.
+* <a name="docstring-leading-trailing-whitespace"></a>
+Neither start nor end your doc strings with any whitespace.
+<sup>[[link](#docstring-leading-trailing-whitespace)]</sup>
 
 ```clojure
+# good
+(def foo "I'm so awesome.")
+
+# bad
 (def silly "    It's just silly to start a doc string with spaces.
 Just as silly as it is to end it with a bunch of them      ")
 ```
