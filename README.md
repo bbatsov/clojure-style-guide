@@ -1741,8 +1741,10 @@ in your endeavor to write idiomatic Clojure code.
    `test/yourproject/something_test.clj` (or `.cljc`, `cljs`).
    <sup>[[link](#test-ns-naming)]</sup>
 
- * <a name="test-naming"></a> When using `clojure.test`, define your tests
-   with `deftest` and name them `something-test`. For example:
+ * <a name="test-naming"></a>
+   When using `clojure.test`, define your tests
+   with `deftest` and name them `something-test`.
+   <sup>[[link](#test-naming)]</sup>
 
    ```clojure
    ;; good
@@ -1753,8 +1755,6 @@ in your endeavor to write idiomatic Clojure code.
    (deftest test-something ...)
    (deftest something ...)
    ```
-
-   <sup>[[link](#test-naming)]</sup>
 
 ## Library Organization
 
