@@ -1645,8 +1645,8 @@ the docstring at various places.
 # good
 (defn frobnitz
   "This function does a frobnitz.
-It will do gnorwatz to achieve this, but only under certain
-cricumstances"
+  It will do gnorwatz to achieve this, but only under certain
+  cricumstances"
   []
   ...)
 
@@ -1668,14 +1668,14 @@ functionality for them.
 # good
 (defn watsitz
   "Watsitz takes a `frob` and converts it to a znoot.
-When the `frob` is negative, the znoot becomes angry."
+  When the `frob` is negative, the znoot becomes angry."
   [frob]
   ...)
 
 # bad
 (defn watsitz
   "Watsitz takes a frob and converts it to a znoot.
-When the frob is negative, the znoot becomes angry."
+  When the frob is negative, the znoot becomes angry."
   [frob]
   ...)
 ```
@@ -1689,14 +1689,14 @@ can identify them.
 # good
 (defn wombat
   "Acts much like `clojure.core/identity` except when it doesn't.
-Takes `x` as an argument and returns that. If it feels like it."
+  Takes `x` as an argument and returns that. If it feels like it."
   [x]
   ...)
 
 # bad
 (defn wombat
   "Acts much like clojure.core/identity except when it doesn't.
-Takes `x` as an argument and returns that. If it feels like it."
+  Takes `x` as an argument and returns that. If it feels like it."
   [x]
   ...)
 ```
@@ -1711,33 +1711,32 @@ should be separated with a single space.
 # good
 (def foo
   "All sentences should end with a period (or maybe an exclamation mark).
-And the period should be followed by a space, unless it's the last sentence.")
+  And the period should be followed by a space, unless it's the last sentence.")
 
 # bad
 (def foo
   "all sentences should end with a period (or maybe an exclamation mark).
-And the period should be followed by a space, unless it's the last sentence")
+  And the period should be followed by a space, unless it's the last sentence")
 ```
 
 * <a name="docstring-indentation"></a>
-Don't indent your docstrings as that makes it harder for tooling to
-format them correctly.
+Indent multi-line docstrings by two spaces.
 <sup>[[link](#docstring-indentation)]</sup>
 
 ```clojure
 # good
 (ns my.ns
   "It is actually possible to document a ns.
-It's a nice place to describe the purpose of the namespace and maybe even
-the overall conventions used. Note how _not_ indenting the doc string makes
-it easier for tooling to display it correctly.")
+  It's a nice place to describe the purpose of the namespace and maybe even
+  the overall conventions used. Note how _not_ indenting the doc string makes
+  it easier for tooling to display it correctly.")
 
 # bad
 (ns my.ns
   "It is actually possible to document a ns.
-  It's a nice place to describe the purpose of the namespace and maybe even
-  the overall conventions used. Note how _not_ indenting the doc string makes
-  it easier for tooling to display it correctly.")
+It's a nice place to describe the purpose of the namespace and maybe even
+the overall conventions used. Note how _not_ indenting the doc string makes
+it easier for tooling to display it correctly.")
 ```
 
 * <a name="docstring-leading-trailing-whitespace"></a>
