@@ -1724,11 +1724,15 @@ Neither start nor end your doc strings with any whitespace.
 
 ```clojure
 # good
-(def foo "I'm so awesome.")
+(def foo
+  "I'm so awesome."
+  42)
 
 # bad
-(def silly "    It's just silly to start a doc string with spaces.
-Just as silly as it is to end it with a bunch of them      ")
+(def silly
+  "    It's just silly to start a doc string with spaces.
+  Just as silly as it is to end it with a bunch of them.      "
+  42)
 ```
 
 * <a name="docstring-after-fn-name"></a>
