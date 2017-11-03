@@ -200,27 +200,6 @@ when there are no arguments on the same line as the function name.
       (baz x))
     ```
 
-* <a name="docstring-after-fn-name"></a>
-  When adding a docstring – especially to a function using the above form – take
-  care to correctly place the docstring after the function name, not after the
-  argument vector.  The latter is not invalid syntax and won’t cause an error,
-  but includes the string as a form in the function body without attaching it to
-  the var as documentation.
-<sup>[[link](#docstring-after-fn-name)]</sup>
-
-    ```Clojure
-    ;; good
-    (defn foo
-      "docstring"
-      [x]
-      (bar x))
-
-    ;; bad
-    (defn foo [x]
-      "docstring"
-      (bar x))
-    ```
-
 * <a name="oneline-short-fn"></a>
   Optionally omit the new line between the argument vector and a short
   function body.
@@ -1750,6 +1729,27 @@ Neither start nor end your doc strings with any whitespace.
 # bad
 (def silly "    It's just silly to start a doc string with spaces.
 Just as silly as it is to end it with a bunch of them      ")
+```
+
+* <a name="docstring-after-fn-name"></a>
+  When adding a docstring – especially to a function using the above form – take
+  care to correctly place the docstring after the function name, not after the
+  argument vector.  The latter is not invalid syntax and won’t cause an error,
+  but includes the string as a form in the function body without attaching it to
+  the var as documentation.
+<sup>[[link](#docstring-after-fn-name)]</sup>
+
+```Clojure
+;; good
+(defn foo
+  "docstring"
+  [x]
+  (bar x))
+
+;; bad
+(defn foo [x]
+  "docstring"
+  (bar x))
 ```
 
 ## Existential
