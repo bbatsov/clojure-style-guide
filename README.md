@@ -305,26 +305,6 @@ when there are no arguments on the same line as the function name.
       ([w x y z & more] (reduce foo (foo w (foo x (foo y z))) more)))
     ```
 
-* <a name="align-docstring-lines"></a>
-  Indent each line of multi-line docstrings.
-<sup>[[link](#align-docstring-lines)]</sup>
-
-    ```Clojure
-    ;; good
-    (defn foo
-      "Hello there. This is
-      a multi-line docstring."
-      []
-      (bar))
-
-    ;; bad
-    (defn foo
-      "Hello there. This is
-    a multi-line docstring."
-      []
-      (bar))
-    ```
-
 * <a name="crlf"></a>
   Use Unix-style line endings. (*BSD/Solaris/Linux/OSX users are
   covered by default, Windows users have to be extra careful.)
