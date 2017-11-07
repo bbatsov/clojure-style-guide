@@ -1684,7 +1684,7 @@ can identify them.
 proper English sentences - this means every sentences should start
 with an capitalized word and should end with the proper punctuation. Sentences
 should be separated with a single space.
-<sup>[[link](#docstring)]</sup>
+<sup>[[link](#docstring-grammar)]</sup>
 
 ```clojure
 # good
