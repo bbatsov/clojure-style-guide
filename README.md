@@ -1589,9 +1589,10 @@ the `:doc` metadata attribute.
 This section outlines some of the common conventions and best
 practices for documenting Clojure code.
 
-<a name="prefer-docstrings"></a>
-If a form supports docstrings directly prefer them over using `:doc` metadata:
-<sup>[[link](#prefer-docstrings)]</sup>
+
+* <a name="prefer-docstrings"></a>
+  If a form supports docstrings directly prefer them over using `:doc` metadata:
+  <sup>[[link](#prefer-docstrings)]</sup>
 
 ```clojure
 # good
