@@ -1596,7 +1596,7 @@ practices for documenting Clojure code.
   <sup>[[link](#prefer-docstrings)]</sup>
 
 ```clojure
-# good
+;; good
 (defn foo
   "This function doesn't do much."
   []
@@ -1605,7 +1605,7 @@ practices for documenting Clojure code.
 (ns foo.bar.core
   "That's an awesome library.")
 
-# bad
+;; bad
 (defn foo
   ^{:doc "This function doesn't do much."}
   []
@@ -1623,7 +1623,7 @@ the docstring at various places.
 <sup>[[link](#docstring-summary)]</sup>
 
 ```clojure
-# good
+;; good
 (defn frobnitz
   "This function does a frobnitz.
   It will do gnorwatz to achieve this, but only under certain
@@ -1631,7 +1631,7 @@ the docstring at various places.
   []
   ...)
 
-# bad
+;; bad
 (defn frobnitz
   "This function does a frobnitz. It will do gnorwatz to
   achieve this, but only under certain cricumstances."
@@ -1646,14 +1646,14 @@ functionality for them.
 <sup>[[link](#document-pos-arguments)]</sup>
 
 ```clojure
-# good
+;; good
 (defn watsitz
   "Watsitz takes a `frob` and converts it to a znoot.
   When the `frob` is negative, the znoot becomes angry."
   [frob]
   ...)
 
-# bad
+;; bad
 (defn watsitz
   "Watsitz takes a frob and converts it to a znoot.
   When the frob is negative, the znoot becomes angry."
@@ -1667,14 +1667,14 @@ can identify them.
 <sup>[[link](#document-references)]</sup>
 
 ```clojure
-# good
+;; good
 (defn wombat
   "Acts much like `clojure.core/identity` except when it doesn't.
   Takes `x` as an argument and returns that. If it feels like it."
   [x]
   ...)
 
-# bad
+;; bad
 (defn wombat
   "Acts much like clojure.core/identity except when it doesn't.
   Takes `x` as an argument and returns that. If it feels like it."
@@ -1689,12 +1689,12 @@ should be separated with a single space.
 <sup>[[link](#docstring-grammar)]</sup>
 
 ```clojure
-# good
+;; good
 (def foo
   "All sentences should end with a period (or maybe an exclamation mark).
   And the period should be followed by a space, unless it's the last sentence.")
 
-# bad
+;; bad
 (def foo
   "all sentences should end with a period (or maybe an exclamation mark).
   And the period should be followed by a space, unless it's the last sentence")
@@ -1705,14 +1705,14 @@ Indent multi-line docstrings by two spaces.
 <sup>[[link](#docstring-indentation)]</sup>
 
 ```clojure
-# good
+;; good
 (ns my.ns
   "It is actually possible to document a ns.
   It's a nice place to describe the purpose of the namespace and maybe even
   the overall conventions used. Note how _not_ indenting the doc string makes
   it easier for tooling to display it correctly.")
 
-# bad
+;; bad
 (ns my.ns
   "It is actually possible to document a ns.
 It's a nice place to describe the purpose of the namespace and maybe even
@@ -1725,12 +1725,12 @@ Neither start nor end your doc strings with any whitespace.
 <sup>[[link](#docstring-leading-trailing-whitespace)]</sup>
 
 ```clojure
-# good
+;; good
 (def foo
   "I'm so awesome."
   42)
 
-# bad
+;; bad
 (def silly
   "    It's just silly to start a doc string with spaces.
   Just as silly as it is to end it with a bunch of them.      "
