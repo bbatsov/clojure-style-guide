@@ -415,11 +415,11 @@ pairwise constructs as found in e.g. `let` and `cond`.
     ```Clojure
     (ns examples.ns
       (:refer-clojure :exclude [next replace remove])
-      (:require [clojure.string :as s :refer [blank?]]
+      (:require [clojure.java.shell :as sh]
                 [clojure.set :as set]
-                [clojure.java.shell :as sh])
-      (:import java.util.Date
-               java.text.SimpleDateFormat
+                [clojure.string :as s :refer [blank?]])
+      (:import java.text.SimpleDateFormat
+               java.util.Date
                [java.util.concurrent Executors
                                      LinkedBlockingQueue]))
     ```
@@ -447,6 +447,9 @@ pairwise constructs as found in e.g. `let` and `cond`.
     (ns examples.ns
       (:use clojure.zip))
     ```
+* <a name="sort-required-namespaces"></a>
+  Sort required namespaces lexicographically.
+<sup>[[link](#sort-required-namespaces)]</sup>
 
 * <a name="no-single-segment-namespaces"></a>
   Avoid single-segment namespaces.
