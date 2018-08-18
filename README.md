@@ -1513,15 +1513,65 @@ you need to comment out a particular form.
   the relevant code.
 <sup>[[link](#annotate-above)]</sup>
 
+    ```Clojure
+    ;; good
+    (defn some-fun
+      []
+      ;; FIXME: Replace baz with the newer bar.
+      (baz))
+
+    ;; bad
+    ;; FIXME: Replace baz with the newer bar.
+    (defn some-fun
+      []
+      (baz))
+    ```
+
 * <a name="annotate-keywords"></a>
   The annotation keyword is followed by a colon and a space, then a note
   describing the problem.
 <sup>[[link](#annotate-keywords)]</sup>
 
+    ```Clojure
+    ;; good
+    (defn some-fun
+      []
+      ;; FIXME: Replace baz with the newer bar.
+      (baz))
+
+    ;; bad - no colon after annotation
+    (defn some-fun
+      []
+      ;; FIXME Replace baz with the newer bar.
+      (baz))
+
+    ;; bad - no space after colon
+    (defn some-fun
+      []
+      ;; FIXME:Replace baz with the newer bar.
+      (baz))
+    ```
+
 * <a name="indent-annotations"></a>
   If multiple lines are required to describe the problem, subsequent
   lines should be indented as much as the first one.
 <sup>[[link](#indent-annotations)]</sup>
+
+    ```Clojure
+    ;; good
+    (defn some-fun
+      []
+      ;; FIXME: This has crashed occasionally since v1.2.3. It may
+      ;;        be related to the BarBazUtil upgrade. (xz 13-1-31)
+      (baz))
+
+    ;; bad
+    (defn some-fun
+      []
+      ;; FIXME: This has crashed occasionally since v1.2.3. It may
+      ;; be related to the BarBazUtil upgrade. (xz 13-1-31)
+      (baz))
+    ```
 
 * <a name="sing-and-date-annotations"></a>
   Tag the annotation with your initials and a date so its relevance can
