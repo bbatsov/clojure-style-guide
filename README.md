@@ -1852,10 +1852,10 @@ community.
 Feel free to open tickets or send pull requests with improvements. Thanks in
 advance for your help!
 
-You can also support the style guide with financial
-contributions via [gittip](https://www.gittip.com/bbatsov).
-
-[![Support via Gittip](https://rawgithub.com/twolfson/gittip-badge/0.2.0/dist/gittip.png)](https://www.gittip.com/bbatsov)
+You can also support the style guide (and all my Clojure projects like
+CIDER, nREPL, orchard, etc) with financial contributions via
+[Patreon](https://www.patreon.com/bbatsov) and
+[PayPal](https://www.paypal.me/bbatsov).
 
 # License
 
