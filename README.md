@@ -583,7 +583,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
     ```
 
 * <a name="when-instead-of-single-branch-if"></a>
-  Use `when` instead of `(if ... (do ...)`.
+  Use `when` instead of `(if ... (do ...))`.
 <sup>[[link](#when-instead-of-single-branch-if)]</sup>
 
     ```Clojure
@@ -664,7 +664,7 @@ pairwise constructs as found in e.g. `let` and `cond`.
     ```
 
 * <a name="when-not-instead-of-single-branch-if-not"></a>
-  Use `when-not` instead of `(if-not ... (do ...)`.
+  Use `when-not` instead of `(if-not ... (do ...))`.
 <sup>[[link](#when-not-instead-of-single-branch-if-not)]</sup>
 
     ```Clojure
@@ -1678,14 +1678,14 @@ the docstring at various places.
 (defn frobnitz
   "This function does a frobnitz.
   It will do gnorwatz to achieve this, but only under certain
-  cricumstances."
+  circumstances."
   []
   ...)
 
 ;; bad
 (defn frobnitz
   "This function does a frobnitz. It will do gnorwatz to
-  achieve this, but only under certain cricumstances."
+  achieve this, but only under certain circumstances."
   []
   ...)
 ```
