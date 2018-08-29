@@ -98,45 +98,28 @@ forms and macros that introduce local bindings (e.g. `loop`, `let`,
      (println "world!"))
     ```
 
-* <a name="vertically-align-fn-args"></a>
-  Vertically align function (macro) arguments spanning multiple lines.
-<sup>[[link](#vertically-align-fn-args)]</sup>
+* <a name="align-fn-args"></a>
+  Use 2 spaces to indent function (macro) arguments spanning multiple lines.
+<sup>[[link](#align-fn-args)]</sup>
 
     ```Clojure
     ;; good
-    (filter even?
-            (range 1 10))
+    (my-function
+      this-arg this-other-arg)
+
+    ;; good only if line length doesn't permit `this-other-arg` on the same line
+    (my-function this-arg
+      this-other-arg)
+
+    ;; okay
+    (my-function this-arg
+                 this-other-arg)
 
     ;; bad
-    (filter even?
-      (range 1 10))
-    ```
+    (my-function this-arg
+            this-other-arg)
 
-* <a name="one-space-indent"></a>
-Use a single space indentation for function (macro) arguments
-when there are no arguments on the same line as the function name.
-<sup>[[link](#one-space-indent)]</sup>
 
-    ```Clojure
-    ;; good
-    (filter
-     even?
-     (range 1 10))
-
-    (or
-     ala
-     bala
-     portokala)
-
-    ;; bad - two-space indent
-    (filter
-      even?
-      (range 1 10))
-
-    (or
-      ala
-      bala
-      portokala)
     ```
 
 * <a name="vertically-align-let-and-map"></a>
