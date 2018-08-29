@@ -396,9 +396,9 @@ macro definition.  An exception can be made to indicate grouping of
 pairwise constructs as found in e.g. `let` and `cond`.
 <sup>[[link](#no-blank-lines-within-def-forms)]</sup>
 
-* <a name="80-character-limits"></a>
-  Where feasible, avoid making lines longer than 80 characters.
-<sup>[[link](#80-character-limits)]</sup>
+* <a name="100-character-limits"></a>
+  Where feasible, avoid making lines longer than 100 characters.
+<sup>[[link](#100-character-limits)]</sup>
 
 * <a name="no-trailing-whitespace"></a>
   Avoid trailing whitespace.
