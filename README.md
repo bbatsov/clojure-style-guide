@@ -366,7 +366,7 @@ of commas and line breaks.
     ```
 
 * <a name="empty-lines-between-top-level-forms"></a>
-  Use empty lines between top-level forms.
+  Use a single empty line between top-level forms.
 <sup>[[link](#empty-lines-between-top-level-forms)]</sup>
 
     ```Clojure
@@ -377,6 +377,12 @@ of commas and line breaks.
 
     ;; bad
     (def x ...)
+    (defn foo ...)
+
+    ;; bad
+    (def x ...)
+
+
     (defn foo ...)
     ```
 
