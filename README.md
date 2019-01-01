@@ -47,6 +47,7 @@ Translations of the guide are available in the following languages:
 * [Syntax](#syntax)
 * [Naming](#naming)
 * [Collections](#collections)
+* [Types & Records](#types--records)
 * [Mutation](#mutation)
 * [Strings](#strings)
 * [Exceptions](#exceptions)
@@ -1301,6 +1302,80 @@ performance-critical portions of the code.
   Avoid the use of Java arrays, except for interop scenarios and
 performance-critical code dealing heavily with primitive types.
 <sup>[[link](#avoid-java-arrays)]</sup>
+
+## Types & Records
+
+* <a name="record-constructors"></a>
+  Don’t use the interop syntax to
+  construct type and record instances.  `deftype` and `defrecord`
+  automatically create constructor functions. Use those instead of
+  the interop syntax, as they make it clear that you're dealing with a
+  `deftype` or a `defrecord`. See [this
+  article](https://stuartsierra.com/2015/05/17/clojure-record-constructors)
+  for more details.
+  <sup>[[link](#record-constructors)</sup>
+
+    ``` Clojure
+    (defrecord Foo [a b])
+    (deftype Bar [a b])
+
+    ;; good
+    (->Foo 1 2)
+    (map->Foo {:b 4 :a 3})
+    (->Bar 1 2)
+
+    ;; bad
+    (Foo. 1 2)
+    (Bar. 1 2)
+    ```
+
+    Note that `deftype` doesn't define the `map->Type`
+    constructor. It's available only for records.
+
+* <a name="custom-record-constructors"></a>
+  Add custom type/record constructors when needed (e.g. to validate
+  properties on record creation). See [this
+  article](https://stuartsierra.com/2015/05/17/clojure-record-constructors)
+  for more details.
+  <sup>[[link](#custom-record-constructors)</sup>
+
+    ``` Clojure
+    (defrecord Customer [id name phone email])
+
+    (defn make-customer
+      "Creates a new customer record."
+      [{:keys [name phone email]}]
+      {:pre [(string? name)
+             (valid-phone? phone)
+             (valid-email? email)]}
+      (->Customer (next-id) name phone email))
+    ```
+
+    Feel free to adopt whatever naming convention or structure you'd like for such custom constructors.
+
+* <a name="custom-record-constructors-naming"></a>
+  Don't override the auto-generated type/record constructor functions.
+  People expect them to have a certain behaviour and you changing this behaviour
+  violates the principle of the least surprise . See [this
+  article](https://stuartsierra.com/2015/05/17/clojure-record-constructors)
+  for more details.
+  <sup>[[link](#custom-record-constructors-naming)</sup>
+
+    ``` Clojure
+    (defrecord Foo [num])
+
+    ;; good
+    (defn make-foo
+      [num]
+      {:pre [(pos? num)]}
+      (->Foo num))
+
+    ;; bad
+    (defn ->Foo
+      [num]
+      {:pre [(pos? num)]}
+      (Foo. num))
+    ```
 
 ## Mutation
 
