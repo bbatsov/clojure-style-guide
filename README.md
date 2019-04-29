@@ -423,6 +423,32 @@ pairwise constructs as found in e.g. `let` and `cond`.
     ```Clojure
     (ns examples.ns
       (:refer-clojure :exclude [next replace remove])
+      (:require [clojure.string :as s :refer [blank?]])
+      (:import java.util.Date))
+    ```
+
+* <a name="line-break-ns-declaration"></a>
+  When there are multiple dependencies, you may want to start them on
+  a new line, then insert line breaks after each one for easier sorting,
+  readability if it's a long line, and to reduce diffing when only there
+  is only a change related to one dependency. 
+<sup>[[link](#line-break-ns-declaration)]</sup>
+
+    ```Clojure
+    ;; better
+    (ns examples.ns
+      (:require 
+       [clojure.string :as s :refer [blank?]]
+       [clojure.set :as set]
+       [clojure.java.shell :as sh])
+      (:import 
+       java.util.Date
+       java.text.SimpleDateFormat
+       [java.util.concurrent Executors
+                             LinkedBlockingQueue]))
+
+    ;; good
+    (ns examples.ns
       (:require [clojure.string :as s :refer [blank?]]
                 [clojure.set :as set]
                 [clojure.java.shell :as sh])
@@ -430,6 +456,11 @@ pairwise constructs as found in e.g. `let` and `cond`.
                java.text.SimpleDateFormat
                [java.util.concurrent Executors
                                      LinkedBlockingQueue]))
+
+    ;; bad
+    (ns examples.ns
+      (:require [clojure.string :as s :refer [blank?]] [clojure.set :as set] [clojure.java.shell :as sh])
+      (:import java.util.Date java.text.SimpleDateFormat [java.util.concurrent Executors LinkedBlockingQueue]))
     ```
 
 * <a name="prefer-require-over-use"></a>
