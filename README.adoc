@@ -417,7 +417,7 @@ Use a single empty line between top-level forms.
 (defn foo ...)
 ----
 
-An exception to the rule is the grouping of related ``def``s together.
+An exception to the rule is the grouping of related `def`s together.
 
 [source,clojure]
 ----
@@ -449,7 +449,7 @@ Use one file per namespace.
 === Comprehensive Ns Declaration [[comprehensive-ns-declaration]]
 
 Start every namespace with a comprehensive `ns` form, comprised of
-``refer``s, ``require``s, and ``import``s, conventionally in that order.
+`refer`s, `require`s, and `import`s, conventionally in that order.
 
 [source,clojure]
 ----
@@ -1293,7 +1293,7 @@ value will be ignored by the code at hand.
 
 === Idiomatic Names [[idiomatic-names]]
 
-Follow ``clojure.core``'s example for idiomatic names like `pred` and `coll`.
+Follow `clojure.core`'s example for idiomatic names like `pred` and `coll`.
 
 * in functions:
  ** `f`, `g`, `h` - function input
