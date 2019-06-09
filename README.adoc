@@ -21,7 +21,7 @@ This Clojure style guide recommends best practices so that real-world Clojure
 programmers can write code that can be maintained by other real-world Clojure
 programmers. A style guide that reflects real-world usage gets used, and a
 style guide that holds to an ideal that has been rejected by the people it is
-supposed to help risks not getting used at all &mdash; no matter how good it is.
+supposed to help risks not getting used at all -- no matter how good it is.
 
 The guide is separated into several sections of related rules. I've
 tried to add the rationale behind the rules (if it's omitted, I've
@@ -37,7 +37,7 @@ and http://joyofclojure.com/["The Joy of Clojure"].
 NOTE: The guide is still a work in progress; some sections are missing,
 others are incomplete, some rules are lacking examples, some rules
 don't have examples that illustrate them clearly enough. In due time
-these issues will be addressed &mdash; just keep them in mind for now.
+these issues will be addressed -- just keep them in mind for now.
 Help us address those shortcomings and make this guide better together!
 
 Please note, that the Clojure developing community maintains a list of
@@ -1601,8 +1601,8 @@ Prefer string manipulation functions from `clojure.string` over Java interop or 
 
 === Reuse Existing Exception Types [[reuse-existing-exception-types]]
 
-Reuse existing exception types. Idiomatic Clojure code &mdash; when it does
-throw an exception &mdash; throws an exception of a standard type
+Reuse existing exception types. Idiomatic Clojure code -- when it does
+throw an exception -- throws an exception of a standard type
 (e.g. `java.lang.IllegalArgumentException`,
 `java.lang.UnsupportedOperationException`,
 `java.lang.IllegalStateException`, `java.io.IOException`).
