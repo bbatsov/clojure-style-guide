@@ -356,14 +356,14 @@ and before a closing bracket.
 (foo ( bar baz ) quux)
 ----
 
+=== No Commas For Seq Literals [[no-commas-for-seq-literals]]
+
 [quote]
 ____
 Syntactic sugar causes semicolon cancer.
 
 -- Alan Perlis
 ____
-
-=== No Commas For Seq Literals [[no-commas-for-seq-literals]]
 
 Don't use commas between the elements of sequential collection literals.
 
@@ -1693,6 +1693,7 @@ punctuation. Separate sentences with
 http://en.wikipedia.org/wiki/Sentence_spacing[one space].
 
 === No Superfluous Comments [[no-superfluous-comments]]
+
 Avoid superfluous comments.
 
 [source,clojure]
@@ -1722,14 +1723,14 @@ you need to comment out a particular form.
    delta)
 ----
 
+=== Refactor Don't Comment [[refactor-dont-comment]]
+
 [quote]
 ____
 Good code is like a good joke - it needs no explanation.
 
 -- Russ Olsen
 ____
-
-=== Refactor Don't Comment [[refactor-dont-comment]]
 
 Avoid writing comments to explain bad code. Refactor the code to
 make it self-explanatory. ("Do, or do not. There is no try." --Yoda)
