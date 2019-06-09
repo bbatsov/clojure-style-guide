@@ -604,7 +604,7 @@ Prefer function pre and post conditions to checks inside a function's body.
     (throw (IllegalArgumentException. "x must be a positive number!")))
 ----
 
-=== Dont Def Vars Inside Fns [[dont-def-vars-inside-fns]]
+=== Vars Inside Functions [[dont-def-vars-inside-fns]]
 
 Don't define vars inside functions.
 
@@ -616,7 +616,7 @@ Don't define vars inside functions.
   ...)
 ----
 
-=== Dont Shadow Clojure Core [[dont-shadow-clojure-core]]
+=== Shadowing `clojure.core` Names [[dont-shadow-clojure-core]]
 
 Don't shadow `clojure.core` names with local bindings.
 
@@ -627,7 +627,7 @@ Don't shadow `clojure.core` names with local bindings.
   ...)
 ----
 
-=== Alter Var [[alter-var]]
+=== Alter Var Binding [[alter-var]]
 
 Use `alter-var-root` instead of `def` to change the value of a var.
 
@@ -665,7 +665,7 @@ empty (this technique is sometimes called _nil punning_).
     (recur (rest s))))
 ----
 
-=== To Vector [[to-vector]]
+=== Converting Sequences to Vectors [[to-vector]]
 
 Prefer `vec` over `into` when you need to convert a sequence into a vector.
 
@@ -678,9 +678,9 @@ Prefer `vec` over `into` when you need to convert a sequence into a vector.
 (into [] some-seq)
 ----
 
-=== When Instead Of Single Branch If [[when-instead-of-single-branch-if]]
+=== `when` vs `if` [[when-instead-of-single-branch-if]]
 
-Use `when` instead of `+(if ... (do ...))+`.
+Use `when` instead of `(if ... (do ...))`.
 
 [source,clojure]
 ----
@@ -696,7 +696,7 @@ Use `when` instead of `+(if ... (do ...))+`.
     (bar)))
 ----
 
-=== If Let [[if-let]]
+=== `if-let` [[if-let]]
 
 Use `if-let` instead of `let` + `if`.
 
@@ -714,7 +714,7 @@ Use `if-let` instead of `let` + `if`.
     (something-else)))
 ----
 
-=== When Let [[when-let]]
+=== `when-let` [[when-let]]
 
 Use `when-let` instead of `let` + `when`.
 
@@ -732,7 +732,7 @@ Use `when-let` instead of `let` + `when`.
     (do-something-more-with result)))
 ----
 
-=== If Not [[if-not]]
+=== `if-not` [[if-not]]
 
 Use `if-not` instead of `+(if (not ...) ...)+`.
 
@@ -747,7 +747,7 @@ Use `if-not` instead of `+(if (not ...) ...)+`.
   (foo))
 ----
 
-=== When Not [[when-not]]
+=== `when-not` [[when-not]]
 
 Use `when-not` instead of `+(when (not ...) ...)+`.
 
@@ -764,7 +764,7 @@ Use `when-not` instead of `+(when (not ...) ...)+`.
   (bar))
 ----
 
-=== When Not Instead Of Single Branch If Not [[when-not-instead-of-single-branch-if-not]]
+=== `when-not` vs `if-not` [[when-not-instead-of-single-branch-if-not]]
 
 Use `when-not` instead of `+(if-not ... (do ...))+`.
 
@@ -782,7 +782,7 @@ Use `when-not` instead of `+(if-not ... (do ...))+`.
     (bar)))
 ----
 
-=== Not Equal [[not-equal]]
+=== `not=` [[not-equal]]
 
 Use `not=` instead of `+(not (= ...))+`.
 
@@ -795,7 +795,7 @@ Use `not=` instead of `+(not (= ...))+`.
 (not (= foo bar))
 ----
 
-=== Printf [[printf]]
+=== `printf` [[printf]]
 
 Use `printf` instead of `+(print (format ...))+`.
 
@@ -878,7 +878,7 @@ more than one form.
      (* % 2))
 ----
 
-=== Complement [[complement]]
+=== `complement` [[complement]]
 
 Favor the use of `complement` versus the use of an anonymous function.
 
@@ -894,7 +894,7 @@ Favor the use of `complement` versus the use of an anonymous function.
 This rule should obviously be ignored if the complementing predicate
   exists in the form of a separate function (e.g. `even?` and `odd?`).
 
-=== Comp [[comp]]
+=== `comp` [[comp]]
 
 Leverage `comp` when doing so yields simpler code.
 
@@ -909,7 +909,7 @@ Leverage `comp` when doing so yields simpler code.
 (map (comp str/capitalize str/trim) ["top " " test "])
 ----
 
-=== Partial [[partial]]
+=== `partial` [[partial]]
 
 Leverage `partial` when doing so yields simpler code.
 
@@ -1281,7 +1281,7 @@ Use `*earmuffs*` for things intended for rebinding (ie. are dynamic).
 (def ^:dynamic a 10)
 ----
 
-=== Dont Flag Constants [[dont-flag-constants]]
+=== Don't Flag Constants [[dont-flag-constants]]
 
 Don't use a special notation for constants; everything is assumed a constant
 unless specified otherwise.
@@ -1610,7 +1610,7 @@ Favor `with-open` over `finally`.
 
 == Macros
 
-=== Dont Write Macro If Fn Will Do [[dont-write-macro-if-fn-will-do]]
+=== Don't Write Macro If Fn Will Do [[dont-write-macro-if-fn-will-do]]
 
 Don't write a macro if a function will do.
 
@@ -1729,7 +1729,7 @@ Good code is like a good joke - it needs no explanation.
 -- Russ Olsen
 ____
 
-=== Refactor Dont Comment [[refactor-dont-comment]]
+=== Refactor Don't Comment [[refactor-dont-comment]]
 
 Avoid writing comments to explain bad code. Refactor the code to
 make it self-explanatory. ("Do, or do not. There is no try." --Yoda)
