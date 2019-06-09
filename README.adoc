@@ -150,23 +150,40 @@ when there are no arguments on the same line as the function name.
   portokala)
 ----
 
-=== Vertically Align Let And Map [[vertically-align-let-and-map]]
+=== Bindings Alignment [[bindings-alignment]]
 
-Vertically align `let` bindings and map keywords.
+Vertically align `let` (and `let`-like) bindings.
 
 [source,clojure]
 ----
 ;; good
 (let [thing1 "some stuff"
       thing2 "other stuff"]
-  {:thing1 thing1
-   :thing2 thing2})
+  (foo thing1 thing2))
 
 ;; bad
 (let [thing1 "some stuff"
   thing2 "other stuff"]
-  {:thing1 thing1
-  :thing2 thing2})
+  (foo thing1 thing2})
+----
+
+=== Map Keys Alignment [[map-keys-alignment]]
+
+Align vertically map keys.
+
+[source,clojure]
+----
+;; good
+{:thing1 thing1
+ :thing2 thing2}
+
+;; bad
+{:thing1 thing1
+:thing2 thing2}
+
+;; bad
+{:thing1 thing1
+  :thing2 thing2}
 ----
 
 === Optional New Line After Fn Name [[optional-new-line-after-fn-name]]
