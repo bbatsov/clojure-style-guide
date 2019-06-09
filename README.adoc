@@ -1313,7 +1313,7 @@ Follow `clojure.core`'s example for idiomatic names like `pred` and `coll`.
  ** `body` - a macro body
  ** `binding` - a macro binding vector
 
-== Collections
+== Data Structures
 
 [quote]
 ____
