@@ -122,7 +122,7 @@ Vertically align function (macro) arguments spanning multiple lines.
   (range 1 10))
 ----
 
-=== One Space Indent [[one-space-indent]]
+=== Arguments Indentation [[one-space-indent]]
 
 Use a single space indentation for function (macro) arguments
 when there are no arguments on the same line as the function name.
@@ -2091,7 +2091,7 @@ with `deftest` and name them `something-test`.
 
 == Library Organization
 
-=== Lib Coordinates [[lib-coordinates]]
+=== Coordinates [[lib-coordinates]]
 
 If you are publishing libraries to be used by others, make sure to
 follow the http://central.sonatype.org/pages/choosing-your-coordinates.html[Central Repository
@@ -2100,13 +2100,13 @@ for choosing your `groupId` and `artifactId`. This helps to prevent
 name conflicts and facilitates the widest possible use. A good
 example is https://github.com/stuartsierra/component[Component].
 
-=== Lib Min Dependencies [[lib-min-dependencies]]
+=== Minimize Dependencies [[lib-min-dependencies]]
 
 Avoid unnecessary dependencies. For example, a three-line utility
 function copied into a project is usually better than a dependency
 that drags in hundreds of vars you do not plan to use.
 
-=== Lib Core Separate From Tools [[lib-core-separate-from-tools]]
+=== Tool-agnostic [[lib-core-separate-from-tools]]
 
 Deliver core functionality and integration points in separate
 artifacts.  That way, consumers can consume your library without
