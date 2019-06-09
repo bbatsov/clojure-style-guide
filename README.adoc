@@ -551,16 +551,16 @@ Avoid single-segment namespaces.
 (ns example)
 ----
 
-=== Namespaces With  [[namespaces-with-]]5-segments-max
+=== Namespace Segments Limit [[namespace-segments-limit]]
 
 Avoid the use of overly long namespaces (i.e., more than 5 segments).
 
-=== 10-loc-per-fn-limit [[10-loc-per-fn-limit]]
+=== Function Length [[function-length]]
 
 Avoid functions longer than 10 LOC (lines of code). Ideally, most
 functions will be shorter than 5 LOC.
 
-=== 4-positional-fn-params-limit [[4-positional-fn-params-limit]]
+=== Function Positional Parameters Limit [[function-positional-parameter-limit]]
 
 Avoid parameter lists with more than three or four positional parameters.
 
@@ -571,7 +571,7 @@ are rare in practice.
 
 == Syntax
 
-=== Ns Fns Only In Repl [[ns-fns-only-in-repl]]
+=== Dynamic Namespace Manipulation [[ns-fns-only-in-repl]]
 
 Avoid the use of namespace-manipulating functions like `require` and
 `refer`. They are entirely unnecessary outside of a REPL
@@ -582,11 +582,11 @@ environment.
 Use `declare` to enable forward references when forward references are
 necessary.
 
-=== Higher Order Fns [[higher-order-fns]]
+=== Higher-order Functions [[higher-order-fns]]
 
 Prefer higher-order functions like `map` to `loop/recur`.
 
-=== Pre Post Conditions [[pre-post-conditions]]
+=== Pre and Post Conditions [[pre-post-conditions]]
 
 Prefer function pre and post conditions to checks inside a function's body.
 
@@ -808,7 +808,7 @@ Use `printf` instead of `(print (format ...))`.
 (println (format "Hello, %s!" name))
 ----
 
-=== Multiple Arity Of Gt And Ls Fns [[multiple-arity-of-gt-and-ls-fns]]
+=== Flexible Comparison Functions [[multiple-arity-of-gt-and-ls-fns]]
 
 When doing comparisons, keep in mind that Clojure's functions `<`,
 `>`, etc. accept a variable number of arguments.
@@ -949,7 +949,7 @@ Prefer the use of the threading macros `->` (thread-first) and `->>`
      (filter even? (range 1 10)))
 ----
 
-=== Else Keyword In Cond [[else-keyword-in-cond]]
+=== Default `cond` Branch [[else-keyword-in-cond]]
 
 Use `:else` as the catch-all test expression in `cond`.
 
@@ -968,7 +968,7 @@ Use `:else` as the catch-all test expression in `cond`.
   true "zero")
 ----
 
-=== Condp [[condp]]
+=== `condp` vs `cond` [[condp]]
 
 Prefer `condp` instead of `cond` when the predicate & expression don't
 change.
@@ -990,7 +990,7 @@ change.
   :dunno)
 ----
 
-=== Case [[case]]
+=== `case` vs `cond/condp` [[case]]
 
 Prefer `case` instead of `cond` or `condp` when test expressions are
 compile-time constants.
@@ -1076,15 +1076,17 @@ Use a `set` as a predicate when appropriate.
                "mary had a little lamb"))
 ----
 
-=== Inc And Dec [[inc-and-dec]]
+=== `inc` and `dec` [[inc-and-dec]]
 
 Use `(inc x)` & `(dec x)` instead of `(+ x 1)` and `(- x 1)`.
 
-=== Pos And Neg [[pos-and-neg]]
+=== `pos?` and `neg?` [[pos-and-neg]]
+
 Use `(pos? x)`, `(neg? x)` & `(zero? x)` instead of `(> x 0)`,
 `(< x 0)` & `(= x 0)`.
 
-=== List Star Instead Of Nested Cons [[list-star-instead-of-nested-cons]]
+=== `list*` vs `cons` [[list-star-instead-of-nested-cons]]
+
 Use `list*` instead of a series of nested `cons` invocations.
 
 [source,clojure]
@@ -1438,6 +1440,7 @@ performance-critical code dealing heavily with primitive types.
 == Types & Records
 
 === Record Constructors [[record-constructors]]
+
 Don't use the interop syntax to
 construct type and record instances.  `deftype` and `defrecord`
 automatically create constructor functions. Use those instead of
@@ -1604,7 +1607,7 @@ throw an exception &mdash; throws an exception of a standard type
 `java.lang.UnsupportedOperationException`,
 `java.lang.IllegalStateException`, `java.io.IOException`).
 
-=== Prefer With Open Over Finally [[prefer-with-open-over-finally]]
+=== Prefer `with-open` Over `finally` [[prefer-with-open-over-finally]]
 
 Favor `with-open` over `finally`.
 
@@ -1832,32 +1835,32 @@ with no note. This usage should be the exception and not the rule.
   (sleep 100)) ; OPTIMIZE
 ----
 
-==== Todo [[todo]]
+==== `TODO` [[todo]]
 
 Use `TODO` to note missing features or functionality that should be
 added at a later date.
 
-==== Fixme [[fixme]]
+==== `FIXME` [[fixme]]
 
 Use `FIXME` to note broken code that needs to be fixed.
 
-==== Optimize [[optimize]]
+==== `OPTIMIZE` [[optimize]]
 
 Use `OPTIMIZE` to note slow or inefficient code that may cause
 performance problems.
 
-==== Hack [[hack]]
+==== `HACK` [[hack]]
 
 Use `HACK` to note "code smells" where questionable coding practices
 were used and should be refactored away.
 
-==== Review [[review]]
+==== `REVIEW` [[review]]
 
 Use `REVIEW` to note anything that should be looked at to confirm it
 is working as intended. For example: `REVIEW: Are we sure this is how the
 client does X currently?`
 
-==== Document Annotations [[document-annotations]]
+==== Document Custom Annotations [[document-annotations]]
 
 Use other custom annotation keywords if it feels appropriate, but be
 sure to document them in your project's `README` or similar.
