@@ -1291,7 +1291,7 @@ unless specified otherwise.
 
 === Underscore For Unused Bindings [[underscore-for-unused-bindings]]
 
-Use `_` for destructuring targets and formal argument names whose
+Use `+_+` for destructuring targets and formal argument names whose
 value will be ignored by the code at hand.
 
 [source,clojure]
@@ -1313,7 +1313,7 @@ value will be ignored by the code at hand.
 
 === Idiomatic Names [[idiomatic-names]]
 
-Follow `clojure.core`'s example for idiomatic names like `pred` and `coll`.
+Follow ``clojure.core``'s example for idiomatic names like `pred` and `coll`.
 
 * in functions:
  ** `f`, `g`, `h` - function input
