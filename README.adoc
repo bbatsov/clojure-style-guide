@@ -1,0 +1,2168 @@
+= The Clojure Style Guide
+:idprefix:
+:idseparator: -
+:sectanchors:
+:sectlinks:
+:toc: preamble
+:toclevels: 1
+ifndef::backend-pdf[]
+:toc-title: pass:[<h2>Table of Contents</h2>]
+endif::[]
+:source-highlighter: rouge
+
+[quote]
+____
+Role models are important.
+
+-- Officer Alex J. Murphy / RoboCop
+____
+
+This Clojure style guide recommends best practices so that real-world Clojure
+programmers can write code that can be maintained by other real-world Clojure
+programmers. A style guide that reflects real-world usage gets used, and a
+style guide that holds to an ideal that has been rejected by the people it is
+supposed to help risks not getting used at all -- no matter how good it is.
+
+The guide is separated into several sections of related rules. I've
+tried to add the rationale behind the rules (if it's omitted, I've
+assumed that it's pretty obvious).
+
+I didn't come up with all the rules out of nowhere; they are mostly
+based on my extensive career as a professional software engineer,
+feedback and suggestions from members of the Clojure community, and
+various highly regarded Clojure programming resources, such as
+http://www.clojurebook.com/["Clojure Programming"]
+and http://joyofclojure.com/["The Joy of Clojure"].
+
+NOTE: The guide is still a work in progress; some sections are missing,
+others are incomplete, some rules are lacking examples, some rules
+don't have examples that illustrate them clearly enough. In due time
+these issues will be addressed -- just keep them in mind for now.
+Help us address those shortcomings and make this guide better together!
+
+Please note, that the Clojure developing community maintains a list of
+https://clojure.org/community/contrib_howto#_coding_guidelines[coding standards for libraries],
+too.
+
+You can generate a PDF copy of this guide using https://asciidoctor.org/docs/asciidoctor-pdf/[AsciiDoctor PDF], and an HTML copy https://asciidoctor.org/docs/convert-documents/#converting-a-document-to-html[with] https://asciidoctor.org/#installation[AsciiDoctor] using the following commands:
+
+[source,shell]
+----
+# Generates README.pdf
+asciidoctor-pdf -a allow-uri-read README.adoc
+
+# Generates README.html
+asciidoctor
+----
+
+Translations of the guide are available in the following languages:
+
+* https://github.com/geekerzp/clojure-style-guide/blob/master/README-zhCN.md[Chinese]
+* https://github.com/totakke/clojure-style-guide/blob/ja/README.md[Japanese]
+* https://github.com/kwakbab/clojure-style-guide/blob/master/README-koKO.md[Korean]
+* https://github.com/theSkilled/clojure-style-guide/blob/pt-BR/README.md[Portuguese] (Under progress)
+* https://github.com/Nondv/clojure-style-guide/blob/master/ru/README.md[Russian]
+* https://github.com/jeko2000/clojure-style-guide/blob/master/README.md[Spanish]
+
+== Source Code Layout & Organization
+
+[quote]
+____
+Nearly everybody is convinced that every style but their own is
+ugly and unreadable. Leave out the "but their own" and they're
+probably right...
+
+-- Jerry Coffin (on indentation)
+____
+
+=== Tabs vs Spaces [[spaces]]
+
+Use *spaces* for indentation. No hard tabs.
+
+=== Body Indentation [[body-indentation]]
+
+Use 2 spaces to indent the bodies of
+forms that have body parameters.  This covers all `def` forms, special
+forms and macros that introduce local bindings (e.g. `loop`, `let`,
+`when-let`) and many macros like `when`, `cond`, `as->`, `cond->`, `case`,
+`with-*`, etc.
+
+[source,clojure]
+----
+;; good
+(when something
+  (something-else))
+
+(with-out-str
+  (println "Hello, ")
+  (println "world!"))
+
+;; bad - four spaces
+(when something
+    (something-else))
+
+;; bad - one space
+(with-out-str
+ (println "Hello, ")
+ (println "world!"))
+----
+
+=== Function Arguments Alignment [[vertically-align-fn-args]]
+
+Vertically align function (macro) arguments spanning multiple lines.
+
+[source,clojure]
+----
+;; good
+(filter even?
+        (range 1 10))
+
+;; bad
+(filter even?
+  (range 1 10))
+----
+
+=== Arguments Indentation [[one-space-indent]]
+
+Use a single space indentation for function (macro) arguments
+when there are no arguments on the same line as the function name.
+
+[source,clojure]
+----
+;; good
+(filter
+ even?
+ (range 1 10))
+
+(or
+ ala
+ bala
+ portokala)
+
+;; bad - two-space indent
+(filter
+  even?
+  (range 1 10))
+
+(or
+  ala
+  bala
+  portokala)
+----
+
+=== Bindings Alignment [[bindings-alignment]]
+
+Vertically align `let` (and `let`-like) bindings.
+
+[source,clojure]
+----
+;; good
+(let [thing1 "some stuff"
+      thing2 "other stuff"]
+  (foo thing1 thing2))
+
+;; bad
+(let [thing1 "some stuff"
+  thing2 "other stuff"]
+  (foo thing1 thing2})
+----
+
+=== Map Keys Alignment [[map-keys-alignment]]
+
+Align vertically map keys.
+
+[source,clojure]
+----
+;; good
+{:thing1 thing1
+ :thing2 thing2}
+
+;; bad
+{:thing1 thing1
+:thing2 thing2}
+
+;; bad
+{:thing1 thing1
+  :thing2 thing2}
+----
+
+=== Optional New Line After Fn Name [[optional-new-line-after-fn-name]]
+
+Optionally omit the new line between the function name and argument
+vector for `defn` when there is no docstring.
+
+[source,clojure]
+----
+;; good
+(defn foo
+  [x]
+  (bar x))
+
+;; good
+(defn foo [x]
+  (bar x))
+
+;; bad
+(defn foo
+  [x] (bar x))
+----
+
+=== Multimethod Dispatch Val Placement [[multimethod-dispatch-val-placement]]
+
+Place the `dispatch-val` of a multimethod on the same line as the
+function name.
+
+[source,clojure]
+----
+;; good
+(defmethod foo :bar [x] (baz x))
+
+(defmethod foo :bar
+  [x]
+  (baz x))
+
+;; bad
+(defmethod foo
+  :bar
+  [x]
+  (baz x))
+
+(defmethod foo
+  :bar [x]
+  (baz x))
+----
+
+=== Oneline Short Fn [[oneline-short-fn]]
+
+Optionally omit the new line between the argument vector and a short
+function body.
+
+[source,clojure]
+----
+;; good
+(defn foo [x]
+  (bar x))
+
+;; good for a small function body
+(defn foo [x] (bar x))
+
+;; good for multi-arity functions
+(defn foo
+  ([x] (bar x))
+  ([x y]
+   (if (predicate? x)
+     (bar x)
+     (baz x))))
+
+;; bad
+(defn foo
+  [x] (if (predicate? x)
+        (bar x)
+        (baz x)))
+----
+
+=== Multiple Arity Indentation [[multiple-arity-indentation]]
+
+Indent each arity form of a function definition vertically aligned with its
+parameters.
+
+[source,clojure]
+----
+;; good
+(defn foo
+  "I have two arities."
+  ([x]
+   (foo x 1))
+  ([x y]
+   (+ x y)))
+
+;; bad - extra indentation
+(defn foo
+  "I have two arities."
+  ([x]
+    (foo x 1))
+  ([x y]
+    (+ x y)))
+----
+
+=== Multiple Arity Order [[multiple-arity-order]]
+
+Sort the arities of a function
+from fewest to most arguments. The common case of multi-arity
+functions is that some K arguments fully specifies the function's
+behavior, and that arities N < K partially apply the K arity, and
+arities N > K provide a fold of the K arity over varargs.
+
+[source,clojure]
+----
+;; good - it's easy to scan for the nth arity
+(defn foo
+  "I have two arities."
+  ([x]
+   (foo x 1))
+  ([x y]
+   (+ x y)))
+
+;; okay - the other arities are applications of the two-arity
+(defn foo
+  "I have two arities."
+  ([x y]
+   (+ x y))
+  ([x]
+   (foo x 1))
+  ([x y z & more]
+   (reduce foo (foo x (foo y z)) more)))
+
+;; bad - unordered for no apparent reason
+(defn foo
+  ([x] 1)
+  ([x y z] (foo x (foo y z)))
+  ([x y] (+ x y))
+  ([w x y z & more] (reduce foo (foo w (foo x (foo y z))) more)))
+----
+
+=== Crlf [[crlf]]
+
+Use Unix-style line endings.footnote:[*BSD/Solaris/Linux/OSX users are
+covered by default, Windows users have to be extra careful.]
+
+[TIP]
+====
+If you're using Git you might want to add the following
+configuration setting to protect your project from Windows line
+endings creeping in:
+
+[source,shell]
+----
+$ git config --global core.autocrlf true
+----
+====
+
+=== Bracket Spacing [[bracket-spacing]]
+
+If any text precedes an opening bracket(`(`, `{` and
+`[`) or follows a closing bracket(`)`, `}` and `]`), separate that
+text from that bracket with a space. Conversely, leave no space after
+an opening bracket and before following text, or after preceding text
+and before a closing bracket.
+
+[source,clojure]
+----
+;; good
+(foo (bar baz) quux)
+
+;; bad
+(foo(bar baz)quux)
+(foo ( bar baz ) quux)
+----
+
+=== No Commas For Seq Literals [[no-commas-for-seq-literals]]
+
+[quote]
+____
+Syntactic sugar causes semicolon cancer.
+
+-- Alan Perlis
+____
+
+Don't use commas between the elements of sequential collection literals.
+
+[source,clojure]
+----
+;; good
+[1 2 3]
+(1 2 3)
+
+;; bad
+[1, 2, 3]
+(1, 2, 3)
+----
+
+=== Opt Commas In Map Literals [[opt-commas-in-map-literals]]
+
+Consider enhancing the readability of map literals via judicious use
+of commas and line breaks.
+
+[source,clojure]
+----
+;; good
+{:name "Bruce Wayne" :alter-ego "Batman"}
+
+;; good and arguably a bit more readable
+{:name "Bruce Wayne"
+ :alter-ego "Batman"}
+
+;; good and arguably more compact
+{:name "Bruce Wayne", :alter-ego "Batman"}
+----
+
+=== Gather Trailing Parens [[gather-trailing-parens]]
+
+Place all trailing parentheses on a single line instead of distinct lines.
+
+[source,clojure]
+----
+;; good; single line
+(when something
+  (something-else))
+
+;; bad; distinct lines
+(when something
+  (something-else)
+)
+----
+
+=== Empty Lines Between Top Level Forms [[empty-lines-between-top-level-forms]]
+
+Use a single empty line between top-level forms.
+
+[source,clojure]
+----
+;; good
+(def x ...)
+
+(defn foo ...)
+
+;; bad
+(def x ...)
+(defn foo ...)
+
+;; bad
+(def x ...)
+
+
+(defn foo ...)
+----
+
+An exception to the rule is the grouping of related ``def``s together.
+
+[source,clojure]
+----
+;; good
+(def min-rows 10)
+(def max-rows 20)
+(def min-cols 15)
+(def max-cols 30)
+----
+
+=== No Blank Lines Within Def Forms [[no-blank-lines-within-def-forms]]
+
+Do not place blank lines in the middle of a function or
+macro definition.  An exception can be made to indicate grouping of
+pairwise constructs as found in e.g. `let` and `cond`.
+
+[#80-character-limits]
+=== Line Length [[line-length]]
+
+Where feasible, avoid making lines longer than 80 characters.
+
+=== No Trailing Whitespace [[no-trailing-whitespace]]
+
+Avoid trailing whitespace.
+
+=== One File Per Namespace [[one-file-per-namespace]]
+
+Use one file per namespace.
+
+=== Comprehensive Ns Declaration [[comprehensive-ns-declaration]]
+
+Start every namespace with a comprehensive `ns` form, comprised of
+``refer``s, ``require``s, and ``import``s, conventionally in that order.
+
+[source,clojure]
+----
+(ns examples.ns
+  (:refer-clojure :exclude [next replace remove])
+  (:require [clojure.string :as s :refer [blank?]])
+  (:import java.util.Date))
+----
+
+=== Line Break Ns Declaration [[line-break-ns-declaration]]
+
+When there are multiple dependencies, you may want to start them on
+a new line, then insert line breaks after each one for easier sorting,
+readability if it's a long line, and to reduce diffing when only there
+is only a change related to one dependency.
+
+[source,clojure]
+----
+;; better
+(ns examples.ns
+  (:require
+   [clojure.string :as s :refer [blank?]]
+   [clojure.set :as set]
+   [clojure.java.shell :as sh])
+  (:import
+   java.util.Date
+   java.text.SimpleDateFormat
+   [java.util.concurrent Executors
+                         LinkedBlockingQueue]))
+
+;; good
+(ns examples.ns
+  (:require [clojure.string :as s :refer [blank?]]
+            [clojure.set :as set]
+            [clojure.java.shell :as sh])
+  (:import java.util.Date
+           java.text.SimpleDateFormat
+           [java.util.concurrent Executors
+                                 LinkedBlockingQueue]))
+
+;; bad
+(ns examples.ns
+  (:require [clojure.string :as s :refer [blank?]] [clojure.set :as set] [clojure.java.shell :as sh])
+  (:import java.util.Date java.text.SimpleDateFormat [java.util.concurrent Executors LinkedBlockingQueue]))
+----
+
+=== Prefer Require Over Use [[prefer-require-over-use]]
+
+In the `ns` form prefer `:require :as` over `:require :refer` over `:require
+:refer :all`.  Prefer `:require` over `:use`; the latter form should be
+considered deprecated for new code.
+
+[source,clojure]
+----
+;; good
+(ns examples.ns
+  (:require [clojure.zip :as zip]))
+
+;; good
+(ns examples.ns
+  (:require [clojure.zip :refer [lefts rights]]))
+
+;; acceptable as warranted
+(ns examples.ns
+  (:require [clojure.zip :refer :all]))
+
+;; bad
+(ns examples.ns
+  (:use clojure.zip))
+----
+
+=== No Single Segment Namespaces [[no-single-segment-namespaces]]
+
+Avoid single-segment namespaces.
+
+[source,clojure]
+----
+;; good
+(ns example.ns)
+
+;; bad
+(ns example)
+----
+
+=== Namespace Segments Limit [[namespace-segments-limit]]
+
+Avoid the use of overly long namespaces (i.e., more than 5 segments).
+
+=== Function Length [[function-length]]
+
+Avoid functions longer than 10 LOC (lines of code). Ideally, most
+functions will be shorter than 5 LOC.
+
+=== Function Positional Parameters Limit [[function-positional-parameter-limit]]
+
+Avoid parameter lists with more than three or four positional parameters.
+
+=== Forward References [[forward-references]]
+
+Avoid forward references.  They are occasionally necessary, but such occasions
+are rare in practice.
+
+== Syntax
+
+=== Dynamic Namespace Manipulation [[ns-fns-only-in-repl]]
+
+Avoid the use of namespace-manipulating functions like `require` and
+`refer`. They are entirely unnecessary outside of a REPL
+environment.
+
+=== Declare [[declare]]
+
+Use `declare` to enable forward references when forward references are
+necessary.
+
+=== Higher-order Functions [[higher-order-fns]]
+
+Prefer higher-order functions like `map` to `loop/recur`.
+
+=== Pre and Post Conditions [[pre-post-conditions]]
+
+Prefer function pre and post conditions to checks inside a function's body.
+
+[source,clojure]
+----
+;; good
+(defn foo [x]
+  {:pre [(pos? x)]}
+  (bar x))
+
+;; bad
+(defn foo [x]
+  (if (pos? x)
+    (bar x)
+    (throw (IllegalArgumentException. "x must be a positive number!")))
+----
+
+=== Vars Inside Functions [[dont-def-vars-inside-fns]]
+
+Don't define vars inside functions.
+
+[source,clojure]
+----
+;; very bad
+(defn foo []
+  (def x 5)
+  ...)
+----
+
+=== Shadowing `clojure.core` Names [[dont-shadow-clojure-core]]
+
+Don't shadow `clojure.core` names with local bindings.
+
+[source,clojure]
+----
+;; bad - you're forced to use clojure.core/map fully qualified inside
+(defn foo [map]
+  ...)
+----
+
+=== Alter Var Binding [[alter-var]]
+
+Use `alter-var-root` instead of `def` to change the value of a var.
+
+[source,clojure]
+----
+;; good
+(def thing 1) ; value of thing is now 1
+; do some stuff with thing
+(alter-var-root #'thing (constantly nil)) ; value of thing is now nil
+
+;; bad
+(def thing 1)
+; do some stuff with thing
+(def thing nil)
+; value of thing is now nil
+----
+
+=== Nil Punning [[nil-punning]]
+
+Use `seq` as a terminating condition to test whether a sequence is
+empty (this technique is sometimes called _nil punning_).
+
+[source,clojure]
+----
+;; good
+(defn print-seq [s]
+  (when (seq s)
+    (prn (first s))
+    (recur (rest s))))
+
+;; bad
+(defn print-seq [s]
+  (when-not (empty? s)
+    (prn (first s))
+    (recur (rest s))))
+----
+
+=== Converting Sequences to Vectors [[to-vector]]
+
+Prefer `vec` over `into` when you need to convert a sequence into a vector.
+
+[source,clojure]
+----
+;; good
+(vec some-seq)
+
+;; bad
+(into [] some-seq)
+----
+
+=== `when` vs `if` [[when-instead-of-single-branch-if]]
+
+Use `when` instead of `(if ... (do ...))`.
+
+[source,clojure]
+----
+;; good
+(when pred
+  (foo)
+  (bar))
+
+;; bad
+(if pred
+  (do
+    (foo)
+    (bar)))
+----
+
+=== `if-let` [[if-let]]
+
+Use `if-let` instead of `let` + `if`.
+
+[source,clojure]
+----
+;; good
+(if-let [result (foo x)]
+  (something-with result)
+  (something-else))
+
+;; bad
+(let [result (foo x)]
+  (if result
+    (something-with result)
+    (something-else)))
+----
+
+=== `when-let` [[when-let]]
+
+Use `when-let` instead of `let` + `when`.
+
+[source,clojure]
+----
+;; good
+(when-let [result (foo x)]
+  (do-something-with result)
+  (do-something-more-with result))
+
+;; bad
+(let [result (foo x)]
+  (when result
+    (do-something-with result)
+    (do-something-more-with result)))
+----
+
+=== `if-not` [[if-not]]
+
+Use `if-not` instead of `(if (not ...) ...)`.
+
+[source,clojure]
+----
+;; good
+(if-not pred
+  (foo))
+
+;; bad
+(if (not pred)
+  (foo))
+----
+
+=== `when-not` [[when-not]]
+
+Use `when-not` instead of `(when (not ...) ...)`.
+
+[source,clojure]
+----
+;; good
+(when-not pred
+  (foo)
+  (bar))
+
+;; bad
+(when (not pred)
+  (foo)
+  (bar))
+----
+
+=== `when-not` vs `if-not` [[when-not-instead-of-single-branch-if-not]]
+
+Use `when-not` instead of `(if-not ... (do ...))`.
+
+[source,clojure]
+----
+;; good
+(when-not pred
+  (foo)
+  (bar))
+
+;; bad
+(if-not pred
+  (do
+    (foo)
+    (bar)))
+----
+
+=== `not=` [[not-equal]]
+
+Use `not=` instead of `(not (= ...))`.
+
+[source,clojure]
+----
+;; good
+(not= foo bar)
+
+;; bad
+(not (= foo bar))
+----
+
+=== `printf` [[printf]]
+
+Use `printf` instead of `(print (format ...))`.
+
+[source,clojure]
+----
+;; good
+(printf "Hello, %s!\n" name)
+
+;; ok
+(println (format "Hello, %s!" name))
+----
+
+=== Flexible Comparison Functions [[multiple-arity-of-gt-and-ls-fns]]
+
+When doing comparisons, keep in mind that Clojure's functions `<`,
+`>`, etc. accept a variable number of arguments.
+
+[source,clojure]
+----
+;; good
+(< 5 x 10)
+
+;; bad
+(and (> x 5) (< x 10))
+----
+
+=== Single Param Fn Literal [[single-param-fn-literal]]
+
+Prefer `%` over `%1` in function literals with only one parameter.
+
+[source,clojure]
+----
+;; good
+#(Math/round %)
+
+;; bad
+#(Math/round %1)
+----
+
+=== Multiple Params Fn Literal [[multiple-params-fn-literal]]
+
+Prefer `%1` over `%` in function literals with more than one parameter.
+
+[source,clojure]
+----
+;; good
+#(Math/pow %1 %2)
+
+;; bad
+#(Math/pow % %2)
+----
+
+=== No Useless Anonymous Fns [[no-useless-anonymous-fns]]
+
+Don't wrap functions in anonymous functions when you don't need to.
+
+[source,clojure]
+----
+;; good
+(filter even? (range 1 10))
+
+;; bad
+(filter #(even? %) (range 1 10))
+----
+
+=== No Multiple Forms Fn Literals [[no-multiple-forms-fn-literals]]
+
+Don't use function literals if the function body will consist of
+more than one form.
+
+[source,clojure]
+----
+;; good
+(fn [x]
+  (println x)
+  (* x 2))
+
+;; bad (you need an explicit do form)
+#(do (println %)
+     (* % 2))
+----
+
+=== `complement` [[complement]]
+
+Favor the use of `complement` versus the use of an anonymous function.
+
+[source,clojure]
+----
+;; good
+(filter (complement some-pred?) coll)
+
+;; bad
+(filter #(not (some-pred? %)) coll)
+----
+
+This rule should obviously be ignored if the complementing predicate
+  exists in the form of a separate function (e.g. `even?` and `odd?`).
+
+=== `comp` [[comp]]
+
+Leverage `comp` when doing so yields simpler code.
+
+[source,clojure]
+----
+;; Assuming `(:require [clojure.string :as str])`...
+
+;; good
+(map #(str/capitalize (str/trim %)) ["top " " test "])
+
+;; better
+(map (comp str/capitalize str/trim) ["top " " test "])
+----
+
+=== `partial` [[partial]]
+
+Leverage `partial` when doing so yields simpler code.
+
+[source,clojure]
+----
+;; good
+(map #(+ 5 %) (range 1 10))
+
+;; (arguably) better
+(map (partial + 5) (range 1 10))
+----
+
+=== Threading Macros [[threading-macros]]
+
+Prefer the use of the threading macros `->` (thread-first) and `->>`
+(thread-last) to heavy form nesting.
+
+[source,clojure]
+----
+;; good
+(-> [1 2 3]
+    reverse
+    (conj 4)
+    prn)
+
+;; not as good
+(prn (conj (reverse [1 2 3])
+           4))
+
+;; good
+(->> (range 1 10)
+     (filter even?)
+     (map (partial * 2)))
+
+;; not as good
+(map (partial * 2)
+     (filter even? (range 1 10)))
+----
+
+=== Default `cond` Branch [[else-keyword-in-cond]]
+
+Use `:else` as the catch-all test expression in `cond`.
+
+[source,clojure]
+----
+;; good
+(cond
+  (neg? n) "negative"
+  (pos? n) "positive"
+  :else "zero")
+
+;; bad
+(cond
+  (neg? n) "negative"
+  (pos? n) "positive"
+  true "zero")
+----
+
+=== `condp` vs `cond` [[condp]]
+
+Prefer `condp` instead of `cond` when the predicate & expression don't
+change.
+
+[source,clojure]
+----
+;; good
+(cond
+  (= x 10) :ten
+  (= x 20) :twenty
+  (= x 30) :thirty
+  :else :dunno)
+
+;; much better
+(condp = x
+  10 :ten
+  20 :twenty
+  30 :thirty
+  :dunno)
+----
+
+=== `case` vs `cond/condp` [[case]]
+
+Prefer `case` instead of `cond` or `condp` when test expressions are
+compile-time constants.
+
+[source,clojure]
+----
+;; good
+(cond
+  (= x 10) :ten
+  (= x 20) :twenty
+  (= x 30) :forty
+  :else :dunno)
+
+;; better
+(condp = x
+  10 :ten
+  20 :twenty
+  30 :forty
+  :dunno)
+
+;; best
+(case x
+  10 :ten
+  20 :twenty
+  30 :forty
+  :dunno)
+----
+
+=== Shor Forms In Cond [[shor-forms-in-cond]]
+
+Use short forms in `cond` and related.  If not possible give visual
+hints for the pairwise grouping with comments or empty lines.
+
+[source,clojure]
+----
+;; good
+(cond
+  (test1) (action1)
+  (test2) (action2)
+  :else   (default-action))
+
+;; ok-ish
+(cond
+  ;; test case 1
+  (test1)
+  (long-function-name-which-requires-a-new-line
+    (complicated-sub-form
+      (-> 'which-spans multiple-lines)))
+
+  ;; test case 2
+  (test2)
+  (another-very-long-function-name
+    (yet-another-sub-form
+      (-> 'which-spans multiple-lines)))
+
+  :else
+  (the-fall-through-default-case
+    (which-also-spans 'multiple
+                      'lines)))
+----
+
+=== Set As Predicate [[set-as-predicate]]
+
+Use a `set` as a predicate when appropriate.
+
+[source,clojure]
+----
+;; good
+(remove #{1} [0 1 2 3 4 5])
+
+;; bad
+(remove #(= % 1) [0 1 2 3 4 5])
+
+;; good
+(count (filter #{\a \e \i \o \u} "mary had a little lamb"))
+
+;; bad
+(count (filter #(or (= % \a)
+                    (= % \e)
+                    (= % \i)
+                    (= % \o)
+                    (= % \u))
+               "mary had a little lamb"))
+----
+
+=== `inc` and `dec` [[inc-and-dec]]
+
+Use `(inc x)` & `(dec x)` instead of `(+ x 1)` and `(- x 1)`.
+
+=== `pos?` and `neg?` [[pos-and-neg]]
+
+Use `(pos? x)`, `(neg? x)` & `(zero? x)` instead of `(> x 0)`,
+`(< x 0)` & `(= x 0)`.
+
+=== `list*` vs `cons` [[list-star-instead-of-nested-cons]]
+
+Use `list*` instead of a series of nested `cons` invocations.
+
+[source,clojure]
+----
+;; good
+(list* 1 2 3 [4 5])
+
+;; bad
+(cons 1 (cons 2 (cons 3 [4 5])))
+----
+
+=== Sugared Java Interop [[sugared-java-interop]]
+
+Use the sugared Java interop forms.
+
+[source,clojure]
+----
+;;; object creation
+;; good
+(java.util.ArrayList. 100)
+
+;; bad
+(new java.util.ArrayList 100)
+
+;;; static method invocation
+;; good
+(Math/pow 2 10)
+
+;; bad
+(. Math pow 2 10)
+
+;;; instance method invocation
+;; good
+(.substring "hello" 1 3)
+
+;; bad
+(. "hello" substring 1 3)
+
+;;; static field access
+;; good
+Integer/MAX_VALUE
+
+;; bad
+(. Integer MAX_VALUE)
+
+;;; instance field access
+;; good
+(.someField some-object)
+
+;; bad
+(. some-object someField)
+----
+
+=== Compact Metadata Notation For True Flags [[compact-metadata-notation-for-true-flags]]
+
+Use the compact metadata notation for metadata that contains only
+slots whose keys are keywords and whose value is boolean `true`.
+
+[source,clojure]
+----
+;; good
+(def ^:private a 5)
+
+;; bad
+(def ^{:private true} a 5)
+----
+
+=== Private [[private]]
+
+Denote private parts of your code.
+
+[source,clojure]
+----
+;; good
+(defn- private-fun [] ...)
+
+(def ^:private private-var ...)
+
+;; bad
+(defn private-fun [] ...) ; not private at all
+
+(defn ^:private private-fun [] ...) ; overly verbose
+
+(def private-var ...) ; not private at all
+----
+
+=== Access Private Var [[access-private-var]]
+
+To access a private var (e.g. for testing), use the `@#'some.ns/var` form.
+
+=== Attach Metadata Carefully [[attach-metadata-carefully]]
+
+Be careful regarding what exactly do you attach metadata to.
+
+[source,clojure]
+----
+;; we attach the metadata to the var referenced by `a`
+(def ^:private a {})
+(meta a) ;=> nil
+(meta #'a) ;=> {:private true}
+
+;; we attach the metadata to the empty hash-map value
+(def a ^:private {})
+(meta a) ;=> {:private true}
+(meta #'a) ;=> nil
+----
+
+== Naming
+
+[quote]
+____
+The only real difficulties in programming are cache invalidation and
+naming things.
+
+-- Phil Karlton
+____
+
+=== Ns Naming Schemas [[ns-naming-schemas]]
+
+When naming namespaces favor the following two schemas:
+
+* `project.module`
+* `organization.project.module`
+
+=== Lisp Case Ns [[lisp-case-ns]]
+
+Use `lisp-case` in composite namespace segments(e.g. `bruce.project-euler`)
+
+=== Lisp Case [[lisp-case]]
+
+Use `lisp-case` for function and variable names.
+
+[source,clojure]
+----
+;; good
+(def some-var ...)
+(defn some-fun ...)
+
+;; bad
+(def someVar ...)
+(defn somefun ...)
+(def some_fun ...)
+----
+
+=== Camelcase For Protocols Records Structs And Types [[CamelCase-for-protocols-records-structs-and-types]]
+
+Use `CamelCase` for protocols, records, structs, and types. (Keep
+acronyms like HTTP, RFC, XML uppercase.)
+
+=== Pred With Question Mark [[pred-with-question-mark]]
+
+The names of predicate methods (methods that return a boolean value)
+should end in a question mark
+(e.g., `even?`).
+
+[source,clojure]
+----
+;; good
+(defn palindrome? ...)
+
+;; bad
+(defn palindrome-p ...) ; Common Lisp style
+(defn is-palindrome ...) ; Java style
+----
+
+=== Changing State Fns With Exclamation Mark [[changing-state-fns-with-exclamation-mark]]
+
+The names of functions/macros that are not safe in STM transactions
+should end with an exclamation mark (e.g. `reset!`).
+
+=== Arrow Instead Of To [[arrow-instead-of-to]]
+
+Use `->` instead of `to` in the names of conversion functions.
+
+[source,clojure]
+----
+;; good
+(defn f->c ...)
+
+;; not so good
+(defn f-to-c ...)
+----
+
+=== Earmuffs For Dynamic Vars [[earmuffs-for-dynamic-vars]]
+
+Use `*earmuffs*` for things intended for rebinding (ie. are dynamic).
+
+[source,clojure]
+----
+;; good
+(def ^:dynamic *a* 10)
+
+;; bad
+(def ^:dynamic a 10)
+----
+
+=== Don't Flag Constants [[dont-flag-constants]]
+
+Don't use a special notation for constants; everything is assumed a constant
+unless specified otherwise.
+
+=== Underscore For Unused Bindings [[underscore-for-unused-bindings]]
+
+Use `_` for destructuring targets and formal argument names whose
+value will be ignored by the code at hand.
+
+[source,clojure]
+----
+;; good
+(let [[a b _ c] [1 2 3 4]]
+  (println a b c))
+
+(dotimes [_ 3]
+  (println "Hello!"))
+
+;; bad
+(let [[a b c d] [1 2 3 4]]
+  (println a b d))
+
+(dotimes [i 3]
+  (println "Hello!"))
+----
+
+=== Idiomatic Names [[idiomatic-names]]
+
+Follow `clojure.core`'s example for idiomatic names like `pred` and `coll`.
+
+* in functions:
+ ** `f`, `g`, `h` - function input
+ ** `n` - integer input usually a size
+ ** `index`, `i` - integer index
+ ** `x`, `y` - numbers
+ ** `xs` - sequence
+ ** `m` - map
+ ** `s` - string input
+ ** `re` - regular expression
+ ** `coll` - a collection
+ ** `pred` - a predicate closure
+ ** `& more` - variadic input
+ ** `xf` - xform, a transducer
+* in macros:
+ ** `expr` - an expression
+ ** `body` - a macro body
+ ** `binding` - a macro binding vector
+
+== Data Structures
+
+[quote]
+____
+It is better to have 100 functions operate on one data structure
+than to have 10 functions operate on 10 data structures.
+
+-- Alan J. Perlis
+____
+
+=== Avoid Lists [[avoid-lists]]
+
+Avoid the use of lists for generic data storage (unless a list is
+exactly what you need).
+
+=== Keywords For Hash Keys [[keywords-for-hash-keys]]
+
+Prefer the use of keywords for hash keys.
+
+[source,clojure]
+----
+;; good
+{:name "Bruce" :age 30}
+
+;; bad
+{"name" "Bruce" "age" 30}
+----
+
+=== Literal Col Syntax [[literal-col-syntax]]
+
+Prefer the use of the literal collection syntax where
+applicable. However, when defining sets, only use literal syntax
+when the values are compile-time constants.
+
+[source,clojure]
+----
+;; good
+[1 2 3]
+#{1 2 3}
+(hash-set (func1) (func2)) ; values determined at runtime
+
+;; bad
+(vector 1 2 3)
+(hash-set 1 2 3)
+#{(func1) (func2)} ; will throw runtime exception if (func1) = (func2)
+----
+
+=== Avoid Index Based Coll Access [[avoid-index-based-coll-access]]
+
+Avoid accessing collection members by index whenever possible.
+
+=== Keywords As Fn To Get Map Values [[keywords-as-fn-to-get-map-values]]
+
+Prefer the use of keywords as functions for retrieving values from
+maps, where applicable.
+
+[source,clojure]
+----
+(def m {:name "Bruce" :age 30})
+
+;; good
+(:name m)
+
+;; more verbose than necessary
+(get m :name)
+
+;; bad - susceptible to NullPointerException
+(m :name)
+----
+
+=== Colls As Fns [[colls-as-fns]]
+
+Leverage the fact that most collections are functions of their elements.
+
+[source,clojure]
+----
+;; good
+(filter #{\a \e \o \i \u} "this is a test")
+
+;; bad - too ugly to share
+----
+
+=== Keywords As Fns [[keywords-as-fns]]
+
+Leverage the fact that keywords can be used as functions of a collection.
+
+[source,clojure]
+----
+((juxt :a :b) {:a "ala" :b "bala"})
+----
+
+=== Avoid Transient Colls [[avoid-transient-colls]]
+
+Avoid the use of transient collections, except for
+performance-critical portions of the code.
+
+=== Avoid Java Colls [[avoid-java-colls]]
+
+Avoid the use of Java collections.
+
+=== Avoid Java Arrays [[avoid-java-arrays]]
+
+Avoid the use of Java arrays, except for interop scenarios and
+performance-critical code dealing heavily with primitive types.
+
+== Types & Records
+
+=== Record Constructors [[record-constructors]]
+
+Don't use the interop syntax to
+construct type and record instances.  `deftype` and `defrecord`
+automatically create constructor functions. Use those instead of
+the interop syntax, as they make it clear that you're dealing with a
+`deftype` or a `defrecord`. See https://stuartsierra.com/2015/05/17/clojure-record-constructors[this
+article]
+for more details.
+
+[source,clojure]
+----
+(defrecord Foo [a b])
+(deftype Bar [a b])
+
+;; good
+(->Foo 1 2)
+(map->Foo {:b 4 :a 3})
+(->Bar 1 2)
+
+;; bad
+(Foo. 1 2)
+(Bar. 1 2)
+----
+
+Note that `deftype` doesn't define the `map->Type`
+  constructor. It's available only for records.
+
+=== Custom Record Constructors [[custom-record-constructors]]
+
+Add custom type/record constructors when needed (e.g. to validate
+properties on record creation). See https://stuartsierra.com/2015/05/17/clojure-record-constructors[this
+article]
+for more details.
+
+[source,clojure]
+----
+(defrecord Customer [id name phone email])
+
+(defn make-customer
+  "Creates a new customer record."
+  [{:keys [name phone email]}]
+  {:pre [(string? name)
+         (valid-phone? phone)
+         (valid-email? email)]}
+  (->Customer (next-id) name phone email))
+----
+
+Feel free to adopt whatever naming convention or structure you'd like for such custom constructors.
+
+=== Custom Record Constructors Naming [[custom-record-constructors-naming]]
+
+Don't override the auto-generated type/record constructor functions.
+People expect them to have a certain behaviour and you changing this behaviour
+violates the principle of the least surprise . See https://stuartsierra.com/2015/05/17/clojure-record-constructors[this
+article]
+for more details.
+
+[source,clojure]
+----
+(defrecord Foo [num])
+
+;; good
+(defn make-foo
+  [num]
+  {:pre [(pos? num)]}
+  (->Foo num))
+
+;; bad
+(defn ->Foo
+  [num]
+  {:pre [(pos? num)]}
+  (Foo. num))
+----
+
+== Mutation
+
+=== Refs [[Refs]]
+
+==== Refs Io Macro [[refs-io-macro]]
+
+Consider wrapping all I/O calls with the `io!` macro to avoid nasty
+surprises if you accidentally end up calling such code in a
+transaction.
+
+==== Refs Avoid Ref Set [[refs-avoid-ref-set]]
+
+Avoid the use of `ref-set` whenever possible.
+
+[source,clojure]
+----
+(def r (ref 0))
+
+;; good
+(dosync (alter r + 5))
+
+;; bad
+(dosync (ref-set r 5))
+----
+
+==== Refs Small Transactions [[refs-small-transactions]]
+
+Try to keep the size of transactions (the amount of work encapsulated in them)
+as small as possible.
+
+==== Refs Avoid Short Long Transactions With Same Ref [[refs-avoid-short-long-transactions-with-same-ref]]
+
+Avoid having both short- and long-running transactions interacting
+with the same Ref.
+
+=== Agents [[Agents]]
+
+==== Agents Send [[agents-send]]
+
+Use `send` only for actions that are CPU bound and don't block on I/O
+or other threads.
+
+==== Agents Send Off [[agents-send-off]]
+
+Use `send-off` for actions that might block, sleep, or otherwise tie
+up the thread.
+
+=== Atoms [[Atoms]]
+
+==== Atoms No Update Within Transactions [[atoms-no-update-within-transactions]]
+
+Avoid atom updates inside STM transactions.
+
+==== Atoms Prefer Swap Over Reset [[atoms-prefer-swap-over-reset]]
+
+Try to use `swap!` rather than `reset!`, where possible.
+
+[source,clojure]
+----
+(def a (atom 0))
+
+;; good
+(swap! a + 5)
+
+;; not as good
+(reset! a 5)
+----
+
+== Strings
+
+=== Prefer Clojure String Over Interop [[prefer-clojure-string-over-interop]]
+
+Prefer string manipulation functions from `clojure.string` over Java interop or rolling your own.
+
+[source,clojure]
+----
+;; good
+(clojure.string/upper-case "bruce")
+
+;; bad
+(.toUpperCase "bruce")
+----
+
+== Exceptions
+
+=== Reuse Existing Exception Types [[reuse-existing-exception-types]]
+
+Reuse existing exception types. Idiomatic Clojure code -- when it does
+throw an exception -- throws an exception of a standard type
+(e.g. `java.lang.IllegalArgumentException`,
+`java.lang.UnsupportedOperationException`,
+`java.lang.IllegalStateException`, `java.io.IOException`).
+
+=== Prefer `with-open` Over `finally` [[prefer-with-open-over-finally]]
+
+Favor `with-open` over `finally`.
+
+== Macros
+
+=== Don't Write Macro If Fn Will Do [[dont-write-macro-if-fn-will-do]]
+
+Don't write a macro if a function will do.
+
+=== Write Macro Usage Before Writing The Macro [[write-macro-usage-before-writing-the-macro]]
+
+Create an example of a macro usage first and the macro afterwards.
+
+=== Break Complicated Macros [[break-complicated-macros]]
+
+Break complicated macros into smaller functions whenever possible.
+
+=== Macros As Syntactic Sugar [[macros-as-syntactic-sugar]]
+
+A macro should usually just provide syntactic sugar and the core of
+the macro should be a plain function. Doing so will improve
+composability.
+
+=== Syntax Quoted Forms [[syntax-quoted-forms]]
+
+Prefer syntax-quoted forms over building lists manually.
+
+== Comments
+
+[quote]
+____
+Good code is its own best documentation. As you're about to add a
+comment, ask yourself, "How can I improve the code so that this
+comment isn't needed?" Improve the code and then document it to make
+it even clearer.
+
+-- Steve McConnell
+____
+
+=== Self Documenting Code [[self-documenting-code]]
+
+Endeavor to make your code as self-documenting as possible.
+
+=== Four Semicolons For Heading Comments [[four-semicolons-for-heading-comments]]
+
+Write heading comments with at least four semicolons.
+
+=== Three Semicolons For Top Level Comments [[three-semicolons-for-top-level-comments]]
+
+Write top-level comments with three semicolons.
+
+=== Two Semicolons For Code Fragment [[two-semicolons-for-code-fragment]]
+
+Write comments on a particular fragment of code before that fragment
+and aligned with it, using two semicolons.
+
+=== One Semicolon For Margin Comments [[one-semicolon-for-margin-comments]]
+
+Write margin comments with one semicolon.
+
+=== Semicolon Space [[semicolon-space]]
+
+Always have at least one space between the semicolon
+and the text that follows it.
+
+[source,clojure]
+----
+;;;; Frob Grovel
+
+;;; This section of code has some important implications:
+;;;   1. Foo.
+;;;   2. Bar.
+;;;   3. Baz.
+
+(defn fnord [zarquon]
+  ;; If zob, then veeblefitz.
+  (quux zot
+        mumble             ; Zibblefrotz.
+        frotz))
+----
+
+=== English Syntax [[english-syntax]]
+
+Comments longer than a word begin with a capital letter and use
+punctuation. Separate sentences with
+http://en.wikipedia.org/wiki/Sentence_spacing[one space].
+
+=== No Superfluous Comments [[no-superfluous-comments]]
+
+Avoid superfluous comments.
+
+[source,clojure]
+----
+;; bad
+(inc counter) ; increments counter by one
+----
+
+=== Comment Upkeep [[comment-upkeep]]
+
+Keep existing comments up-to-date. An outdated comment is worse than no comment
+at all.
+
+=== Dash Underscore Reader Macro [[dash-underscore-reader-macro]]
+
+Prefer the use of the `#_` reader macro over a regular comment when
+you need to comment out a particular form.
+
+[source,clojure]
+----
+;; good
+(+ foo #_(bar x) delta)
+
+;; bad
+(+ foo
+   ;; (bar x)
+   delta)
+----
+
+=== Refactor Don't Comment [[refactor-dont-comment]]
+
+[quote]
+____
+Good code is like a good joke - it needs no explanation.
+
+-- Russ Olsen
+____
+
+Avoid writing comments to explain bad code. Refactor the code to
+make it self-explanatory. ("Do, or do not. There is no try." --Yoda)
+
+=== Comment Annotations
+
+==== Annotate Above [[annotate-above]]
+
+Annotations should usually be written on the line immediately above
+the relevant code.
+
+[source,clojure]
+----
+;; good
+(defn some-fun
+  []
+  ;; FIXME: Replace baz with the newer bar.
+  (baz))
+
+;; bad
+;; FIXME: Replace baz with the newer bar.
+(defn some-fun
+  []
+  (baz))
+----
+
+==== Annotate Keywords [[annotate-keywords]]
+
+The annotation keyword is followed by a colon and a space, then a note
+describing the problem.
+
+[source,clojure]
+----
+;; good
+(defn some-fun
+  []
+  ;; FIXME: Replace baz with the newer bar.
+  (baz))
+
+;; bad - no colon after annotation
+(defn some-fun
+  []
+  ;; FIXME Replace baz with the newer bar.
+  (baz))
+
+;; bad - no space after colon
+(defn some-fun
+  []
+  ;; FIXME:Replace baz with the newer bar.
+  (baz))
+----
+
+==== Indent Annotations [[indent-annotations]]
+
+If multiple lines are required to describe the problem, subsequent
+lines should be indented as much as the first one.
+
+[source,clojure]
+----
+;; good
+(defn some-fun
+  []
+  ;; FIXME: This has crashed occasionally since v1.2.3. It may
+  ;;        be related to the BarBazUtil upgrade. (xz 13-1-31)
+  (baz))
+
+;; bad
+(defn some-fun
+  []
+  ;; FIXME: This has crashed occasionally since v1.2.3. It may
+  ;; be related to the BarBazUtil upgrade. (xz 13-1-31)
+  (baz))
+----
+
+==== Sign And Date Annotations [[sign-and-date-annotations]]
+
+Tag the annotation with your initials and a date so its relevance can
+be easily verified.
+
+[source,clojure]
+----
+(defn some-fun
+  []
+  ;; FIXME: This has crashed occasionally since v1.2.3. It may
+  ;;        be related to the BarBazUtil upgrade. (xz 13-1-31)
+  (baz))
+----
+
+==== Rare Eol Annotations [[rare-eol-annotations]]
+
+In cases where the problem is so obvious that any documentation would
+be redundant, annotations may be left at the end of the offending line
+with no note. This usage should be the exception and not the rule.
+
+[source,clojure]
+----
+(defn bar
+  []
+  (sleep 100)) ; OPTIMIZE
+----
+
+==== `TODO` [[todo]]
+
+Use `TODO` to note missing features or functionality that should be
+added at a later date.
+
+==== `FIXME` [[fixme]]
+
+Use `FIXME` to note broken code that needs to be fixed.
+
+==== `OPTIMIZE` [[optimize]]
+
+Use `OPTIMIZE` to note slow or inefficient code that may cause
+performance problems.
+
+==== `HACK` [[hack]]
+
+Use `HACK` to note "code smells" where questionable coding practices
+were used and should be refactored away.
+
+==== `REVIEW` [[review]]
+
+Use `REVIEW` to note anything that should be looked at to confirm it
+is working as intended. For example: `REVIEW: Are we sure this is how the
+client does X currently?`
+
+==== Document Custom Annotations [[document-annotations]]
+
+Use other custom annotation keywords if it feels appropriate, but be
+sure to document them in your project's `README` or similar.
+
+== Documentation
+
+Docstrings are the primary way to document Clojure code. Many definition forms
+(e.g. `def`, `defn`, `defmacro`, `ns`)
+support docstrings and usually it's a good idea to make good use of them, regardless
+of whether the var in question is something public or private.
+
+If a definition form doesn't support docstrings directly you can still supply them via
+the `:doc` metadata attribute.
+
+This section outlines some of the common conventions and best
+practices for documenting Clojure code.
+
+=== Prefer Docstrings [[prefer-docstrings]]
+
+If a form supports docstrings directly prefer them over using `:doc` metadata:
+
+[source,clojure]
+----
+;; good
+(defn foo
+  "This function doesn't do much."
+  []
+  ...)
+
+(ns foo.bar.core
+  "That's an awesome library.")
+
+;; bad
+(defn foo
+  ^{:doc "This function doesn't do much."}
+  []
+  ...)
+
+(ns ^{:doc "That's an awesome library.")
+  foo.bar.core)
+----
+
+=== Docstring Summary [[docstring-summary]]
+
+Let the first line in the doc string be a complete, capitalized
+sentence which concisely describes the var in question. This makes it
+easy for tooling (Clojure editors and IDEs) to display a short a summary of
+the docstring at various places.
+
+[source,clojure]
+----
+;; good
+(defn frobnitz
+  "This function does a frobnitz.
+  It will do gnorwatz to achieve this, but only under certain
+  circumstances."
+  []
+  ...)
+
+;; bad
+(defn frobnitz
+  "This function does a frobnitz. It will do gnorwatz to
+  achieve this, but only under certain circumstances."
+  []
+  ...)
+----
+
+=== Document Pos Arguments [[document-pos-arguments]]
+
+Document all positional arguments, and wrap them them with backticks
+(`) so that editors and IDEs can identify them and potentially provide extra
+functionality for them.
+
+[source,clojure]
+----
+;; good
+(defn watsitz
+  "Watsitz takes a `frob` and converts it to a znoot.
+  When the `frob` is negative, the znoot becomes angry."
+  [frob]
+  ...)
+
+;; bad
+(defn watsitz
+  "Watsitz takes a frob and converts it to a znoot.
+  When the frob is negative, the znoot becomes angry."
+  [frob]
+  ...)
+----
+
+=== Document References [[document-references]]
+
+Wrap any var references in the docstring with ` so that tooling
+can identify them.
+
+[source,clojure]
+----
+;; good
+(defn wombat
+  "Acts much like `clojure.core/identity` except when it doesn't.
+  Takes `x` as an argument and returns that. If it feels like it."
+  [x]
+  ...)
+
+;; bad
+(defn wombat
+  "Acts much like clojure.core/identity except when it doesn't.
+  Takes `x` as an argument and returns that. If it feels like it."
+  [x]
+  ...)
+----
+
+=== Docstring Grammar [[docstring-grammar]]
+
+Docstrings should be comprised from
+proper English sentences - this means every sentences should start
+with an capitalized word and should end with the proper punctuation. Sentences
+should be separated with a single space.
+
+[source,clojure]
+----
+;; good
+(def foo
+  "All sentences should end with a period (or maybe an exclamation mark).
+  And the period should be followed by a space, unless it's the last sentence.")
+
+;; bad
+(def foo
+  "all sentences should end with a period (or maybe an exclamation mark).
+  And the period should be followed by a space, unless it's the last sentence")
+----
+
+=== Docstring Indentation [[docstring-indentation]]
+
+Indent multi-line docstrings by two spaces.
+
+[source,clojure]
+----
+;; good
+(ns my.ns
+  "It is actually possible to document a ns.
+  It's a nice place to describe the purpose of the namespace and maybe even
+  the overall conventions used. Note how _not_ indenting the doc string makes
+  it easier for tooling to display it correctly.")
+
+;; bad
+(ns my.ns
+  "It is actually possible to document a ns.
+It's a nice place to describe the purpose of the namespace and maybe even
+the overall conventions used. Note how _not_ indenting the doc string makes
+it easier for tooling to display it correctly.")
+----
+
+=== Docstring Leading Trailing Whitespace [[docstring-leading-trailing-whitespace]]
+
+Neither start nor end your doc strings with any whitespace.
+
+[source,clojure]
+----
+;; good
+(def foo
+  "I'm so awesome."
+  42)
+
+;; bad
+(def silly
+  "    It's just silly to start a doc string with spaces.
+  Just as silly as it is to end it with a bunch of them.      "
+  42)
+----
+
+=== Docstring After Fn Name [[docstring-after-fn-name]]
+
+When adding a docstring -- especially to a function using the above form -- take
+care to correctly place the docstring after the function name, not after the
+argument vector.  The latter is not invalid syntax and won't cause an error,
+but includes the string as a form in the function body without attaching it to
+the var as documentation.
+
+[source,clojure]
+----
+;; good
+(defn foo
+  "docstring"
+  [x]
+  (bar x))
+
+;; bad
+(defn foo [x]
+  "docstring"
+  (bar x))
+----
+
+== Existential
+
+=== Be Functional [[be-functional]]
+
+Code in a functional way, using mutation only when it makes sense.
+
+=== Be Consistent [[be-consistent]]
+
+Be consistent. In an ideal world, be consistent with these guidelines.
+
+=== Common Sense [[common-sense]]
+
+Use common sense.
+
+== Testing
+
+=== Test Directory Structure [[test-directory-structure]]
+
+Store your tests in a separate directory, typically `test/yourproject/` (as
+opposed to `src/yourproject/`). Your build tool is responsible for making
+them available in the contexts where they are necessary; most templates
+will do this for you automatically.
+
+=== Test Ns Naming [[test-ns-naming]]
+
+Name your ns `yourproject.something-test`, a file which usually lives in
+`test/yourproject/something_test.clj` (or `.cljc`, `cljs`).
+
+=== Test Naming [[test-naming]]
+
+When using `clojure.test`, define your tests
+with `deftest` and name them `something-test`.
+
+[source,clojure]
+----
+;; good
+(deftest something-test ...)
+
+;; bad
+(deftest something-tests ...)
+(deftest test-something ...)
+(deftest something ...)
+----
+
+== Library Organization
+
+=== Coordinates [[lib-coordinates]]
+
+If you are publishing libraries to be used by others, make sure to
+follow the http://central.sonatype.org/pages/choosing-your-coordinates.html[Central Repository
+guidelines]
+for choosing your `groupId` and `artifactId`. This helps to prevent
+name conflicts and facilitates the widest possible use. A good
+example is https://github.com/stuartsierra/component[Component].
+
+=== Minimize Dependencies [[lib-min-dependencies]]
+
+Avoid unnecessary dependencies. For example, a three-line utility
+function copied into a project is usually better than a dependency
+that drags in hundreds of vars you do not plan to use.
+
+=== Tool-agnostic [[lib-core-separate-from-tools]]
+
+Deliver core functionality and integration points in separate
+artifacts.  That way, consumers can consume your library without
+being constrained by your unrelated tooling prefences. For example,
+https://github.com/stuartsierra/component[Component] provides
+core functionality, and
+https://github.com/stuartsierra/reloaded[reloaded] provides leiningen
+integration.
+
+== Lint Tools
+
+There are some lint tools created by the Clojure community that might aid you
+in your endeavor to write idiomatic Clojure code.
+
+* https://github.com/technomancy/slamhound[Slamhound] is a tool that will
+automatically generate proper `ns` declarations from your existing code.
+* https://github.com/jonase/kibit[kibit] is a static code analyzer for
+Clojure which uses https://github.com/clojure/core.logic[core.logic] to
+search for patterns of code for which there might exist a more idiomatic
+function or macro.
+
+== Contributing
+
+Nothing written in this guide is set in stone. It's my desire to work
+together with everyone interested in Clojure coding style, so that we could
+ultimately create a resource that will be beneficial to the entire Clojure
+community.
+
+Feel free to open tickets or send pull requests with improvements. Thanks in
+advance for your help!
+
+You can also support the style guide (and all my Clojure projects like
+CIDER, nREPL, orchard, etc) with financial contributions via
+https://www.patreon.com/bbatsov[Patreon] and
+https://www.paypal.me/bbatsov[PayPal].
+
+== License
+
+image:http://i.creativecommons.org/l/by/3.0/88x31.png[Creative Commons License]
+This work is licensed under a
+http://creativecommons.org/licenses/by/3.0/deed.en_US[Creative Commons Attribution 3.0 Unported License]
+
+== Spread the Word
+
+A community-driven style guide is of little use to a community that
+doesn't know about its existence. Tweet about the guide, share it with
+your friends and colleagues. Every comment, suggestion or opinion we
+get makes the guide just a little bit better. And we want to have the
+best possible guide, don't we?
