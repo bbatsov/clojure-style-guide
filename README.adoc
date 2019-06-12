@@ -196,141 +196,6 @@ Align vertically map keys.
   :thing2 thing2}
 ----
 
-=== Optional New Line After Fn Name [[optional-new-line-after-fn-name]]
-
-Optionally omit the new line between the function name and argument
-vector for `defn` when there is no docstring.
-
-[source,clojure]
-----
-;; good
-(defn foo
-  [x]
-  (bar x))
-
-;; good
-(defn foo [x]
-  (bar x))
-
-;; bad
-(defn foo
-  [x] (bar x))
-----
-
-=== Multimethod Dispatch Val Placement [[multimethod-dispatch-val-placement]]
-
-Place the `dispatch-val` of a multimethod on the same line as the
-function name.
-
-[source,clojure]
-----
-;; good
-(defmethod foo :bar [x] (baz x))
-
-(defmethod foo :bar
-  [x]
-  (baz x))
-
-;; bad
-(defmethod foo
-  :bar
-  [x]
-  (baz x))
-
-(defmethod foo
-  :bar [x]
-  (baz x))
-----
-
-=== Oneline Short Fn [[oneline-short-fn]]
-
-Optionally omit the new line between the argument vector and a short
-function body.
-
-[source,clojure]
-----
-;; good
-(defn foo [x]
-  (bar x))
-
-;; good for a small function body
-(defn foo [x] (bar x))
-
-;; good for multi-arity functions
-(defn foo
-  ([x] (bar x))
-  ([x y]
-   (if (predicate? x)
-     (bar x)
-     (baz x))))
-
-;; bad
-(defn foo
-  [x] (if (predicate? x)
-        (bar x)
-        (baz x)))
-----
-
-=== Multiple Arity Indentation [[multiple-arity-indentation]]
-
-Indent each arity form of a function definition vertically aligned with its
-parameters.
-
-[source,clojure]
-----
-;; good
-(defn foo
-  "I have two arities."
-  ([x]
-   (foo x 1))
-  ([x y]
-   (+ x y)))
-
-;; bad - extra indentation
-(defn foo
-  "I have two arities."
-  ([x]
-    (foo x 1))
-  ([x y]
-    (+ x y)))
-----
-
-=== Multiple Arity Order [[multiple-arity-order]]
-
-Sort the arities of a function
-from fewest to most arguments. The common case of multi-arity
-functions is that some K arguments fully specifies the function's
-behavior, and that arities N < K partially apply the K arity, and
-arities N > K provide a fold of the K arity over varargs.
-
-[source,clojure]
-----
-;; good - it's easy to scan for the nth arity
-(defn foo
-  "I have two arities."
-  ([x]
-   (foo x 1))
-  ([x y]
-   (+ x y)))
-
-;; okay - the other arities are applications of the two-arity
-(defn foo
-  "I have two arities."
-  ([x y]
-   (+ x y))
-  ([x]
-   (foo x 1))
-  ([x y z & more]
-   (reduce foo (foo x (foo y z)) more)))
-
-;; bad - unordered for no apparent reason
-(defn foo
-  ([x] 1)
-  ([x y z] (foo x (foo y z)))
-  ([x y] (+ x y))
-  ([w x y z & more] (reduce foo (foo w (foo x (foo y z))) more)))
-----
-
 === Crlf [[crlf]]
 
 Use Unix-style line endings.footnote:[*BSD/Solaris/Linux/OSX users are
@@ -474,6 +339,8 @@ Avoid trailing whitespace.
 
 Use one file per namespace.
 
+== Namespace Declaration
+
 === Comprehensive Ns Declaration [[comprehensive-ns-declaration]]
 
 Start every namespace with a comprehensive `ns` form, comprised of
@@ -566,6 +433,143 @@ Avoid single-segment namespaces.
 
 Avoid the use of overly long namespaces (i.e., more than 5 segments).
 
+== Functions
+
+=== Optional New Line After Fn Name [[optional-new-line-after-fn-name]]
+
+Optionally omit the new line between the function name and argument
+vector for `defn` when there is no docstring.
+
+[source,clojure]
+----
+;; good
+(defn foo
+  [x]
+  (bar x))
+
+;; good
+(defn foo [x]
+  (bar x))
+
+;; bad
+(defn foo
+  [x] (bar x))
+----
+
+=== Multimethod Dispatch Val Placement [[multimethod-dispatch-val-placement]]
+
+Place the `dispatch-val` of a multimethod on the same line as the
+function name.
+
+[source,clojure]
+----
+;; good
+(defmethod foo :bar [x] (baz x))
+
+(defmethod foo :bar
+  [x]
+  (baz x))
+
+;; bad
+(defmethod foo
+  :bar
+  [x]
+  (baz x))
+
+(defmethod foo
+  :bar [x]
+  (baz x))
+----
+
+=== Oneline Short Fn [[oneline-short-fn]]
+
+Optionally omit the new line between the argument vector and a short
+function body.
+
+[source,clojure]
+----
+;; good
+(defn foo [x]
+  (bar x))
+
+;; good for a small function body
+(defn foo [x] (bar x))
+
+;; good for multi-arity functions
+(defn foo
+  ([x] (bar x))
+  ([x y]
+   (if (predicate? x)
+     (bar x)
+     (baz x))))
+
+;; bad
+(defn foo
+  [x] (if (predicate? x)
+        (bar x)
+        (baz x)))
+----
+
+=== Multiple Arity Indentation [[multiple-arity-indentation]]
+
+Indent each arity form of a function definition vertically aligned with its
+parameters.
+
+[source,clojure]
+----
+;; good
+(defn foo
+  "I have two arities."
+  ([x]
+   (foo x 1))
+  ([x y]
+   (+ x y)))
+
+;; bad - extra indentation
+(defn foo
+  "I have two arities."
+  ([x]
+    (foo x 1))
+  ([x y]
+    (+ x y)))
+----
+
+=== Multiple Arity Order [[multiple-arity-order]]
+
+Sort the arities of a function
+from fewest to most arguments. The common case of multi-arity
+functions is that some K arguments fully specifies the function's
+behavior, and that arities N < K partially apply the K arity, and
+arities N > K provide a fold of the K arity over varargs.
+
+[source,clojure]
+----
+;; good - it's easy to scan for the nth arity
+(defn foo
+  "I have two arities."
+  ([x]
+   (foo x 1))
+  ([x y]
+   (+ x y)))
+
+;; okay - the other arities are applications of the two-arity
+(defn foo
+  "I have two arities."
+  ([x y]
+   (+ x y))
+  ([x]
+   (foo x 1))
+  ([x y z & more]
+   (reduce foo (foo x (foo y z)) more)))
+
+;; bad - unordered for no apparent reason
+(defn foo
+  ([x] 1)
+  ([x y z] (foo x (foo y z)))
+  ([x y] (+ x y))
+  ([w x y z & more] (reduce foo (foo w (foo x (foo y z))) more)))
+----
+
 === Function Length [[function-length]]
 
 Avoid functions longer than 10 LOC (lines of code). Ideally, most
@@ -574,28 +578,6 @@ functions will be shorter than 5 LOC.
 === Function Positional Parameters Limit [[function-positional-parameter-limit]]
 
 Avoid parameter lists with more than three or four positional parameters.
-
-=== Forward References [[forward-references]]
-
-Avoid forward references.  They are occasionally necessary, but such occasions
-are rare in practice.
-
-== Syntax
-
-=== Dynamic Namespace Manipulation [[ns-fns-only-in-repl]]
-
-Avoid the use of namespace-manipulating functions like `require` and
-`refer`. They are entirely unnecessary outside of a REPL
-environment.
-
-=== Declare [[declare]]
-
-Use `declare` to enable forward references when forward references are
-necessary.
-
-=== Higher-order Functions [[higher-order-fns]]
-
-Prefer higher-order functions like `map` to `loop/recur`.
 
 === Pre and Post Conditions [[pre-post-conditions]]
 
@@ -614,6 +596,28 @@ Prefer function pre and post conditions to checks inside a function's body.
     (bar x)
     (throw (IllegalArgumentException. "x must be a positive number!")))
 ----
+
+== Idioms
+
+=== Dynamic Namespace Manipulation [[ns-fns-only-in-repl]]
+
+Avoid the use of namespace-manipulating functions like `require` and
+`refer`. They are entirely unnecessary outside of a REPL
+environment.
+
+=== Forward References [[forward-references]]
+
+Avoid forward references.  They are occasionally necessary, but such occasions
+are rare in practice.
+
+=== Declare [[declare]]
+
+Use `declare` to enable forward references when forward references are
+necessary.
+
+=== Higher-order Functions [[higher-order-fns]]
+
+Prefer higher-order functions like `map` to `loop/recur`.
 
 === Vars Inside Functions [[dont-def-vars-inside-fns]]
 
