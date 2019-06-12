@@ -450,11 +450,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#one-space-indent">Arguments Indentation</a></li>
 <li><a href="#bindings-alignment">Bindings Alignment</a></li>
 <li><a href="#map-keys-alignment">Map Keys Alignment</a></li>
-<li><a href="#optional-new-line-after-fn-name">Optional New Line After Fn Name</a></li>
-<li><a href="#multimethod-dispatch-val-placement">Multimethod Dispatch Val Placement</a></li>
-<li><a href="#oneline-short-fn">Oneline Short Fn</a></li>
-<li><a href="#multiple-arity-indentation">Multiple Arity Indentation</a></li>
-<li><a href="#multiple-arity-order">Multiple Arity Order</a></li>
 <li><a href="#crlf">Crlf</a></li>
 <li><a href="#bracket-spacing">Bracket Spacing</a></li>
 <li><a href="#no-commas-for-seq-literals">No Commas For Seq Literals</a></li>
@@ -465,22 +460,35 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#80-character-limits">Line Length </a></li>
 <li><a href="#no-trailing-whitespace">No Trailing Whitespace</a></li>
 <li><a href="#one-file-per-namespace">One File Per Namespace</a></li>
+</ul>
+</li>
+<li><a href="#namespace-declaration">Namespace Declaration</a>
+<ul class="sectlevel2">
 <li><a href="#comprehensive-ns-declaration">Comprehensive Ns Declaration</a></li>
 <li><a href="#line-break-ns-declaration">Line Break Ns Declaration</a></li>
 <li><a href="#prefer-require-over-use">Prefer Require Over Use</a></li>
 <li><a href="#no-single-segment-namespaces">No Single Segment Namespaces</a></li>
 <li><a href="#namespace-segments-limit">Namespace Segments Limit</a></li>
-<li><a href="#function-length">Function Length</a></li>
-<li><a href="#function-positional-parameter-limit">Function Positional Parameters Limit</a></li>
-<li><a href="#forward-references">Forward References</a></li>
 </ul>
 </li>
-<li><a href="#syntax">Syntax</a>
+<li><a href="#functions">Functions</a>
+<ul class="sectlevel2">
+<li><a href="#optional-new-line-after-fn-name">Optional New Line After Fn Name</a></li>
+<li><a href="#multimethod-dispatch-val-placement">Multimethod Dispatch Val Placement</a></li>
+<li><a href="#oneline-short-fn">Oneline Short Fn</a></li>
+<li><a href="#multiple-arity-indentation">Multiple Arity Indentation</a></li>
+<li><a href="#multiple-arity-order">Multiple Arity Order</a></li>
+<li><a href="#function-length">Function Length</a></li>
+<li><a href="#function-positional-parameter-limit">Function Positional Parameters Limit</a></li>
+<li><a href="#pre-post-conditions">Pre and Post Conditions</a></li>
+</ul>
+</li>
+<li><a href="#idioms">Idioms</a>
 <ul class="sectlevel2">
 <li><a href="#ns-fns-only-in-repl">Dynamic Namespace Manipulation</a></li>
+<li><a href="#forward-references">Forward References</a></li>
 <li><a href="#declare">Declare</a></li>
 <li><a href="#higher-order-fns">Higher-order Functions</a></li>
-<li><a href="#pre-post-conditions">Pre and Post Conditions</a></li>
 <li><a href="#dont-def-vars-inside-fns">Vars Inside Functions</a></li>
 <li><a href="#dont-shadow-clojure-core">Shadowing <code>clojure.core</code> Names</a></li>
 <li><a href="#alter-var">Alter Var Binding</a></li>
@@ -888,151 +896,6 @@ when there are no arguments on the same line as the function name.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="optional-new-line-after-fn-name"><a class="anchor" href="#optional-new-line-after-fn-name"></a><a class="link" href="#optional-new-line-after-fn-name">Optional New Line After Fn Name</a></h3>
-<div class="paragraph">
-<p>Optionally omit the new line between the function name and argument
-vector for <code>defn</code> when there is no docstring.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
-</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">foo</span><span class="w">
-  </span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w">
-  </span><span class="p">(</span><span class="nf">bar</span><span class="w"> </span><span class="n">x</span><span class="p">))</span><span class="w">
-
-</span><span class="c1">;; good</span><span class="w">
-</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w">
-  </span><span class="p">(</span><span class="nf">bar</span><span class="w"> </span><span class="n">x</span><span class="p">))</span><span class="w">
-
-</span><span class="c1">;; bad</span><span class="w">
-</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">foo</span><span class="w">
-  </span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nf">bar</span><span class="w"> </span><span class="n">x</span><span class="p">))</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="multimethod-dispatch-val-placement"><a class="anchor" href="#multimethod-dispatch-val-placement"></a><a class="link" href="#multimethod-dispatch-val-placement">Multimethod Dispatch Val Placement</a></h3>
-<div class="paragraph">
-<p>Place the <code>dispatch-val</code> of a multimethod on the same line as the
-function name.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
-</span><span class="p">(</span><span class="k">defmethod</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="no">:bar</span><span class="w"> </span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nf">baz</span><span class="w"> </span><span class="n">x</span><span class="p">))</span><span class="w">
-
-</span><span class="p">(</span><span class="k">defmethod</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="no">:bar</span><span class="w">
-  </span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w">
-  </span><span class="p">(</span><span class="nf">baz</span><span class="w"> </span><span class="n">x</span><span class="p">))</span><span class="w">
-
-</span><span class="c1">;; bad</span><span class="w">
-</span><span class="p">(</span><span class="k">defmethod</span><span class="w"> </span><span class="n">foo</span><span class="w">
-  </span><span class="no">:bar</span><span class="w">
-  </span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w">
-  </span><span class="p">(</span><span class="nf">baz</span><span class="w"> </span><span class="n">x</span><span class="p">))</span><span class="w">
-
-</span><span class="p">(</span><span class="k">defmethod</span><span class="w"> </span><span class="n">foo</span><span class="w">
-  </span><span class="no">:bar</span><span class="w"> </span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w">
-  </span><span class="p">(</span><span class="nf">baz</span><span class="w"> </span><span class="n">x</span><span class="p">))</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="oneline-short-fn"><a class="anchor" href="#oneline-short-fn"></a><a class="link" href="#oneline-short-fn">Oneline Short Fn</a></h3>
-<div class="paragraph">
-<p>Optionally omit the new line between the argument vector and a short
-function body.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
-</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w">
-  </span><span class="p">(</span><span class="nf">bar</span><span class="w"> </span><span class="n">x</span><span class="p">))</span><span class="w">
-
-</span><span class="c1">;; good for a small function body</span><span class="w">
-</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nf">bar</span><span class="w"> </span><span class="n">x</span><span class="p">))</span><span class="w">
-
-</span><span class="c1">;; good for multi-arity functions</span><span class="w">
-</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">foo</span><span class="w">
-  </span><span class="p">([</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nf">bar</span><span class="w"> </span><span class="n">x</span><span class="p">))</span><span class="w">
-  </span><span class="p">([</span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w">
-   </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nf">predicate?</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w">
-     </span><span class="p">(</span><span class="nf">bar</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w">
-     </span><span class="p">(</span><span class="nf">baz</span><span class="w"> </span><span class="n">x</span><span class="p">))))</span><span class="w">
-
-</span><span class="c1">;; bad</span><span class="w">
-</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">foo</span><span class="w">
-  </span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nf">predicate?</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w">
-        </span><span class="p">(</span><span class="nf">bar</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w">
-        </span><span class="p">(</span><span class="nf">baz</span><span class="w"> </span><span class="n">x</span><span class="p">)))</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="multiple-arity-indentation"><a class="anchor" href="#multiple-arity-indentation"></a><a class="link" href="#multiple-arity-indentation">Multiple Arity Indentation</a></h3>
-<div class="paragraph">
-<p>Indent each arity form of a function definition vertically aligned with its
-parameters.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
-</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">foo</span><span class="w">
-  </span><span class="s">"I have two arities."</span><span class="w">
-  </span><span class="p">([</span><span class="n">x</span><span class="p">]</span><span class="w">
-   </span><span class="p">(</span><span class="nf">foo</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w">
-  </span><span class="p">([</span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w">
-   </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">)))</span><span class="w">
-
-</span><span class="c1">;; bad - extra indentation</span><span class="w">
-</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">foo</span><span class="w">
-  </span><span class="s">"I have two arities."</span><span class="w">
-  </span><span class="p">([</span><span class="n">x</span><span class="p">]</span><span class="w">
-    </span><span class="p">(</span><span class="nf">foo</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w">
-  </span><span class="p">([</span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w">
-    </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">)))</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="multiple-arity-order"><a class="anchor" href="#multiple-arity-order"></a><a class="link" href="#multiple-arity-order">Multiple Arity Order</a></h3>
-<div class="paragraph">
-<p>Sort the arities of a function
-from fewest to most arguments. The common case of multi-arity
-functions is that some K arguments fully specifies the function&#8217;s
-behavior, and that arities N &lt; K partially apply the K arity, and
-arities N &gt; K provide a fold of the K arity over varargs.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good - it's easy to scan for the nth arity</span><span class="w">
-</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">foo</span><span class="w">
-  </span><span class="s">"I have two arities."</span><span class="w">
-  </span><span class="p">([</span><span class="n">x</span><span class="p">]</span><span class="w">
-   </span><span class="p">(</span><span class="nf">foo</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w">
-  </span><span class="p">([</span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w">
-   </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">)))</span><span class="w">
-
-</span><span class="c1">;; okay - the other arities are applications of the two-arity</span><span class="w">
-</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">foo</span><span class="w">
-  </span><span class="s">"I have two arities."</span><span class="w">
-  </span><span class="p">([</span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w">
-   </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">))</span><span class="w">
-  </span><span class="p">([</span><span class="n">x</span><span class="p">]</span><span class="w">
-   </span><span class="p">(</span><span class="nf">foo</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w">
-  </span><span class="p">([</span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">more</span><span class="p">]</span><span class="w">
-   </span><span class="p">(</span><span class="nb">reduce</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="p">(</span><span class="nf">foo</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">(</span><span class="nf">foo</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">z</span><span class="p">))</span><span class="w"> </span><span class="n">more</span><span class="p">)))</span><span class="w">
-
-</span><span class="c1">;; bad - unordered for no apparent reason</span><span class="w">
-</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">foo</span><span class="w">
-  </span><span class="p">([</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w">
-  </span><span class="p">([</span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">z</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nf">foo</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">(</span><span class="nf">foo</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">z</span><span class="p">)))</span><span class="w">
-  </span><span class="p">([</span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">))</span><span class="w">
-  </span><span class="p">([</span><span class="n">w</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">more</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nb">reduce</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="p">(</span><span class="nf">foo</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="p">(</span><span class="nf">foo</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">(</span><span class="nf">foo</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">z</span><span class="p">)))</span><span class="w"> </span><span class="n">more</span><span class="p">)))</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
 <h3 id="crlf"><a class="anchor" href="#crlf"></a><a class="link" href="#crlf">Crlf</a></h3>
 <div class="paragraph">
 <p>Use Unix-style line endings.<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></p>
@@ -1206,6 +1069,11 @@ pairwise constructs as found in e.g. <code>let</code> and <code>cond</code>.</p>
 <p>Use one file per namespace.</p>
 </div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="namespace-declaration"><a class="anchor" href="#namespace-declaration"></a><a class="link" href="#namespace-declaration">Namespace Declaration</a></h2>
+<div class="sectionbody">
 <div class="sect2">
 <h3 id="comprehensive-ns-declaration"><a class="anchor" href="#comprehensive-ns-declaration"></a><a class="link" href="#comprehensive-ns-declaration">Comprehensive Ns Declaration</a></h3>
 <div class="paragraph">
@@ -1308,6 +1176,156 @@ considered deprecated for new code.</p>
 <p>Avoid the use of overly long namespaces (i.e., more than 5 segments).</p>
 </div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="functions"><a class="anchor" href="#functions"></a><a class="link" href="#functions">Functions</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="optional-new-line-after-fn-name"><a class="anchor" href="#optional-new-line-after-fn-name"></a><a class="link" href="#optional-new-line-after-fn-name">Optional New Line After Fn Name</a></h3>
+<div class="paragraph">
+<p>Optionally omit the new line between the function name and argument
+vector for <code>defn</code> when there is no docstring.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">foo</span><span class="w">
+  </span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nf">bar</span><span class="w"> </span><span class="n">x</span><span class="p">))</span><span class="w">
+
+</span><span class="c1">;; good</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nf">bar</span><span class="w"> </span><span class="n">x</span><span class="p">))</span><span class="w">
+
+</span><span class="c1">;; bad</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">foo</span><span class="w">
+  </span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nf">bar</span><span class="w"> </span><span class="n">x</span><span class="p">))</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="multimethod-dispatch-val-placement"><a class="anchor" href="#multimethod-dispatch-val-placement"></a><a class="link" href="#multimethod-dispatch-val-placement">Multimethod Dispatch Val Placement</a></h3>
+<div class="paragraph">
+<p>Place the <code>dispatch-val</code> of a multimethod on the same line as the
+function name.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
+</span><span class="p">(</span><span class="k">defmethod</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="no">:bar</span><span class="w"> </span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nf">baz</span><span class="w"> </span><span class="n">x</span><span class="p">))</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defmethod</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="no">:bar</span><span class="w">
+  </span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nf">baz</span><span class="w"> </span><span class="n">x</span><span class="p">))</span><span class="w">
+
+</span><span class="c1">;; bad</span><span class="w">
+</span><span class="p">(</span><span class="k">defmethod</span><span class="w"> </span><span class="n">foo</span><span class="w">
+  </span><span class="no">:bar</span><span class="w">
+  </span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nf">baz</span><span class="w"> </span><span class="n">x</span><span class="p">))</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defmethod</span><span class="w"> </span><span class="n">foo</span><span class="w">
+  </span><span class="no">:bar</span><span class="w"> </span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nf">baz</span><span class="w"> </span><span class="n">x</span><span class="p">))</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="oneline-short-fn"><a class="anchor" href="#oneline-short-fn"></a><a class="link" href="#oneline-short-fn">Oneline Short Fn</a></h3>
+<div class="paragraph">
+<p>Optionally omit the new line between the argument vector and a short
+function body.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nf">bar</span><span class="w"> </span><span class="n">x</span><span class="p">))</span><span class="w">
+
+</span><span class="c1">;; good for a small function body</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nf">bar</span><span class="w"> </span><span class="n">x</span><span class="p">))</span><span class="w">
+
+</span><span class="c1">;; good for multi-arity functions</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">foo</span><span class="w">
+  </span><span class="p">([</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nf">bar</span><span class="w"> </span><span class="n">x</span><span class="p">))</span><span class="w">
+  </span><span class="p">([</span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w">
+   </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nf">predicate?</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w">
+     </span><span class="p">(</span><span class="nf">bar</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w">
+     </span><span class="p">(</span><span class="nf">baz</span><span class="w"> </span><span class="n">x</span><span class="p">))))</span><span class="w">
+
+</span><span class="c1">;; bad</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">foo</span><span class="w">
+  </span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nf">predicate?</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w">
+        </span><span class="p">(</span><span class="nf">bar</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w">
+        </span><span class="p">(</span><span class="nf">baz</span><span class="w"> </span><span class="n">x</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="multiple-arity-indentation"><a class="anchor" href="#multiple-arity-indentation"></a><a class="link" href="#multiple-arity-indentation">Multiple Arity Indentation</a></h3>
+<div class="paragraph">
+<p>Indent each arity form of a function definition vertically aligned with its
+parameters.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">foo</span><span class="w">
+  </span><span class="s">"I have two arities."</span><span class="w">
+  </span><span class="p">([</span><span class="n">x</span><span class="p">]</span><span class="w">
+   </span><span class="p">(</span><span class="nf">foo</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w">
+  </span><span class="p">([</span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w">
+   </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">)))</span><span class="w">
+
+</span><span class="c1">;; bad - extra indentation</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">foo</span><span class="w">
+  </span><span class="s">"I have two arities."</span><span class="w">
+  </span><span class="p">([</span><span class="n">x</span><span class="p">]</span><span class="w">
+    </span><span class="p">(</span><span class="nf">foo</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w">
+  </span><span class="p">([</span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w">
+    </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="multiple-arity-order"><a class="anchor" href="#multiple-arity-order"></a><a class="link" href="#multiple-arity-order">Multiple Arity Order</a></h3>
+<div class="paragraph">
+<p>Sort the arities of a function
+from fewest to most arguments. The common case of multi-arity
+functions is that some K arguments fully specifies the function&#8217;s
+behavior, and that arities N &lt; K partially apply the K arity, and
+arities N &gt; K provide a fold of the K arity over varargs.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good - it's easy to scan for the nth arity</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">foo</span><span class="w">
+  </span><span class="s">"I have two arities."</span><span class="w">
+  </span><span class="p">([</span><span class="n">x</span><span class="p">]</span><span class="w">
+   </span><span class="p">(</span><span class="nf">foo</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w">
+  </span><span class="p">([</span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w">
+   </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">)))</span><span class="w">
+
+</span><span class="c1">;; okay - the other arities are applications of the two-arity</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">foo</span><span class="w">
+  </span><span class="s">"I have two arities."</span><span class="w">
+  </span><span class="p">([</span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w">
+   </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">))</span><span class="w">
+  </span><span class="p">([</span><span class="n">x</span><span class="p">]</span><span class="w">
+   </span><span class="p">(</span><span class="nf">foo</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w">
+  </span><span class="p">([</span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">more</span><span class="p">]</span><span class="w">
+   </span><span class="p">(</span><span class="nb">reduce</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="p">(</span><span class="nf">foo</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">(</span><span class="nf">foo</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">z</span><span class="p">))</span><span class="w"> </span><span class="n">more</span><span class="p">)))</span><span class="w">
+
+</span><span class="c1">;; bad - unordered for no apparent reason</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">foo</span><span class="w">
+  </span><span class="p">([</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w">
+  </span><span class="p">([</span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">z</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nf">foo</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">(</span><span class="nf">foo</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">z</span><span class="p">)))</span><span class="w">
+  </span><span class="p">([</span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">))</span><span class="w">
+  </span><span class="p">([</span><span class="n">w</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">more</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nb">reduce</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="p">(</span><span class="nf">foo</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="p">(</span><span class="nf">foo</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">(</span><span class="nf">foo</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">z</span><span class="p">)))</span><span class="w"> </span><span class="n">more</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+</div>
 <div class="sect2">
 <h3 id="function-length"><a class="anchor" href="#function-length"></a><a class="link" href="#function-length">Function Length</a></h3>
 <div class="paragraph">
@@ -1319,39 +1337,6 @@ functions will be shorter than 5 LOC.</p>
 <h3 id="function-positional-parameter-limit"><a class="anchor" href="#function-positional-parameter-limit"></a><a class="link" href="#function-positional-parameter-limit">Function Positional Parameters Limit</a></h3>
 <div class="paragraph">
 <p>Avoid parameter lists with more than three or four positional parameters.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="forward-references"><a class="anchor" href="#forward-references"></a><a class="link" href="#forward-references">Forward References</a></h3>
-<div class="paragraph">
-<p>Avoid forward references.  They are occasionally necessary, but such occasions
-are rare in practice.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="syntax"><a class="anchor" href="#syntax"></a><a class="link" href="#syntax">Syntax</a></h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="ns-fns-only-in-repl"><a class="anchor" href="#ns-fns-only-in-repl"></a><a class="link" href="#ns-fns-only-in-repl">Dynamic Namespace Manipulation</a></h3>
-<div class="paragraph">
-<p>Avoid the use of namespace-manipulating functions like <code>require</code> and
-<code>refer</code>. They are entirely unnecessary outside of a REPL
-environment.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="declare"><a class="anchor" href="#declare"></a><a class="link" href="#declare">Declare</a></h3>
-<div class="paragraph">
-<p>Use <code>declare</code> to enable forward references when forward references are
-necessary.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="higher-order-fns"><a class="anchor" href="#higher-order-fns"></a><a class="link" href="#higher-order-fns">Higher-order Functions</a></h3>
-<div class="paragraph">
-<p>Prefer higher-order functions like <code>map</code> to <code>loop/recur</code>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1372,6 +1357,39 @@ necessary.</p>
     </span><span class="p">(</span><span class="nf">bar</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w">
     </span><span class="p">(</span><span class="nf">throw</span><span class="w"> </span><span class="p">(</span><span class="nf">IllegalArgumentException.</span><span class="w"> </span><span class="s">"x must be a positive number!"</span><span class="p">)))</span></code></pre>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="idioms"><a class="anchor" href="#idioms"></a><a class="link" href="#idioms">Idioms</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="ns-fns-only-in-repl"><a class="anchor" href="#ns-fns-only-in-repl"></a><a class="link" href="#ns-fns-only-in-repl">Dynamic Namespace Manipulation</a></h3>
+<div class="paragraph">
+<p>Avoid the use of namespace-manipulating functions like <code>require</code> and
+<code>refer</code>. They are entirely unnecessary outside of a REPL
+environment.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="forward-references"><a class="anchor" href="#forward-references"></a><a class="link" href="#forward-references">Forward References</a></h3>
+<div class="paragraph">
+<p>Avoid forward references.  They are occasionally necessary, but such occasions
+are rare in practice.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="declare"><a class="anchor" href="#declare"></a><a class="link" href="#declare">Declare</a></h3>
+<div class="paragraph">
+<p>Use <code>declare</code> to enable forward references when forward references are
+necessary.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="higher-order-fns"><a class="anchor" href="#higher-order-fns"></a><a class="link" href="#higher-order-fns">Higher-order Functions</a></h3>
+<div class="paragraph">
+<p>Prefer higher-order functions like <code>map</code> to <code>loop/recur</code>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -3310,7 +3328,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-11 07:04:31 UTC
+Last updated 2019-06-12 09:44:19 UTC
 </div>
 </div>
 <style>
@@ -3333,7 +3351,7 @@ pre.rouge .cs {
   font-weight: bold;
   font-style: italic;
 }
-pre.rouge .c, pre.rouge .cd {
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf {
   color: #999988;
   font-style: italic;
 }
@@ -3453,7 +3471,7 @@ pre.rouge .s1 {
 pre.rouge .ss {
   color: #990073;
 }
-pre.rouge .s {
+pre.rouge .s, pre.rouge .sa, pre.rouge .dl {
   color: #d14;
 }
 pre.rouge .na {
@@ -3483,7 +3501,7 @@ pre.rouge .ne {
   color: #990000;
   font-weight: bold;
 }
-pre.rouge .nf {
+pre.rouge .nf, pre.rouge .fm {
   color: #990000;
   font-weight: bold;
 }
@@ -3506,7 +3524,7 @@ pre.rouge .vg {
 pre.rouge .vi {
   color: #008080;
 }
-pre.rouge .nv {
+pre.rouge .nv, pre.rouge .vm {
   color: #008080;
 }
 pre.rouge .ow {
