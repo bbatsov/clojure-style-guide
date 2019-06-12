@@ -1537,13 +1537,13 @@ for more details.
 
 === Refs [[Refs]]
 
-==== Refs Io Macro [[refs-io-macro]]
+==== `io!` Macro [[refs-io-macro]]
 
 Consider wrapping all I/O calls with the `io!` macro to avoid nasty
 surprises if you accidentally end up calling such code in a
 transaction.
 
-==== Refs Avoid Ref Set [[refs-avoid-ref-set]]
+==== Avoid `ref-set` [[refs-avoid-ref-set]]
 
 Avoid the use of `ref-set` whenever possible.
 
@@ -1558,12 +1558,12 @@ Avoid the use of `ref-set` whenever possible.
 (dosync (ref-set r 5))
 ----
 
-==== Refs Small Transactions [[refs-small-transactions]]
+==== Small Transactions [[refs-small-transactions]]
 
 Try to keep the size of transactions (the amount of work encapsulated in them)
 as small as possible.
 
-==== Refs Avoid Short Long Transactions With Same Ref [[refs-avoid-short-long-transactions-with-same-ref]]
+==== Avoid Short Long Transactions With Same Ref [[refs-avoid-short-long-transactions-with-same-ref]]
 
 Avoid having both short- and long-running transactions interacting
 with the same Ref.
@@ -1582,11 +1582,11 @@ up the thread.
 
 === Atoms [[Atoms]]
 
-==== Atoms No Update Within Transactions [[atoms-no-update-within-transactions]]
+==== No Updates Within Transactions [[atoms-no-update-within-transactions]]
 
 Avoid atom updates inside STM transactions.
 
-==== Atoms Prefer Swap Over Reset [[atoms-prefer-swap-over-reset]]
+==== Prefer `swap!` over `reset!` [[atoms-prefer-swap-over-reset]]
 
 Try to use `swap!` rather than `reset!`, where possible.
 
