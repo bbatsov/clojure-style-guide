@@ -17,6 +17,10 @@ Role models are important.
 -- Officer Alex J. Murphy / RoboCop
 ____
 
+ifdef::env-github[]
+TIP: You can find a beautiful version of this guide with much improved navigation at https://guide.clojure.style.
+endif::[]
+
 This Clojure style guide recommends best practices so that real-world Clojure
 programmers can write code that can be maintained by other real-world Clojure
 programmers. A style guide that reflects real-world usage gets used, and a
