@@ -450,25 +450,25 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#one-space-indent">Arguments Indentation</a></li>
 <li><a href="#bindings-alignment">Bindings Alignment</a></li>
 <li><a href="#map-keys-alignment">Map Keys Alignment</a></li>
-<li><a href="#crlf">Crlf</a></li>
+<li><a href="#crlf">Line Endings</a></li>
 <li><a href="#bracket-spacing">Bracket Spacing</a></li>
-<li><a href="#no-commas-for-seq-literals">No Commas For Seq Literals</a></li>
-<li><a href="#opt-commas-in-map-literals">Opt Commas In Map Literals</a></li>
-<li><a href="#gather-trailing-parens">Gather Trailing Parens</a></li>
+<li><a href="#no-commas-for-seq-literals">No Commas in Sequential Collection Literals</a></li>
+<li><a href="#opt-commas-in-map-literals">Optional Commas In Map Literals</a></li>
+<li><a href="#gather-trailing-parens">Gather Trailing Parentheses</a></li>
 <li><a href="#empty-lines-between-top-level-forms">Empty Lines Between Top Level Forms</a></li>
-<li><a href="#no-blank-lines-within-def-forms">No Blank Lines Within Def Forms</a></li>
-<li><a href="#80-character-limits">Line Length </a></li>
+<li><a href="#no-blank-lines-within-def-forms">No Blank Lines Within Definition Forms</a></li>
+<li><a href="#80-character-limits">Maximum Line Length </a></li>
 <li><a href="#no-trailing-whitespace">No Trailing Whitespace</a></li>
 <li><a href="#one-file-per-namespace">One File Per Namespace</a></li>
 </ul>
 </li>
 <li><a href="#namespace-declaration">Namespace Declaration</a>
 <ul class="sectlevel2">
-<li><a href="#comprehensive-ns-declaration">Comprehensive Ns Declaration</a></li>
-<li><a href="#line-break-ns-declaration">Line Break Ns Declaration</a></li>
-<li><a href="#prefer-require-over-use">Prefer Require Over Use</a></li>
 <li><a href="#no-single-segment-namespaces">No Single Segment Namespaces</a></li>
 <li><a href="#namespace-segments-limit">Namespace Segments Limit</a></li>
+<li><a href="#comprehensive-ns-declaration">Comprehensive <code>ns</code> Form</a></li>
+<li><a href="#line-break-ns-declaration">Line Breaks in <code>ns</code></a></li>
+<li><a href="#prefer-require-over-use">Prefer <code>:require</code> Over <code>:use</code></a></li>
 </ul>
 </li>
 <li><a href="#functions">Functions</a>
@@ -896,7 +896,7 @@ when there are no arguments on the same line as the function name.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="crlf"><a class="anchor" href="#crlf"></a><a class="link" href="#crlf">Crlf</a></h3>
+<h3 id="crlf"><a class="anchor" href="#crlf"></a><a class="link" href="#crlf">Line Endings</a></h3>
 <div class="paragraph">
 <p>Use Unix-style line endings.<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></p>
 </div>
@@ -943,7 +943,7 @@ and before a closing bracket.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-commas-for-seq-literals"><a class="anchor" href="#no-commas-for-seq-literals"></a><a class="link" href="#no-commas-for-seq-literals">No Commas For Seq Literals</a></h3>
+<h3 id="no-commas-for-seq-literals"><a class="anchor" href="#no-commas-for-seq-literals"></a><a class="link" href="#no-commas-for-seq-literals">No Commas in Sequential Collection Literals</a></h3>
 <div class="quoteblock">
 <blockquote>
 <div class="paragraph">
@@ -970,7 +970,7 @@ and before a closing bracket.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="opt-commas-in-map-literals"><a class="anchor" href="#opt-commas-in-map-literals"></a><a class="link" href="#opt-commas-in-map-literals">Opt Commas In Map Literals</a></h3>
+<h3 id="opt-commas-in-map-literals"><a class="anchor" href="#opt-commas-in-map-literals"></a><a class="link" href="#opt-commas-in-map-literals">Optional Commas In Map Literals</a></h3>
 <div class="paragraph">
 <p>Consider enhancing the readability of map literals via judicious use
 of commas and line breaks.</p>
@@ -990,7 +990,7 @@ of commas and line breaks.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="gather-trailing-parens"><a class="anchor" href="#gather-trailing-parens"></a><a class="link" href="#gather-trailing-parens">Gather Trailing Parens</a></h3>
+<h3 id="gather-trailing-parens"><a class="anchor" href="#gather-trailing-parens"></a><a class="link" href="#gather-trailing-parens">Gather Trailing Parentheses</a></h3>
 <div class="paragraph">
 <p>Place all trailing parentheses on a single line instead of distinct lines.</p>
 </div>
@@ -1044,7 +1044,7 @@ of commas and line breaks.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-blank-lines-within-def-forms"><a class="anchor" href="#no-blank-lines-within-def-forms"></a><a class="link" href="#no-blank-lines-within-def-forms">No Blank Lines Within Def Forms</a></h3>
+<h3 id="no-blank-lines-within-def-forms"><a class="anchor" href="#no-blank-lines-within-def-forms"></a><a class="link" href="#no-blank-lines-within-def-forms">No Blank Lines Within Definition Forms</a></h3>
 <div class="paragraph">
 <p>Do not place blank lines in the middle of a function or
 macro definition.  An exception can be made to indicate grouping of
@@ -1052,7 +1052,7 @@ pairwise constructs as found in e.g. <code>let</code> and <code>cond</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="80-character-limits"><a class="anchor" href="#80-character-limits"></a><a class="link" href="#80-character-limits">Line Length <a id="line-length"></a></a></h3>
+<h3 id="80-character-limits"><a class="anchor" href="#80-character-limits"></a><a class="link" href="#80-character-limits">Maximum Line Length <a id="line-length"></a></a></h3>
 <div class="paragraph">
 <p>Where feasible, avoid making lines longer than 80 characters.</p>
 </div>
@@ -1075,7 +1075,28 @@ pairwise constructs as found in e.g. <code>let</code> and <code>cond</code>.</p>
 <h2 id="namespace-declaration"><a class="anchor" href="#namespace-declaration"></a><a class="link" href="#namespace-declaration">Namespace Declaration</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="comprehensive-ns-declaration"><a class="anchor" href="#comprehensive-ns-declaration"></a><a class="link" href="#comprehensive-ns-declaration">Comprehensive Ns Declaration</a></h3>
+<h3 id="no-single-segment-namespaces"><a class="anchor" href="#no-single-segment-namespaces"></a><a class="link" href="#no-single-segment-namespaces">No Single Segment Namespaces</a></h3>
+<div class="paragraph">
+<p>Avoid single-segment namespaces.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
+</span><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">example.ns</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">;; bad</span><span class="w">
+</span><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">example</span><span class="p">)</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="namespace-segments-limit"><a class="anchor" href="#namespace-segments-limit"></a><a class="link" href="#namespace-segments-limit">Namespace Segments Limit</a></h3>
+<div class="paragraph">
+<p>Avoid the use of overly long namespaces (i.e., more than 5 segments).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="comprehensive-ns-declaration"><a class="anchor" href="#comprehensive-ns-declaration"></a><a class="link" href="#comprehensive-ns-declaration">Comprehensive <code>ns</code> Form</a></h3>
 <div class="paragraph">
 <p>Start every namespace with a comprehensive <code>ns</code> form, comprised of
 <code>refer</code>s, <code>require</code>s, and <code>import</code>s, conventionally in that order.</p>
@@ -1090,7 +1111,7 @@ pairwise constructs as found in e.g. <code>let</code> and <code>cond</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="line-break-ns-declaration"><a class="anchor" href="#line-break-ns-declaration"></a><a class="link" href="#line-break-ns-declaration">Line Break Ns Declaration</a></h3>
+<h3 id="line-break-ns-declaration"><a class="anchor" href="#line-break-ns-declaration"></a><a class="link" href="#line-break-ns-declaration">Line Breaks in <code>ns</code></a></h3>
 <div class="paragraph">
 <p>When there are multiple dependencies, you may want to start them on
 a new line, then insert line breaks after each one for easier sorting,
@@ -1129,7 +1150,7 @@ is only a change related to one dependency.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="prefer-require-over-use"><a class="anchor" href="#prefer-require-over-use"></a><a class="link" href="#prefer-require-over-use">Prefer Require Over Use</a></h3>
+<h3 id="prefer-require-over-use"><a class="anchor" href="#prefer-require-over-use"></a><a class="link" href="#prefer-require-over-use">Prefer <code>:require</code> Over <code>:use</code></a></h3>
 <div class="paragraph">
 <p>In the <code>ns</code> form prefer <code>:require :as</code> over <code>:require :refer</code> over <code>:require
 :refer :all</code>.  Prefer <code>:require</code> over <code>:use</code>; the latter form should be
@@ -1153,27 +1174,6 @@ considered deprecated for new code.</p>
 </span><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">examples.ns</span><span class="w">
   </span><span class="p">(</span><span class="no">:use</span><span class="w"> </span><span class="n">clojure.zip</span><span class="p">))</span></code></pre>
 </div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="no-single-segment-namespaces"><a class="anchor" href="#no-single-segment-namespaces"></a><a class="link" href="#no-single-segment-namespaces">No Single Segment Namespaces</a></h3>
-<div class="paragraph">
-<p>Avoid single-segment namespaces.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
-</span><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">example.ns</span><span class="p">)</span><span class="w">
-
-</span><span class="c1">;; bad</span><span class="w">
-</span><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">example</span><span class="p">)</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="namespace-segments-limit"><a class="anchor" href="#namespace-segments-limit"></a><a class="link" href="#namespace-segments-limit">Namespace Segments Limit</a></h3>
-<div class="paragraph">
-<p>Avoid the use of overly long namespaces (i.e., more than 5 segments).</p>
 </div>
 </div>
 </div>
@@ -3328,7 +3328,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-12 10:33:46 UTC
+Last updated 2019-06-12 10:47:50 UTC
 </div>
 </div>
 <style>
