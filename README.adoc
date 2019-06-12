@@ -1712,7 +1712,7 @@ and the text that follows it.
 
 Comments longer than a word begin with a capital letter and use
 punctuation. Separate sentences with
-http://en.wikipedia.org/wiki/Sentence_spacing[one space].
+https://en.wikipedia.org/wiki/Sentence_spacing[one space].
 
 === No Superfluous Comments [[no-superfluous-comments]]
 
@@ -2122,7 +2122,7 @@ with `deftest` and name them `something-test`.
 === Coordinates [[lib-coordinates]]
 
 If you are publishing libraries to be used by others, make sure to
-follow the http://central.sonatype.org/pages/choosing-your-coordinates.html[Central Repository
+follow the https://central.sonatype.org/pages/choosing-your-coordinates.html[Central Repository
 guidelines]
 for choosing your `groupId` and `artifactId`. This helps to prevent
 name conflicts and facilitates the widest possible use. A good
@@ -2173,9 +2173,9 @@ https://www.paypal.me/bbatsov[PayPal].
 
 == License
 
-image:http://i.creativecommons.org/l/by/3.0/88x31.png[Creative Commons License]
+image:https://i.creativecommons.org/l/by/3.0/88x31.png[Creative Commons License]
 This work is licensed under a
-http://creativecommons.org/licenses/by/3.0/deed.en_US[Creative Commons Attribution 3.0 Unported License]
+https://creativecommons.org/licenses/by/3.0/deed.en_US[Creative Commons Attribution 3.0 Unported License]
 
 == Spread the Word
 
