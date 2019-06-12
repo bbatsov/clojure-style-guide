@@ -200,7 +200,7 @@ Align vertically map keys.
   :thing2 thing2}
 ----
 
-=== Crlf [[crlf]]
+=== Line Endings [[crlf]]
 
 Use Unix-style line endings.footnote:[*BSD/Solaris/Linux/OSX users are
 covered by default, Windows users have to be extra careful.]
@@ -235,7 +235,7 @@ and before a closing bracket.
 (foo ( bar baz ) quux)
 ----
 
-=== No Commas For Seq Literals [[no-commas-for-seq-literals]]
+=== No Commas in Sequential Collection Literals [[no-commas-for-seq-literals]]
 
 [quote]
 ____
@@ -257,7 +257,7 @@ Don't use commas between the elements of sequential collection literals.
 (1, 2, 3)
 ----
 
-=== Opt Commas In Map Literals [[opt-commas-in-map-literals]]
+=== Optional Commas In Map Literals [[opt-commas-in-map-literals]]
 
 Consider enhancing the readability of map literals via judicious use
 of commas and line breaks.
@@ -275,7 +275,7 @@ of commas and line breaks.
 {:name "Bruce Wayne", :alter-ego "Batman"}
 ----
 
-=== Gather Trailing Parens [[gather-trailing-parens]]
+=== Gather Trailing Parentheses [[gather-trailing-parens]]
 
 Place all trailing parentheses on a single line instead of distinct lines.
 
@@ -324,14 +324,14 @@ An exception to the rule is the grouping of related ``def``s together.
 (def max-cols 30)
 ----
 
-=== No Blank Lines Within Def Forms [[no-blank-lines-within-def-forms]]
+=== No Blank Lines Within Definition Forms [[no-blank-lines-within-def-forms]]
 
 Do not place blank lines in the middle of a function or
 macro definition.  An exception can be made to indicate grouping of
 pairwise constructs as found in e.g. `let` and `cond`.
 
 [#80-character-limits]
-=== Line Length [[line-length]]
+=== Maximum Line Length [[line-length]]
 
 Where feasible, avoid making lines longer than 80 characters.
 
@@ -345,7 +345,24 @@ Use one file per namespace.
 
 == Namespace Declaration
 
-=== Comprehensive Ns Declaration [[comprehensive-ns-declaration]]
+=== No Single Segment Namespaces [[no-single-segment-namespaces]]
+
+Avoid single-segment namespaces.
+
+[source,clojure]
+----
+;; good
+(ns example.ns)
+
+;; bad
+(ns example)
+----
+
+=== Namespace Segments Limit [[namespace-segments-limit]]
+
+Avoid the use of overly long namespaces (i.e., more than 5 segments).
+
+=== Comprehensive `ns` Form [[comprehensive-ns-declaration]]
 
 Start every namespace with a comprehensive `ns` form, comprised of
 ``refer``s, ``require``s, and ``import``s, conventionally in that order.
@@ -358,7 +375,7 @@ Start every namespace with a comprehensive `ns` form, comprised of
   (:import java.util.Date))
 ----
 
-=== Line Break Ns Declaration [[line-break-ns-declaration]]
+=== Line Breaks in `ns` [[line-break-ns-declaration]]
 
 When there are multiple dependencies, you may want to start them on
 a new line, then insert line breaks after each one for easier sorting,
@@ -395,7 +412,7 @@ is only a change related to one dependency.
   (:import java.util.Date java.text.SimpleDateFormat [java.util.concurrent Executors LinkedBlockingQueue]))
 ----
 
-=== Prefer Require Over Use [[prefer-require-over-use]]
+=== Prefer `:require` Over `:use` [[prefer-require-over-use]]
 
 In the `ns` form prefer `:require :as` over `:require :refer` over `:require
 :refer :all`.  Prefer `:require` over `:use`; the latter form should be
@@ -419,23 +436,6 @@ considered deprecated for new code.
 (ns examples.ns
   (:use clojure.zip))
 ----
-
-=== No Single Segment Namespaces [[no-single-segment-namespaces]]
-
-Avoid single-segment namespaces.
-
-[source,clojure]
-----
-;; good
-(ns example.ns)
-
-;; bad
-(ns example)
-----
-
-=== Namespace Segments Limit [[namespace-segments-limit]]
-
-Avoid the use of overly long namespaces (i.e., more than 5 segments).
 
 == Functions
 
