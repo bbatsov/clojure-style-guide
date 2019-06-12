@@ -2498,7 +2498,7 @@ for more details.</p>
 <div class="sect2">
 <h3 id="Refs"><a class="anchor" href="#Refs"></a><a class="link" href="#Refs">Refs</a></h3>
 <div class="sect3">
-<h4 id="refs-io-macro"><a class="anchor" href="#refs-io-macro"></a><a class="link" href="#refs-io-macro">Refs Io Macro</a></h4>
+<h4 id="refs-io-macro"><a class="anchor" href="#refs-io-macro"></a><a class="link" href="#refs-io-macro"><code>io!</code> Macro</a></h4>
 <div class="paragraph">
 <p>Consider wrapping all I/O calls with the <code>io!</code> macro to avoid nasty
 surprises if you accidentally end up calling such code in a
@@ -2506,7 +2506,7 @@ transaction.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="refs-avoid-ref-set"><a class="anchor" href="#refs-avoid-ref-set"></a><a class="link" href="#refs-avoid-ref-set">Refs Avoid Ref Set</a></h4>
+<h4 id="refs-avoid-ref-set"><a class="anchor" href="#refs-avoid-ref-set"></a><a class="link" href="#refs-avoid-ref-set">Avoid <code>ref-set</code></a></h4>
 <div class="paragraph">
 <p>Avoid the use of <code>ref-set</code> whenever possible.</p>
 </div>
@@ -2523,14 +2523,14 @@ transaction.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="refs-small-transactions"><a class="anchor" href="#refs-small-transactions"></a><a class="link" href="#refs-small-transactions">Refs Small Transactions</a></h4>
+<h4 id="refs-small-transactions"><a class="anchor" href="#refs-small-transactions"></a><a class="link" href="#refs-small-transactions">Small Transactions</a></h4>
 <div class="paragraph">
 <p>Try to keep the size of transactions (the amount of work encapsulated in them)
 as small as possible.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="refs-avoid-short-long-transactions-with-same-ref"><a class="anchor" href="#refs-avoid-short-long-transactions-with-same-ref"></a><a class="link" href="#refs-avoid-short-long-transactions-with-same-ref">Refs Avoid Short Long Transactions With Same Ref</a></h4>
+<h4 id="refs-avoid-short-long-transactions-with-same-ref"><a class="anchor" href="#refs-avoid-short-long-transactions-with-same-ref"></a><a class="link" href="#refs-avoid-short-long-transactions-with-same-ref">Avoid Short Long Transactions With Same Ref</a></h4>
 <div class="paragraph">
 <p>Avoid having both short- and long-running transactions interacting
 with the same Ref.</p>
@@ -2557,13 +2557,13 @@ up the thread.</p>
 <div class="sect2">
 <h3 id="Atoms"><a class="anchor" href="#Atoms"></a><a class="link" href="#Atoms">Atoms</a></h3>
 <div class="sect3">
-<h4 id="atoms-no-update-within-transactions"><a class="anchor" href="#atoms-no-update-within-transactions"></a><a class="link" href="#atoms-no-update-within-transactions">Atoms No Update Within Transactions</a></h4>
+<h4 id="atoms-no-update-within-transactions"><a class="anchor" href="#atoms-no-update-within-transactions"></a><a class="link" href="#atoms-no-update-within-transactions">No Updates Within Transactions</a></h4>
 <div class="paragraph">
 <p>Avoid atom updates inside STM transactions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="atoms-prefer-swap-over-reset"><a class="anchor" href="#atoms-prefer-swap-over-reset"></a><a class="link" href="#atoms-prefer-swap-over-reset">Atoms Prefer Swap Over Reset</a></h4>
+<h4 id="atoms-prefer-swap-over-reset"><a class="anchor" href="#atoms-prefer-swap-over-reset"></a><a class="link" href="#atoms-prefer-swap-over-reset">Prefer <code>swap!</code> over <code>reset!</code></a></h4>
 <div class="paragraph">
 <p>Try to use <code>swap!</code> rather than <code>reset!</code>, where possible.</p>
 </div>
@@ -3328,7 +3328,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-12 11:57:25 UTC
+Last updated 2019-06-12 16:29:45 UTC
 </div>
 </div>
 <style>
