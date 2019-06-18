@@ -12,11 +12,9 @@ endif::[]
 
 == Introduction
 
-[quote]
+[quote, Officer Alex J. Murphy / RoboCop]
 ____
 Role models are important.
-
--- Officer Alex J. Murphy / RoboCop
 ____
 
 ifdef::env-github[]
@@ -82,13 +80,11 @@ Translations of the guide are available in the following languages:
 
 == Source Code Layout & Organization
 
-[quote]
+[quote, Jerry Coffin (on indentation)]
 ____
 Nearly everybody is convinced that every style but their own is
 ugly and unreadable. Leave out the "but their own" and they're
 probably right...
-
--- Jerry Coffin (on indentation)
 ____
 
 === Tabs vs Spaces [[spaces]]
@@ -239,11 +235,9 @@ and before a closing bracket.
 
 === No Commas in Sequential Collection Literals [[no-commas-for-seq-literals]]
 
-[quote]
+[quote, Alan Perlis]
 ____
 Syntactic sugar causes semicolon cancer.
-
--- Alan Perlis
 ____
 
 Don't use commas between the elements of sequential collection literals.
@@ -1217,12 +1211,10 @@ Be careful regarding what exactly do you attach metadata to.
 
 == Naming
 
-[quote]
+[quote, Phil Karlton]
 ____
 The only real difficulties in programming are cache invalidation and
 naming things.
-
--- Phil Karlton
 ____
 
 === Ns Naming Schemas [[ns-naming-schemas]]
@@ -1355,12 +1347,10 @@ Follow ``clojure.core``'s example for idiomatic names like `pred` and `coll`.
 
 == Data Structures
 
-[quote]
+[quote, Alan J. Perlis]
 ____
 It is better to have 100 functions operate on one data structure
 than to have 10 functions operate on 10 data structures.
-
--- Alan J. Perlis
 ____
 
 === Avoid Lists [[avoid-lists]]
@@ -1658,14 +1648,12 @@ Prefer syntax-quoted forms over building lists manually.
 
 == Comments
 
-[quote]
+[quote, Steve McConnell]
 ____
 Good code is its own best documentation. As you're about to add a
 comment, ask yourself, "How can I improve the code so that this
 comment isn't needed?" Improve the code and then document it to make
 it even clearer.
-
--- Steve McConnell
 ____
 
 === Self Documenting Code [[self-documenting-code]]
@@ -1749,11 +1737,9 @@ you need to comment out a particular form.
 
 === Refactor Don't Comment [[refactor-dont-comment]]
 
-[quote]
+[quote, Russ Olsen]
 ____
 Good code is like a good joke - it needs no explanation.
-
--- Russ Olsen
 ____
 
 Avoid writing comments to explain bad code. Refactor the code to
