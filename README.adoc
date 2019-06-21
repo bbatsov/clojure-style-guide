@@ -1034,7 +1034,7 @@ compile-time constants.
   :dunno)
 ----
 
-=== Shor Forms In Cond [[shor-forms-in-cond]]
+=== Short Forms In Cond [[short-forms-in-cond]]
 
 Use short forms in `cond` and related.  If not possible give visual
 hints for the pairwise grouping with comments or empty lines.
