@@ -48,6 +48,7 @@ Please note, that the Clojure developing community maintains a list of
 https://clojure.org/community/contrib_howto#_coding_guidelines[coding standards for libraries],
 too.
 
+ifdef::env-github[]
 You can generate a PDF copy of this guide using https://asciidoctor.org/docs/asciidoctor-pdf/[AsciiDoctor PDF], and an HTML copy https://asciidoctor.org/docs/convert-documents/#converting-a-document-to-html[with] https://asciidoctor.org/#installation[AsciiDoctor] using the following commands:
 
 [source,shell]
@@ -68,6 +69,7 @@ Install the `rouge` gem to get nice syntax highlighting in the generated documen
 gem install rouge
 ----
 ====
+endif::[]
 
 Translations of the guide are available in the following languages:
 
