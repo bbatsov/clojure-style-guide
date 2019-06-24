@@ -98,7 +98,7 @@ Use *spaces* for indentation. No hard tabs.
 Use 2 spaces to indent the bodies of
 forms that have body parameters.  This covers all `def` forms, special
 forms and macros that introduce local bindings (e.g. `loop`, `let`,
-`when-let`) and many macros like `when`, `cond`, `as->`, `cond->`, `case`,
+`when-let`) and many macros like `when`, `cond`, `as+++->+++`, `cond+++->+++`, `case`,
 `with-*`, etc.
 
 [source,clojure]
@@ -941,7 +941,7 @@ Leverage `partial` when doing so yields simpler code.
 
 === Threading Macros [[threading-macros]]
 
-Prefer the use of the threading macros `->` (thread-first) and `->>`
+Prefer the use of the threading macros `+++->+++` (thread-first) and `+++->>+++`
 (thread-last) to heavy form nesting.
 
 [source,clojure]
@@ -1274,7 +1274,7 @@ should end with an exclamation mark (e.g. `reset!`).
 
 === Arrow Instead Of To [[arrow-instead-of-to]]
 
-Use `->` instead of `to` in the names of conversion functions.
+Use `+++->+++` instead of `to` in the names of conversion functions.
 
 [source,clojure]
 ----
@@ -1477,7 +1477,7 @@ for more details.
 (Bar. 1 2)
 ----
 
-Note that `deftype` doesn't define the `map->Type`
+Note that `deftype` doesn't define the `map+++->+++Type`
   constructor. It's available only for records.
 
 === Custom Record Constructors [[custom-record-constructors]]
