@@ -2128,7 +2128,7 @@ that drags in hundreds of vars you do not plan to use.
 
 Deliver core functionality and integration points in separate
 artifacts.  That way, consumers can consume your library without
-being constrained by your unrelated tooling prefences. For example,
+being constrained by your unrelated tooling preferences. For example,
 https://github.com/stuartsierra/component[Component] provides
 core functionality, and
 https://github.com/stuartsierra/reloaded[reloaded] provides leiningen
