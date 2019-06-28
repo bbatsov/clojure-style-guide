@@ -755,7 +755,7 @@ probably right&#8230;&#8203;</p>
 <p>Use 2 spaces to indent the bodies of
 forms that have body parameters.  This covers all <code>def</code> forms, special
 forms and macros that introduce local bindings (e.g. <code>loop</code>, <code>let</code>,
-<code>when-let</code>) and many macros like <code>when</code>, <code>cond</code>, <code>as&#8594;</code>, <code>cond&#8594;</code>, <code>case</code>,
+<code>when-let</code>) and many macros like <code>when</code>, <code>cond</code>, <code>as-&gt;</code>, <code>cond-&gt;</code>, <code>case</code>,
 <code>with-*</code>, etc.</p>
 </div>
 <div class="listingblock">
@@ -1727,7 +1727,7 @@ more than one form.</p>
 <div class="sect2">
 <h3 id="threading-macros"><a class="anchor" href="#threading-macros"></a><a class="link" href="#threading-macros">Threading Macros</a></h3>
 <div class="paragraph">
-<p>Prefer the use of the threading macros <code>&#8594;</code> (thread-first) and <code>&#8594;&gt;</code>
+<p>Prefer the use of the threading macros <code>-&gt;</code> (thread-first) and <code>-&gt;&gt;</code>
 (thread-last) to heavy form nesting.</p>
 </div>
 <div class="listingblock">
@@ -2115,7 +2115,7 @@ should end with an exclamation mark (e.g. <code>reset!</code>).</p>
 <div class="sect2">
 <h3 id="arrow-instead-of-to"><a class="anchor" href="#arrow-instead-of-to"></a><a class="link" href="#arrow-instead-of-to">Arrow Instead Of To</a></h3>
 <div class="paragraph">
-<p>Use <code>&#8594;</code> instead of <code>to</code> in the names of conversion functions.</p>
+<p>Use <code>-&gt;</code> instead of <code>to</code> in the names of conversion functions.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2405,7 +2405,7 @@ for more details.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Note that <code>deftype</code> doesn&#8217;t define the <code>map&#8594;Type</code>
+<p>Note that <code>deftype</code> doesn&#8217;t define the <code>map-&gt;Type</code>
   constructor. It&#8217;s available only for records.</p>
 </div>
 </div>
@@ -3299,7 +3299,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-27 06:08:21 UTC
+Last updated 2019-06-28 04:39:08 UTC
 </div>
 </div>
 <style>
