@@ -1914,7 +1914,7 @@ If a form supports docstrings directly prefer them over using `:doc` metadata:
 
 === Docstring Summary [[docstring-summary]]
 
-Let the first line in the doc string be a complete, capitalized
+Let the first line in the docstring be a complete, capitalized
 sentence which concisely describes the var in question. This makes it
 easy for tooling (Clojure editors and IDEs) to display a short a summary of
 the docstring at various places.
@@ -2012,20 +2012,20 @@ Indent multi-line docstrings by two spaces.
 (ns my.ns
   "It is actually possible to document a ns.
   It's a nice place to describe the purpose of the namespace and maybe even
-  the overall conventions used. Note how _not_ indenting the doc string makes
+  the overall conventions used. Note how _not_ indenting the docstring makes
   it easier for tooling to display it correctly.")
 
 ;; bad
 (ns my.ns
   "It is actually possible to document a ns.
 It's a nice place to describe the purpose of the namespace and maybe even
-the overall conventions used. Note how _not_ indenting the doc string makes
+the overall conventions used. Note how _not_ indenting the docstring makes
 it easier for tooling to display it correctly.")
 ----
 
 === Docstring Leading Trailing Whitespace [[docstring-leading-trailing-whitespace]]
 
-Neither start nor end your doc strings with any whitespace.
+Neither start nor end your docstrings with any whitespace.
 
 [source,clojure]
 ----
@@ -2036,7 +2036,7 @@ Neither start nor end your doc strings with any whitespace.
 
 ;; bad
 (def silly
-  "    It's just silly to start a doc string with spaces.
+  "    It's just silly to start a docstring with spaces.
   Just as silly as it is to end it with a bunch of them.      "
   42)
 ----
