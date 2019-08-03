@@ -913,7 +913,7 @@ This rule should obviously be ignored if the complementing predicate
 
 === `comp` [[comp]]
 
-Leverage `comp` when doing so yields simpler code.
+Leveraging `comp` when doing so yields simpler code.
 
 [source,clojure]
 ----
@@ -928,7 +928,7 @@ Leverage `comp` when doing so yields simpler code.
 
 === `partial` [[partial]]
 
-Leverage `partial` when doing so yields simpler code.
+Leveraging `partial` when doing so yields simpler code.
 
 [source,clojure]
 ----
@@ -1196,7 +1196,7 @@ To access a private var (e.g. for testing), use the `@#'some.ns/var` form.
 
 === Attach Metadata Carefully [[attach-metadata-carefully]]
 
-Be careful regarding what exactly do you attach metadata to.
+Be careful regarding what exactly you attach metadata to.
 
 [source,clojure]
 ----
@@ -1228,7 +1228,7 @@ When naming namespaces favor the following two schemas:
 
 === Lisp Case Ns [[lisp-case-ns]]
 
-Use `lisp-case` in composite namespace segments(e.g. `bruce.project-euler`)
+Use `lisp-case` in composite namespace segments (e.g. `bruce.project-euler`).
 
 === Lisp Case [[lisp-case]]
 
