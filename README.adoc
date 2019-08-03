@@ -639,7 +639,7 @@ Don't shadow `clojure.core` names with local bindings.
 
 [source,clojure]
 ----
-;; bad - you're forced to use clojure.core/map fully qualified inside
+;; bad - clojure.core/map must be fully qualified inside the function
 (defn foo [map]
   ...)
 ----
@@ -1505,8 +1505,8 @@ Feel free to adopt whatever naming convention or structure you'd like for such c
 === Custom Record Constructors Naming [[custom-record-constructors-naming]]
 
 Don't override the auto-generated type/record constructor functions.
-People expect them to have a certain behaviour and you changing this behaviour
-violates the principle of the least surprise . See https://stuartsierra.com/2015/05/17/clojure-record-constructors[this
+People expect them to have a certain behaviour and changing this behaviour
+violates the principle of least surprise. See https://stuartsierra.com/2015/05/17/clojure-record-constructors[this 
 article]
 for more details.
 
