@@ -375,10 +375,8 @@ Start every namespace with a comprehensive `ns` form, comprised of
 
 === Line Breaks in `ns` [[line-break-ns-declaration]]
 
-When there are multiple dependencies, you may want to start them on
-a new line, then insert line breaks after each one for easier sorting,
-readability if it's a long line, and to reduce diffing when only there
-is only a change related to one dependency.
+When there are multiple dependencies, you may want give each one its own line. 
+This facilitates sorting, readability, and cleaner diffs for dependency changes.
 
 [source,clojure]
 ----
