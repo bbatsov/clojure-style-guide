@@ -1382,7 +1382,7 @@ necessary.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; bad - you're forced to use clojure.core/map fully qualified inside</span><span class="w">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; bad - clojure.core/map must be fully qualified inside the function</span><span class="w">
 </span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="p">[</span><span class="nb">map</span><span class="p">]</span><span class="w">
   </span><span class="n">...</span><span class="p">)</span></code></pre>
 </div>
@@ -2436,8 +2436,8 @@ for more details.</p>
 <h3 id="custom-record-constructors-naming"><a class="anchor" href="#custom-record-constructors-naming"></a><a class="link" href="#custom-record-constructors-naming">Custom Record Constructors Naming</a></h3>
 <div class="paragraph">
 <p>Don&#8217;t override the auto-generated type/record constructor functions.
-People expect them to have a certain behaviour and you changing this behaviour
-violates the principle of the least surprise . See <a href="https://stuartsierra.com/2015/05/17/clojure-record-constructors">this
+People expect them to have a certain behaviour and changing this behaviour
+violates the principle of least surprise. See <a href="https://stuartsierra.com/2015/05/17/clojure-record-constructors">this
 article</a>
 for more details.</p>
 </div>
@@ -3297,7 +3297,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-08-04 18:11:44 UTC
+Last updated 2019-08-04 18:14:25 UTC
 </div>
 </div>
 <style>
