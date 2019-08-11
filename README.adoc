@@ -74,7 +74,7 @@ endif::[]
 Translations of the guide are available in the following languages:
 
 * https://github.com/geekerzp/clojure-style-guide/blob/master/README-zhCN.md[Chinese]
-* https://github.com/totakke/clojure-style-guide/blob/ja/README.md[Japanese]
+* https://github.com/totakke/clojure-style-guide/blob/ja/README.adoc[Japanese]
 * https://github.com/kwakbab/clojure-style-guide/blob/master/README-koKO.md[Korean]
 * https://github.com/theSkilled/clojure-style-guide/blob/pt-BR/README.md[Portuguese] (Under progress)
 * https://github.com/Nondv/clojure-style-guide/blob/master/ru/README.md[Russian]
