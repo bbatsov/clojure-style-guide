@@ -911,7 +911,7 @@ exists in the form of a separate function (e.g. `even?` and `odd?`).
 
 === `comp` [[comp]]
 
-Leverage `comp` when doing so yields simpler code.
+Favor `comp` over anonymous functions for function composition.
 
 [source,clojure]
 ----
@@ -926,7 +926,7 @@ Leverage `comp` when doing so yields simpler code.
 
 === `partial` [[partial]]
 
-Leverage `partial` when doing so yields simpler code.
+Favor `partial` over anonymous functions for currying.
 
 [source,clojure]
 ----
