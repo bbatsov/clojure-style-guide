@@ -913,7 +913,7 @@ This rule should obviously be ignored if the complementing predicate
 
 === `comp` [[comp]]
 
-Leverage `comp` when doing so yields simpler code.
+Favor `comp` over anonymous functions for function composition.
 
 [source,clojure]
 ----
@@ -928,7 +928,7 @@ Leverage `comp` when doing so yields simpler code.
 
 === `partial` [[partial]]
 
-Leverage `partial` when doing so yields simpler code.
+Favor `partial` over anonymous functions for currying.
 
 [source,clojure]
 ----
