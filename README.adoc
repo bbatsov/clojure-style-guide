@@ -339,7 +339,23 @@ Avoid trailing whitespace.
 
 === One File Per Namespace [[one-file-per-namespace]]
 
-Use one file per namespace.
+Use one file per namespace and one namespace per file.
+
+----
+;; good 
+(ns foo.bar)
+
+;; bad 
+(ns foo.bar)
+(ns baz.qux)
+
+;; bad
+(in-ns quux.quuz)
+(in-ns quuz.corge)
+
+;; bad 
+(ns foo.bar) or (in-ns foo.bar) in multiple files
+----
 
 == Namespace Declaration
 
