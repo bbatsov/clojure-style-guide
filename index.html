@@ -1037,7 +1037,24 @@ pairwise constructs as found in e.g. <code>let</code> and <code>cond</code>.</p>
 <div class="sect2">
 <h3 id="one-file-per-namespace"><a class="anchor" href="#one-file-per-namespace"></a><a class="link" href="#one-file-per-namespace">One File Per Namespace</a></h3>
 <div class="paragraph">
-<p>Use one file per namespace.</p>
+<p>Use one file per namespace and one namespace per file.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>;; good
+(ns foo.bar)
+
+;; bad
+(ns foo.bar)
+(ns baz.qux)
+
+;; bad
+(in-ns quux.quuz)
+(in-ns quuz.corge)
+
+;; bad
+(ns foo.bar) or (in-ns foo.bar) in multiple files</pre>
+</div>
 </div>
 </div>
 </div>
@@ -3296,7 +3313,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-09-26 06:55:51 UTC
+Last updated 2019-09-26 06:58:11 UTC
 </div>
 </div>
 <style>
