@@ -3,7 +3,6 @@
 :idseparator: -
 :sectanchors:
 :sectlinks:
-:toc: preamble
 :toclevels: 1
 ifndef::backend-pdf[]
 :toc-title: pass:[<h2>Table of Contents</h2>]
@@ -1899,7 +1898,7 @@ If a definition form doesn't support docstrings directly you can still supply th
 the `:doc` metadata attribute.
 
 This section outlines some of the common conventions and best
-practices for documenting Clojure code.
+practices for documenting Clojure code. Important tools such as [cljdoc](https://github.com/cljdoc/cljdoc/blob/master/doc/userguide/for-library-authors.adoc#docstrings) support Markdown in docstrings so leverage it.
 
 === Prefer Docstrings [[prefer-docstrings]]
 
@@ -1977,21 +1976,23 @@ functionality for them.
 === Document References [[document-references]]
 
 Wrap any var references in the docstring with ` so that tooling
-can identify them.
+can identify them. Wrap them with `[[..]]` if you want to link to them.
 
 [source,clojure]
 ----
 ;; good
 (defn wombat
   "Acts much like `clojure.core/identity` except when it doesn't.
-  Takes `x` as an argument and returns that. If it feels like it."
+  Takes `x` as an argument and returns that. If it feels like it.
+  See also [[kangaroo]]."
   [x]
   ...)
 
 ;; bad
 (defn wombat
   "Acts much like clojure.core/identity except when it doesn't.
-  Takes `x` as an argument and returns that. If it feels like it."
+  Takes `x` as an argument and returns that. If it feels like it.
+  See also kangaroo."
   [x]
   ...)
 ----
@@ -2166,7 +2167,7 @@ together with everyone interested in Clojure coding style, so that we could
 ultimately create a resource that will be beneficial to the entire Clojure
 community.
 
-Feel free to open tickets or send pull requests with improvements. Thanks in
+Feel free to [open tickets or send pull requests](https://github.com/bbatsov/clojure-style-guide/issues) with improvements. Thanks in
 advance for your help!
 
 You can also support the style guide (and all my Clojure projects like
