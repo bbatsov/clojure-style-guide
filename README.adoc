@@ -1898,7 +1898,7 @@ If a definition form doesn't support docstrings directly you can still supply th
 the `:doc` metadata attribute.
 
 This section outlines some of the common conventions and best
-practices for documenting Clojure code. Important tools such as [cljdoc](https://github.com/cljdoc/cljdoc/blob/master/doc/userguide/for-library-authors.adoc#docstrings) support Markdown in docstrings so leverage it.
+practices for documenting Clojure code.
 
 === Prefer Docstrings [[prefer-docstrings]]
 
@@ -1947,6 +1947,32 @@ the docstring at various places.
   "This function does a frobnitz. It will do gnorwatz to
   achieve this, but only under certain circumstances."
   []
+  ...)
+----
+
+=== Leverage Markdown in Docstrings [[markdown-docstrings]]
+
+Important tools such as https://github.com/cljdoc/cljdoc/blob/master/doc/userguide/for-library-authors.adoc#docstrings[cljdoc] support Markdown in docstrings so leverage it for nicely formatted documentation.
+
+[source,clojure]
+----
+;; good
+(defn qzuf-number
+  "Computes the [Qzuf number](https://wikipedia.org/qzuf) of the `coll`.
+  Supported options in `opts`:
+  
+  | key           | description |
+  | --------------|-------------|
+  | `:finite-uni?`| Assume finite universe; default: `false`
+  | `:complex?`   | If OK to return a [complex number](https://en.wikipedia.org/wiki/Complex_number); default: `false`
+  | `:timeout`    | Throw an exception if the computation doesn't finish within `:timeout` milliseconds; default: `nil`
+  
+  Example:
+  ```clojure
+  (when (neg? (qzuf-number [1 2 3] {:finite-uni? true})) 
+    (throw (RuntimeException. "Error in the Universe!")))
+  ```"
+  [coll opts]
   ...)
 ----
 
