@@ -3,7 +3,6 @@
 :idseparator: -
 :sectanchors:
 :sectlinks:
-:toc: preamble
 :toclevels: 1
 ifndef::backend-pdf[]
 :toc-title: pass:[<h2>Table of Contents</h2>]
@@ -1951,6 +1950,32 @@ the docstring at various places.
   ...)
 ----
 
+=== Leverage Markdown in Docstrings [[markdown-docstrings]]
+
+Important tools such as https://github.com/cljdoc/cljdoc/blob/master/doc/userguide/for-library-authors.adoc#docstrings[cljdoc] support Markdown in docstrings so leverage it for nicely formatted documentation.
+
+[source,clojure]
+----
+;; good
+(defn qzuf-number
+  "Computes the [Qzuf number](https://wikipedia.org/qzuf) of the `coll`.
+  Supported options in `opts`:
+  
+  | key           | description |
+  | --------------|-------------|
+  | `:finite-uni?`| Assume finite universe; default: `false`
+  | `:complex?`   | If OK to return a [complex number](https://en.wikipedia.org/wiki/Complex_number); default: `false`
+  | `:timeout`    | Throw an exception if the computation doesn't finish within `:timeout` milliseconds; default: `nil`
+  
+  Example:
+  ```clojure
+  (when (neg? (qzuf-number [1 2 3] {:finite-uni? true})) 
+    (throw (RuntimeException. "Error in the Universe!")))
+  ```"
+  [coll opts]
+  ...)
+----
+
 === Document Pos Arguments [[document-pos-arguments]]
 
 Document all positional arguments, and wrap them them with backticks
@@ -1977,21 +2002,23 @@ functionality for them.
 === Document References [[document-references]]
 
 Wrap any var references in the docstring with ` so that tooling
-can identify them.
+can identify them. Wrap them with `[[..]]` if you want to link to them.
 
 [source,clojure]
 ----
 ;; good
 (defn wombat
   "Acts much like `clojure.core/identity` except when it doesn't.
-  Takes `x` as an argument and returns that. If it feels like it."
+  Takes `x` as an argument and returns that. If it feels like it.
+  See also [[kangaroo]]."
   [x]
   ...)
 
 ;; bad
 (defn wombat
   "Acts much like clojure.core/identity except when it doesn't.
-  Takes `x` as an argument and returns that. If it feels like it."
+  Takes `x` as an argument and returns that. If it feels like it.
+  See also kangaroo."
   [x]
   ...)
 ----
@@ -2169,7 +2196,7 @@ together with everyone interested in Clojure coding style, so that we could
 ultimately create a resource that will be beneficial to the entire Clojure
 community.
 
-Feel free to open tickets or send pull requests with improvements. Thanks in
+Feel free to [open tickets or send pull requests](https://github.com/bbatsov/clojure-style-guide/issues) with improvements. Thanks in
 advance for your help!
 
 You can also support the style guide (and all my Clojure projects like
