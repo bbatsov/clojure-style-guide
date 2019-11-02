@@ -610,6 +610,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#prefer-docstrings">Prefer Docstrings</a></li>
 <li><a href="#docstring-summary">Docstring Summary</a></li>
+<li><a href="#markdown-docstrings">Leverage Markdown in Docstrings</a></li>
 <li><a href="#document-pos-arguments">Document Pos Arguments</a></li>
 <li><a href="#document-references">Document References</a></li>
 <li><a href="#docstring-grammar">Docstring Grammar</a></li>
@@ -3002,6 +3003,34 @@ the docstring at various places.</p>
 </div>
 </div>
 <div class="sect2">
+<h3 id="markdown-docstrings"><a class="anchor" href="#markdown-docstrings"></a><a class="link" href="#markdown-docstrings">Leverage Markdown in Docstrings</a></h3>
+<div class="paragraph">
+<p>Important tools such as <a href="https://github.com/cljdoc/cljdoc/blob/master/doc/userguide/for-library-authors.adoc#docstrings">cljdoc</a> support Markdown in docstrings so leverage it for nicely formatted documentation.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">qzuf-number</span><span class="w">
+  </span><span class="s">"Computes the [Qzuf number](https://wikipedia.org/qzuf) of the `coll`.
+  Supported options in `opts`:
+
+  | key           | description |
+  | --------------|-------------|
+  | `:finite-uni?`| Assume finite universe; default: `false`
+  | `:complex?`   | If OK to return a [complex number](https://en.wikipedia.org/wiki/Complex_number); default: `false`
+  | `:timeout`    | Throw an exception if the computation doesn't finish within `:timeout` milliseconds; default: `nil`
+
+  Example:
+  ```clojure
+  (when (neg? (qzuf-number [1 2 3] {:finite-uni? true}))
+    (throw (RuntimeException. "</span><span class="n">Error</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Universe!</span><span class="s">")))
+  ```"</span><span class="w">
+  </span><span class="p">[</span><span class="n">coll</span><span class="w"> </span><span class="n">opts</span><span class="p">]</span><span class="w">
+  </span><span class="n">...</span><span class="p">)</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="document-pos-arguments"><a class="anchor" href="#document-pos-arguments"></a><a class="link" href="#document-pos-arguments">Document Pos Arguments</a></h3>
 <div class="paragraph">
 <p>Document all positional arguments, and wrap them them with backticks
@@ -3030,21 +3059,23 @@ functionality for them.</p>
 <h3 id="document-references"><a class="anchor" href="#document-references"></a><a class="link" href="#document-references">Document References</a></h3>
 <div class="paragraph">
 <p>Wrap any var references in the docstring with ` so that tooling
-can identify them.</p>
+can identify them. Wrap them with <code>[[..]]</code> if you want to link to them.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
 </span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">wombat</span><span class="w">
   </span><span class="s">"Acts much like `clojure.core/identity` except when it doesn't.
-  Takes `x` as an argument and returns that. If it feels like it."</span><span class="w">
+  Takes `x` as an argument and returns that. If it feels like it.
+  See also [[kangaroo]]."</span><span class="w">
   </span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w">
   </span><span class="n">...</span><span class="p">)</span><span class="w">
 
 </span><span class="c1">;; bad</span><span class="w">
 </span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">wombat</span><span class="w">
   </span><span class="s">"Acts much like clojure.core/identity except when it doesn't.
-  Takes `x` as an argument and returns that. If it feels like it."</span><span class="w">
+  Takes `x` as an argument and returns that. If it feels like it.
+  See also kangaroo."</span><span class="w">
   </span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w">
   </span><span class="n">...</span><span class="p">)</span></code></pre>
 </div>
@@ -3276,7 +3307,7 @@ ultimately create a resource that will be beneficial to the entire Clojure
 community.</p>
 </div>
 <div class="paragraph">
-<p>Feel free to open tickets or send pull requests with improvements. Thanks in
+<p>Feel free to [open tickets or send pull requests](<a href="https://github.com/bbatsov/clojure-style-guide/issues" class="bare">https://github.com/bbatsov/clojure-style-guide/issues</a>) with improvements. Thanks in
 advance for your help!</p>
 </div>
 <div class="paragraph">
@@ -3318,7 +3349,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-10-28 12:25:00 UTC
+Last updated 2019-11-02 06:40:26 UTC
 </div>
 </div>
 <style>
