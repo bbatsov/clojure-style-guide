@@ -177,7 +177,7 @@ Vertically align `let` (and `let`-like) bindings.
 ;; bad
 (let [thing1 "some stuff"
   thing2 "other stuff"]
-  (foo thing1 thing2})
+  (foo thing1 thing2))
 ----
 
 === Map Keys Alignment [[map-keys-alignment]]
