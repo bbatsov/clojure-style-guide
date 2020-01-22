@@ -448,6 +448,30 @@ considered deprecated for new code.
   (:use clojure.zip))
 ----
 
+=== Sort requirements and imports [[sort-requirements-and-imports]]
+In the `ns` form, sort your requirements and imports. This facilitates readability and avoids duplication, especially when the list of required / imported namespaces is very long.
+
+[source,clojure]
+----
+;; good
+(ns examples.ns
+  (:require
+   [baz.core :as baz]
+   [clojure.java.shell :as sh]
+   [clojure.set :as set]
+   [clojure.string :as s :refer [blank?]]
+   [foo.bar :as foo]))
+   
+;; bad
+(ns examples.ns
+  (:require
+   [clojure.string :as s :refer [blank?]]
+   [clojure.set :as set]
+   [baz.core :as baz]
+   [foo.bar :as foo]
+   [clojure.java.shell :as sh]))
+----
+
 == Functions
 
 === Optional New Line After Fn Name [[optional-new-line-after-fn-name]]
