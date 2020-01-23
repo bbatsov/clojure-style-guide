@@ -470,6 +470,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#comprehensive-ns-declaration">Comprehensive <code>ns</code> Form</a></li>
 <li><a href="#line-break-ns-declaration">Line Breaks in <code>ns</code></a></li>
 <li><a href="#prefer-require-over-use">Prefer <code>:require</code> Over <code>:use</code></a></li>
+<li><a href="#sort-requirements-and-imports">Sort requirements and imports</a></li>
 </ul>
 </li>
 <li><a href="#functions">Functions</a>
@@ -1160,6 +1161,33 @@ considered deprecated for new code.</p>
 </span><span class="c1">;; bad</span><span class="w">
 </span><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">examples.ns</span><span class="w">
   </span><span class="p">(</span><span class="no">:use</span><span class="w"> </span><span class="n">clojure.zip</span><span class="p">))</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sort-requirements-and-imports"><a class="anchor" href="#sort-requirements-and-imports"></a><a class="link" href="#sort-requirements-and-imports">Sort requirements and imports</a></h3>
+<div class="paragraph">
+<p>In the <code>ns</code> form, sort your requirements and imports. This facilitates readability and avoids duplication, especially when the list of required / imported namespaces is very long.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
+</span><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">examples.ns</span><span class="w">
+  </span><span class="p">(</span><span class="no">:require</span><span class="w">
+   </span><span class="p">[</span><span class="n">baz.core</span><span class="w"> </span><span class="no">:as</span><span class="w"> </span><span class="n">baz</span><span class="p">]</span><span class="w">
+   </span><span class="p">[</span><span class="n">clojure.java.shell</span><span class="w"> </span><span class="no">:as</span><span class="w"> </span><span class="n">sh</span><span class="p">]</span><span class="w">
+   </span><span class="p">[</span><span class="n">clojure.set</span><span class="w"> </span><span class="no">:as</span><span class="w"> </span><span class="nb">set</span><span class="p">]</span><span class="w">
+   </span><span class="p">[</span><span class="n">clojure.string</span><span class="w"> </span><span class="no">:as</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="no">:refer</span><span class="w"> </span><span class="p">[</span><span class="n">blank?</span><span class="p">]]</span><span class="w">
+   </span><span class="p">[</span><span class="n">foo.bar</span><span class="w"> </span><span class="no">:as</span><span class="w"> </span><span class="n">foo</span><span class="p">]))</span><span class="w">
+
+</span><span class="c1">;; bad</span><span class="w">
+</span><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">examples.ns</span><span class="w">
+  </span><span class="p">(</span><span class="no">:require</span><span class="w">
+   </span><span class="p">[</span><span class="n">clojure.string</span><span class="w"> </span><span class="no">:as</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="no">:refer</span><span class="w"> </span><span class="p">[</span><span class="n">blank?</span><span class="p">]]</span><span class="w">
+   </span><span class="p">[</span><span class="n">clojure.set</span><span class="w"> </span><span class="no">:as</span><span class="w"> </span><span class="nb">set</span><span class="p">]</span><span class="w">
+   </span><span class="p">[</span><span class="n">baz.core</span><span class="w"> </span><span class="no">:as</span><span class="w"> </span><span class="n">baz</span><span class="p">]</span><span class="w">
+   </span><span class="p">[</span><span class="n">foo.bar</span><span class="w"> </span><span class="no">:as</span><span class="w"> </span><span class="n">foo</span><span class="p">]</span><span class="w">
+   </span><span class="p">[</span><span class="n">clojure.java.shell</span><span class="w"> </span><span class="no">:as</span><span class="w"> </span><span class="n">sh</span><span class="p">]))</span></code></pre>
 </div>
 </div>
 </div>
@@ -3349,7 +3377,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-11-02 06:40:26 UTC
+Last updated 2020-01-23 13:40:04 UTC
 </div>
 </div>
 <style>
