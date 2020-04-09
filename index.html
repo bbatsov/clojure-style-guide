@@ -2216,6 +2216,26 @@ value will be ignored by the code at hand.</p>
   </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Hello!"</span><span class="p">))</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>However, when it can help the understanding of your code, it can be useful to explicitly name unused arguments or maps you&#8217;re destructuring from. In this case, prepend the name with an underscore to explicitly signal that the variable is supposed to be unused.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">myfun1</span><span class="w"> </span><span class="p">[</span><span class="n">context</span><span class="w"> </span><span class="n">_</span><span class="p">]</span><span class="w">
+ </span><span class="p">(</span><span class="nb">assoc</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="no">:foo</span><span class="w"> </span><span class="s">"bar"</span><span class="p">))</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">myfun2</span><span class="w"> </span><span class="p">[</span><span class="n">context</span><span class="w"> </span><span class="p">{</span><span class="no">:keys</span><span class="w"> </span><span class="p">[</span><span class="n">id</span><span class="p">]}]</span><span class="w">
+ </span><span class="p">(</span><span class="nb">assoc</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="no">:user-id</span><span class="w"> </span><span class="n">id</span><span class="p">))</span><span class="w">
+
+</span><span class="c1">;; better</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">myfun1</span><span class="w"> </span><span class="p">[</span><span class="n">context</span><span class="w"> </span><span class="n">_user</span><span class="p">]</span><span class="w">
+ </span><span class="p">(</span><span class="nb">assoc</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="no">:foo</span><span class="w"> </span><span class="s">"bar"</span><span class="p">))</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">myfun2</span><span class="w"> </span><span class="p">[</span><span class="n">context</span><span class="w"> </span><span class="p">{</span><span class="no">:keys</span><span class="w"> </span><span class="p">[</span><span class="n">id</span><span class="p">]</span><span class="w"> </span><span class="no">:as</span><span class="w"> </span><span class="n">_user</span><span class="p">}]</span><span class="w">
+ </span><span class="p">(</span><span class="nb">assoc</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="no">:user-id</span><span class="w"> </span><span class="n">id</span><span class="p">))</span></code></pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="idiomatic-names"><a class="anchor" href="#idiomatic-names"></a><a class="link" href="#idiomatic-names">Idiomatic Names</a></h3>
@@ -3377,7 +3397,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-02-11 05:09:33 UTC
+Last updated 2020-04-09 17:25:00 UTC
 </div>
 </div>
 <style>
