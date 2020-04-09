@@ -1362,23 +1362,23 @@ value will be ignored by the code at hand.
   (println "Hello!"))
 ----
 
-Sometimes, it is good practice to give an explicit name to unused arguments, for clarity. However, you should still adhere to the previous rule and prepend the name with an underscore, which is still an explicit signal that you know the var isn't supposed to be used. This is particularly true when destructuring complex maps.
+However, when it can help the understanding of your code, it can be useful to explicitly name unused arguments or maps you're destructuring from. In this case, prepend the name with an underscore to explicitly signal that the variable is supposed to be unused.
 
 [source,clojure]
 ----
 ;; good
-(defn myfun1 [a _]
- (println a))
+(defn myfun1 [context _]
+ (assoc context :foo "bar"))
  
-(defn myfun2 [a {:keys [b c]}]
- (println a b c))
+(defn myfun2 [context {:keys [id]}]
+ (assoc context :user-id id))
 
 ;; better
-(defn myfun1 [a _b]
- (println a))
+(defn myfun1 [context _user]
+ (assoc context :foo "bar"))
 
-(defn myfun2 [a {:keys [b c] :as _mymap}]
- (println a b c))
+(defn myfun2 [context {:keys [id] :as _user}]
+ (assoc context :user-id id))
 ----
 
 === Idiomatic Names [[idiomatic-names]]
