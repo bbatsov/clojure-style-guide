@@ -1343,7 +1343,7 @@ unless specified otherwise.
 === Underscore For Unused Bindings [[underscore-for-unused-bindings]]
 
 Use `+_+` for destructuring targets and formal argument names whose
-value will be ignored by the code at hand.
+value will be ignored by the code at hand. 
 
 [source,clojure]
 ----
@@ -1360,6 +1360,25 @@ value will be ignored by the code at hand.
 
 (dotimes [i 3]
   (println "Hello!"))
+----
+
+However, when it can help the understanding of your code, it can be useful to explicitly name unused arguments or maps you're destructuring from. In this case, prepend the name with an underscore to explicitly signal that the variable is supposed to be unused.
+
+[source,clojure]
+----
+;; good
+(defn myfun1 [context _]
+ (assoc context :foo "bar"))
+ 
+(defn myfun2 [context {:keys [id]}]
+ (assoc context :user-id id))
+
+;; better
+(defn myfun1 [context _user]
+ (assoc context :foo "bar"))
+
+(defn myfun2 [context {:keys [id] :as _user}]
+ (assoc context :user-id id))
 ----
 
 === Idiomatic Names [[idiomatic-names]]
