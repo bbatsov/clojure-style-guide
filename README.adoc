@@ -2238,8 +2238,8 @@ Clojure which uses https://github.com/clojure/core.logic[core.logic] to
 search for patterns of code for which there might exist a more idiomatic
 function or macro.
 * https://github.com/borkdude/clj-kondo[clj-kondo] is a linter that detects
-a wide number of discouraged patterns and suggests improvements based on this
-style guide
+a wide number of discouraged patterns and suggests improvements, based on this
+style guide.
 
 == Contributing
 
