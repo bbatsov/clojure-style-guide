@@ -341,10 +341,10 @@ Avoid trailing whitespace.
 Use one file per namespace and one namespace per file.
 
 ----
-;; good 
+;; good
 (ns foo.bar)
 
-;; bad 
+;; bad
 (ns foo.bar)
 (ns baz.qux)
 
@@ -352,7 +352,7 @@ Use one file per namespace and one namespace per file.
 (in-ns quux.quuz)
 (in-ns quuz.corge)
 
-;; bad 
+;; bad
 (ns foo.bar) or (in-ns foo.bar) in multiple files
 ----
 
@@ -390,7 +390,7 @@ Start every namespace with a comprehensive `ns` form, comprised of
 
 === Line Breaks in `ns` [[line-break-ns-declaration]]
 
-When there are multiple dependencies, you may want give each one its own line. 
+When there are multiple dependencies, you may want give each one its own line.
 This facilitates sorting, readability, and cleaner diffs for dependency changes.
 
 [source,clojure]
@@ -461,7 +461,7 @@ In the `ns` form, sort your requirements and imports. This facilitates readabili
    [clojure.set :as set]
    [clojure.string :as s :refer [blank?]]
    [foo.bar :as foo]))
-   
+
 ;; bad
 (ns examples.ns
   (:require
@@ -945,7 +945,7 @@ Favor the use of `complement` versus the use of an anonymous function.
 (filter #(not (some-pred? %)) coll)
 ----
 
-This rule should obviously be ignored if the complementing predicate 
+This rule should obviously be ignored if the complementing predicate
 exists in the form of a separate function (e.g. `even?` and `odd?`).
 
 === `comp` [[comp]]
@@ -1343,7 +1343,7 @@ unless specified otherwise.
 === Underscore For Unused Bindings [[underscore-for-unused-bindings]]
 
 Use `+_+` for destructuring targets and formal argument names whose
-value will be ignored by the code at hand. 
+value will be ignored by the code at hand.
 
 [source,clojure]
 ----
@@ -1369,7 +1369,7 @@ However, when it can help the understanding of your code, it can be useful to ex
 ;; good
 (defn myfun1 [context _]
  (assoc context :foo "bar"))
- 
+
 (defn myfun2 [context {:keys [id]}]
  (assoc context :user-id id))
 
@@ -1562,7 +1562,7 @@ Feel free to adopt whatever naming convention or structure you'd like for such c
 
 Don't override the auto-generated type/record constructor functions.
 People expect them to have a certain behaviour and changing this behaviour
-violates the principle of least surprise. See https://stuartsierra.com/2015/05/17/clojure-record-constructors[this 
+violates the principle of least surprise. See https://stuartsierra.com/2015/05/17/clojure-record-constructors[this
 article]
 for more details.
 
@@ -2003,16 +2003,16 @@ Important tools such as https://github.com/cljdoc/cljdoc/blob/master/doc/usergui
 (defn qzuf-number
   "Computes the [Qzuf number](https://wikipedia.org/qzuf) of the `coll`.
   Supported options in `opts`:
-  
+
   | key           | description |
   | --------------|-------------|
   | `:finite-uni?`| Assume finite universe; default: `false`
   | `:complex?`   | If OK to return a [complex number](https://en.wikipedia.org/wiki/Complex_number); default: `false`
   | `:timeout`    | Throw an exception if the computation doesn't finish within `:timeout` milliseconds; default: `nil`
-  
+
   Example:
   ```clojure
-  (when (neg? (qzuf-number [1 2 3] {:finite-uni? true})) 
+  (when (neg? (qzuf-number [1 2 3] {:finite-uni? true}))
     (throw (RuntimeException. "Error in the Universe!")))
   ```"
   [coll opts]
@@ -2068,8 +2068,8 @@ can identify them. Wrap them with `[[..]]` if you want to link to them.
 
 === Docstring Grammar [[docstring-grammar]]
 
-Docstrings should be composed of well-formed English sentences. Every sentence 
-should start with a capitalized word, be gramatically coherent, and end 
+Docstrings should be composed of well-formed English sentences. Every sentence
+should start with a capitalized word, be gramatically coherent, and end
 with appropriate punctuation. Sentences should be separated with a single space.
 
 [source,clojure]
@@ -2192,14 +2192,23 @@ with `deftest` and name them `something-test`.
 
 == Library Organization
 
-=== Coordinates [[lib-coordinates]]
+=== Library Coordinates [[lib-coordinates]]
 
 If you are publishing libraries to be used by others, make sure to
 follow the https://central.sonatype.org/pages/choosing-your-coordinates.html[Central Repository
 guidelines]
 for choosing your `groupId` and `artifactId`. This helps to prevent
 name conflicts and facilitates the widest possible use. A good
-example is https://github.com/stuartsierra/component[Component].
+example is https://github.com/stuartsierra/component[Component] - it's
+coordinates are `com.stuartsierra/component`.
+
+Another approach that's popular in the wild is to use a project (or organization)
+name as the `groupId` instead of domain name. Examples of such naming would be:
+
+* `cider/cider-nrepl`
+* `nrepl/nrepl`
+* `nrepl/drawbridge`
+* `clj-commons/fs`
 
 === Minimize Dependencies [[lib-min-dependencies]]
 
