@@ -2199,7 +2199,7 @@ follow the https://central.sonatype.org/pages/choosing-your-coordinates.html[Cen
 guidelines]
 for choosing your `groupId` and `artifactId`. This helps to prevent
 name conflicts and facilitates the widest possible use. A good
-example is https://github.com/stuartsierra/component[Component] - it's
+example is https://github.com/stuartsierra/component[Component] - its
 coordinates are `com.stuartsierra/component`.
 
 Another approach that's popular in the wild is to use a project (or organization)
