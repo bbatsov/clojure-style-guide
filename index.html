@@ -636,7 +636,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#library-organization">Library Organization</a>
 <ul class="sectlevel2">
-<li><a href="#lib-coordinates">Coordinates</a></li>
+<li><a href="#lib-coordinates">Library Coordinates</a></li>
 <li><a href="#lib-min-dependencies">Minimize Dependencies</a></li>
 <li><a href="#lib-core-separate-from-tools">Tool-agnostic</a></li>
 </ul>
@@ -3285,14 +3285,35 @@ with <code>deftest</code> and name them <code>something-test</code>.</p>
 <h2 id="library-organization"><a class="anchor" href="#library-organization"></a><a class="link" href="#library-organization">Library Organization</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="lib-coordinates"><a class="anchor" href="#lib-coordinates"></a><a class="link" href="#lib-coordinates">Coordinates</a></h3>
+<h3 id="lib-coordinates"><a class="anchor" href="#lib-coordinates"></a><a class="link" href="#lib-coordinates">Library Coordinates</a></h3>
 <div class="paragraph">
 <p>If you are publishing libraries to be used by others, make sure to
 follow the <a href="https://central.sonatype.org/pages/choosing-your-coordinates.html">Central Repository
 guidelines</a>
 for choosing your <code>groupId</code> and <code>artifactId</code>. This helps to prevent
 name conflicts and facilitates the widest possible use. A good
-example is <a href="https://github.com/stuartsierra/component">Component</a>.</p>
+example is <a href="https://github.com/stuartsierra/component">Component</a> - it&#8217;s
+coordinates are <code>com.stuartsierra/component</code>.</p>
+</div>
+<div class="paragraph">
+<p>Another approach that&#8217;s popular in the wild is to use a project (or organization)
+name as the <code>groupId</code> instead of domain name. Examples of such naming would be:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>cider/cider-nrepl</code></p>
+</li>
+<li>
+<p><code>nrepl/nrepl</code></p>
+</li>
+<li>
+<p><code>nrepl/drawbridge</code></p>
+</li>
+<li>
+<p><code>clj-commons/fs</code></p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
@@ -3397,7 +3418,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-04-09 17:25:00 UTC
+Last updated 2020-04-13 12:22:13 UTC
 </div>
 </div>
 <style>
