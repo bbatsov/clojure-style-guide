@@ -514,6 +514,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#comp"><code>comp</code></a></li>
 <li><a href="#partial"><code>partial</code></a></li>
 <li><a href="#threading-macros">Threading Macros</a></li>
+<li><a href="#threading-macros-alignment">Threading Macros Alignment</a></li>
 <li><a href="#else-keyword-in-cond">Default <code>cond</code> Branch</a></li>
 <li><a href="#condp"><code>condp</code> vs <code>cond</code></a></li>
 <li><a href="#case"><code>case</code> vs <code>cond/condp</code></a></li>
@@ -1825,23 +1826,6 @@ exists in the form of a separate function (e.g. <code>even?</code> and <code>odd
 <div class="sect2">
 <h3 id="threading-macros"><a class="anchor" href="#threading-macros"></a><a class="link" href="#threading-macros">Threading Macros</a></h3>
 <div class="paragraph">
-<p>The arguments to the threading macros <code>-&gt;</code> (thread-first) and <code>-&gt;&gt;</code>
-(thread-last) should line up.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
-</span><span class="p">(</span><span class="nf">-&gt;&gt;</span><span class="w"> </span><span class="p">(</span><span class="nb">range</span><span class="p">)</span><span class="w">
-     </span><span class="p">(</span><span class="nb">filter</span><span class="w"> </span><span class="n">even?</span><span class="p">)</span><span class="w">
-     </span><span class="p">(</span><span class="nb">take</span><span class="w"> </span><span class="mi">5</span><span class="p">))</span><span class="w">
-
-</span><span class="c1">;; bad</span><span class="w">
-</span><span class="p">(</span><span class="nf">-&gt;&gt;</span><span class="w"> </span><span class="p">(</span><span class="nb">range</span><span class="p">)</span><span class="w">
-  </span><span class="p">(</span><span class="nb">filter</span><span class="w"> </span><span class="n">even?</span><span class="p">)</span><span class="w">
-  </span><span class="p">(</span><span class="nb">take</span><span class="w"> </span><span class="mi">5</span><span class="p">))</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
 <p>Prefer the use of the threading macros <code>-&gt;</code> (thread-first) and <code>-&gt;&gt;</code>
 (thread-last) to heavy form nesting.</p>
 </div>
@@ -1865,6 +1849,26 @@ exists in the form of a separate function (e.g. <code>even?</code> and <code>odd
 </span><span class="c1">;; not as good</span><span class="w">
 </span><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="p">(</span><span class="nb">partial</span><span class="w"> </span><span class="nb">*</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w">
      </span><span class="p">(</span><span class="nb">filter</span><span class="w"> </span><span class="n">even?</span><span class="w"> </span><span class="p">(</span><span class="nb">range</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">10</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="threading-macros-alignment"><a class="anchor" href="#threading-macros-alignment"></a><a class="link" href="#threading-macros-alignment">Threading Macros Alignment</a></h3>
+<div class="paragraph">
+<p>The arguments to the threading macros <code>-&gt;</code> (thread-first) and <code>-&gt;&gt;</code>
+(thread-last) should line up.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
+</span><span class="p">(</span><span class="nf">-&gt;&gt;</span><span class="w"> </span><span class="p">(</span><span class="nb">range</span><span class="p">)</span><span class="w">
+     </span><span class="p">(</span><span class="nb">filter</span><span class="w"> </span><span class="n">even?</span><span class="p">)</span><span class="w">
+     </span><span class="p">(</span><span class="nb">take</span><span class="w"> </span><span class="mi">5</span><span class="p">))</span><span class="w">
+
+</span><span class="c1">;; bad</span><span class="w">
+</span><span class="p">(</span><span class="nf">-&gt;&gt;</span><span class="w"> </span><span class="p">(</span><span class="nb">range</span><span class="p">)</span><span class="w">
+  </span><span class="p">(</span><span class="nb">filter</span><span class="w"> </span><span class="n">even?</span><span class="p">)</span><span class="w">
+  </span><span class="p">(</span><span class="nb">take</span><span class="w"> </span><span class="mi">5</span><span class="p">))</span></code></pre>
 </div>
 </div>
 </div>
@@ -3489,7 +3493,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-05-22 15:05:17 UTC
+Last updated 2020-05-22 15:06:30 UTC
 </div>
 </div>
 <style>
