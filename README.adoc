@@ -216,6 +216,12 @@ $ git config --global core.autocrlf true
 ----
 ====
 
+=== Terminate Files with a Newline
+
+End each file with a newline.
+
+TIP: This should be done by through editor configuration, not manually.
+
 === Bracket Spacing [[bracket-spacing]]
 
 If any text precedes an opening bracket(`(`, `{` and
