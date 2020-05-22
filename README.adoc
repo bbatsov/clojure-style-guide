@@ -1013,22 +1013,6 @@ Favor `partial` over anonymous functions for currying.
 
 === Threading Macros [[threading-macros]]
 
-The arguments to the threading macros `+->+` (thread-first) and `+->>+`
-(thread-last) should line up.
-
-[source,clojure]
-----
-;; good
-(->> (range)
-     (filter even?)
-     (take 5))
-
-;; bad
-(->> (range)
-  (filter even?)
-  (take 5))
-----
-
 Prefer the use of the threading macros `+->+` (thread-first) and `+->>+`
 (thread-last) to heavy form nesting.
 
@@ -1052,6 +1036,24 @@ Prefer the use of the threading macros `+->+` (thread-first) and `+->>+`
 ;; not as good
 (map (partial * 2)
      (filter even? (range 1 10)))
+----
+
+=== Threading Macros Alignment
+
+The arguments to the threading macros `+->+` (thread-first) and `+->>+`
+(thread-last) should line up.
+
+[source,clojure]
+----
+;; good
+(->> (range)
+     (filter even?)
+     (take 5))
+
+;; bad
+(->> (range)
+  (filter even?)
+  (take 5))
 ----
 
 === Default `cond` Branch [[else-keyword-in-cond]]
