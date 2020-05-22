@@ -445,6 +445,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#source-code-layout-organization">Source Code Layout &amp; Organization</a>
 <ul class="sectlevel2">
+<li><a href="#80-character-limits">Maximum Line Length </a></li>
 <li><a href="#spaces">Tabs vs Spaces</a></li>
 <li><a href="#body-indentation">Body Indentation</a></li>
 <li><a href="#vertically-align-fn-args">Function Arguments Alignment</a></li>
@@ -458,7 +459,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#gather-trailing-parens">Gather Trailing Parentheses</a></li>
 <li><a href="#empty-lines-between-top-level-forms">Empty Lines Between Top Level Forms</a></li>
 <li><a href="#no-blank-lines-within-def-forms">No Blank Lines Within Definition Forms</a></li>
-<li><a href="#80-character-limits">Maximum Line Length </a></li>
 <li><a href="#no-trailing-whitespace">No Trailing Whitespace</a></li>
 <li><a href="#one-file-per-namespace">One File Per Namespace</a></li>
 </ul>
@@ -746,6 +746,47 @@ probably right&#8230;&#8203;</p>
 </div>
 </div>
 <div class="sect2">
+<h3 id="80-character-limits"><a class="anchor" href="#80-character-limits"></a><a class="link" href="#80-character-limits">Maximum Line Length <a id="line-length"></a></a></h3>
+<div class="paragraph">
+<p>Where feasible, avoid making lines longer than 80 characters.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Why Bother with 80 characters in a World of Modern Widescreen Displays?</div>
+<div class="paragraph">
+<p>A lot of people these days feel that a maximum line length of 80 characters is
+just a remnant of the past and makes little sense today. After all - modern
+displays can easily fit 200+ characters on a single line.  Still, there are some
+important benefits to be gained from sticking to shorter lines of code.</p>
+</div>
+<div class="paragraph">
+<p>First, and foremost - numerous studies have shown that humans read much faster
+vertically and very long lines of text impede the reading process. As noted
+earlier, one of the guiding principles of this style guide is to optimize the
+code we write for human consumption.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, limiting the required editor window width makes it possible to
+have several files open side-by-side, and works well when using code review
+tools that present the two versions in adjacent columns.</p>
+</div>
+<div class="paragraph">
+<p>The default wrapping in most tools disrupts the visual structure of the code,
+making it more difficult to understand. The limits are chosen to avoid wrapping
+in editors with the window width set to 80, even if the tool places a marker
+glyph in the final column when wrapping lines. Some web based tools may not
+offer dynamic line wrapping at all.</p>
+</div>
+<div class="paragraph">
+<p>Some teams strongly prefer a longer line length. For code maintained exclusively
+or primarily by a team that can reach agreement on this issue, it is okay to
+increase the line length limit up to 100 characters, or all the way up
+to 120 characters. Please, restrain the urge to go beyond 120 characters.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="spaces"><a class="anchor" href="#spaces"></a><a class="link" href="#spaces">Tabs vs Spaces</a></h3>
 <div class="paragraph">
 <p>Use <strong>spaces</strong> for indentation. No hard tabs.</p>
@@ -1022,12 +1063,6 @@ of commas and line breaks.</p>
 <p>Do not place blank lines in the middle of a function or
 macro definition.  An exception can be made to indicate grouping of
 pairwise constructs as found in e.g. <code>let</code> and <code>cond</code>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="80-character-limits"><a class="anchor" href="#80-character-limits"></a><a class="link" href="#80-character-limits">Maximum Line Length <a id="line-length"></a></a></h3>
-<div class="paragraph">
-<p>Where feasible, avoid making lines longer than 80 characters.</p>
 </div>
 </div>
 <div class="sect2">
@@ -3418,7 +3453,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-04-13 12:55:24 UTC
+Last updated 2020-05-22 15:02:33 UTC
 </div>
 </div>
 <style>
