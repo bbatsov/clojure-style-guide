@@ -1013,6 +1013,22 @@ Favor `partial` over anonymous functions for currying.
 
 === Threading Macros [[threading-macros]]
 
+The arguments to the threading macros `+->+` (thread-first) and `+->>+`
+(thread-last) should line up.
+
+[source,clojure]
+----
+;; good
+(->> (range)
+     (filter even?)
+     (take 5))
+
+;; bad
+(->> (range)
+  (filter even?)
+  (take 5))
+----
+
 Prefer the use of the threading macros `+->+` (thread-first) and `+->>+`
 (thread-last) to heavy form nesting.
 
