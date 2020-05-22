@@ -216,7 +216,7 @@ $ git config --global core.autocrlf true
 ----
 ====
 
-=== Terminate Files with a Newline
+=== Terminate Files with a Newline [[terminate-files-with-a-newline]]
 
 End each file with a newline.
 
