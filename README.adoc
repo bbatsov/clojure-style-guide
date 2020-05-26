@@ -2072,7 +2072,7 @@ Important tools such as https://github.com/cljdoc/cljdoc/blob/master/doc/usergui
   ...)
 ----
 
-=== Document Pos Arguments [[document-pos-arguments]]
+=== Document Positional Arguments [[document-pos-arguments]]
 
 Document all positional arguments, and wrap them them with backticks
 (`) so that editors and IDEs can identify them and potentially provide extra
@@ -2222,7 +2222,7 @@ opposed to `src/yourproject/`). Your build tool is responsible for making
 them available in the contexts where they are necessary; most templates
 will do this for you automatically.
 
-=== Test Ns Naming [[test-ns-naming]]
+=== Test Namespace Naming [[test-ns-naming]]
 
 Name your ns `yourproject.something-test`, a file which usually lives in
 `test/yourproject/something_test.clj` (or `.cljc`, `cljs`).
