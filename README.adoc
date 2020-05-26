@@ -2301,7 +2301,7 @@ together with everyone interested in Clojure coding style, so that we could
 ultimately create a resource that will be beneficial to the entire Clojure
 community.
 
-Feel free to [open tickets or send pull requests](https://github.com/bbatsov/clojure-style-guide/issues) with improvements. Thanks in
+Feel free to https://github.com/bbatsov/clojure-style-guide/issues[open pull requests] with improvements. Thanks in
 advance for your help!
 
 You can also support the style guide (and all my Clojure projects like
