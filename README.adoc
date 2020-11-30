@@ -1783,22 +1783,65 @@ ____
 
 Endeavor to make your code as self-documenting as possible.
 
-=== Four Semicolons for Heading Comments [[four-semicolons-for-heading-comments]]
+=== Heading Comments [[four-semicolons-for-heading-comments]]
 
-Write heading comments with at least four semicolons.
+Write heading comments with at least four semicolons. Those typically serve to outline/separate
+major section of code, or to describe important ideas. Often you'd have a section comment followed
+by a bunch of top-level comments.
 
-=== Three Semicolons for Top Level Comments [[three-semicolons-for-top-level-comments]]
+[source,clojure]
+----
+;;;; Section Comment/Heading
+
+;;; Foo...
+;;; Bar...
+;;; Baz...
+----
+
+=== Top-Level Comments [[three-semicolons-for-top-level-comments]]
 
 Write top-level comments with three semicolons.
 
-=== Two Semicolons for Code Fragment [[two-semicolons-for-code-fragment]]
+[source,clojure]
+----
+;;; I'm a top-level comment.
+;;; I live outside any definition.
+
+(defn foo [])
+----
+
+NOTE: While the classic Lisp tradition dictates the use of `;;;` for
+top-level comments, you'll find plenty of Clojure code in the wild
+that's using `;;` or even `;`.
+
+=== Code Fragment (Line) Comments [[two-semicolons-for-code-fragment]]
 
 Write comments on a particular fragment of code before that fragment
 and aligned with it, using two semicolons.
 
-=== One Semicolon for Margin Comments [[one-semicolon-for-margin-comments]]
+[source,clojure]
+----
+(defn foo [x]
+  ;; I'm a line/code fragment comment.
+  x)
+----
+
+NOTE: While the classic Lisp tradition dictates the use of `;;` for
+line comments, you'll find plenty of Clojure code in the wild
+that's using only `;`.
+
+=== Margin (Inline) Comments [[one-semicolon-for-margin-comments]]
 
 Write margin comments with one semicolon.
+
+[source,clojure]
+----
+(defn foo [x]
+  x ; I'm a line/code fragment comment.
+  )
+----
+
+Avoid using those in situation that would result in hanging closing parentheses.
 
 === Semicolon Space [[semicolon-space]]
 
