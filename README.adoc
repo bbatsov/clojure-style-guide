@@ -2317,9 +2317,12 @@ Feel free to https://github.com/bbatsov/clojure-style-guide/issues[open pull req
 advance for your help!
 
 You can also support the style guide (and all my Clojure projects like
-CIDER, nREPL, orchard, etc) with financial contributions via
-https://www.patreon.com/bbatsov[Patreon] and
-https://www.paypal.me/bbatsov[PayPal].
+CIDER, nREPL, orchard, etc) with financial contributions via one of the following platforms:
+
+* https://github.com/sponsors/bbatsov[GitHub Sponsors]
+* https://ko-fi.com/bbatsov[ko-fi]
+* https://www.patreon.com/bbatsov[Patreon]
+* https://www.paypal.me/bbatsov[PayPal]
 
 == License
 
