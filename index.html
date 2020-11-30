@@ -762,13 +762,13 @@ pre.rouge {
 <ul class="sectlevel2">
 <li><a href="#avoid-lists">Avoid Lists</a></li>
 <li><a href="#keywords-for-hash-keys">Keywords For Hash Keys</a></li>
-<li><a href="#literal-col-syntax">Literal Col Syntax</a></li>
-<li><a href="#avoid-index-based-coll-access">Avoid Index Based Coll Access</a></li>
-<li><a href="#keywords-as-fn-to-get-map-values">Keywords As Fn To Get Map Values</a></li>
-<li><a href="#colls-as-fns">Colls As Fns</a></li>
-<li><a href="#keywords-as-fns">Keywords As Fns</a></li>
-<li><a href="#avoid-transient-colls">Avoid Transient Colls</a></li>
-<li><a href="#avoid-java-colls">Avoid Java Colls</a></li>
+<li><a href="#literal-col-syntax">Literal Collection Syntax</a></li>
+<li><a href="#avoid-index-based-coll-access">Avoid Index Based Collection Access</a></li>
+<li><a href="#keywords-as-fn-to-get-map-values">Keywords as Functions for Map Values Retrieval</a></li>
+<li><a href="#colls-as-fns">Collections as Functions</a></li>
+<li><a href="#keywords-as-fns">Keywords as Functions</a></li>
+<li><a href="#avoid-transient-colls">Avoid Transient Collections</a></li>
+<li><a href="#avoid-java-colls">Avoid Java Collections</a></li>
 <li><a href="#avoid-java-arrays">Avoid Java Arrays</a></li>
 </ul>
 </li>
@@ -2660,7 +2660,7 @@ exactly what you need).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="literal-col-syntax"><a class="anchor" href="#literal-col-syntax"></a><a class="link" href="#literal-col-syntax">Literal Col Syntax</a></h3>
+<h3 id="literal-col-syntax"><a class="anchor" href="#literal-col-syntax"></a><a class="link" href="#literal-col-syntax">Literal Collection Syntax</a></h3>
 <div class="paragraph">
 <p>Prefer the use of the literal collection syntax where
 applicable. However, when defining sets, only use literal syntax
@@ -2681,13 +2681,13 @@ when the values are compile-time constants.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="avoid-index-based-coll-access"><a class="anchor" href="#avoid-index-based-coll-access"></a><a class="link" href="#avoid-index-based-coll-access">Avoid Index Based Coll Access</a></h3>
+<h3 id="avoid-index-based-coll-access"><a class="anchor" href="#avoid-index-based-coll-access"></a><a class="link" href="#avoid-index-based-coll-access">Avoid Index Based Collection Access</a></h3>
 <div class="paragraph">
 <p>Avoid accessing collection members by index whenever possible.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="keywords-as-fn-to-get-map-values"><a class="anchor" href="#keywords-as-fn-to-get-map-values"></a><a class="link" href="#keywords-as-fn-to-get-map-values">Keywords As Fn To Get Map Values</a></h3>
+<h3 id="keywords-as-fn-to-get-map-values"><a class="anchor" href="#keywords-as-fn-to-get-map-values"></a><a class="link" href="#keywords-as-fn-to-get-map-values">Keywords as Functions for Map Values Retrieval</a></h3>
 <div class="paragraph">
 <p>Prefer the use of keywords as functions for retrieving values from
 maps, where applicable.</p>
@@ -2708,7 +2708,7 @@ maps, where applicable.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="colls-as-fns"><a class="anchor" href="#colls-as-fns"></a><a class="link" href="#colls-as-fns">Colls As Fns</a></h3>
+<h3 id="colls-as-fns"><a class="anchor" href="#colls-as-fns"></a><a class="link" href="#colls-as-fns">Collections as Functions</a></h3>
 <div class="paragraph">
 <p>Leverage the fact that most collections are functions of their elements.</p>
 </div>
@@ -2722,7 +2722,7 @@ maps, where applicable.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="keywords-as-fns"><a class="anchor" href="#keywords-as-fns"></a><a class="link" href="#keywords-as-fns">Keywords As Fns</a></h3>
+<h3 id="keywords-as-fns"><a class="anchor" href="#keywords-as-fns"></a><a class="link" href="#keywords-as-fns">Keywords as Functions</a></h3>
 <div class="paragraph">
 <p>Leverage the fact that keywords can be used as functions of a collection.</p>
 </div>
@@ -2733,14 +2733,14 @@ maps, where applicable.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="avoid-transient-colls"><a class="anchor" href="#avoid-transient-colls"></a><a class="link" href="#avoid-transient-colls">Avoid Transient Colls</a></h3>
+<h3 id="avoid-transient-colls"><a class="anchor" href="#avoid-transient-colls"></a><a class="link" href="#avoid-transient-colls">Avoid Transient Collections</a></h3>
 <div class="paragraph">
 <p>Avoid the use of transient collections, except for
 performance-critical portions of the code.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="avoid-java-colls"><a class="anchor" href="#avoid-java-colls"></a><a class="link" href="#avoid-java-colls">Avoid Java Colls</a></h3>
+<h3 id="avoid-java-colls"><a class="anchor" href="#avoid-java-colls"></a><a class="link" href="#avoid-java-colls">Avoid Java Collections</a></h3>
 <div class="paragraph">
 <p>Avoid the use of Java collections.</p>
 </div>
@@ -3733,7 +3733,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-11-30 11:05:40 UTC
+Last updated 2020-11-30 11:34:31 UTC
 </div>
 </div>
 </body>
