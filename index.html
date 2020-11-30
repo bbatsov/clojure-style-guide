@@ -689,9 +689,9 @@ pre.rouge {
 </li>
 <li><a href="#functions">Functions</a>
 <ul class="sectlevel2">
-<li><a href="#optional-new-line-after-fn-name">Optional New Line After Fn Name</a></li>
+<li><a href="#optional-new-line-after-fn-name">Optional New Line After Function Name</a></li>
 <li><a href="#multimethod-dispatch-val-placement">Multimethod Dispatch Val Placement</a></li>
-<li><a href="#oneline-short-fn">Oneline Short Fn</a></li>
+<li><a href="#oneline-short-fn">Oneline Short Function</a></li>
 <li><a href="#multiple-arity-indentation">Multiple Arity Indentation</a></li>
 <li><a href="#multiple-arity-order">Multiple Arity Order</a></li>
 <li><a href="#function-length">Function Length</a></li>
@@ -719,10 +719,10 @@ pre.rouge {
 <li><a href="#not-equal"><code>not=</code></a></li>
 <li><a href="#printf"><code>printf</code></a></li>
 <li><a href="#multiple-arity-of-gt-and-ls-fns">Flexible Comparison Functions</a></li>
-<li><a href="#single-param-fn-literal">Single Param Fn Literal</a></li>
-<li><a href="#multiple-params-fn-literal">Multiple Params Fn Literal</a></li>
-<li><a href="#no-useless-anonymous-fns">No Useless Anonymous Fns</a></li>
-<li><a href="#no-multiple-forms-fn-literals">No Multiple Forms Fn Literals</a></li>
+<li><a href="#single-param-fn-literal">Single Parameter Function Literal</a></li>
+<li><a href="#multiple-params-fn-literal">Multiple Parameters Function Literal</a></li>
+<li><a href="#no-useless-anonymous-fns">No Useless Anonymous Functions</a></li>
+<li><a href="#no-multiple-forms-fn-literals">No Multiple Forms in Function Literals</a></li>
 <li><a href="#complement"><code>complement</code></a></li>
 <li><a href="#comp"><code>comp</code></a></li>
 <li><a href="#partial"><code>partial</code></a></li>
@@ -799,26 +799,26 @@ pre.rouge {
 </li>
 <li><a href="#macros">Macros</a>
 <ul class="sectlevel2">
-<li><a href="#dont-write-macro-if-fn-will-do">Don&#8217;t Write Macro If Fn Will Do</a></li>
-<li><a href="#write-macro-usage-before-writing-the-macro">Write Macro Usage Before Writing The Macro</a></li>
+<li><a href="#dont-write-macro-if-fn-will-do">Don&#8217;t Write a Macro If a Function Will Do</a></li>
+<li><a href="#write-macro-usage-before-writing-the-macro">Write Macro Usage before Writing the Macro</a></li>
 <li><a href="#break-complicated-macros">Break Complicated Macros</a></li>
-<li><a href="#macros-as-syntactic-sugar">Macros As Syntactic Sugar</a></li>
+<li><a href="#macros-as-syntactic-sugar">Macros as Syntactic Sugar</a></li>
 <li><a href="#syntax-quoted-forms">Syntax Quoted Forms</a></li>
 </ul>
 </li>
 <li><a href="#comments">Comments</a>
 <ul class="sectlevel2">
-<li><a href="#self-documenting-code">Self Documenting Code</a></li>
-<li><a href="#four-semicolons-for-heading-comments">Four Semicolons For Heading Comments</a></li>
-<li><a href="#three-semicolons-for-top-level-comments">Three Semicolons For Top Level Comments</a></li>
-<li><a href="#two-semicolons-for-code-fragment">Two Semicolons For Code Fragment</a></li>
-<li><a href="#one-semicolon-for-margin-comments">One Semicolon For Margin Comments</a></li>
+<li><a href="#self-documenting-code">Self-Documenting Code</a></li>
+<li><a href="#four-semicolons-for-heading-comments">Four Semicolons for Heading Comments</a></li>
+<li><a href="#three-semicolons-for-top-level-comments">Three Semicolons for Top Level Comments</a></li>
+<li><a href="#two-semicolons-for-code-fragment">Two Semicolons for Code Fragment</a></li>
+<li><a href="#one-semicolon-for-margin-comments">One Semicolon for Margin Comments</a></li>
 <li><a href="#semicolon-space">Semicolon Space</a></li>
 <li><a href="#english-syntax">English Syntax</a></li>
 <li><a href="#no-superfluous-comments">No Superfluous Comments</a></li>
 <li><a href="#comment-upkeep">Comment Upkeep</a></li>
-<li><a href="#dash-underscore-reader-macro">Dash Underscore Reader Macro</a></li>
-<li><a href="#refactor-dont-comment">Refactor Don&#8217;t Comment</a></li>
+<li><a href="#dash-underscore-reader-macro"><code>#_</code> Reader Macro</a></li>
+<li><a href="#refactor-dont-comment">Refactor, Don&#8217;t Comment</a></li>
 <li><a href="#comment-annotations">Comment Annotations</a></li>
 </ul>
 </li>
@@ -1465,7 +1465,7 @@ considered deprecated for new code.</p>
 <h2 id="functions"><a class="anchor" href="#functions"></a><a class="link" href="#functions">Functions</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="optional-new-line-after-fn-name"><a class="anchor" href="#optional-new-line-after-fn-name"></a><a class="link" href="#optional-new-line-after-fn-name">Optional New Line After Fn Name</a></h3>
+<h3 id="optional-new-line-after-fn-name"><a class="anchor" href="#optional-new-line-after-fn-name"></a><a class="link" href="#optional-new-line-after-fn-name">Optional New Line After Function Name</a></h3>
 <div class="paragraph">
 <p>Optionally omit the new line between the function name and argument
 vector for <code>defn</code> when there is no docstring.</p>
@@ -1515,7 +1515,7 @@ function name.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="oneline-short-fn"><a class="anchor" href="#oneline-short-fn"></a><a class="link" href="#oneline-short-fn">Oneline Short Fn</a></h3>
+<h3 id="oneline-short-fn"><a class="anchor" href="#oneline-short-fn"></a><a class="link" href="#oneline-short-fn">Oneline Short Function</a></h3>
 <div class="paragraph">
 <p>Optionally omit the new line between the argument vector and a short
 function body.</p>
@@ -1922,7 +1922,7 @@ empty (this technique is sometimes called <em>nil punning</em>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="single-param-fn-literal"><a class="anchor" href="#single-param-fn-literal"></a><a class="link" href="#single-param-fn-literal">Single Param Fn Literal</a></h3>
+<h3 id="single-param-fn-literal"><a class="anchor" href="#single-param-fn-literal"></a><a class="link" href="#single-param-fn-literal">Single Parameter Function Literal</a></h3>
 <div class="paragraph">
 <p>Prefer <code>%</code> over <code>%1</code> in function literals with only one parameter.</p>
 </div>
@@ -1937,7 +1937,7 @@ empty (this technique is sometimes called <em>nil punning</em>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="multiple-params-fn-literal"><a class="anchor" href="#multiple-params-fn-literal"></a><a class="link" href="#multiple-params-fn-literal">Multiple Params Fn Literal</a></h3>
+<h3 id="multiple-params-fn-literal"><a class="anchor" href="#multiple-params-fn-literal"></a><a class="link" href="#multiple-params-fn-literal">Multiple Parameters Function Literal</a></h3>
 <div class="paragraph">
 <p>Prefer <code>%1</code> over <code>%</code> in function literals with more than one parameter.</p>
 </div>
@@ -1952,7 +1952,7 @@ empty (this technique is sometimes called <em>nil punning</em>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-useless-anonymous-fns"><a class="anchor" href="#no-useless-anonymous-fns"></a><a class="link" href="#no-useless-anonymous-fns">No Useless Anonymous Fns</a></h3>
+<h3 id="no-useless-anonymous-fns"><a class="anchor" href="#no-useless-anonymous-fns"></a><a class="link" href="#no-useless-anonymous-fns">No Useless Anonymous Functions</a></h3>
 <div class="paragraph">
 <p>Don&#8217;t wrap functions in anonymous functions when you don&#8217;t need to.</p>
 </div>
@@ -1967,7 +1967,7 @@ empty (this technique is sometimes called <em>nil punning</em>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-multiple-forms-fn-literals"><a class="anchor" href="#no-multiple-forms-fn-literals"></a><a class="link" href="#no-multiple-forms-fn-literals">No Multiple Forms Fn Literals</a></h3>
+<h3 id="no-multiple-forms-fn-literals"><a class="anchor" href="#no-multiple-forms-fn-literals"></a><a class="link" href="#no-multiple-forms-fn-literals">No Multiple Forms in Function Literals</a></h3>
 <div class="paragraph">
 <p>Don&#8217;t use function literals if the function body will consist of
 more than one form.</p>
@@ -2992,13 +2992,13 @@ throw an exception&#8201;&#8212;&#8201;throws an exception of a standard type
 <h2 id="macros"><a class="anchor" href="#macros"></a><a class="link" href="#macros">Macros</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="dont-write-macro-if-fn-will-do"><a class="anchor" href="#dont-write-macro-if-fn-will-do"></a><a class="link" href="#dont-write-macro-if-fn-will-do">Don&#8217;t Write Macro If Fn Will Do</a></h3>
+<h3 id="dont-write-macro-if-fn-will-do"><a class="anchor" href="#dont-write-macro-if-fn-will-do"></a><a class="link" href="#dont-write-macro-if-fn-will-do">Don&#8217;t Write a Macro If a Function Will Do</a></h3>
 <div class="paragraph">
 <p>Don&#8217;t write a macro if a function will do.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="write-macro-usage-before-writing-the-macro"><a class="anchor" href="#write-macro-usage-before-writing-the-macro"></a><a class="link" href="#write-macro-usage-before-writing-the-macro">Write Macro Usage Before Writing The Macro</a></h3>
+<h3 id="write-macro-usage-before-writing-the-macro"><a class="anchor" href="#write-macro-usage-before-writing-the-macro"></a><a class="link" href="#write-macro-usage-before-writing-the-macro">Write Macro Usage before Writing the Macro</a></h3>
 <div class="paragraph">
 <p>Create an example of a macro usage first and the macro afterwards.</p>
 </div>
@@ -3010,7 +3010,7 @@ throw an exception&#8201;&#8212;&#8201;throws an exception of a standard type
 </div>
 </div>
 <div class="sect2">
-<h3 id="macros-as-syntactic-sugar"><a class="anchor" href="#macros-as-syntactic-sugar"></a><a class="link" href="#macros-as-syntactic-sugar">Macros As Syntactic Sugar</a></h3>
+<h3 id="macros-as-syntactic-sugar"><a class="anchor" href="#macros-as-syntactic-sugar"></a><a class="link" href="#macros-as-syntactic-sugar">Macros as Syntactic Sugar</a></h3>
 <div class="paragraph">
 <p>A macro should usually just provide syntactic sugar and the core of
 the macro should be a plain function. Doing so will improve
@@ -3042,32 +3042,32 @@ it even clearer.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="self-documenting-code"><a class="anchor" href="#self-documenting-code"></a><a class="link" href="#self-documenting-code">Self Documenting Code</a></h3>
+<h3 id="self-documenting-code"><a class="anchor" href="#self-documenting-code"></a><a class="link" href="#self-documenting-code">Self-Documenting Code</a></h3>
 <div class="paragraph">
 <p>Endeavor to make your code as self-documenting as possible.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="four-semicolons-for-heading-comments"><a class="anchor" href="#four-semicolons-for-heading-comments"></a><a class="link" href="#four-semicolons-for-heading-comments">Four Semicolons For Heading Comments</a></h3>
+<h3 id="four-semicolons-for-heading-comments"><a class="anchor" href="#four-semicolons-for-heading-comments"></a><a class="link" href="#four-semicolons-for-heading-comments">Four Semicolons for Heading Comments</a></h3>
 <div class="paragraph">
 <p>Write heading comments with at least four semicolons.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="three-semicolons-for-top-level-comments"><a class="anchor" href="#three-semicolons-for-top-level-comments"></a><a class="link" href="#three-semicolons-for-top-level-comments">Three Semicolons For Top Level Comments</a></h3>
+<h3 id="three-semicolons-for-top-level-comments"><a class="anchor" href="#three-semicolons-for-top-level-comments"></a><a class="link" href="#three-semicolons-for-top-level-comments">Three Semicolons for Top Level Comments</a></h3>
 <div class="paragraph">
 <p>Write top-level comments with three semicolons.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="two-semicolons-for-code-fragment"><a class="anchor" href="#two-semicolons-for-code-fragment"></a><a class="link" href="#two-semicolons-for-code-fragment">Two Semicolons For Code Fragment</a></h3>
+<h3 id="two-semicolons-for-code-fragment"><a class="anchor" href="#two-semicolons-for-code-fragment"></a><a class="link" href="#two-semicolons-for-code-fragment">Two Semicolons for Code Fragment</a></h3>
 <div class="paragraph">
 <p>Write comments on a particular fragment of code before that fragment
 and aligned with it, using two semicolons.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="one-semicolon-for-margin-comments"><a class="anchor" href="#one-semicolon-for-margin-comments"></a><a class="link" href="#one-semicolon-for-margin-comments">One Semicolon For Margin Comments</a></h3>
+<h3 id="one-semicolon-for-margin-comments"><a class="anchor" href="#one-semicolon-for-margin-comments"></a><a class="link" href="#one-semicolon-for-margin-comments">One Semicolon for Margin Comments</a></h3>
 <div class="paragraph">
 <p>Write margin comments with one semicolon.</p>
 </div>
@@ -3123,7 +3123,7 @@ at all.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="dash-underscore-reader-macro"><a class="anchor" href="#dash-underscore-reader-macro"></a><a class="link" href="#dash-underscore-reader-macro">Dash Underscore Reader Macro</a></h3>
+<h3 id="dash-underscore-reader-macro"><a class="anchor" href="#dash-underscore-reader-macro"></a><a class="link" href="#dash-underscore-reader-macro"><code>#_</code> Reader Macro</a></h3>
 <div class="paragraph">
 <p>Prefer the use of the <code>#_</code> reader macro over a regular comment when
 you need to comment out a particular form.</p>
@@ -3141,7 +3141,7 @@ you need to comment out a particular form.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="refactor-dont-comment"><a class="anchor" href="#refactor-dont-comment"></a><a class="link" href="#refactor-dont-comment">Refactor Don&#8217;t Comment</a></h3>
+<h3 id="refactor-dont-comment"><a class="anchor" href="#refactor-dont-comment"></a><a class="link" href="#refactor-dont-comment">Refactor, Don&#8217;t Comment</a></h3>
 <div class="quoteblock">
 <blockquote>
 <div class="paragraph">
@@ -3250,7 +3250,7 @@ be easily verified.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="rare-eol-annotations"><a class="anchor" href="#rare-eol-annotations"></a><a class="link" href="#rare-eol-annotations">Rare Eol Annotations</a></h4>
+<h4 id="rare-eol-annotations"><a class="anchor" href="#rare-eol-annotations"></a><a class="link" href="#rare-eol-annotations">Rare Margin (EOL) Annotations</a></h4>
 <div class="paragraph">
 <p>In cases where the problem is so obvious that any documentation would
 be redundant, annotations may be left at the end of the offending line
@@ -3748,7 +3748,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-11-30 11:38:40 UTC
+Last updated 2020-11-30 11:46:28 UTC
 </div>
 </div>
 </body>
