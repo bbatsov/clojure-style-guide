@@ -1324,6 +1324,10 @@ Use `lisp-case` in composite namespace segments (e.g. `bruce.project-euler`).
 
 Use `lisp-case` for function and variable names.
 
+NOTE: Many non-Lisp programming communities refer to `lisp-case` as
+`kebab-case`, but we all know that Lisp has existed way before kebab
+was invented.
+
 [source,clojure]
 ----
 ;; good
@@ -1338,8 +1342,11 @@ Use `lisp-case` for function and variable names.
 
 === Protocols, Records, Structs And Types [[naming-protocols-records-structs-and-types]]
 
-Use `CamelCase` for protocols, records, structs, and types. (Keep
+Use `CapitalCase` for protocols, records, structs, and types. (Keep
 acronyms like HTTP, RFC, XML uppercase.)
+
+NOTE: `CapitalCase` is also known as `UpperCamelCase, `CapitalWords`
+and `PascalCase`.
 
 === Predicate Methods [[naming-predicates]]
 
