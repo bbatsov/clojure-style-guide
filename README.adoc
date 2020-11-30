@@ -1309,18 +1309,18 @@ The only real difficulties in programming are cache invalidation and
 naming things.
 ____
 
-=== Ns Naming Schemas [[ns-naming-schemas]]
+=== Namespace Naming Schemas [[naming-ns-naming-schemas]]
 
 When naming namespaces favor the following two schemas:
 
 * `project.module`
 * `organization.project.module`
 
-=== Lisp Case Ns [[lisp-case-ns]]
+=== Composite Word Namespace Segments [[naming-namespace-composite-segments]]
 
 Use `lisp-case` in composite namespace segments (e.g. `bruce.project-euler`).
 
-=== Lisp Case [[lisp-case]]
+=== Functions and Variables [[naming-functions-and-variables]]
 
 Use `lisp-case` for function and variable names.
 
@@ -1336,12 +1336,12 @@ Use `lisp-case` for function and variable names.
 (def some_fun ...)
 ----
 
-=== Camelcase For Protocols Records Structs And Types [[CamelCase-for-protocols-records-structs-and-types]]
+=== Protocols, Records, Structs And Types [[naming-protocols-records-structs-and-types]]
 
 Use `CamelCase` for protocols, records, structs, and types. (Keep
 acronyms like HTTP, RFC, XML uppercase.)
 
-=== Pred With Question Mark [[pred-with-question-mark]]
+=== Predicate Methods [[naming-predicates]]
 
 The names of predicate methods (methods that return a boolean value)
 should end in a question mark
@@ -1357,12 +1357,12 @@ should end in a question mark
 (defn is-palindrome ...) ; Java style
 ----
 
-=== Changing State Fns With Exclamation Mark [[changing-state-fns-with-exclamation-mark]]
+=== Unsafe Functions [[naming-unsafe-functions]]
 
 The names of functions/macros that are not safe in STM transactions
 should end with an exclamation mark (e.g. `reset!`).
 
-=== Arrow Instead Of To [[arrow-instead-of-to]]
+=== Conversion Functions [[naming-conversion-functions]]
 
 Use `+->+` instead of `to` in the names of conversion functions.
 
@@ -1375,7 +1375,7 @@ Use `+->+` instead of `to` in the names of conversion functions.
 (defn f-to-c ...)
 ----
 
-=== Earmuffs For Dynamic Vars [[earmuffs-for-dynamic-vars]]
+=== Dynamic Vars [[naming-dynamic-vars]]
 
 Use `*earmuffs*` for things intended for rebinding (ie. are dynamic).
 
@@ -1388,12 +1388,12 @@ Use `*earmuffs*` for things intended for rebinding (ie. are dynamic).
 (def ^:dynamic a 10)
 ----
 
-=== Don't Flag Constants [[dont-flag-constants]]
+=== Constants [[naming-constants]]
 
 Don't use a special notation for constants; everything is assumed a constant
 unless specified otherwise.
 
-=== Underscore For Unused Bindings [[underscore-for-unused-bindings]]
+=== Unused Bindings [[naming-unused-bindings]]
 
 Use `+_+` for destructuring targets and formal argument names whose
 value will be ignored by the code at hand.
