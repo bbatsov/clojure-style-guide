@@ -1713,7 +1713,7 @@ Try to use `swap!` rather than `reset!`, where possible.
 
 == Strings
 
-=== Prefer Clojure String Over Interop [[prefer-clojure-string-over-interop]]
+=== Prefer `clojure.string` Functions Over Interop [[prefer-clojure-string-over-interop]]
 
 Prefer string manipulation functions from `clojure.string` over Java interop or rolling your own.
 
@@ -1725,6 +1725,11 @@ Prefer string manipulation functions from `clojure.string` over Java interop or 
 ;; bad
 (.toUpperCase "bruce")
 ----
+
+NOTE: Several new functions were added to `clojure.string` in Clojure
+1.8 (`index-of`, `last-index-of`, `starts-with?`, `ends-with?` and
+`includes?`). You should avoid using those if you need to support
+older Clojure releases.
 
 == Exceptions
 
