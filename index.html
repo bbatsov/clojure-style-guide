@@ -788,7 +788,7 @@ pre.rouge {
 </li>
 <li><a href="#strings">Strings</a>
 <ul class="sectlevel2">
-<li><a href="#prefer-clojure-string-over-interop">Prefer Clojure String Over Interop</a></li>
+<li><a href="#prefer-clojure-string-over-interop">Prefer <code>clojure.string</code> Functions Over Interop</a></li>
 </ul>
 </li>
 <li><a href="#exceptions">Exceptions</a>
@@ -2936,7 +2936,7 @@ up the thread.</p>
 <h2 id="strings"><a class="anchor" href="#strings"></a><a class="link" href="#strings">Strings</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="prefer-clojure-string-over-interop"><a class="anchor" href="#prefer-clojure-string-over-interop"></a><a class="link" href="#prefer-clojure-string-over-interop">Prefer Clojure String Over Interop</a></h3>
+<h3 id="prefer-clojure-string-over-interop"><a class="anchor" href="#prefer-clojure-string-over-interop"></a><a class="link" href="#prefer-clojure-string-over-interop">Prefer <code>clojure.string</code> Functions Over Interop</a></h3>
 <div class="paragraph">
 <p>Prefer string manipulation functions from <code>clojure.string</code> over Java interop or rolling your own.</p>
 </div>
@@ -2948,6 +2948,21 @@ up the thread.</p>
 </span><span class="c1">;; bad</span><span class="w">
 </span><span class="p">(</span><span class="nf">.toUpperCase</span><span class="w"> </span><span class="s">"bruce"</span><span class="p">)</span></code></pre>
 </div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Several new functions were added to <code>clojure.string</code> in Clojure
+1.8 (<code>index-of</code>, <code>last-index-of</code>, <code>starts-with?</code>, <code>ends-with?</code> and
+<code>includes?</code>). You should avoid using those if you need to support
+older Clojure releases.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -3733,7 +3748,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-11-30 11:34:31 UTC
+Last updated 2020-11-30 11:38:40 UTC
 </div>
 </div>
 </body>
