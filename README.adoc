@@ -1827,6 +1827,17 @@ Comments longer than a word begin with a capital letter and use
 punctuation. Separate sentences with
 https://en.wikipedia.org/wiki/Sentence_spacing[one space].
 
+[source,clojure]
+----
+;; This is a good comment.
+
+;; this is a bad comment
+----
+
+Obviously punctuation is not the most important thing about
+a comment, but a bit of extra effort results in better experience
+for the readers of our comments.
+
 === No Superfluous Comments [[no-superfluous-comments]]
 
 Avoid superfluous comments.
