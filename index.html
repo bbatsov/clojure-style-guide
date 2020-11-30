@@ -809,10 +809,10 @@ pre.rouge {
 <li><a href="#comments">Comments</a>
 <ul class="sectlevel2">
 <li><a href="#self-documenting-code">Self-Documenting Code</a></li>
-<li><a href="#four-semicolons-for-heading-comments">Four Semicolons for Heading Comments</a></li>
-<li><a href="#three-semicolons-for-top-level-comments">Three Semicolons for Top Level Comments</a></li>
-<li><a href="#two-semicolons-for-code-fragment">Two Semicolons for Code Fragment</a></li>
-<li><a href="#one-semicolon-for-margin-comments">One Semicolon for Margin Comments</a></li>
+<li><a href="#four-semicolons-for-heading-comments">Heading Comments</a></li>
+<li><a href="#three-semicolons-for-top-level-comments">Top-Level Comments</a></li>
+<li><a href="#two-semicolons-for-code-fragment">Code Fragment (Line) Comments</a></li>
+<li><a href="#one-semicolon-for-margin-comments">Margin (Inline) Comments</a></li>
 <li><a href="#semicolon-space">Semicolon Space</a></li>
 <li><a href="#english-syntax">English Syntax</a></li>
 <li><a href="#no-superfluous-comments">No Superfluous Comments</a></li>
@@ -3055,28 +3055,92 @@ it even clearer.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="four-semicolons-for-heading-comments"><a class="anchor" href="#four-semicolons-for-heading-comments"></a><a class="link" href="#four-semicolons-for-heading-comments">Four Semicolons for Heading Comments</a></h3>
+<h3 id="four-semicolons-for-heading-comments"><a class="anchor" href="#four-semicolons-for-heading-comments"></a><a class="link" href="#four-semicolons-for-heading-comments">Heading Comments</a></h3>
 <div class="paragraph">
-<p>Write heading comments with at least four semicolons.</p>
+<p>Write heading comments with at least four semicolons. Those typically serve to outline/separate
+major section of code, or to describe important ideas. Often you&#8217;d have a section comment followed
+by a bunch of top-level comments.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;;;; Section Comment/Heading</span><span class="w">
+
+</span><span class="c1">;;; Foo...</span><span class="w">
+</span><span class="c1">;;; Bar...</span><span class="w">
+</span><span class="c1">;;; Baz...</span></code></pre>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="three-semicolons-for-top-level-comments"><a class="anchor" href="#three-semicolons-for-top-level-comments"></a><a class="link" href="#three-semicolons-for-top-level-comments">Three Semicolons for Top Level Comments</a></h3>
+<h3 id="three-semicolons-for-top-level-comments"><a class="anchor" href="#three-semicolons-for-top-level-comments"></a><a class="link" href="#three-semicolons-for-top-level-comments">Top-Level Comments</a></h3>
 <div class="paragraph">
 <p>Write top-level comments with three semicolons.</p>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;;; I'm a top-level comment.</span><span class="w">
+</span><span class="c1">;;; I live outside any definition.</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="p">[])</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+While the classic Lisp tradition dictates the use of <code>;;;</code> for
+top-level comments, you&#8217;ll find plenty of Clojure code in the wild
+that&#8217;s using <code>;;</code> or even <code>;</code>.
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
-<h3 id="two-semicolons-for-code-fragment"><a class="anchor" href="#two-semicolons-for-code-fragment"></a><a class="link" href="#two-semicolons-for-code-fragment">Two Semicolons for Code Fragment</a></h3>
+<h3 id="two-semicolons-for-code-fragment"><a class="anchor" href="#two-semicolons-for-code-fragment"></a><a class="link" href="#two-semicolons-for-code-fragment">Code Fragment (Line) Comments</a></h3>
 <div class="paragraph">
 <p>Write comments on a particular fragment of code before that fragment
 and aligned with it, using two semicolons.</p>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w">
+  </span><span class="c1">;; I'm a line/code fragment comment.</span><span class="w">
+  </span><span class="n">x</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+While the classic Lisp tradition dictates the use of <code>;;</code> for
+line comments, you&#8217;ll find plenty of Clojure code in the wild
+that&#8217;s using only <code>;</code>.
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
-<h3 id="one-semicolon-for-margin-comments"><a class="anchor" href="#one-semicolon-for-margin-comments"></a><a class="link" href="#one-semicolon-for-margin-comments">One Semicolon for Margin Comments</a></h3>
+<h3 id="one-semicolon-for-margin-comments"><a class="anchor" href="#one-semicolon-for-margin-comments"></a><a class="link" href="#one-semicolon-for-margin-comments">Margin (Inline) Comments</a></h3>
 <div class="paragraph">
 <p>Write margin comments with one semicolon.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w">
+  </span><span class="n">x</span><span class="w"> </span><span class="c1">; I'm a line/code fragment comment.</span><span class="w">
+  </span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Avoid using those in situation that would result in hanging closing parentheses.</p>
 </div>
 </div>
 <div class="sect2">
@@ -3879,7 +3943,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-11-30 13:58:15 UTC
+Last updated 2020-11-30 14:11:02 UTC
 </div>
 </div>
 </body>
