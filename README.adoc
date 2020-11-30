@@ -509,7 +509,7 @@ In the `ns` form, sort your requirements and imports. This facilitates readabili
 
 == Functions
 
-=== Optional New Line After Fn Name [[optional-new-line-after-fn-name]]
+=== Optional New Line After Function Name [[optional-new-line-after-fn-name]]
 
 Optionally omit the new line between the function name and argument
 vector for `defn` when there is no docstring.
@@ -555,7 +555,7 @@ function name.
   (baz x))
 ----
 
-=== Oneline Short Fn [[oneline-short-fn]]
+=== Oneline Short Function [[oneline-short-fn]]
 
 Optionally omit the new line between the argument vector and a short
 function body.
@@ -911,7 +911,7 @@ When doing comparisons, keep in mind that Clojure's functions `<`,
 (and (> x 5) (< x 10))
 ----
 
-=== Single Param Fn Literal [[single-param-fn-literal]]
+=== Single Parameter Function Literal [[single-param-fn-literal]]
 
 Prefer `%` over `%1` in function literals with only one parameter.
 
@@ -924,7 +924,7 @@ Prefer `%` over `%1` in function literals with only one parameter.
 #(Math/round %1)
 ----
 
-=== Multiple Params Fn Literal [[multiple-params-fn-literal]]
+=== Multiple Parameters Function Literal [[multiple-params-fn-literal]]
 
 Prefer `%1` over `%` in function literals with more than one parameter.
 
@@ -937,7 +937,7 @@ Prefer `%1` over `%` in function literals with more than one parameter.
 #(Math/pow % %2)
 ----
 
-=== No Useless Anonymous Fns [[no-useless-anonymous-fns]]
+=== No Useless Anonymous Functions [[no-useless-anonymous-fns]]
 
 Don't wrap functions in anonymous functions when you don't need to.
 
@@ -950,7 +950,7 @@ Don't wrap functions in anonymous functions when you don't need to.
 (filter #(even? %) (range 1 10))
 ----
 
-=== No Multiple Forms Fn Literals [[no-multiple-forms-fn-literals]]
+=== No Multiple Forms in Function Literals [[no-multiple-forms-fn-literals]]
 
 Don't use function literals if the function body will consist of
 more than one form.
@@ -1747,11 +1747,11 @@ Favor `with-open` over `finally`.
 
 == Macros
 
-=== Don't Write Macro If Fn Will Do [[dont-write-macro-if-fn-will-do]]
+=== Don't Write a Macro If a Function Will Do [[dont-write-macro-if-fn-will-do]]
 
 Don't write a macro if a function will do.
 
-=== Write Macro Usage Before Writing The Macro [[write-macro-usage-before-writing-the-macro]]
+=== Write Macro Usage before Writing the Macro [[write-macro-usage-before-writing-the-macro]]
 
 Create an example of a macro usage first and the macro afterwards.
 
@@ -1759,7 +1759,7 @@ Create an example of a macro usage first and the macro afterwards.
 
 Break complicated macros into smaller functions whenever possible.
 
-=== Macros As Syntactic Sugar [[macros-as-syntactic-sugar]]
+=== Macros as Syntactic Sugar [[macros-as-syntactic-sugar]]
 
 A macro should usually just provide syntactic sugar and the core of
 the macro should be a plain function. Doing so will improve
@@ -1779,24 +1779,24 @@ comment isn't needed?" Improve the code and then document it to make
 it even clearer.
 ____
 
-=== Self Documenting Code [[self-documenting-code]]
+=== Self-Documenting Code [[self-documenting-code]]
 
 Endeavor to make your code as self-documenting as possible.
 
-=== Four Semicolons For Heading Comments [[four-semicolons-for-heading-comments]]
+=== Four Semicolons for Heading Comments [[four-semicolons-for-heading-comments]]
 
 Write heading comments with at least four semicolons.
 
-=== Three Semicolons For Top Level Comments [[three-semicolons-for-top-level-comments]]
+=== Three Semicolons for Top Level Comments [[three-semicolons-for-top-level-comments]]
 
 Write top-level comments with three semicolons.
 
-=== Two Semicolons For Code Fragment [[two-semicolons-for-code-fragment]]
+=== Two Semicolons for Code Fragment [[two-semicolons-for-code-fragment]]
 
 Write comments on a particular fragment of code before that fragment
 and aligned with it, using two semicolons.
 
-=== One Semicolon For Margin Comments [[one-semicolon-for-margin-comments]]
+=== One Semicolon for Margin Comments [[one-semicolon-for-margin-comments]]
 
 Write margin comments with one semicolon.
 
@@ -1842,7 +1842,7 @@ Avoid superfluous comments.
 Keep existing comments up-to-date. An outdated comment is worse than no comment
 at all.
 
-=== Dash Underscore Reader Macro [[dash-underscore-reader-macro]]
+=== `#_` Reader Macro [[dash-underscore-reader-macro]]
 
 Prefer the use of the `#_` reader macro over a regular comment when
 you need to comment out a particular form.
@@ -1858,7 +1858,7 @@ you need to comment out a particular form.
    delta)
 ----
 
-=== Refactor Don't Comment [[refactor-dont-comment]]
+=== Refactor, Don't Comment [[refactor-dont-comment]]
 
 [quote, Russ Olsen]
 ____
@@ -1952,7 +1952,7 @@ be easily verified.
   (baz))
 ----
 
-==== Rare Eol Annotations [[rare-eol-annotations]]
+==== Rare Margin (EOL) Annotations [[rare-eol-annotations]]
 
 In cases where the problem is so obvious that any documentation would
 be redundant, annotations may be left at the end of the offending line
