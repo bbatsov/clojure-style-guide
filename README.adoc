@@ -300,7 +300,7 @@ Align vertically map keys.
 
 === Line Endings [[crlf]]
 
-Use Unix-style line endings.footnote:[*BSD/Solaris/Linux/OSX users are
+Use Unix-style line endings.footnote:[*BSD/Solaris/Linux/macOS users are
 covered by default, Windows users have to be extra careful.]
 
 [TIP]
