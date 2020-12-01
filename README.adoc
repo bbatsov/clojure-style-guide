@@ -2493,13 +2493,16 @@ Many people, books, presentations, articles and other style guides influenced th
 
 == Contributing
 
-Nothing written in this guide is set in stone. It's my desire to work
-together with everyone interested in Clojure coding style, so that we could
-ultimately create a resource that will be beneficial to the entire Clojure
-community.
+The guide is still a work in progress - some guidelines are lacking examples, some guidelines don't have examples that illustrate them clearly enough.
+Improving such guidelines is a great (and simple way) to help the Clojure community!
 
-Feel free to https://github.com/bbatsov/clojure-style-guide/issues[open pull requests] with improvements. Thanks in
-advance for your help!
+In due time these issues will (hopefully) be addressed - just keep them in mind for now.
+
+Nothing written in this guide is set in stone.
+It's my desire to work together with everyone interested in Clojure coding style, so that we could ultimately create a resource that will be beneficial to the entire Clojure community.
+
+Feel free to open tickets or send pull requests with improvements.
+Thanks in advance for your help!
 
 You can also support the style guide (and all my Clojure projects like
 CIDER, nREPL, orchard, etc) with financial contributions via one of the following platforms:
