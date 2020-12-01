@@ -70,6 +70,8 @@ gem install rouge
 ====
 endif::[]
 
+== Translations
+
 Translations of the guide are available in the following languages:
 
 * https://github.com/geekerzp/clojure-style-guide/blob/master/README-zhCN.md[Chinese]
@@ -78,6 +80,10 @@ Translations of the guide are available in the following languages:
 * https://github.com/theSkilled/clojure-style-guide/blob/pt-BR/README.md[Portuguese] (Under progress)
 * https://github.com/Nondv/clojure-style-guide/blob/master/ru/README.md[Russian]
 * https://github.com/jeko2000/clojure-style-guide/blob/master/README.md[Spanish]
+
+NOTE: These translations are not maintained by our editor team, so their quality
+and level of completeness may vary. The translated versions of the guide often
+lag behind the upstream English version.
 
 == Source Code Layout & Organization
 
