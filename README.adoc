@@ -1944,7 +1944,7 @@ Write margin comments with one semicolon.
   )
 ----
 
-Avoid using those in situation that would result in hanging closing parentheses.
+Avoid using those in situations that would result in hanging closing parentheses.
 
 === Semicolon Space [[semicolon-space]]
 
