@@ -1417,7 +1417,46 @@ of commas and line breaks.</p>
 <div class="paragraph">
 <p>Do not place blank lines in the middle of a function or
 macro definition.  An exception can be made to indicate grouping of
-pairwise constructs as found in e.g. <code>let</code> and <code>cond</code>.</p>
+pairwise constructs as found in e.g. <code>let</code> and <code>cond</code>, in case those don&#8217;t
+fit on the same line.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">fibo-iter</span><span class="w">
+  </span><span class="p">([</span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nf">fibo-iter</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">n</span><span class="p">))</span><span class="w">
+  </span><span class="p">([</span><span class="n">curr</span><span class="w"> </span><span class="n">nxt</span><span class="w"> </span><span class="n">n</span><span class="p">]</span><span class="w">
+   </span><span class="p">(</span><span class="k">cond</span><span class="w">
+     </span><span class="p">(</span><span class="nb">zero?</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="n">curr</span><span class="w">
+     </span><span class="no">:else</span><span class="w"> </span><span class="p">(</span><span class="nf">recur</span><span class="w"> </span><span class="n">nxt</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="o">'</span><span class="w"> </span><span class="n">curr</span><span class="w"> </span><span class="n">nxt</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">dec</span><span class="w"> </span><span class="n">n</span><span class="p">)))))</span><span class="w">
+
+</span><span class="c1">;; okay - the line break delimits a cond pair</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">fibo-iter</span><span class="w">
+  </span><span class="p">([</span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nf">fibo-iter</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">n</span><span class="p">))</span><span class="w">
+  </span><span class="p">([</span><span class="n">curr</span><span class="w"> </span><span class="n">nxt</span><span class="w"> </span><span class="n">n</span><span class="p">]</span><span class="w">
+   </span><span class="p">(</span><span class="k">cond</span><span class="w">
+     </span><span class="p">(</span><span class="nb">zero?</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w">
+     </span><span class="n">curr</span><span class="w">
+
+     </span><span class="no">:else</span><span class="w">
+     </span><span class="p">(</span><span class="nf">recur</span><span class="w"> </span><span class="n">nxt</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="o">'</span><span class="w"> </span><span class="n">curr</span><span class="w"> </span><span class="n">nxt</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">dec</span><span class="w"> </span><span class="n">n</span><span class="p">)))))</span><span class="w">
+
+</span><span class="c1">;; bad</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">fibo-iter</span><span class="w">
+  </span><span class="p">([</span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nf">fibo-iter</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">n</span><span class="p">))</span><span class="w">
+
+  </span><span class="p">([</span><span class="n">curr</span><span class="w"> </span><span class="n">nxt</span><span class="w"> </span><span class="n">n</span><span class="p">]</span><span class="w">
+   </span><span class="p">(</span><span class="k">cond</span><span class="w">
+     </span><span class="p">(</span><span class="nb">zero?</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="n">curr</span><span class="w">
+
+     </span><span class="no">:else</span><span class="w"> </span><span class="p">(</span><span class="nf">recur</span><span class="w"> </span><span class="n">nxt</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="o">'</span><span class="w"> </span><span class="n">curr</span><span class="w"> </span><span class="n">nxt</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">dec</span><span class="w"> </span><span class="n">n</span><span class="p">)))))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Occasionally, it might seem like a good idea to add a blank line
+here and there in a longer function definition, but if you get to this
+point you should also consider whether this long function isn&#8217;t doing
+too much and could potentially be broken down.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4070,7 +4109,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-12-01 08:44:46 UTC
+Last updated 2020-12-01 09:01:48 UTC
 </div>
 </div>
 </body>
