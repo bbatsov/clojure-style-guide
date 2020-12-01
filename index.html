@@ -904,14 +904,18 @@ assumed that it&#8217;s pretty obvious).</p>
 </div>
 <div class="paragraph">
 <p>I didn&#8217;t come up with all the rules out of nowhere; they are mostly
-based on my extensive career as a professional software engineer,
-feedback and suggestions from members of the Clojure community, and
+based on my extensive career as a software engineer,
+my work on many Clojure open-source projects<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>,
+feedback and suggestions from numerous members of the Clojure community, and
 various highly regarded Clojure programming resources, such as
 <a href="https://www.clojurebook.com/">"Clojure Programming"</a>
 and <a href="https://joyofclojure.com/">"The Joy of Clojure"</a>.</p>
 </div>
 <div class="paragraph">
-<p>This style guide evolves over time as additional conventions are identified and past conventions are rendered obsolete by changes in Clojure itself.</p>
+<p>Nothing written here is set in stone.
+This style guide evolves over time as additional conventions are
+identified and past conventions are rendered obsolete by changes in
+Clojure itself.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -951,7 +955,7 @@ too.</p>
 <p>It&#8217;s common knowledge that code is read much more often than it is written.
 The guidelines provided here are intended to improve the readability of code and make it consistent across the wide spectrum of Clojure code.
 They are also meant to reflect real-world usage of Clojure instead of a random ideal. When I had to choose between a very established practice
-and a subjectively better alternative I&#8217;ve opted to recommend the established practice.<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></p>
+and a subjectively better alternative I&#8217;ve opted to recommend the established practice.<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup></p>
 </div>
 <div class="paragraph">
 <p>There are some areas in which there is no clear consensus in the Clojure community regarding a particular style (like semantic indentation vs fixed indentation, semantic comments vs uniform comments, etc).
@@ -967,7 +971,7 @@ both the simplicity I already mentioned and to the fact that since day
 established Lisp dialects (e.g. Common Lisp and Scheme).  This made
 the work on this guide fairly easy and straight-forward, especially compared to
 the massive exercise in frustration that was the
-<a href="https://rubystyle.guide">Community Ruby Style Guide</a>.<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup></p>
+<a href="https://rubystyle.guide">Community Ruby Style Guide</a>.<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup></p>
 </div>
 <div class="paragraph">
 <p>Clojure is famously optimized for simplicity and clarity. I&#8217;d like to believe that this guide is going to help you optimize for maximum
@@ -987,7 +991,7 @@ simplicity and clarity.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>A style guide is about consistency.<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup>
+<p>A style guide is about consistency.<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup>
 Consistency with this style guide is important.
 Consistency within a project is more important.
 Consistency within one class or method is the most important.</p>
@@ -1245,7 +1249,7 @@ when there are no arguments on the same line as the function name.</p>
 <div class="sect2">
 <h3 id="crlf"><a class="anchor" href="#crlf"></a><a class="link" href="#crlf">Line Endings</a></h3>
 <div class="paragraph">
-<p>Use Unix-style line endings.<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup></p>
+<p>Use Unix-style line endings.<sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnotedef_5" title="View footnote.">5</a>]</sup></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -4049,21 +4053,24 @@ best possible guide, don&#8217;t we?</p>
 <div id="footnotes">
 <hr>
 <div class="footnote" id="_footnotedef_1">
-<a href="#_footnoteref_1">1</a>. Occasionally I might suggest to the reader to consider some alternatives, though.
+<a href="#_footnoteref_1">1</a>. CIDER, nREPL, Orchard, etc.
 </div>
 <div class="footnote" id="_footnotedef_2">
-<a href="#_footnoteref_2">2</a>. You&#8217;ll notice that the Clojure style guide is pretty similar in structure to the Ruby style guide, which served as its main source of inspiration. You&#8217;ll also notice that the Ruby style guide is much longer, mostly because of the complexity of the Ruby language.
+<a href="#_footnoteref_2">2</a>. Occasionally I might suggest to the reader to consider some alternatives, though.
 </div>
 <div class="footnote" id="_footnotedef_3">
-<a href="#_footnoteref_3">3</a>. This section is heavily inspired by Python&#8217;s PEP-8
+<a href="#_footnoteref_3">3</a>. You&#8217;ll notice that the Clojure style guide is pretty similar in structure to the Ruby style guide, which served as its main source of inspiration. You&#8217;ll also notice that the Ruby style guide is much longer, mostly because of the complexity of the Ruby language.
 </div>
 <div class="footnote" id="_footnotedef_4">
-<a href="#_footnoteref_4">4</a>. *BSD/Solaris/Linux/OSX users are covered by default, Windows users have to be extra careful.
+<a href="#_footnoteref_4">4</a>. This section is heavily inspired by Python&#8217;s PEP-8
+</div>
+<div class="footnote" id="_footnotedef_5">
+<a href="#_footnoteref_5">5</a>. *BSD/Solaris/Linux/OSX users are covered by default, Windows users have to be extra careful.
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-12-01 08:36:50 UTC
+Last updated 2020-12-01 08:44:46 UTC
 </div>
 </div>
 </body>
