@@ -96,7 +96,7 @@ both the simplicity I already mentioned and to the fact that since day
 established Lisp dialects (e.g. Common Lisp and Scheme).  This made
 the work on this guide fairly easy and straight-forward, especially compared to
 the massive exercise in frustration that was the
-https://rubystyle.guide[Community Ruby Style Guide].footnote:[You'll notice that the Clojure style guide is pretty similar in structure to the Ruby style guide, which served as its main source of inspiration.]
+https://rubystyle.guide[Community Ruby Style Guide].footnote:[You'll notice that the Clojure style guide is pretty similar in structure to the Ruby style guide, which served as its main source of inspiration. You'll also notice that the Ruby style guide is much longer, mostly because of the complexity of the Ruby language.]
 
 Clojure is famously optimized for simplicity and clarity. I'd like to believe that this guide is going to help you optimize for maximum
 simplicity and clarity.
