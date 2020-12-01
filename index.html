@@ -655,8 +655,13 @@ pre.rouge {
 <div id="toc" class="toc2">
 <div id="toctitle"><h2>Table of Contents</h2></div>
 <ul class="sectlevel1">
-<li><a href="#introduction">Introduction</a></li>
+<li><a href="#introduction">Introduction</a>
+<ul class="sectlevel2">
+<li><a href="#guiding-principles">Guiding Principles</a></li>
+<li><a href="#a-note-about-consistency">A Note about Consistency</a></li>
 <li><a href="#translations">Translations</a></li>
+</ul>
+</li>
 <li><a href="#source-code-layout-organization">Source Code Layout &amp; Organization</a>
 <ul class="sectlevel2">
 <li><a href="#80-character-limits">Maximum Line Length </a></li>
@@ -905,6 +910,9 @@ various highly regarded Clojure programming resources, such as
 <a href="https://www.clojurebook.com/">"Clojure Programming"</a>
 and <a href="https://joyofclojure.com/">"The Joy of Clojure"</a>.</p>
 </div>
+<div class="paragraph">
+<p>This style guide evolves over time as additional conventions are identified and past conventions are rendered obsolete by changes in Clojure itself.</p>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -926,11 +934,93 @@ Help us address those shortcomings and make this guide better together!
 <a href="https://clojure.org/community/contrib_howto#_coding_guidelines">coding standards for libraries</a>,
 too.</p>
 </div>
+<div class="sect2">
+<h3 id="guiding-principles"><a class="anchor" href="#guiding-principles"></a><a class="link" href="#guiding-principles">Guiding Principles</a></h3>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Programs must be written for people to read, and only incidentally for machines to execute.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; Harold Abelson<br>
+<cite>Structure and Interpretation of Computer Programs</cite>
 </div>
 </div>
-<div class="sect1">
-<h2 id="translations"><a class="anchor" href="#translations"></a><a class="link" href="#translations">Translations</a></h2>
-<div class="sectionbody">
+<div class="paragraph">
+<p>It&#8217;s common knowledge that code is read much more often than it is written.
+The guidelines provided here are intended to improve the readability of code and make it consistent across the wide spectrum of Clojure code.
+They are also meant to reflect real-world usage of Clojure instead of a random ideal. When I had to choose between a very established practice
+and a subjectively better alternative I&#8217;ve opted to recommend the established practice.<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></p>
+</div>
+<div class="paragraph">
+<p>There are some areas in which there is no clear consensus in the Clojure community regarding a particular style (like semantic indentation vs fixed indentation, semantic comments vs uniform comments, etc).
+In such scenarios all popular styles are acknowledged and it&#8217;s up to you to pick one and apply it consistently.</p>
+</div>
+<div class="paragraph">
+<p>Fortunately Clojure is a Lisp, and Lisps are fundamentally
+simple. Even though this guide was created a few years after Clojure
+(I published the first version in early 2013), you could see that most
+Clojure code in the wild was fairly uniform. I attribute this to
+both the simplicity I already mentioned and to the fact that since day
+1 Clojurists adopted many of the style conventions of other
+established Lisp dialects (e.g. Common Lisp and Scheme).  This made
+the work on this guide fairly easy and straight-forward, especially compared to
+the massive exercise in frustration that was the
+<a href="https://rubystyle.guide">Community Ruby Style Guide</a>.<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup></p>
+</div>
+<div class="paragraph">
+<p>Clojure is famously optimized for simplicity and clarity. I&#8217;d like to believe that this guide is going to help you optimize for maximum
+simplicity and clarity.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="a-note-about-consistency"><a class="anchor" href="#a-note-about-consistency"></a><a class="link" href="#a-note-about-consistency">A Note about Consistency</a></h3>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>A foolish consistency is the hobgoblin of little minds, adored by little statesmen and philosophers and divines.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; Ralph Waldo Emerson
+</div>
+</div>
+<div class="paragraph">
+<p>A style guide is about consistency.<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup>
+Consistency with this style guide is important.
+Consistency within a project is more important.
+Consistency within one class or method is the most important.</p>
+</div>
+<div class="paragraph">
+<p>However, know when to be inconsistent&#8201;&#8212;&#8201;sometimes style guide recommendations just aren&#8217;t applicable. When in doubt, use your best judgment.
+Look at other examples and decide what looks best. And don&#8217;t hesitate to ask!</p>
+</div>
+<div class="paragraph">
+<p>In particular: do not break backwards compatibility just to comply with this guide!</p>
+</div>
+<div class="paragraph">
+<p>Some other good reasons to ignore a particular guideline:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When applying the guideline would make the code less readable, even for someone who is used to reading code that follows this style guide.</p>
+</li>
+<li>
+<p>To be consistent with surrounding code that also breaks it (maybe for historic reasons)&#8201;&#8212;&#8201;although this is also an opportunity to clean up someone else&#8217;s mess (in true XP style).</p>
+</li>
+<li>
+<p>Because the code in question predates the introduction of the guideline and there is no other reason to be modifying that code.</p>
+</li>
+<li>
+<p>When the code needs to remain compatible with older versions of Clojure that don&#8217;t support the feature recommended by the style guide.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="translations"><a class="anchor" href="#translations"></a><a class="link" href="#translations">Translations</a></h3>
 <div class="paragraph">
 <p>Translations of the guide are available in the following languages:</p>
 </div>
@@ -969,6 +1059,7 @@ lag behind the upstream English version.
 </td>
 </tr>
 </table>
+</div>
 </div>
 </div>
 </div>
@@ -1154,7 +1245,7 @@ when there are no arguments on the same line as the function name.</p>
 <div class="sect2">
 <h3 id="crlf"><a class="anchor" href="#crlf"></a><a class="link" href="#crlf">Line Endings</a></h3>
 <div class="paragraph">
-<p>Use Unix-style line endings.<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></p>
+<p>Use Unix-style line endings.<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -3958,12 +4049,21 @@ best possible guide, don&#8217;t we?</p>
 <div id="footnotes">
 <hr>
 <div class="footnote" id="_footnotedef_1">
-<a href="#_footnoteref_1">1</a>. *BSD/Solaris/Linux/OSX users are covered by default, Windows users have to be extra careful.
+<a href="#_footnoteref_1">1</a>. Occasionally I might suggest to the reader to consider some alternatives, though.
+</div>
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. You&#8217;ll notice that the Clojure style guide is pretty similar in structure to the Ruby style guide, which served as its main source of inspiration.
+</div>
+<div class="footnote" id="_footnotedef_3">
+<a href="#_footnoteref_3">3</a>. This section is heavily inspired by Python&#8217;s PEP-8
+</div>
+<div class="footnote" id="_footnotedef_4">
+<a href="#_footnoteref_4">4</a>. *BSD/Solaris/Linux/OSX users are covered by default, Windows users have to be extra careful.
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-12-01 08:07:04 UTC
+Last updated 2020-12-01 08:33:56 UTC
 </div>
 </div>
 </body>
