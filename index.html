@@ -862,7 +862,12 @@ pre.rouge {
 <li><a href="#lib-core-separate-from-tools">Tool-agnostic</a></li>
 </ul>
 </li>
+<li><a href="#tools">Tools</a>
+<ul class="sectlevel2">
 <li><a href="#lint-tools">Lint Tools</a></li>
+<li><a href="#code-formatters">Code Formatters</a></li>
+</ul>
+</li>
 <li><a href="#history">History</a></li>
 <li><a href="#sources-of-inspiration">Sources of Inspiration</a></li>
 <li><a href="#contributing">Contributing</a>
@@ -3909,8 +3914,29 @@ integration.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="lint-tools"><a class="anchor" href="#lint-tools"></a><a class="link" href="#lint-tools">Lint Tools</a></h2>
+<h2 id="tools"><a class="anchor" href="#tools"></a><a class="link" href="#tools">Tools</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>One problem with style guides is that it&#8217;s often hard to remember all the guidelines
+and to apply them consistently. We&#8217;re only humans, after all. Fortunately,
+there are a bunch of tools that can do most of the work for us.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+It&#8217;s a great idea run such tools as part of your continuous integration (CI).
+This ensure that all the code in one project is consistent with the style you&#8217;re
+aiming for.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="lint-tools"><a class="anchor" href="#lint-tools"></a><a class="link" href="#lint-tools">Lint Tools</a></h3>
 <div class="paragraph">
 <p>There are some lint tools created by the Clojure community that might aid you
 in your endeavor to write idiomatic Clojure code.</p>
@@ -3933,6 +3959,39 @@ a wide number of discouraged patterns and suggests improvements, based on this
 style guide.</p>
 </li>
 </ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-formatters"><a class="anchor" href="#code-formatters"></a><a class="link" href="#code-formatters">Code Formatters</a></h3>
+<div class="paragraph">
+<p>While most Clojure editors and IDEs can format the code, according to the layout guidelines
+outlined here, it&#8217;s always handy to have some command-line code formatting tools. There are
+a couple of options for Clojure that do a great job when it comes to formatting the code
+as suggested in this guide:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/weavejester/cljfmt">cljfmt</a></p>
+</li>
+<li>
+<p><a href="https://github.com/kkinnear/zprint">zprint</a> (the documentation for configuring it to use the community formatting rules is <a href="https://github.com/kkinnear/zprint/blob/master/doc/options/community.md">here</a>)</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+When it comes to editors - Emacs&#8217;s <code>clojure-mode</code> by default will format the code exactly as outlined in the guide.
+Other editors might require some configuration tweaking to produce the same results.
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -4117,7 +4176,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-12-04 21:08:18 UTC
+Last updated 2020-12-04 21:36:11 UTC
 </div>
 </div>
 </body>
