@@ -139,6 +139,7 @@ Translations of the guide are available in the following languages:
 * https://github.com/theSkilled/clojure-style-guide/blob/pt-BR/README.md[Portuguese] (Under progress)
 * https://github.com/Nondv/clojure-style-guide/blob/master/ru/README.md[Russian]
 * https://github.com/jeko2000/clojure-style-guide/blob/master/README.md[Spanish]
+* https://github.com/LeaveNhA/clojure-style-guide/blob/master/README.adoc[Turkish]
 
 NOTE: These translations are not maintained by our editor team, so their quality
 and level of completeness may vary. The translated versions of the guide often
