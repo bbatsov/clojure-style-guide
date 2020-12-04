@@ -2449,7 +2449,17 @@ core functionality, and
 https://github.com/stuartsierra/reloaded[reloaded] provides leiningen
 integration.
 
-== Lint Tools
+== Tools
+
+One problem with style guides is that it's often hard to remember all the guidelines
+and to apply them consistently. We're only humans, after all. Fortunately,
+there are a bunch of tools that can do most of the work for us.
+
+TIP: It's a great idea run such tools as part of your continuous integration (CI).
+This ensure that all the code in one project is consistent with the style you're
+aiming for.
+
+=== Lint Tools
 
 There are some lint tools created by the Clojure community that might aid you
 in your endeavor to write idiomatic Clojure code.
@@ -2463,6 +2473,19 @@ function or macro.
 * https://github.com/borkdude/clj-kondo[clj-kondo] is a linter that detects
 a wide number of discouraged patterns and suggests improvements, based on this
 style guide.
+
+=== Code Formatters
+
+While most Clojure editors and IDEs can format the code, according to the layout guidelines
+outlined here, it's always handy to have some command-line code formatting tools. There are
+a couple of options for Clojure that do a great job when it comes to formatting the code
+as suggested in this guide:
+
+* https://github.com/weavejester/cljfmt[cljfmt]
+* https://github.com/kkinnear/zprint[zprint] (the documentation for configuring it to use the community formatting rules is https://github.com/kkinnear/zprint/blob/master/doc/options/community.md[here])
+
+NOTE: When it comes to editors - Emacs's `clojure-mode` by default will format the code exactly as outlined in the guide.
+Other editors might require some configuration tweaking to produce the same results.
 
 == History
 
