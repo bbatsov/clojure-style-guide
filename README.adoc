@@ -2464,8 +2464,6 @@ aiming for.
 There are some lint tools created by the Clojure community that might aid you
 in your endeavor to write idiomatic Clojure code.
 
-* https://github.com/technomancy/slamhound[Slamhound] is a tool that will
-automatically generate proper `ns` declarations from your existing code.
 * https://github.com/jonase/kibit[kibit] is a static code analyzer for
 Clojure which uses https://github.com/clojure/core.logic[core.logic] to
 search for patterns of code for which there might exist a more idiomatic
