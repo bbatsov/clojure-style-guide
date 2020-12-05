@@ -679,9 +679,56 @@ Bellow are some common idiomatic aliases:
 | clojure.java.shell
 |===
 
+=== A Recipe for Good Namespace Aliases
+
+Above we covered a handful of popular namespaces and their idiomatic aliases.
+You might have noticed that those are a bit inconsistent:
+
+* `clojure.string` becomes `str`
+* `clojure.pprint` becomes `pp`
+* `clojure.walk` becomes `walk`
+* `clojure.spec.alpha` becomes `spec`
+
+I guess it's clear that the one thing they have in common is that they aim to be concise, but still carry some meaning (aliasing `clojure.walk` to `w` would
+be concise, but won't carry much meaning).
+
+But what to do about all the other namespaces out there that don't have idiomatic aliases? Well, you better be consistent in your approach to deriving aliases for them,
+otherwise the people working on a shared Clojure codebase are going to experience a great deal of confusion. Here are a few rules that you should follow.footnote:[These guidelines are based on a https://stuartsierra.com/2015/05/10/clojure-namespace-aliases[blog post] by Stuart Sierra.]
+
+. Make the alias the same as the namespace name with the leading parts removed.
+
+[source,clojure]
+----
+(ns com.example.application
+  (:require
+   [clojure.java.io :as io]
+   [clojure.string :as string]))
+----
+
+. Keep enough trailing parts to make each alias unique.
+
+[source,clojure]
+----
+[clojure.data.xml :as data.xml]
+[clojure.xml :as xml]
+----
+
+TIP: Yes, namespace aliases can have dots in them. Make good use of them.
+
+. Eliminate redundant words such as "core" and "clj" in aliases.
+
+[source,clojure]
+----
+[clj-http :as http]
+[clj-time.core :as time]
+[clj-time.format :as time.format]
+----
+
 === Use Consistent Namespace Aliases
 
 Across a project, it's good to be consistent with namespace aliases; e.g., don't require `clojure.string` as `str` in one namespace but `string` in another.
+If you follow the previous two guidelines you're basically covered, but if you opt for custom namespace aliasing scheme it's still important to apply it
+consistently within your projects.
 
 == Functions
 
