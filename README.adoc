@@ -1898,6 +1898,45 @@ Prefer syntax-quoted forms over building lists manually.
 In this section we'll go over some common metadata for namespaces and
 vars that Clojure development tools can leverage.
 
+=== `:added`
+
+The most common way to document when a public API was added to a
+library is via the `:added` metadata.
+
+[source,clojure]
+----
+(def ^{:added "0.5"} foo
+  42)
+
+(ns foo.bar
+  "A very useful ns."
+  {:added "0.8"})
+
+(defn ^{:added "0.5"} foo
+  (bar))
+----
+
+TIP: If you're into SemVer, it's a good idea to omit the patch version.
+This means you should use `0.5` instead of `0.5.0`. This applies
+for all metadata data that's version related.
+
+=== `:changed`
+
+The most common way to document when a public API was changed in a
+library is via the `:changed` metadata. This metadata makes sense only for
+vars and you should be using it sparingly, as changing the behavior of
+a public API is generally a bad idea.
+
+Still, if you decide to do it, it's best to make that clear to the API
+users.
+
+[source,clojure]
+----
+(def ^{:added "0.5"
+       :changed "0.6"} foo
+  43)
+----
+
 === `:deprecated`
 
 The most common way to mark deprecated public APIs is via the `:deprecated`
@@ -1936,10 +1975,6 @@ was deprecated in case of versioned software (e.g. a library) or simply
   "DEPRECATED: A deprecated ns.")
 ----
 
-TIP: If you're into SemVer, it's a good idea to omit the patch version.
-This means you should use `0.5` instead of `0.5.0`. This applies
-for all metadata data that's version related.
-
 === `:superseded-by`
 
 Often you'd combine `:deprecated` with `:superseded-by`, as there would be
@@ -1972,24 +2007,6 @@ in the same namespace, and a fully-qualified name otherwise.
 ----
 
 TIP: You can also consider adding `:supersedes` metadata to the newer APIs, basically the inverse of `:superseded-by`.
-
-=== `:added`
-
-The most common way to document when a public API was added to a
-library is via the `:added` metadata.
-
-[source,clojure]
-----
-(def ^{:added "0.5"} foo
-  42)
-
-(ns foo.bar
-  "A very useful ns."
-  {:added "0.8"})
-
-(defn ^{:added "0.5"} foo
-  (bar))
-----
 
 == Comments
 
