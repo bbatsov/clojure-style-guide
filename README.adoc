@@ -1907,6 +1907,7 @@ was deprecated in case of versioned software (e.g. a library) or simply
 
 [source,clojure]
 ----
+;; in case we have a version
 (def ^{:deprecated "0.5"} foo
   "Use `bar` instead.
   42)
@@ -1916,6 +1917,10 @@ was deprecated in case of versioned software (e.g. a library) or simply
   {:deprecated "0.8"})
 
 (defn ^{:deprecated "0.5"} foo
+  (bar))
+
+;; otherwise
+(defn ^:deprecated foo
   (bar))
 ----
 
