@@ -43,15 +43,12 @@ This style guide evolves over time as additional conventions are
 identified and past conventions are rendered obsolete by changes in
 Clojure itself.
 
-NOTE: The guide is still a work in progress; some sections are missing,
-others are incomplete, some rules are lacking examples, some rules
-don't have examples that illustrate them clearly enough. In due time
-these issues will be addressed -- just keep them in mind for now.
-Help us address those shortcomings and make this guide better together!
-
-Please note, that the Clojure developing community maintains a list of
-https://clojure.org/community/contrib_howto#_coding_guidelines[coding standards for libraries],
-too.
+NOTE: Clojure's developers also maintain a list of
+https://clojure.org/community/contrib_howto#_coding_guidelines[coding
+guidelines for libraries].footnote:[Those guidelines are meant to
+be applied to Clojure itself and to all the Clojure Contrib libraries.]
+They were one of the sources of inspiration for the document, you're
+currently reading.
 
 ifdef::env-github[]
 You can generate a PDF copy of this guide using https://asciidoctor.org/docs/asciidoctor-pdf/[AsciiDoctor PDF], and an HTML copy https://asciidoctor.org/docs/convert-documents/#converting-a-document-to-html[with] https://asciidoctor.org/#installation[AsciiDoctor] using the following commands:
