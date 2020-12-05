@@ -883,6 +883,7 @@ Follow ``clojure.core``'s example for idiomatic names like `pred` and `coll`.
  ** `m` - map
  ** `s` - string input
  ** `re` - regular expression
+ ** `sym` - symbol
  ** `coll` - a collection
  ** `pred` - a predicate closure
  ** `& more` - variadic input
