@@ -816,6 +816,7 @@ pre.rouge {
 <li><a href="#common-metadata">Common Metadata</a>
 <ul class="sectlevel2">
 <li><a href="#deprecated"><code>:deprecated</code></a></li>
+<li><a href="#added"><code>:added</code></a></li>
 </ul>
 </li>
 <li><a href="#comments">Comments</a>
@@ -3259,10 +3260,31 @@ was deprecated in case of versioned software (e.g. a library) or simply
 </td>
 <td class="content">
 If you&#8217;re into SemVer, it&#8217;s a good idea to omit the patch version.
-This means you should use <code>0.5</code> instead of <code>0.5.0</code>.
+This means you should use <code>0.5</code> instead of <code>0.5.0</code>. This applies
+for all metadata data that&#8217;s version related.
 </td>
 </tr>
 </table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="added"><a class="anchor" href="#added"></a><a class="link" href="#added"><code>:added</code></a></h3>
+<div class="paragraph">
+<p>The most common way to document when a public API was added to a
+library is via the <code>:added</code> metadata.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="o">^</span><span class="p">{</span><span class="no">:added</span><span class="w"> </span><span class="s">"0.5"</span><span class="p">}</span><span class="w"> </span><span class="n">foo</span><span class="w">
+  </span><span class="mi">42</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">foo.bar</span><span class="w">
+  </span><span class="s">"A very useful ns."</span><span class="w">
+  </span><span class="p">{</span><span class="no">:added</span><span class="w"> </span><span class="s">"0.8"</span><span class="p">})</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="o">^</span><span class="p">{</span><span class="no">:added</span><span class="w"> </span><span class="s">"0.5"</span><span class="p">}</span><span class="w"> </span><span class="n">foo</span><span class="w">
+  </span><span class="p">(</span><span class="nf">bar</span><span class="p">))</span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -4245,7 +4267,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-12-05 09:21:48 UTC
+Last updated 2020-12-05 09:26:43 UTC
 </div>
 </div>
 </body>
