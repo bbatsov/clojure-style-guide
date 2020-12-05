@@ -815,9 +815,10 @@ pre.rouge {
 </li>
 <li><a href="#common-metadata">Common Metadata</a>
 <ul class="sectlevel2">
+<li><a href="#added"><code>:added</code></a></li>
+<li><a href="#changed"><code>:changed</code></a></li>
 <li><a href="#deprecated"><code>:deprecated</code></a></li>
 <li><a href="#superseded-by"><code>:superseded-by</code></a></li>
-<li><a href="#added"><code>:added</code></a></li>
 </ul>
 </li>
 <li><a href="#comments">Comments</a>
@@ -3232,6 +3233,60 @@ composability.</p>
 vars that Clojure development tools can leverage.</p>
 </div>
 <div class="sect2">
+<h3 id="added"><a class="anchor" href="#added"></a><a class="link" href="#added"><code>:added</code></a></h3>
+<div class="paragraph">
+<p>The most common way to document when a public API was added to a
+library is via the <code>:added</code> metadata.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="o">^</span><span class="p">{</span><span class="no">:added</span><span class="w"> </span><span class="s">"0.5"</span><span class="p">}</span><span class="w"> </span><span class="n">foo</span><span class="w">
+  </span><span class="mi">42</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">foo.bar</span><span class="w">
+  </span><span class="s">"A very useful ns."</span><span class="w">
+  </span><span class="p">{</span><span class="no">:added</span><span class="w"> </span><span class="s">"0.8"</span><span class="p">})</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="o">^</span><span class="p">{</span><span class="no">:added</span><span class="w"> </span><span class="s">"0.5"</span><span class="p">}</span><span class="w"> </span><span class="n">foo</span><span class="w">
+  </span><span class="p">(</span><span class="nf">bar</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+If you&#8217;re into SemVer, it&#8217;s a good idea to omit the patch version.
+This means you should use <code>0.5</code> instead of <code>0.5.0</code>. This applies
+for all metadata data that&#8217;s version related.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="changed"><a class="anchor" href="#changed"></a><a class="link" href="#changed"><code>:changed</code></a></h3>
+<div class="paragraph">
+<p>The most common way to document when a public API was changed in a
+library is via the <code>:changed</code> metadata. This metadata makes sense only for
+vars and you should be using it sparingly, as changing the behavior of
+a public API is generally a bad idea.</p>
+</div>
+<div class="paragraph">
+<p>Still, if you decide to do it, it&#8217;s best to make that clear to the API
+users.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="o">^</span><span class="p">{</span><span class="no">:added</span><span class="w"> </span><span class="s">"0.5"</span><span class="w">
+       </span><span class="no">:changed</span><span class="w"> </span><span class="s">"0.6"</span><span class="p">}</span><span class="w"> </span><span class="n">foo</span><span class="w">
+  </span><span class="mi">43</span><span class="p">)</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="deprecated"><a class="anchor" href="#deprecated"></a><a class="link" href="#deprecated"><code>:deprecated</code></a></h3>
 <div class="paragraph">
 <p>The most common way to mark deprecated public APIs is via the <code>:deprecated</code>
@@ -3269,20 +3324,6 @@ was deprecated in case of versioned software (e.g. a library) or simply
 </span><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">foo.bar</span><span class="w">
   </span><span class="s">"DEPRECATED: A deprecated ns."</span><span class="p">)</span></code></pre>
 </div>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Tip</div>
-</td>
-<td class="content">
-If you&#8217;re into SemVer, it&#8217;s a good idea to omit the patch version.
-This means you should use <code>0.5</code> instead of <code>0.5.0</code>. This applies
-for all metadata data that&#8217;s version related.
-</td>
-</tr>
-</table>
 </div>
 </div>
 <div class="sect2">
@@ -3329,26 +3370,6 @@ You can also consider adding <code>:supersedes</code> metadata to the newer APIs
 </td>
 </tr>
 </table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="added"><a class="anchor" href="#added"></a><a class="link" href="#added"><code>:added</code></a></h3>
-<div class="paragraph">
-<p>The most common way to document when a public API was added to a
-library is via the <code>:added</code> metadata.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="o">^</span><span class="p">{</span><span class="no">:added</span><span class="w"> </span><span class="s">"0.5"</span><span class="p">}</span><span class="w"> </span><span class="n">foo</span><span class="w">
-  </span><span class="mi">42</span><span class="p">)</span><span class="w">
-
-</span><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">foo.bar</span><span class="w">
-  </span><span class="s">"A very useful ns."</span><span class="w">
-  </span><span class="p">{</span><span class="no">:added</span><span class="w"> </span><span class="s">"0.8"</span><span class="p">})</span><span class="w">
-
-</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="o">^</span><span class="p">{</span><span class="no">:added</span><span class="w"> </span><span class="s">"0.5"</span><span class="p">}</span><span class="w"> </span><span class="n">foo</span><span class="w">
-  </span><span class="p">(</span><span class="nf">bar</span><span class="p">))</span></code></pre>
-</div>
 </div>
 </div>
 </div>
@@ -4331,7 +4352,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-12-05 09:47:32 UTC
+Last updated 2020-12-05 09:51:40 UTC
 </div>
 </div>
 </body>
