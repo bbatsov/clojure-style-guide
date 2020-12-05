@@ -1959,6 +1959,8 @@ in the same namespace, and a fully-qualified name otherwise.
   (bar))
 ----
 
+TIP: You can also consider adding `:supersedes` metadata to the newer APIs, basically the inverse of `:superseded-by`.
+
 === `:added`
 
 The most common way to document when a public API was added to a
