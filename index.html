@@ -691,6 +691,8 @@ pre.rouge {
 <li><a href="#line-break-ns-declaration">Line Breaks in <code>ns</code></a></li>
 <li><a href="#prefer-require-over-use">Prefer <code>:require</code> Over <code>:use</code></a></li>
 <li><a href="#sort-requirements-and-imports">Sort requirements and imports</a></li>
+<li><a href="#use-idiomatic-namespace-aliases">Use Idiomatic Namespace Aliases</a></li>
+<li><a href="#use-consistent-namespace-aliases">Use Consistent Namespace Aliases</a></li>
 </ul>
 </li>
 <li><a href="#functions">Functions</a>
@@ -1637,6 +1639,139 @@ considered deprecated for new code.</p>
    </span><span class="p">[</span><span class="n">foo.bar</span><span class="w"> </span><span class="no">:as</span><span class="w"> </span><span class="n">foo</span><span class="p">]</span><span class="w">
    </span><span class="p">[</span><span class="n">clojure.java.shell</span><span class="w"> </span><span class="no">:as</span><span class="w"> </span><span class="n">sh</span><span class="p">]))</span></code></pre>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-idiomatic-namespace-aliases"><a class="anchor" href="#use-idiomatic-namespace-aliases"></a><a class="link" href="#use-idiomatic-namespace-aliases">Use Idiomatic Namespace Aliases</a></h3>
+<div class="paragraph">
+<p>Many core Clojure namespaces have idiomatic aliases that you&#8217;re
+encouraged to use within your projects - e.g. the most common way to
+require <code>clojure.string</code> is: <code>[clojure.string :as str]</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+This may appear to mask
+<code>clojure.core.str</code>, but it doesn&#8217;t. It&#8217;s expected that
+<code>clojure.core/str</code> and <code>clojure.string/*</code> to be used in a namespace as
+<code>str</code> and <code>str/whatever</code> without conflict.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
+</span><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">...</span><span class="w"> </span><span class="p">(</span><span class="no">:require</span><span class="w"> </span><span class="p">[</span><span class="n">clojure.string</span><span class="w"> </span><span class="no">:as</span><span class="w"> </span><span class="nb">str</span><span class="p">]</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">str/join</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">;; not as good - just be idiomatic and use as `str/`</span><span class="w">
+</span><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">...</span><span class="w"> </span><span class="p">(</span><span class="no">:require</span><span class="w"> </span><span class="p">[</span><span class="n">clojure.string</span><span class="w"> </span><span class="no">:as</span><span class="w"> </span><span class="n">string</span><span class="p">]</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">string/join</span><span class="w"> </span><span class="n">...</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Bellow are some common idiomatic aliases:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Namespace</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Idiomatic Alias</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">io</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.java.io</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.set</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">str</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.string</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">walk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.walk</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zip</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.zip</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">xml</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.data.xml</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">as</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.core.async</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mat</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.core.matrix</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">edn</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.edn</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.pprint</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">spec</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.spec.alpha</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">csv</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.data.csv</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">json</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cheshire.core</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java-time</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">http</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clj-http.client</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">log</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.tools.logging</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sql</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hugsql.core</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">yaml</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clj-yaml.core</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sh</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.java.shell</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="use-consistent-namespace-aliases"><a class="anchor" href="#use-consistent-namespace-aliases"></a><a class="link" href="#use-consistent-namespace-aliases">Use Consistent Namespace Aliases</a></h3>
+<div class="paragraph">
+<p>Across a project, it&#8217;s good to be consistent with namespace aliases; e.g., don&#8217;t require <code>clojure.string</code> as <code>str</code> in one namespace but <code>string</code> in another.</p>
 </div>
 </div>
 </div>
@@ -4444,7 +4579,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-12-05 10:23:38 UTC
+Last updated 2020-12-05 16:18:30 UTC
 </div>
 </div>
 </body>
