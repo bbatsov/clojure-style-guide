@@ -819,6 +819,8 @@ pre.rouge {
 <li><a href="#changed"><code>:changed</code></a></li>
 <li><a href="#deprecated"><code>:deprecated</code></a></li>
 <li><a href="#superseded-by"><code>:superseded-by</code></a></li>
+<li><a href="#see-also"><code>:see-also</code></a></li>
+<li><a href="#indentation-metadata">Indentation Metadata</a></li>
 </ul>
 </li>
 <li><a href="#comments">Comments</a>
@@ -3372,6 +3374,93 @@ You can also consider adding <code>:supersedes</code> metadata to the newer APIs
 </table>
 </div>
 </div>
+<div class="sect2">
+<h3 id="see-also"><a class="anchor" href="#see-also"></a><a class="link" href="#see-also"><code>:see-also</code></a></h3>
+<div class="paragraph">
+<p>From time to time you might want to point out some related vars/namespaces that the users of your library might be interested in.
+The most common way to do so would be via the <code>:see-also</code> metadata, which takes a vector of related items.
+When talking about vars - items in the same namespace don&#8217;t need to fully qualified.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; refers to vars in the same ns</span><span class="w">
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="o">^</span><span class="p">{</span><span class="no">:see-also</span><span class="w"> </span><span class="p">[</span><span class="s">"bar"</span><span class="w"> </span><span class="s">"baz"</span><span class="p">]}</span><span class="w"> </span><span class="n">foo</span><span class="w">
+  </span><span class="s">"A very useful var."</span><span class="w">
+  </span><span class="mi">42</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">;; refers to vars in some other ns</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="o">^</span><span class="p">{</span><span class="no">:see-also</span><span class="w"> </span><span class="p">[</span><span class="s">"top.bar"</span><span class="w"> </span><span class="s">"top.baz"</span><span class="p">]}</span><span class="w"> </span><span class="n">foo</span><span class="w">
+  </span><span class="p">(</span><span class="nf">bar</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Many Clojure programming tools will also try to extract references to other vars from the docstring, but it&#8217;s both
+simpler and more explicit to use the <code>:see-also</code> metadata instead.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="indentation-metadata"><a class="anchor" href="#indentation-metadata"></a><a class="link" href="#indentation-metadata">Indentation Metadata</a></h3>
+<div class="paragraph">
+<p>Unlike other Lisp dialects, Clojure doesn&#8217;t have a standard metadata format to specify the indentation of macros.
+CIDER proposed a tool-agnostic <a href="https://docs.cider.mx/cider/indent_spec.html">indentation specification</a> based on metadata in 2015.<sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnotedef_6" title="View footnote.">6</a>]</sup> Here&#8217;s a simple example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; refers to vars in the same ns</span><span class="w">
+</span><span class="p">(</span><span class="k">defmacro</span><span class="w"> </span><span class="n">with-in-str</span><span class="w">
+  </span><span class="s">"[DOCSTRING]"</span><span class="w">
+  </span><span class="p">{</span><span class="no">:style/indent</span><span class="w"> </span><span class="mi">1</span><span class="p">}</span><span class="w">
+  </span><span class="p">[</span><span class="n">s</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">body</span><span class="p">]</span><span class="w">
+  </span><span class="n">...cut</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">brevity...</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This instructs the indentation engine that this is a macro with one ordinary parameter and a body after it.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; without metadata (indented as a regular function)</span><span class="w">
+</span><span class="p">(</span><span class="nf">dop-iin-str</span><span class="w"> </span><span class="n">some-string</span><span class="w">
+             </span><span class="n">foo</span><span class="w">
+             </span><span class="n">bar</span><span class="w">
+             </span><span class="n">baz</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">;; with metadata (indented as macro with one special param and a body)</span><span class="w">
+</span><span class="p">(</span><span class="nf">with-in-str</span><span class="w"> </span><span class="n">some-string</span><span class="w">
+  </span><span class="n">foo</span><span class="w">
+  </span><span class="n">bar</span><span class="w">
+  </span><span class="n">baz</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Unfortunately, as of 2020 there&#8217;s still no widespread adoption of <code>:style/indent</code> and many editors and IDEs would just
+hardcode the indentation rules for common macros.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+This approach to indentation ("semantic indentation") is a contested topic in the Clojure community, due to the
+need for the additional metadata and tooling support. Despite the long tradition of that approach in the Lisp community
+in general, some people argue to just stop treating functions and macros differently and simply indent everything with a fixed
+indentation. <a href="https://tonsky.me/blog/clojurefmt/">This article</a> is one popular presentation of that alternative approach.
+</td>
+</tr>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -4349,10 +4438,13 @@ best possible guide, don&#8217;t we?</p>
 <div class="footnote" id="_footnotedef_5">
 <a href="#_footnoteref_5">5</a>. *BSD/Solaris/Linux/macOS users are covered by default, Windows users have to be extra careful.
 </div>
+<div class="footnote" id="_footnotedef_6">
+<a href="#_footnoteref_6">6</a>. This was first introduced in CIDER 0.10
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-12-05 09:51:40 UTC
+Last updated 2020-12-05 10:23:38 UTC
 </div>
 </div>
 </body>
