@@ -3240,7 +3240,8 @@ was deprecated in case of versioned software (e.g. a library) or simply
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="o">^</span><span class="p">{</span><span class="no">:deprecated</span><span class="w"> </span><span class="s">"0.5"</span><span class="p">}</span><span class="w"> </span><span class="n">foo</span><span class="w">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; in case we have a version</span><span class="w">
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="o">^</span><span class="p">{</span><span class="no">:deprecated</span><span class="w"> </span><span class="s">"0.5"</span><span class="p">}</span><span class="w"> </span><span class="n">foo</span><span class="w">
   </span><span class="s">"Use `bar` instead.
   42)
 
@@ -3249,6 +3250,10 @@ was deprecated in case of versioned software (e.g. a library) or simply
   {:deprecated "</span><span class="mf">0.8</span><span class="s">"})
 
 (defn ^{:deprecated "</span><span class="mf">0.5</span><span class="err">"</span><span class="p">}</span><span class="w"> </span><span class="n">foo</span><span class="w">
+  </span><span class="p">(</span><span class="nf">bar</span><span class="p">))</span><span class="w">
+
+</span><span class="c1">;; otherwise</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="o">^</span><span class="no">:deprecated</span><span class="w"> </span><span class="n">foo</span><span class="w">
   </span><span class="p">(</span><span class="nf">bar</span><span class="p">))</span></code></pre>
 </div>
 </div>
@@ -4267,7 +4272,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-12-05 09:26:43 UTC
+Last updated 2020-12-05 09:34:03 UTC
 </div>
 </div>
 </body>
