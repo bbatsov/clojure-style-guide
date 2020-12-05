@@ -887,6 +887,7 @@ Follow ``clojure.core``'s example for idiomatic names like `pred` and `coll`.
  ** `pred` - a predicate closure
  ** `& more` - variadic input
  ** `xf` - xform, a transducer
+ ** `ns` - namespacefootnote:[Technically this will shadow the `ns` macro, but it's extremely unlikely you'll ever need it in the body of a function.]
 * in macros:
  ** `expr` - an expression
  ** `body` - a macro body
