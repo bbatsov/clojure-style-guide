@@ -1142,6 +1142,26 @@ Prefer the use of the threading macros `+->+` (thread-first) and `+->>+`
      (filter even? (range 1 10)))
 ----
 
+=== Threading Macros and Optional Parentheses
+
+Parentheses are not required when using the threading macros for functions having no argument specified, so use them only when necessary.
+
+[source,clojure]
+----
+;; good
+(-> x fizz :foo first frob)
+
+;; bad; parens add clutter and are not needed
+(-> x (fizz) (:foo) (first) (frob))
+
+;; good, parens are necessary with an arg
+(-> x
+    (fizz a b)
+    :foo
+    first
+    (frob x y))
+----
+
 === Threading Macros Alignment
 
 The arguments to the threading macros `+->+` (thread-first) and `+->>+`
