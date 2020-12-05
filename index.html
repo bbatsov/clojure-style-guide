@@ -733,6 +733,7 @@ pre.rouge {
 <li><a href="#comp"><code>comp</code></a></li>
 <li><a href="#partial"><code>partial</code></a></li>
 <li><a href="#threading-macros">Threading Macros</a></li>
+<li><a href="#threading-macros-and-optional-parentheses">Threading Macros and Optional Parentheses</a></li>
 <li><a href="#threading-macros-alignment">Threading Macros Alignment</a></li>
 <li><a href="#else-keyword-in-cond">Default <code>cond</code> Branch</a></li>
 <li><a href="#condp"><code>condp</code> vs <code>cond</code></a></li>
@@ -2231,6 +2232,28 @@ exists in the form of a separate function (e.g. <code>even?</code> and <code>odd
 </span><span class="c1">;; not as good</span><span class="w">
 </span><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="p">(</span><span class="nb">partial</span><span class="w"> </span><span class="nb">*</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w">
      </span><span class="p">(</span><span class="nb">filter</span><span class="w"> </span><span class="n">even?</span><span class="w"> </span><span class="p">(</span><span class="nb">range</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">10</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="threading-macros-and-optional-parentheses"><a class="anchor" href="#threading-macros-and-optional-parentheses"></a><a class="link" href="#threading-macros-and-optional-parentheses">Threading Macros and Optional Parentheses</a></h3>
+<div class="paragraph">
+<p>Parentheses are not required when using the threading macros for functions having no argument specified, so use them only when necessary.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
+</span><span class="p">(</span><span class="nb">-&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">fizz</span><span class="w"> </span><span class="no">:foo</span><span class="w"> </span><span class="nb">first</span><span class="w"> </span><span class="n">frob</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">;; bad; parens add clutter and are not needed</span><span class="w">
+</span><span class="p">(</span><span class="nb">-&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">(</span><span class="nf">fizz</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="no">:foo</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">first</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nf">frob</span><span class="p">))</span><span class="w">
+
+</span><span class="c1">;; good, parens are necessary with an arg</span><span class="w">
+</span><span class="p">(</span><span class="nb">-&gt;</span><span class="w"> </span><span class="n">x</span><span class="w">
+    </span><span class="p">(</span><span class="nf">fizz</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w">
+    </span><span class="no">:foo</span><span class="w">
+    </span><span class="nb">first</span><span class="w">
+    </span><span class="p">(</span><span class="nf">frob</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">))</span></code></pre>
 </div>
 </div>
 </div>
@@ -4172,7 +4195,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-12-04 21:37:04 UTC
+Last updated 2020-12-05 09:09:18 UTC
 </div>
 </div>
 </body>
