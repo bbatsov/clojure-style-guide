@@ -2684,20 +2684,6 @@ the var as documentation.
   (bar x))
 ----
 
-== Existential
-
-=== Be Functional [[be-functional]]
-
-Code in a functional way, using mutation only when it makes sense.
-
-=== Be Consistent [[be-consistent]]
-
-Be consistent. In an ideal world, be consistent with these guidelines.
-
-=== Common Sense [[common-sense]]
-
-Use common sense.
-
 == Testing
 
 === Test Directory Structure [[test-directory-structure]]
@@ -2763,6 +2749,20 @@ https://github.com/stuartsierra/component[Component] provides
 core functionality, and
 https://github.com/stuartsierra/reloaded[reloaded] provides leiningen
 integration.
+
+== Existential
+
+=== Be Functional [[be-functional]]
+
+Code in a functional way, using mutation only when it makes sense.
+
+=== Be Consistent [[be-consistent]]
+
+Be consistent. In an ideal world, be consistent with these guidelines.
+
+=== Common Sense [[common-sense]]
+
+Use common sense.
 
 == Tools
 
