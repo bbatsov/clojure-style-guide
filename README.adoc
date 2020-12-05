@@ -2197,9 +2197,10 @@ comment isn't needed?" Improve the code and then document it to make
 it even clearer.
 ____
 
-=== Self-Documenting Code [[self-documenting-code]]
+=== Self-Explanatory Code
 
-Endeavor to make your code as self-documenting as possible.
+Endeavor to make your code as self-explanatory as possible.
+If you fail to achieve this follow the rest of the guidelines in this section.
 
 === Heading Comments [[four-semicolons-for-heading-comments]]
 
@@ -2661,7 +2662,7 @@ Neither start nor end your docstrings with any whitespace.
   42)
 ----
 
-=== Docstring After Fn Name [[docstring-after-fn-name]]
+=== Place Docstring After Function Name [[docstring-after-fn-name]]
 
 When adding a docstring -- especially to a function using the above form -- take
 care to correctly place the docstring after the function name, not after the
