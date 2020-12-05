@@ -2008,6 +2008,67 @@ in the same namespace, and a fully-qualified name otherwise.
 
 TIP: You can also consider adding `:supersedes` metadata to the newer APIs, basically the inverse of `:superseded-by`.
 
+=== `:see-also`
+
+From time to time you might want to point out some related vars/namespaces that the users of your library might be interested in.
+The most common way to do so would be via the `:see-also` metadata, which takes a vector of related items.
+When talking about vars - items in the same namespace don't need to fully qualified.
+
+[source,clojure]
+----
+;; refers to vars in the same ns
+(def ^{:see-also ["bar" "baz"]} foo
+  "A very useful var."
+  42)
+
+;; refers to vars in some other ns
+(defn ^{:see-also ["top.bar" "top.baz"]} foo
+  (bar))
+----
+
+NOTE: Many Clojure programming tools will also try to extract references to other vars from the docstring, but it's both
+simpler and more explicit to use the `:see-also` metadata instead.
+
+=== Indentation Metadata
+
+Unlike other Lisp dialects, Clojure doesn't have a standard metadata format to specify the indentation of macros.
+CIDER proposed a tool-agnostic https://docs.cider.mx/cider/indent_spec.html[indentation specification] based on metadata in 2015.footnote:[This was first introduced in CIDER 0.10] Here's a simple example:
+
+[source,clojure]
+----
+;; refers to vars in the same ns
+(defmacro with-in-str
+  "[DOCSTRING]"
+  {:style/indent 1}
+  [s & body]
+  ...cut for brevity...)
+----
+
+This instructs the indentation engine that this is a macro with one ordinary parameter and a body after it.
+
+[source,clojure]
+----
+;; without metadata (indented as a regular function)
+(dop-iin-str some-string
+             foo
+             bar
+             baz)
+
+;; with metadata (indented as macro with one special param and a body)
+(with-in-str some-string
+  foo
+  bar
+  baz)
+----
+
+Unfortunately, as of 2020 there's still no widespread adoption of `:style/indent` and many editors and IDEs would just
+hardcode the indentation rules for common macros.
+
+NOTE: This approach to indentation ("semantic indentation") is a contested topic in the Clojure community, due to the
+need for the additional metadata and tooling support. Despite the long tradition of that approach in the Lisp community
+in general, some people argue to just stop treating functions and macros differently and simply indent everything with a fixed
+indentation. https://tonsky.me/blog/clojurefmt/[This article] is one popular presentation of that alternative approach.
+
 == Comments
 
 [quote, Steve McConnell]
