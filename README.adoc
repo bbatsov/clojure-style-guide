@@ -730,6 +730,168 @@ Across a project, it's good to be consistent with namespace aliases; e.g., don't
 If you follow the previous two guidelines you're basically covered, but if you opt for custom namespace aliasing scheme it's still important to apply it
 consistently within your projects.
 
+== Naming
+
+[quote, Phil Karlton]
+____
+The only real difficulties in programming are cache invalidation and
+naming things.
+____
+
+=== Namespace Naming Schemas [[naming-ns-naming-schemas]]
+
+When naming namespaces favor the following two schemas:
+
+* `project.module`
+* `organization.project.module`
+
+=== Composite Word Namespace Segments [[naming-namespace-composite-segments]]
+
+Use `lisp-case` in composite namespace segments (e.g. `bruce.project-euler`).
+
+=== Functions and Variables [[naming-functions-and-variables]]
+
+Use `lisp-case` for function and variable names.
+
+NOTE: Many non-Lisp programming communities refer to `lisp-case` as
+`kebab-case`, but we all know that Lisp has existed way before kebab
+was invented.
+
+[source,clojure]
+----
+;; good
+(def some-var ...)
+(defn some-fun ...)
+
+;; bad
+(def someVar ...)
+(defn somefun ...)
+(def some_fun ...)
+----
+
+=== Protocols, Records, Structs And Types [[naming-protocols-records-structs-and-types]]
+
+Use `CapitalCase` for protocols, records, structs, and types. (Keep
+acronyms like HTTP, RFC, XML uppercase.)
+
+NOTE: `CapitalCase` is also known as `UpperCamelCase, `CapitalWords`
+and `PascalCase`.
+
+=== Predicate Methods [[naming-predicates]]
+
+The names of predicate methods (methods that return a boolean value)
+should end in a question mark
+(e.g., `even?`).
+
+[source,clojure]
+----
+;; good
+(defn palindrome? ...)
+
+;; bad
+(defn palindrome-p ...) ; Common Lisp style
+(defn is-palindrome ...) ; Java style
+----
+
+=== Unsafe Functions [[naming-unsafe-functions]]
+
+The names of functions/macros that are not safe in STM transactions
+should end with an exclamation mark (e.g. `reset!`).
+
+=== Conversion Functions [[naming-conversion-functions]]
+
+Use `+->+` instead of `to` in the names of conversion functions.
+
+[source,clojure]
+----
+;; good
+(defn f->c ...)
+
+;; not so good
+(defn f-to-c ...)
+----
+
+=== Dynamic Vars [[naming-dynamic-vars]]
+
+Use `*earmuffs*` for things intended for rebinding (ie. are dynamic).
+
+[source,clojure]
+----
+;; good
+(def ^:dynamic *a* 10)
+
+;; bad
+(def ^:dynamic a 10)
+----
+
+=== Constants [[naming-constants]]
+
+Don't use a special notation for constants; everything is assumed a constant
+unless specified otherwise.
+
+=== Unused Bindings [[naming-unused-bindings]]
+
+Use `+_+` for destructuring targets and formal argument names whose
+value will be ignored by the code at hand.
+
+[source,clojure]
+----
+;; good
+(let [[a b _ c] [1 2 3 4]]
+  (println a b c))
+
+(dotimes [_ 3]
+  (println "Hello!"))
+
+;; bad
+(let [[a b c d] [1 2 3 4]]
+  (println a b d))
+
+(dotimes [i 3]
+  (println "Hello!"))
+----
+
+However, when it can help the understanding of your code, it can be useful to explicitly name unused arguments or maps you're destructuring from. In this case, prepend the name with an underscore to explicitly signal that the variable is supposed to be unused.
+
+[source,clojure]
+----
+;; good
+(defn myfun1 [context _]
+ (assoc context :foo "bar"))
+
+(defn myfun2 [context {:keys [id]}]
+ (assoc context :user-id id))
+
+;; better
+(defn myfun1 [context _user]
+ (assoc context :foo "bar"))
+
+(defn myfun2 [context {:keys [id] :as _user}]
+ (assoc context :user-id id))
+----
+
+=== Idiomatic Names [[idiomatic-names]]
+
+Follow ``clojure.core``'s example for idiomatic names like `pred` and `coll`.
+
+* in functions:
+ ** `f`, `g`, `h` - function input
+ ** `n` - integer input usually a size
+ ** `index`, `i` - integer index
+ ** `x`, `y` - numbers
+ ** `xs` - sequence
+ ** `m` - map
+ ** `s` - string input
+ ** `re` - regular expression
+ ** `coll` - a collection
+ ** `pred` - a predicate closure
+ ** `& more` - variadic input
+ ** `xf` - xform, a transducer
+* in macros:
+ ** `expr` - an expression
+ ** `body` - a macro body
+ ** `binding` - a macro binding vector
+
 == Functions
 
 === Optional New Line After Function Name [[optional-new-line-after-fn-name]]
@@ -1543,168 +1705,6 @@ Be careful regarding what exactly you attach metadata to.
 (meta a) ;=> {:private true}
 (meta #'a) ;=> nil
 ----
-
-== Naming
-
-[quote, Phil Karlton]
-____
-The only real difficulties in programming are cache invalidation and
-naming things.
-____
-
-=== Namespace Naming Schemas [[naming-ns-naming-schemas]]
-
-When naming namespaces favor the following two schemas:
-
-* `project.module`
-* `organization.project.module`
-
-=== Composite Word Namespace Segments [[naming-namespace-composite-segments]]
-
-Use `lisp-case` in composite namespace segments (e.g. `bruce.project-euler`).
-
-=== Functions and Variables [[naming-functions-and-variables]]
-
-Use `lisp-case` for function and variable names.
-
-NOTE: Many non-Lisp programming communities refer to `lisp-case` as
-`kebab-case`, but we all know that Lisp has existed way before kebab
-was invented.
-
-[source,clojure]
-----
-;; good
-(def some-var ...)
-(defn some-fun ...)
-
-;; bad
-(def someVar ...)
-(defn somefun ...)
-(def some_fun ...)
-----
-
-=== Protocols, Records, Structs And Types [[naming-protocols-records-structs-and-types]]
-
-Use `CapitalCase` for protocols, records, structs, and types. (Keep
-acronyms like HTTP, RFC, XML uppercase.)
-
-NOTE: `CapitalCase` is also known as `UpperCamelCase, `CapitalWords`
-and `PascalCase`.
-
-=== Predicate Methods [[naming-predicates]]
-
-The names of predicate methods (methods that return a boolean value)
-should end in a question mark
-(e.g., `even?`).
-
-[source,clojure]
-----
-;; good
-(defn palindrome? ...)
-
-;; bad
-(defn palindrome-p ...) ; Common Lisp style
-(defn is-palindrome ...) ; Java style
-----
-
-=== Unsafe Functions [[naming-unsafe-functions]]
-
-The names of functions/macros that are not safe in STM transactions
-should end with an exclamation mark (e.g. `reset!`).
-
-=== Conversion Functions [[naming-conversion-functions]]
-
-Use `+->+` instead of `to` in the names of conversion functions.
-
-[source,clojure]
-----
-;; good
-(defn f->c ...)
-
-;; not so good
-(defn f-to-c ...)
-----
-
-=== Dynamic Vars [[naming-dynamic-vars]]
-
-Use `*earmuffs*` for things intended for rebinding (ie. are dynamic).
-
-[source,clojure]
-----
-;; good
-(def ^:dynamic *a* 10)
-
-;; bad
-(def ^:dynamic a 10)
-----
-
-=== Constants [[naming-constants]]
-
-Don't use a special notation for constants; everything is assumed a constant
-unless specified otherwise.
-
-=== Unused Bindings [[naming-unused-bindings]]
-
-Use `+_+` for destructuring targets and formal argument names whose
-value will be ignored by the code at hand.
-
-[source,clojure]
-----
-;; good
-(let [[a b _ c] [1 2 3 4]]
-  (println a b c))
-
-(dotimes [_ 3]
-  (println "Hello!"))
-
-;; bad
-(let [[a b c d] [1 2 3 4]]
-  (println a b d))
-
-(dotimes [i 3]
-  (println "Hello!"))
-----
-
-However, when it can help the understanding of your code, it can be useful to explicitly name unused arguments or maps you're destructuring from. In this case, prepend the name with an underscore to explicitly signal that the variable is supposed to be unused.
-
-[source,clojure]
-----
-;; good
-(defn myfun1 [context _]
- (assoc context :foo "bar"))
-
-(defn myfun2 [context {:keys [id]}]
- (assoc context :user-id id))
-
-;; better
-(defn myfun1 [context _user]
- (assoc context :foo "bar"))
-
-(defn myfun2 [context {:keys [id] :as _user}]
- (assoc context :user-id id))
-----
-
-=== Idiomatic Names [[idiomatic-names]]
-
-Follow ``clojure.core``'s example for idiomatic names like `pred` and `coll`.
-
-* in functions:
- ** `f`, `g`, `h` - function input
- ** `n` - integer input usually a size
- ** `index`, `i` - integer index
- ** `x`, `y` - numbers
- ** `xs` - sequence
- ** `m` - map
- ** `s` - string input
- ** `re` - regular expression
- ** `coll` - a collection
- ** `pred` - a predicate closure
- ** `& more` - variadic input
- ** `xf` - xform, a transducer
-* in macros:
- ** `expr` - an expression
- ** `body` - a macro body
- ** `binding` - a macro binding vector
 
 == Data Structures
 
