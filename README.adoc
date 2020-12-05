@@ -1893,6 +1893,35 @@ composability.
 
 Prefer syntax-quoted forms over building lists manually.
 
+== Common Metadata
+
+In this section we'll go over some common metadata for namespaces and
+vars that Clojure development tools can leverage.
+
+=== `:deprecated`
+
+The most common way to mark deprecated public APIs is via the `:deprecated`
+metadata. Normally you'd use as the value the version in which something
+was deprecated in case of versioned software (e.g. a library) or simply
+`true` in the case of unversioned software (e.g. some web application).
+
+[source,clojure]
+----
+(def ^{:deprecated "0.5"} foo
+  "Use `bar` instead.
+  42)
+
+(ns foo.bar
+  "A deprecated ns."
+  {:deprecated "0.8"})
+
+(defn ^{:deprecated "0.5"} foo
+  (bar))
+----
+
+TIP: If you're into SemVer, it's a good idea to omit the patch version.
+This means you should use `0.5` instead of `0.5.0`.
+
 == Comments
 
 [quote, Steve McConnell]
