@@ -1907,6 +1907,8 @@ was deprecated in case of versioned software (e.g. a library) or simply
 
 [source,clojure]
 ----
+;;; good
+;;
 ;; in case we have a version
 (def ^{:deprecated "0.5"} foo
   "Use `bar` instead.
@@ -1922,6 +1924,16 @@ was deprecated in case of versioned software (e.g. a library) or simply
 ;; otherwise
 (defn ^:deprecated foo
   (bar))
+
+;;; bad
+;;
+;; using the docstring to signal deprecation
+(def foo
+  "DEPRECATED: Use `bar` instead.
+  42)
+
+(ns foo.bar
+  "DEPRECATED: A deprecated ns.")
 ----
 
 TIP: If you're into SemVer, it's a good idea to omit the patch version.
