@@ -639,44 +639,44 @@ Bellow are some common idiomatic aliases:
 
 |===
 | Namespace | Idiomatic Alias
-| io
 | clojure.java.io
-| set
+| io
 | clojure.set
-| str
+| set
 | clojure.string
-| walk
+| str
 | clojure.walk
-| zip
+| walk
 | clojure.zip
-| xml
+| zip
 | clojure.data.xml
-| as
+| xml
 | clojure.core.async
-| mat
+| as
 | clojure.core.matrix
-| edn
+| mat
 | clojure.edn
-| pp
+| edn
 | clojure.pprint
-| spec
+| pp
 | clojure.spec.alpha
-| csv
+| spec
 | clojure.data.csv
-| json
+| csv
 | cheshire.core
-| time
+| json
 | java-time
-| http
+| time
 | clj-http.client
-| log
+| http
 | clojure.tools.logging
-| sql
+| log
 | hugsql.core
-| yaml
+| sql
 | clj-yaml.core
-| sh
+| yaml
 | clojure.java.shell
+| sh
 |===
 
 === A Recipe for Good Namespace Aliases
