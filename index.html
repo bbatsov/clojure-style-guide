@@ -696,6 +696,21 @@ pre.rouge {
 <li><a href="#use-consistent-namespace-aliases">Use Consistent Namespace Aliases</a></li>
 </ul>
 </li>
+<li><a href="#naming">Naming</a>
+<ul class="sectlevel2">
+<li><a href="#naming-ns-naming-schemas">Namespace Naming Schemas</a></li>
+<li><a href="#naming-namespace-composite-segments">Composite Word Namespace Segments</a></li>
+<li><a href="#naming-functions-and-variables">Functions and Variables</a></li>
+<li><a href="#naming-protocols-records-structs-and-types">Protocols, Records, Structs And Types</a></li>
+<li><a href="#naming-predicates">Predicate Methods</a></li>
+<li><a href="#naming-unsafe-functions">Unsafe Functions</a></li>
+<li><a href="#naming-conversion-functions">Conversion Functions</a></li>
+<li><a href="#naming-dynamic-vars">Dynamic Vars</a></li>
+<li><a href="#naming-constants">Constants</a></li>
+<li><a href="#naming-unused-bindings">Unused Bindings</a></li>
+<li><a href="#idiomatic-names">Idiomatic Names</a></li>
+</ul>
+</li>
 <li><a href="#functions">Functions</a>
 <ul class="sectlevel2">
 <li><a href="#optional-new-line-after-fn-name">Optional New Line After Function Name</a></li>
@@ -751,21 +766,6 @@ pre.rouge {
 <li><a href="#private">Private</a></li>
 <li><a href="#access-private-var">Access Private Var</a></li>
 <li><a href="#attach-metadata-carefully">Attach Metadata Carefully</a></li>
-</ul>
-</li>
-<li><a href="#naming">Naming</a>
-<ul class="sectlevel2">
-<li><a href="#naming-ns-naming-schemas">Namespace Naming Schemas</a></li>
-<li><a href="#naming-namespace-composite-segments">Composite Word Namespace Segments</a></li>
-<li><a href="#naming-functions-and-variables">Functions and Variables</a></li>
-<li><a href="#naming-protocols-records-structs-and-types">Protocols, Records, Structs And Types</a></li>
-<li><a href="#naming-predicates">Predicate Methods</a></li>
-<li><a href="#naming-unsafe-functions">Unsafe Functions</a></li>
-<li><a href="#naming-conversion-functions">Conversion Functions</a></li>
-<li><a href="#naming-dynamic-vars">Dynamic Vars</a></li>
-<li><a href="#naming-constants">Constants</a></li>
-<li><a href="#naming-unused-bindings">Unused Bindings</a></li>
-<li><a href="#idiomatic-names">Idiomatic Names</a></li>
 </ul>
 </li>
 <li><a href="#data-structures">Data Structures</a>
@@ -1865,6 +1865,271 @@ consistently within your projects.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="naming"><a class="anchor" href="#naming"></a><a class="link" href="#naming">Naming</a></h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>The only real difficulties in programming are cache invalidation and
+naming things.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; Phil Karlton
+</div>
+</div>
+<div class="sect2">
+<h3 id="naming-ns-naming-schemas"><a class="anchor" href="#naming-ns-naming-schemas"></a><a class="link" href="#naming-ns-naming-schemas">Namespace Naming Schemas</a></h3>
+<div class="paragraph">
+<p>When naming namespaces favor the following two schemas:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>project.module</code></p>
+</li>
+<li>
+<p><code>organization.project.module</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="naming-namespace-composite-segments"><a class="anchor" href="#naming-namespace-composite-segments"></a><a class="link" href="#naming-namespace-composite-segments">Composite Word Namespace Segments</a></h3>
+<div class="paragraph">
+<p>Use <code>lisp-case</code> in composite namespace segments (e.g. <code>bruce.project-euler</code>).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="naming-functions-and-variables"><a class="anchor" href="#naming-functions-and-variables"></a><a class="link" href="#naming-functions-and-variables">Functions and Variables</a></h3>
+<div class="paragraph">
+<p>Use <code>lisp-case</code> for function and variable names.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Many non-Lisp programming communities refer to <code>lisp-case</code> as
+<code>kebab-case</code>, but we all know that Lisp has existed way before kebab
+was invented.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">some-var</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">some-fun</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">;; bad</span><span class="w">
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">someVar</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">somefun</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w">
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">some_fun</span><span class="w"> </span><span class="n">...</span><span class="p">)</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="naming-protocols-records-structs-and-types"><a class="anchor" href="#naming-protocols-records-structs-and-types"></a><a class="link" href="#naming-protocols-records-structs-and-types">Protocols, Records, Structs And Types</a></h3>
+<div class="paragraph">
+<p>Use <code>CapitalCase</code> for protocols, records, structs, and types. (Keep
+acronyms like HTTP, RFC, XML uppercase.)</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<code>CapitalCase</code> is also known as <code>UpperCamelCase, `CapitalWords</code>
+and <code>PascalCase</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="naming-predicates"><a class="anchor" href="#naming-predicates"></a><a class="link" href="#naming-predicates">Predicate Methods</a></h3>
+<div class="paragraph">
+<p>The names of predicate methods (methods that return a boolean value)
+should end in a question mark
+(e.g., <code>even?</code>).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">palindrome?</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">;; bad</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">palindrome-p</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w"> </span><span class="c1">; Common Lisp style</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">is-palindrome</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w"> </span><span class="c1">; Java style</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="naming-unsafe-functions"><a class="anchor" href="#naming-unsafe-functions"></a><a class="link" href="#naming-unsafe-functions">Unsafe Functions</a></h3>
+<div class="paragraph">
+<p>The names of functions/macros that are not safe in STM transactions
+should end with an exclamation mark (e.g. <code>reset!</code>).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="naming-conversion-functions"><a class="anchor" href="#naming-conversion-functions"></a><a class="link" href="#naming-conversion-functions">Conversion Functions</a></h3>
+<div class="paragraph">
+<p>Use <code>-&gt;</code> instead of <code>to</code> in the names of conversion functions.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">f-&gt;c</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">;; not so good</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">f-to-c</span><span class="w"> </span><span class="n">...</span><span class="p">)</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="naming-dynamic-vars"><a class="anchor" href="#naming-dynamic-vars"></a><a class="link" href="#naming-dynamic-vars">Dynamic Vars</a></h3>
+<div class="paragraph">
+<p>Use <code><strong>earmuffs</strong></code> for things intended for rebinding (ie. are dynamic).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="o">^</span><span class="no">:dynamic</span><span class="w"> </span><span class="n">*a*</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">;; bad</span><span class="w">
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="o">^</span><span class="no">:dynamic</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="naming-constants"><a class="anchor" href="#naming-constants"></a><a class="link" href="#naming-constants">Constants</a></h3>
+<div class="paragraph">
+<p>Don&#8217;t use a special notation for constants; everything is assumed a constant
+unless specified otherwise.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="naming-unused-bindings"><a class="anchor" href="#naming-unused-bindings"></a><a class="link" href="#naming-unused-bindings">Unused Bindings</a></h3>
+<div class="paragraph">
+<p>Use <code>_</code> for destructuring targets and formal argument names whose
+value will be ignored by the code at hand.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
+</span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[[</span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="n">c</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">]]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">c</span><span class="p">))</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">dotimes</span><span class="w"> </span><span class="p">[</span><span class="n">_</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Hello!"</span><span class="p">))</span><span class="w">
+
+</span><span class="c1">;; bad</span><span class="w">
+</span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[[</span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="n">d</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">]]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">d</span><span class="p">))</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">dotimes</span><span class="w"> </span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Hello!"</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>However, when it can help the understanding of your code, it can be useful to explicitly name unused arguments or maps you&#8217;re destructuring from. In this case, prepend the name with an underscore to explicitly signal that the variable is supposed to be unused.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">myfun1</span><span class="w"> </span><span class="p">[</span><span class="n">context</span><span class="w"> </span><span class="n">_</span><span class="p">]</span><span class="w">
+ </span><span class="p">(</span><span class="nb">assoc</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="no">:foo</span><span class="w"> </span><span class="s">"bar"</span><span class="p">))</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">myfun2</span><span class="w"> </span><span class="p">[</span><span class="n">context</span><span class="w"> </span><span class="p">{</span><span class="no">:keys</span><span class="w"> </span><span class="p">[</span><span class="n">id</span><span class="p">]}]</span><span class="w">
+ </span><span class="p">(</span><span class="nb">assoc</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="no">:user-id</span><span class="w"> </span><span class="n">id</span><span class="p">))</span><span class="w">
+
+</span><span class="c1">;; better</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">myfun1</span><span class="w"> </span><span class="p">[</span><span class="n">context</span><span class="w"> </span><span class="n">_user</span><span class="p">]</span><span class="w">
+ </span><span class="p">(</span><span class="nb">assoc</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="no">:foo</span><span class="w"> </span><span class="s">"bar"</span><span class="p">))</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">myfun2</span><span class="w"> </span><span class="p">[</span><span class="n">context</span><span class="w"> </span><span class="p">{</span><span class="no">:keys</span><span class="w"> </span><span class="p">[</span><span class="n">id</span><span class="p">]</span><span class="w"> </span><span class="no">:as</span><span class="w"> </span><span class="n">_user</span><span class="p">}]</span><span class="w">
+ </span><span class="p">(</span><span class="nb">assoc</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="no">:user-id</span><span class="w"> </span><span class="n">id</span><span class="p">))</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="idiomatic-names"><a class="anchor" href="#idiomatic-names"></a><a class="link" href="#idiomatic-names">Idiomatic Names</a></h3>
+<div class="paragraph">
+<p>Follow <code>clojure.core</code>'s example for idiomatic names like <code>pred</code> and <code>coll</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>in functions:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>f</code>, <code>g</code>, <code>h</code> - function input</p>
+</li>
+<li>
+<p><code>n</code> - integer input usually a size</p>
+</li>
+<li>
+<p><code>index</code>, <code>i</code> - integer index</p>
+</li>
+<li>
+<p><code>x</code>, <code>y</code> - numbers</p>
+</li>
+<li>
+<p><code>xs</code> - sequence</p>
+</li>
+<li>
+<p><code>m</code> - map</p>
+</li>
+<li>
+<p><code>s</code> - string input</p>
+</li>
+<li>
+<p><code>re</code> - regular expression</p>
+</li>
+<li>
+<p><code>coll</code> - a collection</p>
+</li>
+<li>
+<p><code>pred</code> - a predicate closure</p>
+</li>
+<li>
+<p><code>&amp; more</code> - variadic input</p>
+</li>
+<li>
+<p><code>xf</code> - xform, a transducer</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>in macros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>expr</code> - an expression</p>
+</li>
+<li>
+<p><code>body</code> - a macro body</p>
+</li>
+<li>
+<p><code>binding</code> - a macro binding vector</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="functions"><a class="anchor" href="#functions"></a><a class="link" href="#functions">Functions</a></h2>
 <div class="sectionbody">
 <div class="sect2">
@@ -2779,271 +3044,6 @@ slots whose keys are keywords and whose value is boolean <code>true</code>.</p>
 </span><span class="p">(</span><span class="nb">meta</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="c1">;=&gt; {:private true}</span><span class="w">
 </span><span class="p">(</span><span class="nb">meta</span><span class="w"> </span><span class="o">#</span><span class="ss">'a</span><span class="p">)</span><span class="w"> </span><span class="c1">;=&gt; nil</span></code></pre>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="naming"><a class="anchor" href="#naming"></a><a class="link" href="#naming">Naming</a></h2>
-<div class="sectionbody">
-<div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>The only real difficulties in programming are cache invalidation and
-naming things.</p>
-</div>
-</blockquote>
-<div class="attribution">
-&#8212; Phil Karlton
-</div>
-</div>
-<div class="sect2">
-<h3 id="naming-ns-naming-schemas"><a class="anchor" href="#naming-ns-naming-schemas"></a><a class="link" href="#naming-ns-naming-schemas">Namespace Naming Schemas</a></h3>
-<div class="paragraph">
-<p>When naming namespaces favor the following two schemas:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>project.module</code></p>
-</li>
-<li>
-<p><code>organization.project.module</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="naming-namespace-composite-segments"><a class="anchor" href="#naming-namespace-composite-segments"></a><a class="link" href="#naming-namespace-composite-segments">Composite Word Namespace Segments</a></h3>
-<div class="paragraph">
-<p>Use <code>lisp-case</code> in composite namespace segments (e.g. <code>bruce.project-euler</code>).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="naming-functions-and-variables"><a class="anchor" href="#naming-functions-and-variables"></a><a class="link" href="#naming-functions-and-variables">Functions and Variables</a></h3>
-<div class="paragraph">
-<p>Use <code>lisp-case</code> for function and variable names.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Many non-Lisp programming communities refer to <code>lisp-case</code> as
-<code>kebab-case</code>, but we all know that Lisp has existed way before kebab
-was invented.
-</td>
-</tr>
-</table>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
-</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">some-var</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w">
-</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">some-fun</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w">
-
-</span><span class="c1">;; bad</span><span class="w">
-</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">someVar</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w">
-</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">somefun</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w">
-</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">some_fun</span><span class="w"> </span><span class="n">...</span><span class="p">)</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="naming-protocols-records-structs-and-types"><a class="anchor" href="#naming-protocols-records-structs-and-types"></a><a class="link" href="#naming-protocols-records-structs-and-types">Protocols, Records, Structs And Types</a></h3>
-<div class="paragraph">
-<p>Use <code>CapitalCase</code> for protocols, records, structs, and types. (Keep
-acronyms like HTTP, RFC, XML uppercase.)</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-<code>CapitalCase</code> is also known as <code>UpperCamelCase, `CapitalWords</code>
-and <code>PascalCase</code>.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="naming-predicates"><a class="anchor" href="#naming-predicates"></a><a class="link" href="#naming-predicates">Predicate Methods</a></h3>
-<div class="paragraph">
-<p>The names of predicate methods (methods that return a boolean value)
-should end in a question mark
-(e.g., <code>even?</code>).</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
-</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">palindrome?</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w">
-
-</span><span class="c1">;; bad</span><span class="w">
-</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">palindrome-p</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w"> </span><span class="c1">; Common Lisp style</span><span class="w">
-</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">is-palindrome</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w"> </span><span class="c1">; Java style</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="naming-unsafe-functions"><a class="anchor" href="#naming-unsafe-functions"></a><a class="link" href="#naming-unsafe-functions">Unsafe Functions</a></h3>
-<div class="paragraph">
-<p>The names of functions/macros that are not safe in STM transactions
-should end with an exclamation mark (e.g. <code>reset!</code>).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="naming-conversion-functions"><a class="anchor" href="#naming-conversion-functions"></a><a class="link" href="#naming-conversion-functions">Conversion Functions</a></h3>
-<div class="paragraph">
-<p>Use <code>-&gt;</code> instead of <code>to</code> in the names of conversion functions.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
-</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">f-&gt;c</span><span class="w"> </span><span class="n">...</span><span class="p">)</span><span class="w">
-
-</span><span class="c1">;; not so good</span><span class="w">
-</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">f-to-c</span><span class="w"> </span><span class="n">...</span><span class="p">)</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="naming-dynamic-vars"><a class="anchor" href="#naming-dynamic-vars"></a><a class="link" href="#naming-dynamic-vars">Dynamic Vars</a></h3>
-<div class="paragraph">
-<p>Use <code><strong>earmuffs</strong></code> for things intended for rebinding (ie. are dynamic).</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
-</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="o">^</span><span class="no">:dynamic</span><span class="w"> </span><span class="n">*a*</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w">
-
-</span><span class="c1">;; bad</span><span class="w">
-</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="o">^</span><span class="no">:dynamic</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="naming-constants"><a class="anchor" href="#naming-constants"></a><a class="link" href="#naming-constants">Constants</a></h3>
-<div class="paragraph">
-<p>Don&#8217;t use a special notation for constants; everything is assumed a constant
-unless specified otherwise.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="naming-unused-bindings"><a class="anchor" href="#naming-unused-bindings"></a><a class="link" href="#naming-unused-bindings">Unused Bindings</a></h3>
-<div class="paragraph">
-<p>Use <code>_</code> for destructuring targets and formal argument names whose
-value will be ignored by the code at hand.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
-</span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[[</span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="n">c</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">]]</span><span class="w">
-  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">c</span><span class="p">))</span><span class="w">
-
-</span><span class="p">(</span><span class="nb">dotimes</span><span class="w"> </span><span class="p">[</span><span class="n">_</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">
-  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Hello!"</span><span class="p">))</span><span class="w">
-
-</span><span class="c1">;; bad</span><span class="w">
-</span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[[</span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="n">d</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">]]</span><span class="w">
-  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">d</span><span class="p">))</span><span class="w">
-
-</span><span class="p">(</span><span class="nb">dotimes</span><span class="w"> </span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">
-  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Hello!"</span><span class="p">))</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>However, when it can help the understanding of your code, it can be useful to explicitly name unused arguments or maps you&#8217;re destructuring from. In this case, prepend the name with an underscore to explicitly signal that the variable is supposed to be unused.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
-</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">myfun1</span><span class="w"> </span><span class="p">[</span><span class="n">context</span><span class="w"> </span><span class="n">_</span><span class="p">]</span><span class="w">
- </span><span class="p">(</span><span class="nb">assoc</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="no">:foo</span><span class="w"> </span><span class="s">"bar"</span><span class="p">))</span><span class="w">
-
-</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">myfun2</span><span class="w"> </span><span class="p">[</span><span class="n">context</span><span class="w"> </span><span class="p">{</span><span class="no">:keys</span><span class="w"> </span><span class="p">[</span><span class="n">id</span><span class="p">]}]</span><span class="w">
- </span><span class="p">(</span><span class="nb">assoc</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="no">:user-id</span><span class="w"> </span><span class="n">id</span><span class="p">))</span><span class="w">
-
-</span><span class="c1">;; better</span><span class="w">
-</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">myfun1</span><span class="w"> </span><span class="p">[</span><span class="n">context</span><span class="w"> </span><span class="n">_user</span><span class="p">]</span><span class="w">
- </span><span class="p">(</span><span class="nb">assoc</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="no">:foo</span><span class="w"> </span><span class="s">"bar"</span><span class="p">))</span><span class="w">
-
-</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">myfun2</span><span class="w"> </span><span class="p">[</span><span class="n">context</span><span class="w"> </span><span class="p">{</span><span class="no">:keys</span><span class="w"> </span><span class="p">[</span><span class="n">id</span><span class="p">]</span><span class="w"> </span><span class="no">:as</span><span class="w"> </span><span class="n">_user</span><span class="p">}]</span><span class="w">
- </span><span class="p">(</span><span class="nb">assoc</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="no">:user-id</span><span class="w"> </span><span class="n">id</span><span class="p">))</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="idiomatic-names"><a class="anchor" href="#idiomatic-names"></a><a class="link" href="#idiomatic-names">Idiomatic Names</a></h3>
-<div class="paragraph">
-<p>Follow <code>clojure.core</code>'s example for idiomatic names like <code>pred</code> and <code>coll</code>.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>in functions:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>f</code>, <code>g</code>, <code>h</code> - function input</p>
-</li>
-<li>
-<p><code>n</code> - integer input usually a size</p>
-</li>
-<li>
-<p><code>index</code>, <code>i</code> - integer index</p>
-</li>
-<li>
-<p><code>x</code>, <code>y</code> - numbers</p>
-</li>
-<li>
-<p><code>xs</code> - sequence</p>
-</li>
-<li>
-<p><code>m</code> - map</p>
-</li>
-<li>
-<p><code>s</code> - string input</p>
-</li>
-<li>
-<p><code>re</code> - regular expression</p>
-</li>
-<li>
-<p><code>coll</code> - a collection</p>
-</li>
-<li>
-<p><code>pred</code> - a predicate closure</p>
-</li>
-<li>
-<p><code>&amp; more</code> - variadic input</p>
-</li>
-<li>
-<p><code>xf</code> - xform, a transducer</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>in macros:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>expr</code> - an expression</p>
-</li>
-<li>
-<p><code>body</code> - a macro body</p>
-</li>
-<li>
-<p><code>binding</code> - a macro binding vector</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
 </div>
 </div>
 </div>
@@ -4670,7 +4670,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-12-05 16:41:21 UTC
+Last updated 2020-12-05 21:31:52 UTC
 </div>
 </div>
 </body>
