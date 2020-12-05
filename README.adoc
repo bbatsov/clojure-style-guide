@@ -611,6 +611,78 @@ In the `ns` form, sort your requirements and imports. This facilitates readabili
    [clojure.java.shell :as sh]))
 ----
 
+=== Use Idiomatic Namespace Aliases
+
+Many core Clojure namespaces have idiomatic aliases that you're
+encouraged to use within your projects - e.g. the most common way to
+require `clojure.string` is: `[clojure.string :as str]`.
+
+NOTE: This may appear to mask
+`clojure.core.str`, but it doesn't. It's expected that
+`clojure.core/str` and `clojure.string/*` to be used in a namespace as
+`str` and `str/whatever` without conflict.
+
+[source,clojure]
+----
+;; good
+(ns ... (:require [clojure.string :as str] ...)
+
+(str/join ...)
+
+;; not as good - just be idiomatic and use as `str/`
+(ns ... (:require [clojure.string :as string] ...)
+
+(string/join ...)
+----
+
+Bellow are some common idiomatic aliases:
+
+|===
+| Namespace | Idiomatic Alias
+| io
+| clojure.java.io
+| set
+| clojure.set
+| str
+| clojure.string
+| walk
+| clojure.walk
+| zip
+| clojure.zip
+| xml
+| clojure.data.xml
+| as
+| clojure.core.async
+| mat
+| clojure.core.matrix
+| edn
+| clojure.edn
+| pp
+| clojure.pprint
+| spec
+| clojure.spec.alpha
+| csv
+| clojure.data.csv
+| json
+| cheshire.core
+| time
+| java-time
+| http
+| clj-http.client
+| log
+| clojure.tools.logging
+| sql
+| hugsql.core
+| yaml
+| clj-yaml.core
+| sh
+| clojure.java.shell
+|===
+
+=== Use Consistent Namespace Aliases
+
+Across a project, it's good to be consistent with namespace aliases; e.g., don't require `clojure.string` as `str` in one namespace but `string` in another.
+
 == Functions
 
 === Optional New Line After Function Name [[optional-new-line-after-fn-name]]
