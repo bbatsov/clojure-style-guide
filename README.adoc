@@ -1920,7 +1920,26 @@ was deprecated in case of versioned software (e.g. a library) or simply
 ----
 
 TIP: If you're into SemVer, it's a good idea to omit the patch version.
-This means you should use `0.5` instead of `0.5.0`.
+This means you should use `0.5` instead of `0.5.0`. This applies
+for all metadata data that's version related.
+
+=== `:added`
+
+The most common way to document when a public API was added to a
+library is via the `:added` metadata.
+
+[source,clojure]
+----
+(def ^{:added "0.5"} foo
+  42)
+
+(ns foo.bar
+  "A very useful ns."
+  {:added "0.8"})
+
+(defn ^{:added "0.5"} foo
+  (bar))
+----
 
 == Comments
 
