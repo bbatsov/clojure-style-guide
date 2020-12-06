@@ -232,7 +232,13 @@ Vertically align function (macro) arguments spanning multiple lines.
   (range 1 10))
 ----
 
-=== Arguments Indentation [[one-space-indent]]
+The reasoning behind this guideline is pretty simple - the arguments are
+easier to process by the human brain if they stand out and stick together.
+
+=== Function Arguments Indentation [[one-space-indent]]
+
+NOTE: Generally, you should stick to the formatting outlined in the previous
+guideline, unless you're limited by the available horizonal space.
 
 Use a single space indentation for function (macro) arguments
 when there are no arguments on the same line as the function name.
@@ -259,6 +265,103 @@ when there are no arguments on the same line as the function name.
   bala
   portokala)
 ----
+
+This may appear like some weird special rule to people without Lisp background, but the
+reasoning behind it is quite simple. Function calls are
+nothing but regular list literals and normally those are aligned in the same way as
+other collection type literals when spanning multiple lines:
+
+[source,clojure]
+----
+;; list literal
+(1
+ 2
+ 3)
+
+;; vector literal
+[1
+ 2
+ 3]
+
+;; set literal
+#{1
+  2
+  3}
+----
+
+Admittedly, list literals are not very common in Clojure, that's why it's understandable
+that for many people lists are nothing but an invocation syntax.
+
+As a side benefit, function arguments are still aligned in this scenario as well. They
+just happen to accidentally be aligned with the function name as well.
+
+.Semantic Indentation vs Fixed Indentation
+****
+The guidelines to indent differently macros with body forms from
+all other macro and function calls are collectively known as
+"semantic indentation". Simply put, this means that the code
+is indented differently, so that the indentation would give the
+reader of the code some hints about its meaning.
+
+The downside of this approach is that requires Clojure code formatters to be
+smarter. They either need to process `macro` arglists and rely on the fact
+that people named their parameters consistently, or process some additional
+indentation metadata.
+
+Some people in the Clojure community have argued that's not worth it and
+that everything should simply be indented in the same fashion. Here are
+a few examples:
+
+[source,clojure]
+----
+;;; Fixed Indentation
+;;
+;; macros
+(when something
+  (something-else))
+
+(with-out-str
+  (println "Hello, ")
+  (println "world!"))
+
+;; function call spanning two lines
+(filter even?
+  (range 1 10))
+
+;; function call spanning three lines
+(filter
+  even?
+  (range 1 10))
+----
+
+This suggestion has certainly gotten some ground in the community, but it also
+goes against the entire Lisp tradition and the primary goal of this style guide -
+namely to optimize code for human consumption.
+
+There's also one small caveat with fixed indentation that's rarely discussed and that's
+how to indent list literals, as function calls are simply list literals. As those
+are not very common in Clojure, outside the context of providing structure for the Clojure
+code itself, that matter is usually omitted from consideration:
+
+[source,clojure]
+----
+;;; Fixed Indentation
+;;
+;; list literals
+(1 2 3
+  4 5 6)
+
+(1
+  2
+  3
+  4
+  5
+  6)
+----
+
+That looks a bit weird and happens to be inconsistent with how other collection types are normally indented.
+
+****
 
 === Bindings Alignment [[bindings-alignment]]
 
