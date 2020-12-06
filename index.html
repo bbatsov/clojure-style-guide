@@ -668,7 +668,7 @@ pre.rouge {
 <li><a href="#spaces">Tabs vs Spaces</a></li>
 <li><a href="#body-indentation">Body Indentation</a></li>
 <li><a href="#vertically-align-fn-args">Function Arguments Alignment</a></li>
-<li><a href="#one-space-indent">Arguments Indentation</a></li>
+<li><a href="#one-space-indent">Function Arguments Indentation</a></li>
 <li><a href="#bindings-alignment">Bindings Alignment</a></li>
 <li><a href="#map-keys-alignment">Map Keys Alignment</a></li>
 <li><a href="#crlf">Line Endings</a></li>
@@ -1192,9 +1192,26 @@ forms and macros that introduce local bindings (e.g. <code>loop</code>, <code>le
   </span><span class="p">(</span><span class="nb">range</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">10</span><span class="p">))</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>The reasoning behind this guideline is pretty simple - the arguments are
+easier to process by the human brain if they stand out and stick together.</p>
+</div>
 </div>
 <div class="sect2">
-<h3 id="one-space-indent"><a class="anchor" href="#one-space-indent"></a><a class="link" href="#one-space-indent">Arguments Indentation</a></h3>
+<h3 id="one-space-indent"><a class="anchor" href="#one-space-indent"></a><a class="link" href="#one-space-indent">Function Arguments Indentation</a></h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Generally, you should stick to the formatting outlined in the previous
+guideline, unless you&#8217;re limited by the available horizonal space.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Use a single space indentation for function (macro) arguments
 when there are no arguments on the same line as the function name.</p>
@@ -1220,6 +1237,113 @@ when there are no arguments on the same line as the function name.</p>
   </span><span class="n">ala</span><span class="w">
   </span><span class="n">bala</span><span class="w">
   </span><span class="n">portokala</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This may appear like some weird special rule to people without Lisp background, but the
+reasoning behind it is quite simple. Function calls are
+nothing but regular list literals and normally those are aligned in the same way as
+other collection type literals when spanning multiple lines:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; list literal</span><span class="w">
+</span><span class="p">(</span><span class="nf">1</span><span class="w">
+ </span><span class="mi">2</span><span class="w">
+ </span><span class="mi">3</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">;; vector literal</span><span class="w">
+</span><span class="p">[</span><span class="mi">1</span><span class="w">
+ </span><span class="mi">2</span><span class="w">
+ </span><span class="mi">3</span><span class="p">]</span><span class="w">
+
+</span><span class="c1">;; set literal</span><span class="w">
+</span><span class="o">#</span><span class="p">{</span><span class="mi">1</span><span class="w">
+  </span><span class="mi">2</span><span class="w">
+  </span><span class="mi">3</span><span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Admittedly, list literals are not very common in Clojure, that&#8217;s why it&#8217;s understandable
+that for many people lists are nothing but an invocation syntax.</p>
+</div>
+<div class="paragraph">
+<p>As a side benefit, function arguments are still aligned in this scenario as well. They
+just happen to accidentally be aligned with the function name as well.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Semantic Indentation vs Fixed Indentation</div>
+<div class="paragraph">
+<p>The guidelines to indent differently macros with body forms from
+all other macro and function calls are collectively known as
+"semantic indentation". Simply put, this means that the code
+is indented differently, so that the indentation would give the
+reader of the code some hints about its meaning.</p>
+</div>
+<div class="paragraph">
+<p>The downside of this approach is that requires Clojure code formatters to be
+smarter. They either need to process <code>macro</code> arglists and rely on the fact
+that people named their parameters consistently, or process some additional
+indentation metadata.</p>
+</div>
+<div class="paragraph">
+<p>Some people in the Clojure community have argued that&#8217;s not worth it and
+that everything should simply be indented in the same fashion. Here are
+a few examples:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;;; Fixed Indentation</span><span class="w">
+</span><span class="c1">;;</span><span class="w">
+</span><span class="c1">;; macros</span><span class="w">
+</span><span class="p">(</span><span class="nb">when</span><span class="w"> </span><span class="n">something</span><span class="w">
+  </span><span class="p">(</span><span class="nf">something-else</span><span class="p">))</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">with-out-str</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Hello, "</span><span class="p">)</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"world!"</span><span class="p">))</span><span class="w">
+
+</span><span class="c1">;; function call spanning two lines</span><span class="w">
+</span><span class="p">(</span><span class="nb">filter</span><span class="w"> </span><span class="n">even?</span><span class="w">
+  </span><span class="p">(</span><span class="nb">range</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">10</span><span class="p">))</span><span class="w">
+
+</span><span class="c1">;; function call spanning three lines</span><span class="w">
+</span><span class="p">(</span><span class="nb">filter</span><span class="w">
+  </span><span class="n">even?</span><span class="w">
+  </span><span class="p">(</span><span class="nb">range</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">10</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This suggestion has certainly gotten some ground in the community, but it also
+goes against the entire Lisp tradition and the primary goal of this style guide -
+namely to optimize code for human consumption.</p>
+</div>
+<div class="paragraph">
+<p>There&#8217;s also one small caveat with fixed indentation that&#8217;s rarely discussed and that&#8217;s
+how to indent list literals, as function calls are simply list literals. As those
+are not very common in Clojure, outside the context of providing structure for the Clojure
+code itself, that matter is usually omitted from consideration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;;; Fixed Indentation</span><span class="w">
+</span><span class="c1">;;</span><span class="w">
+</span><span class="c1">;; list literals</span><span class="w">
+</span><span class="p">(</span><span class="nf">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w">
+  </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">1</span><span class="w">
+  </span><span class="mi">2</span><span class="w">
+  </span><span class="mi">3</span><span class="w">
+  </span><span class="mi">4</span><span class="w">
+  </span><span class="mi">5</span><span class="w">
+  </span><span class="mi">6</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That looks a bit weird and happens to be inconsistent with how other collection types are normally indented.</p>
+</div>
 </div>
 </div>
 </div>
@@ -4678,7 +4802,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-12-05 22:40:12 UTC
+Last updated 2020-12-06 09:05:48 UTC
 </div>
 </div>
 </body>
