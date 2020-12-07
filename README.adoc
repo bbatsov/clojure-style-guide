@@ -845,6 +845,11 @@ When naming namespaces favor the following two schemas:
 * `project.module`
 * `organization.project.module`
 
+When you're following the `project.module` naming scheme and your project
+has a single (implementation) namespace it's common to name it `project.core`.
+Avoid the `project.core` name in all other cases, as more informative names
+are always a better idea.
+
 === Composite Word Namespace Segments [[naming-namespace-composite-segments]]
 
 Use `lisp-case` in composite namespace segments (e.g. `bruce.project-euler`).
