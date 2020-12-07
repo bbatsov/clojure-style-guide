@@ -2024,12 +2024,6 @@ are always a better idea.</p>
 <div class="paragraph">
 <p>Use <code>lisp-case</code> in composite namespace segments (e.g. <code>bruce.project-euler</code>).</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="naming-functions-and-variables"><a class="anchor" href="#naming-functions-and-variables"></a><a class="link" href="#naming-functions-and-variables">Functions and Variables</a></h3>
-<div class="paragraph">
-<p>Use <code>lisp-case</code> for function and variable names.</p>
-</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -2043,6 +2037,12 @@ was invented.
 </td>
 </tr>
 </table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="naming-functions-and-variables"><a class="anchor" href="#naming-functions-and-variables"></a><a class="link" href="#naming-functions-and-variables">Functions and Variables</a></h3>
+<div class="paragraph">
+<p>Use <code>lisp-case</code> for function and variable names.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2137,6 +2137,31 @@ should end with an exclamation mark (e.g. <code>reset!</code>).</p>
 <div class="paragraph">
 <p>Don&#8217;t use a special notation for constants; everything is assumed a constant
 unless specified otherwise.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">max-size</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">;; bad</span><span class="w">
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">MAX-SIZE</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="c1">; Java style</span><span class="w">
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">+max-size+</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="c1">; Common Lisp style, global constant</span><span class="w">
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">*max-size*</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="c1">; Common Lisp style, global variable</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Famously <code><strong>clojure-version</strong></code> defies this convention, but you should
+treat this naming choice is a historical oddity and not as an example to
+follow.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -4814,7 +4839,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-12-07 07:37:18 UTC
+Last updated 2020-12-07 07:49:51 UTC
 </div>
 </div>
 </body>
