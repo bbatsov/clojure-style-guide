@@ -2924,6 +2924,8 @@ Many people, books, presentations, articles and other style guides influenced th
 * https://en.wikipedia.org/wiki/The_Elements_of_Programming_Style["The Elements of Programming Style"]
 * https://www.python.org/dev/peps/pep-0008/[Python Style Guide (PEP-8)]
 * https://rubystyle.guide/[Community Ruby Style Guide]
+* https://google.github.io/styleguide/lispguide.xml[Google's Common Lisp Style Guide]
+* http://community.schemewiki.org/?scheme-style[scheme-style]
 * https://clojure.org/community/contrib_howto#_coding_guidelines[Clojure Library Coding Guidelines]
 * https://www.clojurebook.com/["Clojure Programming"]
 * https://joyofclojure.com/["The Joy of Clojure"]
