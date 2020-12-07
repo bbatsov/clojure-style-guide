@@ -854,13 +854,13 @@ are always a better idea.
 
 Use `lisp-case` in composite namespace segments (e.g. `bruce.project-euler`).
 
-=== Functions and Variables [[naming-functions-and-variables]]
-
-Use `lisp-case` for function and variable names.
-
 NOTE: Many non-Lisp programming communities refer to `lisp-case` as
 `kebab-case`, but we all know that Lisp has existed way before kebab
 was invented.
+
+=== Functions and Variables [[naming-functions-and-variables]]
+
+Use `lisp-case` for function and variable names.
 
 [source,clojure]
 ----
