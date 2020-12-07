@@ -934,6 +934,21 @@ Use `*earmuffs*` for things intended for rebinding (ie. are dynamic).
 Don't use a special notation for constants; everything is assumed a constant
 unless specified otherwise.
 
+[source,clojure]
+----
+;; good
+(def max-size 10)
+
+;; bad
+(def MAX-SIZE 10) ; Java style
+(def +max-size+ 10) ; Common Lisp style, global constant
+(def *max-size* 10) ; Common Lisp style, global variable
+----
+
+NOTE: Famously `*clojure-version*` defies this convention, but you should
+treat this naming choice is a historical oddity and not as an example to
+follow.
+
 === Unused Bindings [[naming-unused-bindings]]
 
 Use `+_+` for destructuring targets and formal argument names whose
