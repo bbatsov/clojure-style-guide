@@ -734,6 +734,7 @@ pre.rouge {
 <li><a href="#alter-var">Alter Var Binding</a></li>
 <li><a href="#nil-punning">Nil Punning</a></li>
 <li><a href="#to-vector">Converting Sequences to Vectors</a></li>
+<li><a href="#converting-something-to-boolean">Converting Something to Boolean</a></li>
 <li><a href="#when-instead-of-single-branch-if"><code>when</code> vs <code>if</code></a></li>
 <li><a href="#if-let"><code>if-let</code></a></li>
 <li><a href="#when-let"><code>when-let</code></a></li>
@@ -2611,6 +2612,37 @@ empty (this technique is sometimes called <em>nil punning</em>).</p>
 </span><span class="c1">;; bad</span><span class="w">
 </span><span class="p">(</span><span class="nb">into</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="n">some-seq</span><span class="p">)</span></code></pre>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="converting-something-to-boolean"><a class="anchor" href="#converting-something-to-boolean"></a><a class="link" href="#converting-something-to-boolean">Converting Something to Boolean</a></h3>
+<div class="paragraph">
+<p>Use the <code>boolean</code> function if you need to convert something to an actual boolean value (<code>true</code> or <code>false</code>).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
+</span><span class="p">(</span><span class="nb">boolean</span><span class="w"> </span><span class="p">(</span><span class="nf">foo</span><span class="w"> </span><span class="n">bar</span><span class="p">))</span><span class="w">
+
+</span><span class="c1">;; bad</span><span class="w">
+</span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nf">foo</span><span class="w"> </span><span class="n">bar</span><span class="p">)</span><span class="w"> </span><span class="n">true</span><span class="w"> </span><span class="n">false</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Don&#8217;t forget that the only values in Clojure that are "falsey" are <code>false</code> and <code>nil</code>. Everything else
+will evaluate to <code>true</code> when passed to the <code>boolean</code> function.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You&#8217;ll rarely need an actual boolean value in Clojure, but it&#8217;s useful to know how to obtain one when you do.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4869,7 +4901,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-12-12 22:08:30 UTC
+Last updated 2020-12-12 22:19:33 UTC
 </div>
 </div>
 </body>
