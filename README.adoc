@@ -1428,7 +1428,7 @@ Use `not=` instead of `(not (= ...))`.
 
 === `printf` [[printf]]
 
-Use `printf` instead of `(print (format ...))`.
+Prefer `printf` over `(print (format ...))`.
 
 [source,clojure]
 ----
