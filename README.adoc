@@ -1291,6 +1291,24 @@ Prefer `vec` over `into` when you need to convert a sequence into a vector.
 (into [] some-seq)
 ----
 
+=== Converting Something to Boolean
+
+Use the `boolean` function if you need to convert something to an actual boolean value (`true` or `false`).
+
+[source,clojure]
+----
+;; good
+(boolean (foo bar))
+
+;; bad
+(if (foo bar) true false)
+----
+
+NOTE: Don't forget that the only values in Clojure that are "falsey" are `false` and `nil`. Everything else
+will evaluate to `true` when passed to the `boolean` function.
+
+You'll rarely need an actual boolean value in Clojure, but it's useful to know how to obtain one when you do.
+
 === `when` vs `if` [[when-instead-of-single-branch-if]]
 
 Use `when` instead of `(if ... (do ...))`.
