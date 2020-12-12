@@ -1648,6 +1648,36 @@ too much and could potentially be broken down.</p>
 </span><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">example</span><span class="p">)</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Namespaces exist to disambiguate names. Using a single segment
+namespace puts you in direct conflict with everyone else using single
+segment namespaces, thus making it more likely you will conflict with
+another code base.</p>
+</div>
+<div class="paragraph">
+<p>In practice this means that libraries should never use single-segment
+namespace to avoid namespace conflicts with other libraries.
+Within your own private app of course, you can do whatever you like.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+It&#8217;s common practice to use the convention <code>domain.library-name</code>
+or <code>library-name.core</code> for libraries with a single namespace in them.
+Read on for more coverage of the namespace naming topic.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>There are <a href="https://github.com/bbatsov/clojure-style-guide/pull/100">other reasons</a>
+why might want to avoid single-segment namespaces, so you should
+think long and hard before making any use of them.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="namespace-segments-limit"><a class="anchor" href="#namespace-segments-limit"></a><a class="link" href="#namespace-segments-limit">Namespace Segments Limit</a></h3>
@@ -4839,7 +4869,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-12-12 16:51:53 UTC
+Last updated 2020-12-12 22:08:30 UTC
 </div>
 </div>
 </body>
