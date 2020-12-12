@@ -1439,9 +1439,9 @@ Prefer `printf` over `(print (format ...))`.
 (println (format "Hello, %s!" name))
 ----
 
-=== Flexible Comparison Functions [[multiple-arity-of-gt-and-ls-fns]]
+=== Flexible Comparison Functions
 
-When doing comparisons, keep in mind that Clojure's functions `<`,
+When doing comparisons, leverage the fact that Clojure's functions `<`,
 `>`, etc. accept a variable number of arguments.
 
 [source,clojure]
