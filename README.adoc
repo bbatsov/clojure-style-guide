@@ -1507,7 +1507,7 @@ Favor `comp` over anonymous functions for function composition.
 
 === `partial` [[partial]]
 
-Favor `partial` over anonymous functions for currying.
+Favor `partial` over anonymous functions for partial application.
 
 [source,clojure]
 ----
