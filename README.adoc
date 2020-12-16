@@ -2226,7 +2226,7 @@ was deprecated in case of versioned software (e.g. a library) or simply
 ;;
 ;; in case we have a version
 (def ^{:deprecated "0.5"} foo
-  "Use `bar` instead.
+  "Use `bar` instead."
   42)
 
 (ns foo.bar
