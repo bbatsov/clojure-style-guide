@@ -2244,7 +2244,7 @@ was deprecated in case of versioned software (e.g. a library) or simply
 ;;
 ;; using the docstring to signal deprecation
 (def foo
-  "DEPRECATED: Use `bar` instead.
+  "DEPRECATED: Use `bar` instead."
   42)
 
 (ns foo.bar
