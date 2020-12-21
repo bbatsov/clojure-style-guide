@@ -2991,7 +2991,7 @@ Many people, books, presentations, articles and other style guides influenced th
 
 The Clojure style guide is stewarded by an editor team of experienced
 Clojurists that aims to reduce all the input we get (e.g. feedback and
-suggestions) in a better reference for everyone.
+suggestions) to a better reference for everyone.
 
 * https://metaredux.com/about/[Bozhidar Batsov]
 * https://insideclojure.org/about/[Alex Miller]
