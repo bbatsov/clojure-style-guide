@@ -2965,8 +2965,7 @@ success of a https://rubystyle.guide/[similar project] he had created in the Rub
 
 Bozhidar was very passionate about both Clojure and good programming style and he wanted to bridge the between what was
 covered by the https://clojure.org/community/contrib_howto#_coding_guidelines[Clojure library coding guidelines] and what the style guides for languages like Java, Python and Ruby would typically cover.
-Bozhidar still serves as the guide's primary editor, but he definitely wouldn't mind enlisting a few more editors to help with the
-maintenance work.
+Bozhidar still serves as the guide's primary editor, but there's an entire editor team supporting the project.
 
 Since the inception of the guide we've received a lot of feedback from members of the exceptional Clojure community around the world.
 Thanks for all the suggestions and the support! Together we can make a resource beneficial to each and every Clojure developer out there.
@@ -2987,6 +2986,17 @@ Many people, books, presentations, articles and other style guides influenced th
 * https://elementsofclojure.com/["Elements of Clojure"]
 * https://pragprog.com/titles/vmclojeco/clojure-applied/["Clojure Applied"]
 * https://stuartsierra.com/tag/dos-and-donts[Stuart Sierra's "Clojure Dos and Don't" blog series]
+
+== Editor Team
+
+The Clojure style guide is stewarded by an editor team of experienced
+Clojurists that aims to reduce all the input we get (e.g. feedback and
+suggestions) in a better reference for everyone.
+
+* https://metaredux.com/about/[Bozhidar Batsov]
+* https://insideclojure.org/about/[Alex Miller]
+* https://danielcompton.net/about[Daniel Compton]
+* https://corfield.org/[Sean Corfield]
 
 == Contributing
 
