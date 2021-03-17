@@ -962,7 +962,7 @@ unless specified otherwise.
 (def *max-size* 10) ; Common Lisp style, global variable
 ----
 
-NOTE: Famously `*clojure-version*` defies this convention, but you should
+NOTE: Famously `\*clojure-version*` defies this convention, but you should
 treat this naming choice is a historical oddity and not as an example to
 follow.
 
