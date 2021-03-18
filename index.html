@@ -3786,21 +3786,21 @@ in the same namespace, and a fully-qualified name otherwise.</p>
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; in case we have a version</span><span class="w">
 </span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="o">^</span><span class="p">{</span><span class="no">:deprecated</span><span class="w"> </span><span class="s">"0.5"</span><span class="w">
        </span><span class="no">:superseded-by</span><span class="w"> </span><span class="s">"bar"</span><span class="p">}</span><span class="w"> </span><span class="n">foo</span><span class="w">
-  </span><span class="s">"Use `bar` instead.
-  42)
+  </span><span class="s">"Use `bar` instead."</span><span class="w">
+  </span><span class="mi">42</span><span class="p">)</span><span class="w">
 
-(ns foo.bar
-  "</span><span class="n">A</span><span class="w"> </span><span class="n">deprecated</span><span class="w"> </span><span class="n">ns.</span><span class="s">"
-  {:deprecated "</span><span class="mf">0.8</span><span class="s">"
-   :superseded-by "</span><span class="n">foo.baz</span><span class="s">"})
+</span><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">foo.bar</span><span class="w">
+  </span><span class="s">"A deprecated ns."</span><span class="w">
+  </span><span class="p">{</span><span class="no">:deprecated</span><span class="w"> </span><span class="s">"0.8"</span><span class="w">
+   </span><span class="no">:superseded-by</span><span class="w"> </span><span class="s">"foo.baz"</span><span class="p">})</span><span class="w">
 
-(defn ^{:deprecated "</span><span class="mf">0.5</span><span class="s">"
-        :superseded-by "</span><span class="n">bar</span><span class="s">"} foo
-  (bar))
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="o">^</span><span class="p">{</span><span class="no">:deprecated</span><span class="w"> </span><span class="s">"0.5"</span><span class="w">
+        </span><span class="no">:superseded-by</span><span class="w"> </span><span class="s">"bar"</span><span class="p">}</span><span class="w"> </span><span class="n">foo</span><span class="w">
+  </span><span class="p">(</span><span class="nf">bar</span><span class="p">))</span><span class="w">
 
-;; otherwise
-(defn ^{:deprecated true
-        :superseded-by "</span><span class="n">bar</span><span class="err">"</span><span class="p">}</span><span class="w"> </span><span class="n">foo</span><span class="w">
+</span><span class="c1">;; otherwise</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="o">^</span><span class="p">{</span><span class="no">:deprecated</span><span class="w"> </span><span class="n">true</span><span class="w">
+        </span><span class="no">:superseded-by</span><span class="w"> </span><span class="s">"bar"</span><span class="p">}</span><span class="w"> </span><span class="n">foo</span><span class="w">
   </span><span class="p">(</span><span class="nf">bar</span><span class="p">))</span></code></pre>
 </div>
 </div>
@@ -4968,7 +4968,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-03-18 11:59:03 UTC
+Last updated 2021-03-18 15:44:04 UTC
 </div>
 </div>
 </body>
