@@ -1030,6 +1030,8 @@ Follow ``clojure.core``'s example for idiomatic names like `pred` and `coll`.
  ** `expr` - an expression
  ** `body` - a macro body
  ** `binding` - a macro binding vector
+* in methods (when specified in `defprotocol`, `deftype`, `defrecord`, `reify`, etc):
+ ** `this` - for the first argument, indicating a reference to the object - or alternatively, a consistent name which describes the object
 
 == Functions
 
@@ -2874,6 +2876,20 @@ the var as documentation.
 (defn foo [x]
   "docstring"
   (bar x))
+----
+
+=== Docstrings and Protocols [[docstrings-and-protocols]]
+
+Unlike `defn`, docstrings for `defprotocol` methods are placed _after_ the argument vector:
+
+[source,clojure]
+----
+(defprotocol MyProtocol
+  "MyProtocol docstring"
+  (foo [this x y z]
+    "foo docstring")
+  (bar [this]
+    "bar docstring"))
 ----
 
 == Testing
