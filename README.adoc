@@ -2305,6 +2305,40 @@ When talking about vars - items in the same namespace don't need to fully qualif
 NOTE: Many Clojure programming tools will also try to extract references to other vars from the docstring, but it's both
 simpler and more explicit to use the `:see-also` metadata instead.
 
+=== `:no-doc`
+
+Documentation tools like https://github.com/weavejester/codox#metadata-options[Codox] like https://github.com/cljdoc/cljdoc/blob/master/doc/userguide/for-library-authors.adoc#hiding-namespaces-vars-in-documentation[cljdoc] recognize `:no-doc` metadata.
+When a var or a namespace has `:no-doc` metadata, it indicates to these tools that it should be excluded from generated API docs.
+
+To exclude an entire namespace from API docs:
+[source,clojure]
+----
+(ns ^:no-doc my-library.impl
+  "Internal implementation details")
+
+...
+----
+
+To exclude vars within a documented namespace:
+[source,clojure]
+----
+(ns my-library.api)
+
+;; private functions do not get documented
+(defn- clearly-private []
+  ...)
+
+;; nor do public functions with :no-doc metadata
+(defn ^:no-doc shared-helper []
+  ...)
+
+;; this function will be documented
+(defn api-fn1
+  "I am useful to the public"
+  []
+  ...)
+----
+
 === Indentation Metadata
 
 Unlike other Lisp dialects, Clojure doesn't have a standard metadata format to specify the indentation of macros.
