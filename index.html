@@ -824,6 +824,7 @@ pre.rouge {
 <li><a href="#deprecated"><code>:deprecated</code></a></li>
 <li><a href="#superseded-by"><code>:superseded-by</code></a></li>
 <li><a href="#see-also"><code>:see-also</code></a></li>
+<li><a href="#no-doc"><code>:no-doc</code></a></li>
 <li><a href="#indentation-metadata">Indentation Metadata</a></li>
 </ul>
 </li>
@@ -3850,6 +3851,46 @@ simpler and more explicit to use the <code>:see-also</code> metadata instead.
 </div>
 </div>
 <div class="sect2">
+<h3 id="no-doc"><a class="anchor" href="#no-doc"></a><a class="link" href="#no-doc"><code>:no-doc</code></a></h3>
+<div class="paragraph">
+<p>Documentation tools like <a href="https://github.com/weavejester/codox#metadata-options">Codox</a> like <a href="https://github.com/cljdoc/cljdoc/blob/master/doc/userguide/for-library-authors.adoc#hiding-namespaces-vars-in-documentation">cljdoc</a> recognize <code>:no-doc</code> metadata.
+When a var or a namespace has <code>:no-doc</code> metadata, it indicates to these tools that it should be excluded from generated API docs.</p>
+</div>
+<div class="paragraph">
+<p>To exclude an entire namespace from API docs:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="o">^</span><span class="no">:no-doc</span><span class="w"> </span><span class="n">my-library.impl</span><span class="w">
+  </span><span class="s">"Internal implementation details"</span><span class="p">)</span><span class="w">
+
+</span><span class="n">...</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To exclude vars within a documented namespace:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">my-library.api</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">;; private functions do not get documented</span><span class="w">
+</span><span class="p">(</span><span class="k">defn-</span><span class="w"> </span><span class="n">clearly-private</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="n">...</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">;; nor do public functions with :no-doc metadata</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="o">^</span><span class="no">:no-doc</span><span class="w"> </span><span class="n">shared-helper</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="n">...</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">;; this function will be documented</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">api-fn1</span><span class="w">
+  </span><span class="s">"I am useful to the public"</span><span class="w">
+  </span><span class="p">[]</span><span class="w">
+  </span><span class="n">...</span><span class="p">)</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="indentation-metadata"><a class="anchor" href="#indentation-metadata"></a><a class="link" href="#indentation-metadata">Indentation Metadata</a></h3>
 <div class="paragraph">
 <p>Unlike other Lisp dialects, Clojure doesn&#8217;t have a standard metadata format to specify the indentation of macros.
@@ -4927,7 +4968,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-03-18 06:55:30 UTC
+Last updated 2021-03-18 11:59:03 UTC
 </div>
 </div>
 </body>
