@@ -238,7 +238,7 @@ easier to process by the human brain if they stand out and stick together.
 === Function Arguments Indentation [[one-space-indent]]
 
 NOTE: Generally, you should stick to the formatting outlined in the previous
-guideline, unless you're limited by the available horizonal space.
+guideline, unless you're limited by the available horizontal space.
 
 Use a single space indentation for function (macro) arguments
 when there are no arguments on the same line as the function name.
