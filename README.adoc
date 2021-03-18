@@ -2264,7 +2264,7 @@ in the same namespace, and a fully-qualified name otherwise.
 ;; in case we have a version
 (def ^{:deprecated "0.5"
        :superseded-by "bar"} foo
-  "Use `bar` instead.
+  "Use `bar` instead."
   42)
 
 (ns foo.bar
