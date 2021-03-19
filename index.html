@@ -2313,6 +2313,16 @@ value will be ignored by the code at hand.</p>
 </ul>
 </div>
 </li>
+<li>
+<p>in methods (when specified in <code>defprotocol</code>, <code>deftype</code>, <code>defrecord</code>, <code>reify</code>, etc):</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>this</code> - for the first argument, indicating a reference to the object - or alternatively, a consistent name which describes the object</p>
+</li>
+</ul>
+</div>
+</li>
 </ul>
 </div>
 </div>
@@ -4544,6 +4554,30 @@ the var as documentation.</p>
   </span><span class="p">(</span><span class="nf">bar</span><span class="w"> </span><span class="n">x</span><span class="p">))</span></code></pre>
 </div>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Place docstrings for <code>defprotocol</code> methods <em>after</em> the argument vector:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">defprotocol</span><span class="w"> </span><span class="n">MyProtocol</span><span class="w">
+  </span><span class="s">"MyProtocol docstring"</span><span class="w">
+  </span><span class="p">(</span><span class="nf">foo</span><span class="w"> </span><span class="p">[</span><span class="n">this</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">z</span><span class="p">]</span><span class="w">
+    </span><span class="s">"foo docstring"</span><span class="p">)</span><span class="w">
+  </span><span class="p">(</span><span class="nf">bar</span><span class="w"> </span><span class="p">[</span><span class="n">this</span><span class="p">]</span><span class="w">
+    </span><span class="s">"bar docstring"</span><span class="p">))</span></code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -4968,7 +5002,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-03-18 15:54:39 UTC
+Last updated 2021-03-19 20:40:00 UTC
 </div>
 </div>
 </body>
