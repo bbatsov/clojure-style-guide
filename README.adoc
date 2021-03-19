@@ -2878,9 +2878,9 @@ the var as documentation.
   (bar x))
 ----
 
-=== Docstrings and Protocols [[docstrings-and-protocols]]
-
-Unlike `defn`, docstrings for `defprotocol` methods are placed _after_ the argument vector:
+[NOTE]
+====
+Place docstrings for `defprotocol` methods _after_ the argument vector:
 
 [source,clojure]
 ----
@@ -2891,6 +2891,7 @@ Unlike `defn`, docstrings for `defprotocol` methods are placed _after_ the argum
   (bar [this]
     "bar docstring"))
 ----
+====
 
 == Testing
 
