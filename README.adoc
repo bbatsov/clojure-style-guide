@@ -1313,7 +1313,7 @@ You'll rarely need an actual boolean value in Clojure, but it's useful to know h
 
 === `when` vs `if` [[when-instead-of-single-branch-if]]
 
-Use `when` instead of `(if ... (do ...))`.
+Use `when` instead of `if` with just the truthy branch, as in `(if condition (something...))` or `(if ... (do ...))`.
 
 [source,clojure]
 ----
