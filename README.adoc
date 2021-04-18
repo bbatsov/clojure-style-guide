@@ -102,7 +102,7 @@ https://rubystyle.guide[Community Ruby Style Guide].footnote:[You'll notice that
 Clojure is famously optimized for simplicity and clarity. I'd like to believe that this guide is going to help you optimize for maximum
 simplicity and clarity.
 
-=== A Note about Consistency
+=== A Note About Consistency
 
 [quote, Ralph Waldo Emerson]
 ____
@@ -416,7 +416,7 @@ $ git config --global core.autocrlf true
 ----
 ====
 
-=== Terminate Files with a Newline [[terminate-files-with-a-newline]]
+=== Terminate Files With a Newline [[terminate-files-with-a-newline]]
 
 End each file with a newline.
 
@@ -460,7 +460,7 @@ Don't use commas between the elements of sequential collection literals.
 (1, 2, 3)
 ----
 
-=== Optional Commas In Map Literals [[opt-commas-in-map-literals]]
+=== Optional Commas in Map Literals [[opt-commas-in-map-literals]]
 
 Consider enhancing the readability of map literals via judicious use
 of commas and line breaks.
@@ -494,7 +494,7 @@ Place all trailing parentheses on a single line instead of distinct lines.
 )
 ----
 
-=== Empty Lines Between Top Level Forms [[empty-lines-between-top-level-forms]]
+=== Empty Lines Between Top-Level Forms [[empty-lines-between-top-level-forms]]
 
 Use a single empty line between top-level forms.
 
@@ -575,7 +575,7 @@ too much and could potentially be broken down.
 
 Avoid trailing whitespace.
 
-=== One File Per Namespace [[one-file-per-namespace]]
+=== One File per Namespace [[one-file-per-namespace]]
 
 Use one file per namespace and one namespace per file.
 
@@ -704,7 +704,8 @@ considered deprecated for new code.
   (:use clojure.zip))
 ----
 
-=== Sort requirements and imports [[sort-requirements-and-imports]]
+=== Sort Requirements and Imports [[sort-requirements-and-imports]]
+
 In the `ns` form, sort your requirements and imports. This facilitates readability and avoids duplication, especially when the list of required / imported namespaces is very long.
 
 [source,clojure]
@@ -891,7 +892,7 @@ Use `lisp-case` for function and variable names.
 (def some_fun ...)
 ----
 
-=== Protocols, Records, Structs And Types [[naming-protocols-records-structs-and-types]]
+=== Protocols, Records, Structs and Types [[naming-protocols-records-structs-and-types]]
 
 Use `CapitalCase` for protocols, records, structs, and types. (Keep
 acronyms like HTTP, RFC, XML uppercase.)
@@ -1081,7 +1082,7 @@ function name.
   (baz x))
 ----
 
-=== Oneline Short Function [[oneline-short-fn]]
+=== One-line Functions
 
 Optionally omit the new line between the argument vector and a short
 function body.
@@ -2605,7 +2606,7 @@ lines should be indented as much as the first one.
   (baz))
 ----
 
-==== Sign And Date Annotations [[sign-and-date-annotations]]
+==== Sign and Date Annotations [[sign-and-date-annotations]]
 
 Tag the annotation with your initials and a date so its relevance can
 be easily verified.
