@@ -3005,6 +3005,7 @@ a couple of options for Clojure that do a great job when it comes to formatting 
 as suggested in this guide:
 
 * https://github.com/weavejester/cljfmt[cljfmt]
+* https://github.com/greglook/cljstyle[cljstyle]
 * https://github.com/kkinnear/zprint[zprint] (the documentation for configuring it to use the community formatting rules is https://github.com/kkinnear/zprint/blob/master/doc/options/community.md[here])
 
 NOTE: When it comes to editors - Emacs's `clojure-mode` by default will format the code exactly as outlined in the guide.
