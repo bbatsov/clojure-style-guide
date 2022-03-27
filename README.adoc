@@ -964,7 +964,7 @@ unless specified otherwise.
 ----
 
 NOTE: Famously `\*clojure-version*` defies this convention, but you should
-treat this naming choice is a historical oddity and not as an example to
+treat this naming choice as a historical oddity and not as an example to
 follow.
 
 === Unused Bindings [[naming-unused-bindings]]
