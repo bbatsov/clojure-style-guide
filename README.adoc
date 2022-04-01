@@ -26,13 +26,12 @@ programmers. A style guide that reflects real-world usage gets used, and a
 style guide that holds to an ideal that has been rejected by the people it is
 supposed to help risks not getting used at all -- no matter how good it is.
 
-The guide is separated into several sections of related rules. I've
-tried to add the rationale behind the rules (if it's omitted, I've
+The guide is separated into several sections of related rules. we've
+tried to add the rationale behind the rules (if it's omitted, we've
 assumed that it's pretty obvious).
 
-I didn't come up with all the rules out of nowhere; they are mostly
-based on my extensive career as a software engineer,
-my work on many Clojure open-source projectsfootnote:[CIDER, nREPL, Orchard, etc.],
+We didn't come up with all the rules out of nowhere; they are mostly
+based on the experience of the style guide's editors,
 feedback and suggestions from numerous members of the Clojure community, and
 various highly regarded Clojure programming resources, such as
 https://www.clojurebook.com/["Clojure Programming"]
@@ -82,24 +81,24 @@ ____
 
 It's common knowledge that code is read much more often than it is written.
 The guidelines provided here are intended to improve the readability of code and make it consistent across the wide spectrum of Clojure code.
-They are also meant to reflect real-world usage of Clojure instead of a random ideal. When I had to choose between a very established practice
-and a subjectively better alternative I've opted to recommend the established practice.footnote:[Occasionally I might suggest to the reader to consider some alternatives, though.]
+They are also meant to reflect real-world usage of Clojure instead of a random ideal. When we had to choose between a very established practice
+and a subjectively better alternative we've opted to recommend the established practice.footnote:[Occasionally we might suggest to the reader to consider some alternatives, though.]
 
 There are some areas in which there is no clear consensus in the Clojure community regarding a particular style (like semantic indentation vs fixed indentation, semantic comments vs uniform comments, etc).
 In such scenarios all popular styles are acknowledged and it's up to you to pick one and apply it consistently.
 
 Fortunately Clojure is a Lisp, and Lisps are fundamentally
 simple. Even though this guide was created a few years after Clojure
-(I published the first version in early 2013), you could see that most
-Clojure code in the wild was fairly uniform. I attribute this to
-both the simplicity I already mentioned and to the fact that since day
+(the first version was published in early 2013), you could see that most
+Clojure code in the wild was fairly uniform. We attribute this to
+both the simplicity we already mentioned and to the fact that since day
 1 Clojurists adopted many of the style conventions of other
 established Lisp dialects (e.g. Common Lisp and Scheme).  This made
 the work on this guide fairly easy and straight-forward, especially compared to
 the massive exercise in frustration that was the
 https://rubystyle.guide[Community Ruby Style Guide].footnote:[You'll notice that the Clojure style guide is pretty similar in structure to the Ruby style guide, which served as its main source of inspiration. You'll also notice that the Ruby style guide is much longer, mostly because of the complexity of the Ruby language.]
 
-Clojure is famously optimized for simplicity and clarity. I'd like to believe that this guide is going to help you optimize for maximum
+Clojure is famously optimized for simplicity and clarity. We'd like to believe that this guide is going to help you optimize for maximum
 simplicity and clarity.
 
 === A Note About Consistency
@@ -807,7 +806,7 @@ You might have noticed that those are a bit inconsistent:
 * `clojure.walk` becomes `walk`
 * `clojure.spec.alpha` becomes `spec`
 
-I guess it's clear that the one thing they have in common is that they aim to be concise, but still carry some meaning (aliasing `clojure.walk` to `w` would
+It's clear that the one thing they have in common is that they aim to be concise, but still carry some meaning (aliasing `clojure.walk` to `w` would
 be concise, but won't carry much meaning).
 
 But what to do about all the other namespaces out there that don't have idiomatic aliases? Well, you better be consistent in your approach to deriving aliases for them,
