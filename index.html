@@ -918,14 +918,13 @@ style guide that holds to an ideal that has been rejected by the people it is
 supposed to help risks not getting used at all&#8201;&#8212;&#8201;no matter how good it is.</p>
 </div>
 <div class="paragraph">
-<p>The guide is separated into several sections of related rules. I&#8217;ve
-tried to add the rationale behind the rules (if it&#8217;s omitted, I&#8217;ve
+<p>The guide is separated into several sections of related rules. we&#8217;ve
+tried to add the rationale behind the rules (if it&#8217;s omitted, we&#8217;ve
 assumed that it&#8217;s pretty obvious).</p>
 </div>
 <div class="paragraph">
-<p>I didn&#8217;t come up with all the rules out of nowhere; they are mostly
-based on my extensive career as a software engineer,
-my work on many Clojure open-source projects<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>,
+<p>We didn&#8217;t come up with all the rules out of nowhere; they are mostly
+based on the experience of the style guide&#8217;s editors,
 feedback and suggestions from numerous members of the Clojure community, and
 various highly regarded Clojure programming resources, such as
 <a href="https://www.clojurebook.com/">"Clojure Programming"</a>
@@ -946,7 +945,7 @@ Clojure itself.</p>
 <td class="content">
 Clojure&#8217;s developers also maintain a list of
 <a href="https://clojure.org/community/contrib_howto#_coding_guidelines">coding
-guidelines for libraries</a>.<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup>
+guidelines for libraries</a>.<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>
 They were one of the sources of inspiration for the document, you&#8217;re
 currently reading.
 </td>
@@ -969,8 +968,8 @@ currently reading.
 <div class="paragraph">
 <p>It&#8217;s common knowledge that code is read much more often than it is written.
 The guidelines provided here are intended to improve the readability of code and make it consistent across the wide spectrum of Clojure code.
-They are also meant to reflect real-world usage of Clojure instead of a random ideal. When I had to choose between a very established practice
-and a subjectively better alternative I&#8217;ve opted to recommend the established practice.<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup></p>
+They are also meant to reflect real-world usage of Clojure instead of a random ideal. When we had to choose between a very established practice
+and a subjectively better alternative we&#8217;ve opted to recommend the established practice.<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup></p>
 </div>
 <div class="paragraph">
 <p>There are some areas in which there is no clear consensus in the Clojure community regarding a particular style (like semantic indentation vs fixed indentation, semantic comments vs uniform comments, etc).
@@ -979,17 +978,17 @@ In such scenarios all popular styles are acknowledged and it&#8217;s up to you t
 <div class="paragraph">
 <p>Fortunately Clojure is a Lisp, and Lisps are fundamentally
 simple. Even though this guide was created a few years after Clojure
-(I published the first version in early 2013), you could see that most
-Clojure code in the wild was fairly uniform. I attribute this to
-both the simplicity I already mentioned and to the fact that since day
+(the first version was published in early 2013), you could see that most
+Clojure code in the wild was fairly uniform. We attribute this to
+both the simplicity we already mentioned and to the fact that since day
 1 Clojurists adopted many of the style conventions of other
 established Lisp dialects (e.g. Common Lisp and Scheme).  This made
 the work on this guide fairly easy and straight-forward, especially compared to
 the massive exercise in frustration that was the
-<a href="https://rubystyle.guide">Community Ruby Style Guide</a>.<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup></p>
+<a href="https://rubystyle.guide">Community Ruby Style Guide</a>.<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup></p>
 </div>
 <div class="paragraph">
-<p>Clojure is famously optimized for simplicity and clarity. I&#8217;d like to believe that this guide is going to help you optimize for maximum
+<p>Clojure is famously optimized for simplicity and clarity. We&#8217;d like to believe that this guide is going to help you optimize for maximum
 simplicity and clarity.</p>
 </div>
 </div>
@@ -1006,7 +1005,7 @@ simplicity and clarity.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>A style guide is about consistency.<sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnotedef_5" title="View footnote.">5</a>]</sup>
+<p>A style guide is about consistency.<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup>
 Consistency with this style guide is important.
 Consistency within a project is more important.
 Consistency within one class or method is the most important.</p>
@@ -1391,7 +1390,7 @@ code itself, that matter is usually omitted from consideration:</p>
 <div class="sect2">
 <h3 id="crlf"><a class="anchor" href="#crlf"></a><a class="link" href="#crlf">Line Endings</a></h3>
 <div class="paragraph">
-<p>Use Unix-style line endings.<sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnotedef_6" title="View footnote.">6</a>]</sup></p>
+<p>Use Unix-style line endings.<sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnotedef_5" title="View footnote.">5</a>]</sup></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -1942,12 +1941,12 @@ You might have noticed that those are a bit inconsistent:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>I guess it&#8217;s clear that the one thing they have in common is that they aim to be concise, but still carry some meaning (aliasing <code>clojure.walk</code> to <code>w</code> would
+<p>It&#8217;s clear that the one thing they have in common is that they aim to be concise, but still carry some meaning (aliasing <code>clojure.walk</code> to <code>w</code> would
 be concise, but won&#8217;t carry much meaning).</p>
 </div>
 <div class="paragraph">
 <p>But what to do about all the other namespaces out there that don&#8217;t have idiomatic aliases? Well, you better be consistent in your approach to deriving aliases for them,
-otherwise the people working on a shared Clojure codebase are going to experience a great deal of confusion. Here are a few rules that you should follow.<sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnotedef_7" title="View footnote.">7</a>]</sup></p>
+otherwise the people working on a shared Clojure codebase are going to experience a great deal of confusion. Here are a few rules that you should follow.<sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnotedef_6" title="View footnote.">6</a>]</sup></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -2290,7 +2289,7 @@ value will be ignored by the code at hand.</p>
 <p><code>xf</code> - xform, a transducer</p>
 </li>
 <li>
-<p><code>ns</code> - namespace<sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnotedef_8" title="View footnote.">8</a>]</sup></p>
+<p><code>ns</code> - namespace<sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnotedef_7" title="View footnote.">7</a>]</sup></p>
 </li>
 </ul>
 </div>
@@ -3902,7 +3901,7 @@ When a var or a namespace has <code>:no-doc</code> metadata, it indicates to the
 <h3 id="indentation-metadata"><a class="anchor" href="#indentation-metadata"></a><a class="link" href="#indentation-metadata">Indentation Metadata</a></h3>
 <div class="paragraph">
 <p>Unlike other Lisp dialects, Clojure doesn&#8217;t have a standard metadata format to specify the indentation of macros.
-CIDER proposed a tool-agnostic <a href="https://docs.cider.mx/cider/indent_spec.html">indentation specification</a> based on metadata in 2015.<sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="#_footnotedef_9" title="View footnote.">9</a>]</sup> Here&#8217;s a simple example:</p>
+CIDER proposed a tool-agnostic <a href="https://docs.cider.mx/cider/indent_spec.html">indentation specification</a> based on metadata in 2015.<sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnotedef_8" title="View footnote.">8</a>]</sup> Here&#8217;s a simple example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4974,36 +4973,33 @@ best possible guide, don&#8217;t we?</p>
 <div id="footnotes">
 <hr>
 <div class="footnote" id="_footnotedef_1">
-<a href="#_footnoteref_1">1</a>. CIDER, nREPL, Orchard, etc.
+<a href="#_footnoteref_1">1</a>. Those guidelines are meant to be applied to Clojure itself and to all the Clojure Contrib libraries.
 </div>
 <div class="footnote" id="_footnotedef_2">
-<a href="#_footnoteref_2">2</a>. Those guidelines are meant to be applied to Clojure itself and to all the Clojure Contrib libraries.
+<a href="#_footnoteref_2">2</a>. Occasionally we might suggest to the reader to consider some alternatives, though.
 </div>
 <div class="footnote" id="_footnotedef_3">
-<a href="#_footnoteref_3">3</a>. Occasionally I might suggest to the reader to consider some alternatives, though.
+<a href="#_footnoteref_3">3</a>. You&#8217;ll notice that the Clojure style guide is pretty similar in structure to the Ruby style guide, which served as its main source of inspiration. You&#8217;ll also notice that the Ruby style guide is much longer, mostly because of the complexity of the Ruby language.
 </div>
 <div class="footnote" id="_footnotedef_4">
-<a href="#_footnoteref_4">4</a>. You&#8217;ll notice that the Clojure style guide is pretty similar in structure to the Ruby style guide, which served as its main source of inspiration. You&#8217;ll also notice that the Ruby style guide is much longer, mostly because of the complexity of the Ruby language.
+<a href="#_footnoteref_4">4</a>. This section is heavily inspired by Python&#8217;s PEP-8
 </div>
 <div class="footnote" id="_footnotedef_5">
-<a href="#_footnoteref_5">5</a>. This section is heavily inspired by Python&#8217;s PEP-8
+<a href="#_footnoteref_5">5</a>. *BSD/Solaris/Linux/macOS users are covered by default, Windows users have to be extra careful.
 </div>
 <div class="footnote" id="_footnotedef_6">
-<a href="#_footnoteref_6">6</a>. *BSD/Solaris/Linux/macOS users are covered by default, Windows users have to be extra careful.
+<a href="#_footnoteref_6">6</a>. These guidelines are based on a <a href="https://stuartsierra.com/2015/05/10/clojure-namespace-aliases">blog post</a> by Stuart Sierra.
 </div>
 <div class="footnote" id="_footnotedef_7">
-<a href="#_footnoteref_7">7</a>. These guidelines are based on a <a href="https://stuartsierra.com/2015/05/10/clojure-namespace-aliases">blog post</a> by Stuart Sierra.
+<a href="#_footnoteref_7">7</a>. Technically this will shadow the <code>ns</code> macro, but it&#8217;s extremely unlikely you&#8217;ll ever need it in the body of a function.
 </div>
 <div class="footnote" id="_footnotedef_8">
-<a href="#_footnoteref_8">8</a>. Technically this will shadow the <code>ns</code> macro, but it&#8217;s extremely unlikely you&#8217;ll ever need it in the body of a function.
-</div>
-<div class="footnote" id="_footnotedef_9">
-<a href="#_footnoteref_9">9</a>. This was first introduced in CIDER 0.10
+<a href="#_footnoteref_8">8</a>. This was first introduced in CIDER 0.10
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-03-28 10:11:42 UTC
+Last updated 2022-04-01 21:00:57 UTC
 </div>
 </div>
 </body>
