@@ -35,7 +35,7 @@ based on the experience of the style guide's editors,
 feedback and suggestions from numerous members of the Clojure community, and
 various highly regarded Clojure programming resources, such as
 https://www.clojurebook.com/["Clojure Programming"]
-and https://joyofclojure.com/["The Joy of Clojure"].
+and http://www.joyofclojure.com/["The Joy of Clojure"].
 
 Nothing written here is set in stone.
 This style guide evolves over time as additional conventions are
