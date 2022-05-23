@@ -3015,7 +3015,7 @@ Other editors might require some configuration tweaking to produce the same resu
 This guide was started in 2013 by https://github.com/bbatsov[Bozhidar Batsov], following the
 success of a https://rubystyle.guide/[similar project] he had created in the Ruby community.
 
-Bozhidar was very passionate about both Clojure and good programming style and he wanted to bridge the between what was
+Bozhidar was very passionate about both Clojure and good programming style and he wanted to bridge the gap between what was
 covered by the https://clojure.org/community/contrib_howto#_coding_guidelines[Clojure library coding guidelines] and what the style guides for languages like Java, Python and Ruby would typically cover.
 Bozhidar still serves as the guide's primary editor, but there's an entire editor team supporting the project.
 
