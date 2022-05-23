@@ -1,0 +1,3 @@
+:source-highlighter: rouge
+gem install rouge
+((juxt :a :b) {:a "ala" :b "bala"})
