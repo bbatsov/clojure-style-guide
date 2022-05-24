@@ -752,7 +752,7 @@ NOTE: This may appear to mask
 (string/join ...)
 ----
 
-Bellow are some common idiomatic aliases:
+Some common, idiomatic aliases are shown below:
 
 |===
 | Namespace | Idiomatic Alias
@@ -2801,7 +2801,7 @@ can identify them. Wrap them with `[[..]]` if you want to link to them.
 === Docstring Grammar [[docstring-grammar]]
 
 Docstrings should be composed of well-formed English sentences. Every sentence
-should start with a capitalized word, be gramatically coherent, and end
+should start with a capitalized word, be grammatically coherent, and end
 with appropriate punctuation. Sentences should be separated with a single space.
 
 [source,clojure]
