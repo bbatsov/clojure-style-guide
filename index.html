@@ -746,9 +746,7 @@ pre.rouge {
 <li><a href="#multiple-params-fn-literal">Multiple Parameters Function Literal</a></li>
 <li><a href="#no-useless-anonymous-fns">No Useless Anonymous Functions</a></li>
 <li><a href="#no-multiple-forms-fn-literals">No Multiple Forms in Function Literals</a></li>
-<li><a href="#complement"><code>complement</code></a></li>
-<li><a href="#comp"><code>comp</code></a></li>
-<li><a href="#partial"><code>partial</code></a></li>
+<li><a href="#anonymous-functions-vs-complement-comp-and-partial">Anonymous Functions vs <code>complement</code>, <code>comp</code> and <code>partial</code></a></li>
 <li><a href="#threading-macros">Threading Macros</a></li>
 <li><a href="#threading-macros-and-optional-parentheses">Threading Macros and Optional Parentheses</a></li>
 <li><a href="#threading-macros-alignment">Threading Macros Alignment</a></li>
@@ -2881,29 +2879,25 @@ more than one form.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="complement"><a class="anchor" href="#complement"></a><a class="link" href="#complement"><code>complement</code></a></h3>
+<h3 id="anonymous-functions-vs-complement-comp-and-partial"><a class="anchor" href="#anonymous-functions-vs-complement-comp-and-partial"></a><a class="link" href="#anonymous-functions-vs-complement-comp-and-partial">Anonymous Functions vs <code>complement</code>, <code>comp</code> and <code>partial</code></a></h3>
 <div class="paragraph">
-<p>Favor the use of <code>complement</code> versus the use of an anonymous function.</p>
+<p>Prefer anonymous functions over <code>complement</code>, <code>comp</code> and <code>partial</code>, as this results
+in simpler code most of the time.<sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnotedef_8" title="View footnote.">8</a>]</sup></p>
 </div>
+<div class="sect3">
+<h4 id="complement"><a class="anchor" href="#complement"></a><a class="link" href="#complement"><code>complement</code></a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
-</span><span class="p">(</span><span class="nb">filter</span><span class="w"> </span><span class="p">(</span><span class="nb">complement</span><span class="w"> </span><span class="n">some-pred?</span><span class="p">)</span><span class="w"> </span><span class="n">coll</span><span class="p">)</span><span class="w">
+</span><span class="p">(</span><span class="nb">filter</span><span class="w"> </span><span class="o">#</span><span class="p">(</span><span class="nb">not</span><span class="w"> </span><span class="p">(</span><span class="nf">some-pred?</span><span class="w"> </span><span class="n">%</span><span class="p">))</span><span class="w"> </span><span class="n">coll</span><span class="p">)</span><span class="w">
 
-</span><span class="c1">;; bad</span><span class="w">
-</span><span class="p">(</span><span class="nb">filter</span><span class="w"> </span><span class="o">#</span><span class="p">(</span><span class="nb">not</span><span class="w"> </span><span class="p">(</span><span class="nf">some-pred?</span><span class="w"> </span><span class="n">%</span><span class="p">))</span><span class="w"> </span><span class="n">coll</span><span class="p">)</span></code></pre>
+</span><span class="c1">;; okish</span><span class="w">
+</span><span class="p">(</span><span class="nb">filter</span><span class="w"> </span><span class="p">(</span><span class="nb">complement</span><span class="w"> </span><span class="n">some-pred?</span><span class="p">)</span><span class="w"> </span><span class="n">coll</span><span class="p">)</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>This rule should obviously be ignored if the complementing predicate
-exists in the form of a separate function (e.g. <code>even?</code> and <code>odd?</code>).</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="comp"><a class="anchor" href="#comp"></a><a class="link" href="#comp"><code>comp</code></a></h3>
-<div class="paragraph">
-<p>Favor <code>comp</code> over anonymous functions for function composition.</p>
-</div>
+<div class="sect3">
+<h4 id="comp"><a class="anchor" href="#comp"></a><a class="link" href="#comp"><code>comp</code></a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; Assuming `(:require [clojure.string :as str])`...</span><span class="w">
@@ -2911,23 +2905,34 @@ exists in the form of a separate function (e.g. <code>even?</code> and <code>odd
 </span><span class="c1">;; good</span><span class="w">
 </span><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="o">#</span><span class="p">(</span><span class="nf">str/capitalize</span><span class="w"> </span><span class="p">(</span><span class="nf">str/trim</span><span class="w"> </span><span class="n">%</span><span class="p">))</span><span class="w"> </span><span class="p">[</span><span class="s">"top "</span><span class="w"> </span><span class="s">" test "</span><span class="p">])</span><span class="w">
 
-</span><span class="c1">;; better</span><span class="w">
+</span><span class="c1">;; okish</span><span class="w">
 </span><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="p">(</span><span class="nb">comp</span><span class="w"> </span><span class="n">str/capitalize</span><span class="w"> </span><span class="n">str/trim</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="s">"top "</span><span class="w"> </span><span class="s">" test "</span><span class="p">])</span></code></pre>
 </div>
 </div>
-</div>
-<div class="sect2">
-<h3 id="partial"><a class="anchor" href="#partial"></a><a class="link" href="#partial"><code>partial</code></a></h3>
 <div class="paragraph">
-<p>Favor <code>partial</code> over anonymous functions.</p>
+<p><code>comp</code> is quite useful when composing transducer chains, though.</p>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">xf</span><span class="w">
+  </span><span class="p">(</span><span class="nb">comp</span><span class="w">
+    </span><span class="p">(</span><span class="nb">filter</span><span class="w"> </span><span class="n">odd?</span><span class="p">)</span><span class="w">
+    </span><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="nb">inc</span><span class="p">)</span><span class="w">
+    </span><span class="p">(</span><span class="nb">take</span><span class="w"> </span><span class="mi">5</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="partial"><a class="anchor" href="#partial"></a><a class="link" href="#partial"><code>partial</code></a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; good</span><span class="w">
 </span><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="o">#</span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="n">%</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">range</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">10</span><span class="p">))</span><span class="w">
 
-</span><span class="c1">;; (arguably) better</span><span class="w">
+</span><span class="c1">;; okish</span><span class="w">
 </span><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="p">(</span><span class="nb">partial</span><span class="w"> </span><span class="nb">+</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">range</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">10</span><span class="p">))</span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -3901,7 +3906,7 @@ When a var or a namespace has <code>:no-doc</code> metadata, it indicates to the
 <h3 id="indentation-metadata"><a class="anchor" href="#indentation-metadata"></a><a class="link" href="#indentation-metadata">Indentation Metadata</a></h3>
 <div class="paragraph">
 <p>Unlike other Lisp dialects, Clojure doesn&#8217;t have a standard metadata format to specify the indentation of macros.
-CIDER proposed a tool-agnostic <a href="https://docs.cider.mx/cider/indent_spec.html">indentation specification</a> based on metadata in 2015.<sup class="footnote">[<a id="_footnoteref_8" class="footnote" href="#_footnotedef_8" title="View footnote.">8</a>]</sup> Here&#8217;s a simple example:</p>
+CIDER proposed a tool-agnostic <a href="https://docs.cider.mx/cider/indent_spec.html">indentation specification</a> based on metadata in 2015.<sup class="footnote">[<a id="_footnoteref_9" class="footnote" href="#_footnotedef_9" title="View footnote.">9</a>]</sup> Here&#8217;s a simple example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4994,12 +4999,15 @@ best possible guide, don&#8217;t we?</p>
 <a href="#_footnoteref_7">7</a>. Technically this will shadow the <code>ns</code> macro, but it&#8217;s extremely unlikely you&#8217;ll ever need it in the body of a function.
 </div>
 <div class="footnote" id="_footnotedef_8">
-<a href="#_footnoteref_8">8</a>. This was first introduced in CIDER 0.10
+<a href="#_footnoteref_8">8</a>. You can read more on the subject <a href="https://ask.clojure.org/index.php/8373/when-should-prefer-comp-and-partial-to-anonymous-functions">here</a>.
+</div>
+<div class="footnote" id="_footnotedef_9">
+<a href="#_footnoteref_9">9</a>. This was first introduced in CIDER 0.10
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-05-24 06:06:38 UTC
+Last updated 2022-06-13 06:26:03 UTC
 </div>
 </div>
 </body>
