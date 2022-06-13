@@ -1511,25 +1511,23 @@ more than one form.
      (* % 2))
 ----
 
-=== `complement` [[complement]]
+=== Anonymous Functions vs `complement`, `comp` and `partial`
 
-Favor the use of `complement` versus the use of an anonymous function.
+Prefer anonymous functions over `complement`, `comp` and `partial`, as this results
+in simpler code most of the time.footnote:[You can read more on the subject https://ask.clojure.org/index.php/8373/when-should-prefer-comp-and-partial-to-anonymous-functions[here].]
+
+==== `complement` [[complement]]
 
 [source,clojure]
 ----
 ;; good
-(filter (complement some-pred?) coll)
-
-;; bad
 (filter #(not (some-pred? %)) coll)
+
+;; okish
+(filter (complement some-pred?) coll)
 ----
 
-This rule should obviously be ignored if the complementing predicate
-exists in the form of a separate function (e.g. `even?` and `odd?`).
-
-=== `comp` [[comp]]
-
-Favor `comp` over anonymous functions for function composition.
+==== `comp` [[comp]]
 
 [source,clojure]
 ----
@@ -1538,20 +1536,30 @@ Favor `comp` over anonymous functions for function composition.
 ;; good
 (map #(str/capitalize (str/trim %)) ["top " " test "])
 
-;; better
+;; okish
 (map (comp str/capitalize str/trim) ["top " " test "])
 ----
 
-=== `partial` [[partial]]
+`comp` is quite useful when composing transducer chains, though.
 
-Favor `partial` over anonymous functions.
+[source,clojure]
+----
+;; good
+(def xf
+  (comp
+    (filter odd?)
+    (map inc)
+    (take 5)))
+----
+
+==== `partial` [[partial]]
 
 [source,clojure]
 ----
 ;; good
 (map #(+ 5 %) (range 1 10))
 
-;; (arguably) better
+;; okish
 (map (partial + 5) (range 1 10))
 ----
 
