@@ -578,6 +578,7 @@ Avoid trailing whitespace.
 
 Use one file per namespace and one namespace per file.
 
+[source,clojure]
 ----
 ;; good
 (ns foo.bar)
