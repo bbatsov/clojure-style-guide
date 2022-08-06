@@ -334,22 +334,33 @@ a few examples:
 ----
 
 This suggestion has certainly gotten some ground in the community, but it also
-goes against the entire Lisp tradition and the primary goal of this style guide -
+goes against much of the Lisp tradition and one of the primary goals of this style guide -
 namely to optimize code for human consumption.
 
-There's also one small caveat with fixed indentation that's rarely discussed and that's
-how to indent list literals, as function calls are simply list literals. As those
-are not very common in Clojure, outside the context of providing structure for the Clojure
-code itself, that matter is usually omitted from consideration:
+There's one exception to the fixed indentation rule - data lists (those that are not a function invocation):
 
 [source,clojure]
 ----
 ;;; Fixed Indentation
 ;;
 ;; list literals
+;; we still do
+(1
+ 2
+ 3
+ 4
+ 5
+ 6)
+
+;; and
+(1 2 3
+ 4 5 6)
+
+;; instead of 
 (1 2 3
   4 5 6)
 
+;; or
 (1
   2
   3
@@ -358,7 +369,7 @@ code itself, that matter is usually omitted from consideration:
   6)
 ----
 
-That looks a bit weird and happens to be inconsistent with how other collection types are normally indented.
+This makes sure that lists are consistent with how other collection types are normally indented.
 
 ****
 
