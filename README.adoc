@@ -226,7 +226,11 @@ Vertically align function (macro) arguments spanning multiple lines.
 (filter even?
         (range 1 10))
 
-;; bad
+;; bad - argument aligned with function name (one space indent)
+(filter even?
+ (range 1 10))
+
+;; bad - two space indent
 (filter even?
   (range 1 10))
 ----
