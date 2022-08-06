@@ -1314,23 +1314,34 @@ a few examples:</p>
 </div>
 <div class="paragraph">
 <p>This suggestion has certainly gotten some ground in the community, but it also
-goes against the entire Lisp tradition and the primary goal of this style guide -
+goes against much of the Lisp tradition and one of the primary goals of this style guide -
 namely to optimize code for human consumption.</p>
 </div>
 <div class="paragraph">
-<p>There&#8217;s also one small caveat with fixed indentation that&#8217;s rarely discussed and that&#8217;s
-how to indent list literals, as function calls are simply list literals. As those
-are not very common in Clojure, outside the context of providing structure for the Clojure
-code itself, that matter is usually omitted from consideration:</p>
+<p>There&#8217;s one exception to the fixed indentation rule - data lists (those that are not a function invocation):</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;;; Fixed Indentation</span><span class="w">
 </span><span class="c1">;;</span><span class="w">
 </span><span class="c1">;; list literals</span><span class="w">
+</span><span class="c1">;; we still do</span><span class="w">
+</span><span class="p">(</span><span class="nf">1</span><span class="w">
+ </span><span class="mi">2</span><span class="w">
+ </span><span class="mi">3</span><span class="w">
+ </span><span class="mi">4</span><span class="w">
+ </span><span class="mi">5</span><span class="w">
+ </span><span class="mi">6</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">;; and</span><span class="w">
+</span><span class="p">(</span><span class="nf">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w">
+ </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">;; instead of</span><span class="w">
 </span><span class="p">(</span><span class="nf">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w">
   </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span><span class="w">
 
+</span><span class="c1">;; or</span><span class="w">
 </span><span class="p">(</span><span class="nf">1</span><span class="w">
   </span><span class="mi">2</span><span class="w">
   </span><span class="mi">3</span><span class="w">
@@ -1340,7 +1351,7 @@ code itself, that matter is usually omitted from consideration:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>That looks a bit weird and happens to be inconsistent with how other collection types are normally indented.</p>
+<p>This makes sure that lists are consistent with how other collection types are normally indented.</p>
 </div>
 </div>
 </div>
@@ -5007,7 +5018,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-07-24 11:58:01 UTC
+Last updated 2022-08-06 09:45:41 UTC
 </div>
 </div>
 </body>
