@@ -2154,6 +2154,13 @@ Prefer math functions from `clojure.math` over (Java) interop or rolling your ow
 (Math/pow 2 5)
 ----
 
+The JDK package `java.lang.Math` provides access to many useful math
+functions. Prior to version 1.11, Clojure relied on using these via interop, but this had
+issues with discoverability, primitive performance, higher order application,
+and portability. The new `clojure.math` namespace provides wrapper functions for
+the methods available in `java.lang.Math` for `long` and `double` overloads with fast
+primitive invocation.
+
 == Strings
 
 === Prefer `clojure.string` Functions Over Interop [[prefer-clojure-string-over-interop]]
