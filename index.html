@@ -1858,16 +1858,32 @@ This may appear to mask
 <td class="tableblock halign-left valign-top"><p class="tableblock">Idiomatic Alias</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.edn</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">edn</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">clojure.java.io</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">io</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.java.shell</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sh</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">clojure.math</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">math</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.pprint</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pp</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">clojure.set</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">set</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.spec.alpha</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">spec</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">clojure.string</p></td>
@@ -1882,10 +1898,6 @@ This may appear to mask
 <td class="tableblock halign-left valign-top"><p class="tableblock">zip</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.data.xml</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">xml</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">clojure.core.async</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">as</p></td>
 </tr>
@@ -1894,48 +1906,36 @@ This may appear to mask
 <td class="tableblock halign-left valign-top"><p class="tableblock">mat</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.edn</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">edn</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.pprint</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">pp</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.spec.alpha</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">spec</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">clojure.data.csv</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">csv</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cheshire.core</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">json</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">java-time</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">time</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">clj-http.client</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">http</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.data.xml</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">xml</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">clojure.tools.logging</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">log</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">hugsql.core</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">sql</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cheshire.core</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">json</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">clj-yaml.core</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">yaml</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.java.shell</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">sh</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clj-http.client</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">http</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hugsql.core</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sql</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java-time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">time</p></td>
 </tr>
 </tbody>
 </table>
@@ -3630,6 +3630,14 @@ up the thread.</p>
 </span><span class="p">(</span><span class="nf">Math/pow</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>The JDK package <code>java.lang.Math</code> provides access to many useful math
+functions. Prior to version 1.11, Clojure relied on using these via interop, but this had
+issues with discoverability, primitive performance, higher order application,
+and portability. The new <code>clojure.math</code> namespace provides wrapper functions for
+the methods available in <code>java.lang.Math</code> for <code>long</code> and <code>double</code> overloads with fast
+primitive invocation.</p>
+</div>
 </div>
 </div>
 </div>
@@ -5051,7 +5059,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-08-07 06:47:21 UTC
+Last updated 2022-08-08 05:07:55 UTC
 </div>
 </div>
 </body>
