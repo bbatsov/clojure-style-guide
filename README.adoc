@@ -360,7 +360,7 @@ There's one exception to the fixed indentation rule - data lists (those that are
 (1 2 3
  4 5 6)
 
-;; instead of 
+;; instead of
 (1 2 3
   4 5 6)
 
@@ -772,46 +772,46 @@ Some common, idiomatic aliases are shown below:
 
 |===
 | Namespace | Idiomatic Alias
+| clojure.edn
+| edn
 | clojure.java.io
 | io
+| clojure.java.shell
+| sh
 | clojure.math
 | math
+| clojure.pprint
+| pp
 | clojure.set
 | set
+| clojure.spec.alpha
+| spec
 | clojure.string
 | str
 | clojure.walk
 | walk
 | clojure.zip
 | zip
-| clojure.data.xml
-| xml
 | clojure.core.async
 | as
 | clojure.core.matrix
 | mat
-| clojure.edn
-| edn
-| clojure.pprint
-| pp
-| clojure.spec.alpha
-| spec
 | clojure.data.csv
 | csv
-| cheshire.core
-| json
-| java-time
-| time
-| clj-http.client
-| http
+| clojure.data.xml
+| xml
 | clojure.tools.logging
 | log
-| hugsql.core
-| sql
+| cheshire.core
+| json
 | clj-yaml.core
 | yaml
-| clojure.java.shell
-| sh
+| clj-http.client
+| http
+| hugsql.core
+| sql
+| java-time
+| time
 |===
 
 === A Recipe for Good Namespace Aliases
