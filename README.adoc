@@ -817,6 +817,8 @@ Then there are some core and Contrib namespaces that have shorter idiomatic alia
 | mat
 | clojure.tools.logging
 | log
+| clojure.core.protocols
+| p
 | clojure.core.reducers
 | r
 |===
