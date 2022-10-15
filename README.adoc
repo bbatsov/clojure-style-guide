@@ -768,40 +768,64 @@ NOTE: This may appear to mask
 (string/join ...)
 ----
 
-Some common, idiomatic aliases are shown below:
+As noted in the next section, it's generally considered idiomatic to use
+an alias that is the last segment of the namespace, if that makes it unique,
+or else the two segments, typically dropping redundant parts like `clj` or `core`.
+
+Amongst Clojure's core and Contrib namespaces, the following namespaces have
+idiomatic aliases following that pattern:
 
 |===
 | Namespace | Idiomatic Alias
+| clojure.datafy
+| datafy
 | clojure.edn
 | edn
 | clojure.java.io
 | io
-| clojure.java.shell
-| sh
 | clojure.math
 | math
-| clojure.pprint
-| pp
 | clojure.set
 | set
-| clojure.spec.alpha
-| spec
-| clojure.string
-| str
 | clojure.walk
 | walk
 | clojure.zip
 | zip
 | clojure.core.async
-| as
-| clojure.core.matrix
-| mat
+| async
 | clojure.data.csv
 | csv
 | clojure.data.xml
 | xml
+| clojure.tools.cli
+| cli
+|===
+
+Then there are some core and Contrib namespaces that have shorter idiomatic aliases:
+
+|===
+| Namespace | Idiomatic Alias
+| clojure.java.shell
+| sh
+| clojure.pprint
+| pp
+| clojure.spec.alpha
+| s
+| clojure.string
+| str
+| clojure.core.matrix
+| mat
 | clojure.tools.logging
 | log
+| clojure.core.reducers
+| r
+|===
+
+And amongst commonly used community libraries, there are also many that have
+widely-used, idiomatic aliases for several namespaces:
+
+|===
+| Namespace | Idiomatic Alias
 | cheshire.core
 | json
 | clj-yaml.core
@@ -812,6 +836,8 @@ Some common, idiomatic aliases are shown below:
 | sql
 | java-time
 | time
+| next.jdbc
+| jdbc
 |===
 
 === A Recipe for Good Namespace Aliases
@@ -822,7 +848,7 @@ You might have noticed that those are a bit inconsistent:
 * `clojure.string` becomes `str`
 * `clojure.pprint` becomes `pp`
 * `clojure.walk` becomes `walk`
-* `clojure.spec.alpha` becomes `spec`
+* `clojure.spec.alpha` becomes `s`
 
 It's clear that the one thing they have in common is that they aim to be concise, but still carry some meaning (aliasing `clojure.walk` to `w` would
 be concise, but won't carry much meaning).
@@ -837,7 +863,7 @@ otherwise the people working on a shared Clojure codebase are going to experienc
 (ns com.example.application
   (:require
    [clojure.java.io :as io]
-   [clojure.string :as string]))
+   [clojure.reflect :as reflect]))
 ----
 
 2. Keep enough trailing parts to make each alias unique.
@@ -854,7 +880,6 @@ TIP: Yes, namespace aliases can have dots in them. Make good use of them.
 
 [source,clojure]
 ----
-[clj-http :as http]
 [clj-time.core :as time]
 [clj-time.format :as time.format]
 ----
