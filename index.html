@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.17">
+<meta name="generator" content="Asciidoctor 2.0.18">
 <title>The Clojure Style Guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -84,10 +84,10 @@ code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;
 ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
 ul,ol{margin-left:1.5em}
 ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
-ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
-ul.square{list-style-type:square}
 ul.circle{list-style-type:circle}
 ul.disc{list-style-type:disc}
+ul.square{list-style-type:square}
+ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
 ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
 dl dt{margin-bottom:.3125em;font-weight:bold}
 dl dd{margin-bottom:1.25em}
@@ -1845,7 +1845,13 @@ This may appear to mask
 </div>
 </div>
 <div class="paragraph">
-<p>Some common, idiomatic aliases are shown below:</p>
+<p>As noted in the next section, it&#8217;s generally considered idiomatic to use
+an alias that is the last segment of the namespace, if that makes it unique,
+or else the two segments, typically dropping redundant parts like <code>clj</code> or <code>core</code>.</p>
+</div>
+<div class="paragraph">
+<p>Amongst Clojure&#8217;s core and Contrib namespaces, the following namespaces have
+idiomatic aliases following that pattern:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -1858,6 +1864,10 @@ This may appear to mask
 <td class="tableblock halign-left valign-top"><p class="tableblock">Idiomatic Alias</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.datafy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">datafy</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">clojure.edn</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">edn</p></td>
 </tr>
@@ -1866,28 +1876,12 @@ This may appear to mask
 <td class="tableblock halign-left valign-top"><p class="tableblock">io</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.java.shell</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">sh</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">clojure.math</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">math</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.pprint</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">pp</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">clojure.set</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">set</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.spec.alpha</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">spec</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.string</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">str</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">clojure.walk</p></td>
@@ -1899,11 +1893,7 @@ This may appear to mask
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">clojure.core.async</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">as</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.core.matrix</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">mat</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">async</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">clojure.data.csv</p></td>
@@ -1914,8 +1904,71 @@ This may appear to mask
 <td class="tableblock halign-left valign-top"><p class="tableblock">xml</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.tools.cli</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cli</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Then there are some core and Contrib namespaces that have shorter idiomatic aliases:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Namespace</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Idiomatic Alias</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.java.shell</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sh</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.pprint</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pp</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.spec.alpha</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">str</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.core.matrix</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mat</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">clojure.tools.logging</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">log</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.core.protocols</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">p</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clojure.core.reducers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">r</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>And amongst commonly used community libraries, there are also many that have
+widely-used, idiomatic aliases for several namespaces:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Namespace</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Idiomatic Alias</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">cheshire.core</p></td>
@@ -1936,6 +1989,10 @@ This may appear to mask
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">java-time</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">time</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">next.jdbc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jdbc</p></td>
 </tr>
 </tbody>
 </table>
@@ -1958,7 +2015,7 @@ You might have noticed that those are a bit inconsistent:</p>
 <p><code>clojure.walk</code> becomes <code>walk</code></p>
 </li>
 <li>
-<p><code>clojure.spec.alpha</code> becomes <code>spec</code></p>
+<p><code>clojure.spec.alpha</code> becomes <code>s</code></p>
 </li>
 </ul>
 </div>
@@ -1982,7 +2039,7 @@ otherwise the people working on a shared Clojure codebase are going to experienc
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">com.example.application</span><span class="w">
   </span><span class="p">(</span><span class="no">:require</span><span class="w">
    </span><span class="p">[</span><span class="n">clojure.java.io</span><span class="w"> </span><span class="no">:as</span><span class="w"> </span><span class="n">io</span><span class="p">]</span><span class="w">
-   </span><span class="p">[</span><span class="n">clojure.string</span><span class="w"> </span><span class="no">:as</span><span class="w"> </span><span class="n">string</span><span class="p">]))</span></code></pre>
+   </span><span class="p">[</span><span class="n">clojure.reflect</span><span class="w"> </span><span class="no">:as</span><span class="w"> </span><span class="n">reflect</span><span class="p">]))</span></code></pre>
 </div>
 </div>
 <div class="olist arabic">
@@ -2019,8 +2076,7 @@ Yes, namespace aliases can have dots in them. Make good use of them.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="p">[</span><span class="n">clj-http</span><span class="w"> </span><span class="no">:as</span><span class="w"> </span><span class="n">http</span><span class="p">]</span><span class="w">
-</span><span class="p">[</span><span class="n">clj-time.core</span><span class="w"> </span><span class="no">:as</span><span class="w"> </span><span class="nb">time</span><span class="p">]</span><span class="w">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">[</span><span class="n">clj-time.core</span><span class="w"> </span><span class="no">:as</span><span class="w"> </span><span class="nb">time</span><span class="p">]</span><span class="w">
 </span><span class="p">[</span><span class="n">clj-time.format</span><span class="w"> </span><span class="no">:as</span><span class="w"> </span><span class="n">time.format</span><span class="p">]</span></code></pre>
 </div>
 </div>
@@ -5059,7 +5115,7 @@ best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-08-08 05:07:55 UTC
+Last updated 2022-10-17 23:15:35 UTC
 </div>
 </div>
 </body>
