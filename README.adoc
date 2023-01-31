@@ -35,7 +35,7 @@ based on the experience of the style guide's editors,
 feedback and suggestions from numerous members of the Clojure community, and
 various highly regarded Clojure programming resources, such as
 https://www.clojurebook.com/["Clojure Programming"]
-and http://www.joyofclojure.com/["The Joy of Clojure"].
+and https://joyofclojure.github.io/["The Joy of Clojure"].
 
 Nothing written here is set in stone.
 This style guide evolves over time as additional conventions are
@@ -3109,7 +3109,7 @@ Many people, books, presentations, articles and other style guides influenced th
 * http://community.schemewiki.org/?scheme-style[scheme-style]
 * https://clojure.org/community/contrib_howto#_coding_guidelines[Clojure Library Coding Guidelines]
 * https://www.clojurebook.com/["Clojure Programming"]
-* https://joyofclojure.com/["The Joy of Clojure"]
+* https://joyofclojure.github.io/["The Joy of Clojure"]
 * https://elementsofclojure.com/["Elements of Clojure"]
 * https://pragprog.com/titles/vmclojeco/clojure-applied/["Clojure Applied"]
 * https://stuartsierra.com/tag/dos-and-donts[Stuart Sierra's "Clojure Dos and Don't" blog series]
