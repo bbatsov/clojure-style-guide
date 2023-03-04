@@ -1063,6 +1063,8 @@ Follow ``clojure.core``'s example for idiomatic names like `pred` and `coll`.
  ** `x`, `y` - numbers
  ** `xs` - sequence
  ** `m` - map
+ ** `k`, `ks` - key, keys
+ ** `v`, `vs` - value, values (as in a key/value pair)
  ** `s` - string input
  ** `re` - regular expression
  ** `sym` - symbol
