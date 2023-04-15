@@ -130,13 +130,13 @@ Some other good reasons to ignore a particular guideline:
 Translations of the guide are available in the following languages:
 
 * https://github.com/geekerzp/clojure-style-guide/blob/master/README-zhCN.md[Chinese]
+* https://github.com/ildivan/clojure-style-guide/blob/ita/README.adoc[Italian] (Under progress)
 * https://github.com/totakke/clojure-style-guide/blob/ja/README.adoc[Japanese]
 * https://github.com/kwakbab/clojure-style-guide/blob/master/README-koKO.md[Korean]
 * https://github.com/theSkilled/clojure-style-guide/blob/pt-BR/README.md[Portuguese] (Under progress)
 * https://github.com/Nondv/clojure-style-guide/blob/master/ru/README.md[Russian]
 * https://github.com/jeko2000/clojure-style-guide/blob/master/README.md[Spanish]
 * https://github.com/LeaveNhA/clojure-style-guide/blob/master/README.adoc[Turkish]
-* https://github.com/ildivan/clojure-style-guide/blob/ita/README.adoc[Italian] (Under progress)
 
 NOTE: These translations are not maintained by our editor team, so their quality
 and level of completeness may vary. The translated versions of the guide often
