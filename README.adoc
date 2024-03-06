@@ -860,7 +860,7 @@ But what to do about all the other namespaces out there that don't have idiomati
 otherwise the people working on a shared Clojure codebase are going to experience a great deal of confusion. Here are a few rules that you should follow.footnote:[These guidelines are based on a https://stuartsierra.com/2015/05/10/clojure-namespace-aliases[blog post] by Stuart Sierra.]
 
 1. Make the alias the same as the namespace name with the leading parts removed.
-
++
 [source,clojure]
 ----
 (ns com.example.application
@@ -868,19 +868,19 @@ otherwise the people working on a shared Clojure codebase are going to experienc
    [clojure.java.io :as io]
    [clojure.reflect :as reflect]))
 ----
-
++
 2. Keep enough trailing parts to make each alias unique.
-
++
 [source,clojure]
 ----
 [clojure.data.xml :as data.xml]
 [clojure.xml :as xml]
 ----
-
++
 TIP: Yes, namespace aliases can have dots in them. Make good use of them.
-
++
 3. Eliminate redundant words such as "core" and "clj" in aliases.
-
++
 [source,clojure]
 ----
 [clj-time.core :as time]
