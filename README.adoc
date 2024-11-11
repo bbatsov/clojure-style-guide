@@ -1312,8 +1312,7 @@ Use `alter-var-root` instead of `def` to change the value of a var.
 
 Use `seq` as a terminating condition to test whether a sequence is
 empty (this technique is sometimes called _nil punning_). You can also
-consider `not-empty`, which behaves exactly the same while clarifying
-your intent.
+consider `not-empty`, which similarly returns nil on an empty sequence.
 
 [source,clojure]
 ----
