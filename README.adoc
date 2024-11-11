@@ -46,7 +46,7 @@ NOTE: Clojure's developers also maintain a list of
 https://clojure.org/community/contrib_howto#_coding_guidelines[coding
 guidelines for libraries].footnote:[Those guidelines are meant to
 be applied to Clojure itself and to all the Clojure Contrib libraries.]
-They were one of the sources of inspiration for the document, you're
+They were one of the sources of inspiration for the document you're
 currently reading.
 
 ifdef::env-github[]
@@ -1311,13 +1311,20 @@ Use `alter-var-root` instead of `def` to change the value of a var.
 === Nil Punning [[nil-punning]]
 
 Use `seq` as a terminating condition to test whether a sequence is
-empty (this technique is sometimes called _nil punning_).
+empty (this technique is sometimes called _nil punning_). You can also
+consider `not-empty`, which behaves exactly the same while clarifying
+your intent.
 
 [source,clojure]
 ----
 ;; good
 (defn print-seq [s]
   (when (seq s)
+    (prn (first s))
+    (recur (rest s))))
+
+(defn print-seq [s]
+  (when (not-empty s)
     (prn (first s))
     (recur (rest s))))
 
