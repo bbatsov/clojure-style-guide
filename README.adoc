@@ -495,7 +495,7 @@ of commas and line breaks.
 
 === Gather Trailing Parentheses [[gather-trailing-parens]]
 
-Place all trailing parentheses on a single line instead of distinct lines.
+Place trailing parentheses on a single line instead of distinct lines.
 
 [source,clojure]
 ----
@@ -507,6 +507,21 @@ Place all trailing parentheses on a single line instead of distinct lines.
 (when something
   (something-else)
 )
+----
+
+An exception to the rule is a rich comment for REPL-oriented programming,
+lest gathering the comment's closing parenthesis make the last form in the comment harder to use.
+A rich comment's closing parenthesis may be on the next line.
+
+[source,clojure]
+----
+;; good; rich comment ends on the next line
+(comment
+  (range 5)
+  (interpose '* (range 5))
+  (->> (range 5) (interpose '*))
+  (= *1 *2)
+  )
 ----
 
 === Empty Lines Between Top-Level Forms [[empty-lines-between-top-level-forms]]
