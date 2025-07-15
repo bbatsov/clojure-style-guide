@@ -2240,6 +2240,29 @@ throw an exception -- throws an exception of a standard type
 
 Favor `with-open` over `finally`.
 
+=== Catching Throwables [[catching-throwables]]
+
+Don't catch `Throwable`. It is a superclass of all Errors and Exceptions in
+Java, and as such, it will swallow _all_ possible Errors. As explained by the
+Java documentation on the `Error` class, "An Error is a subclass of Throwable
+that indicates serious problems that a reasonable application should not try to
+catch."
+
+Under certain circumstances, it is necessary to catch Errors. In those cases,
+catch specific Errors.
+
+[source,clojure]
+----
+;; good
+(try (foo)
+  (catch ExceptionInfo ex ...)
+  (catch AssertionError t ...))
+
+;; bad
+(try (foo)
+  (catch Throwable t ...))
+----
+
 == Macros
 
 === Don't Write a Macro If a Function Will Do [[dont-write-macro-if-fn-will-do]]
