@@ -26,7 +26,7 @@ programmers. A style guide that reflects real-world usage gets used, and a
 style guide that holds to an ideal that has been rejected by the people it is
 supposed to help risks not getting used at all -- no matter how good it is.
 
-The guide is separated into several sections of related rules. we've
+The guide is separated into several sections of related rules. We've
 tried to add the rationale behind the rules (if it's omitted, we've
 assumed that it's pretty obvious).
 
@@ -46,7 +46,7 @@ NOTE: Clojure's developers also maintain a list of
 https://clojure.org/community/contrib_howto#_coding_guidelines[coding
 guidelines for libraries].footnote:[Those guidelines are meant to
 be applied to Clojure itself and to all the Clojure Contrib libraries.]
-They were one of the sources of inspiration for the document, you're
+They were one of the sources of inspiration for the document you're
 currently reading.
 
 ifdef::env-github[]
@@ -94,7 +94,7 @@ Clojure code in the wild was fairly uniform. We attribute this to
 both the simplicity we already mentioned and to the fact that since day
 1 Clojurists adopted many of the style conventions of other
 established Lisp dialects (e.g. Common Lisp and Scheme).  This made
-the work on this guide fairly easy and straight-forward, especially compared to
+the work on this guide fairly easy and straightforward, especially compared to
 the massive exercise in frustration that was the
 https://rubystyle.guide[Community Ruby Style Guide].footnote:[You'll notice that the Clojure style guide is pretty similar in structure to the Ruby style guide, which served as its main source of inspiration. You'll also notice that the Ruby style guide is much longer, mostly because of the complexity of the Ruby language.]
 
@@ -435,7 +435,7 @@ $ git config --global core.autocrlf true
 
 End each file with a newline.
 
-TIP: This should be done by through editor configuration, not manually.
+TIP: This should be done through editor configuration, not manually.
 
 === Bracket Spacing [[bracket-spacing]]
 
@@ -655,7 +655,7 @@ or `library-name.core` for libraries with a single namespace in them.
 Read on for more coverage of the namespace naming topic.
 
 There are https://github.com/bbatsov/clojure-style-guide/pull/100[other reasons]
-why might want to avoid single-segment namespaces, so you should
+why you might want to avoid single-segment namespaces, so you should
 think long and hard before making any use of them.
 
 === Namespace Segments Limit [[namespace-segments-limit]]
@@ -677,7 +677,7 @@ Start every namespace with a comprehensive `ns` form, comprised of
 
 === Line Breaks in `ns` [[line-break-ns-declaration]]
 
-When there are multiple dependencies, you may want give each one its own line.
+When there are multiple dependencies, you may want to give each one its own line.
 This facilitates sorting, readability, and cleaner diffs for dependency changes.
 
 [source,clojure]
@@ -957,7 +957,7 @@ Use `lisp-case` for function and variable names.
 Use `CapitalCase` for protocols, records, structs, and types. (Keep
 acronyms like HTTP, RFC, XML uppercase.)
 
-NOTE: `CapitalCase` is also known as `UpperCamelCase, `CapitalWords`
+NOTE: `CapitalCase` is also known as `UpperCamelCase`, `CapitalWords`
 and `PascalCase`.
 
 === Predicate Methods [[naming-predicates]]
@@ -2383,7 +2383,7 @@ TIP: You can also consider adding `:supersedes` metadata to the newer APIs, basi
 
 From time to time you might want to point out some related vars/namespaces that the users of your library might be interested in.
 The most common way to do so would be via the `:see-also` metadata, which takes a vector of related items.
-When talking about vars - items in the same namespace don't need to fully qualified.
+When talking about vars - items in the same namespace don't need to be fully qualified.
 
 [source,clojure]
 ----
@@ -2402,7 +2402,7 @@ simpler and more explicit to use the `:see-also` metadata instead.
 
 === `:no-doc`
 
-Documentation tools like https://github.com/weavejester/codox#metadata-options[Codox] like https://github.com/cljdoc/cljdoc/blob/master/doc/userguide/for-library-authors.adoc#hiding-namespaces-vars-in-documentation[cljdoc] recognize `:no-doc` metadata.
+Documentation tools like https://github.com/weavejester/codox#metadata-options[Codox] and https://github.com/cljdoc/cljdoc/blob/master/doc/userguide/for-library-authors.adoc#hiding-namespaces-vars-in-documentation[cljdoc] recognize `:no-doc` metadata.
 When a var or a namespace has `:no-doc` metadata, it indicates to these tools that it should be excluded from generated API docs.
 
 To exclude an entire namespace from API docs:
@@ -2846,7 +2846,7 @@ Important tools such as https://github.com/cljdoc/cljdoc/blob/master/doc/usergui
 
 === Document Positional Arguments [[document-pos-arguments]]
 
-Document all positional arguments, and wrap them them with backticks
+Document all positional arguments, and wrap them with backticks
 (`) so that editors and IDEs can identify them and potentially provide extra
 functionality for them.
 
@@ -3072,8 +3072,8 @@ One problem with style guides is that it's often hard to remember all the guidel
 and to apply them consistently. We're only humans, after all. Fortunately,
 there are a bunch of tools that can do most of the work for us.
 
-TIP: It's a great idea run such tools as part of your continuous integration (CI).
-This ensure that all the code in one project is consistent with the style you're
+TIP: It's a great idea to run such tools as part of your continuous integration (CI).
+This ensures that all the code in one project is consistent with the style you're
 aiming for.
 
 === Lint Tools
