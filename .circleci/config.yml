@@ -3,14 +3,14 @@ version: 2
 jobs:
   docs-build:
     docker:
-      - image: ruby:2.6
+      - image: ruby:4.0
     steps:
       - checkout
       - run:
           name: Install AsciiDoctor & Rouge
           command: |
             gem install asciidoctor
-            gem install rouge -v 3.3.0
+            gem install rouge
       - run:
           name: Build Site
           command: asciidoctor -a toc="left" -a toclevels=2 README.adoc -o _build/html/index.html
@@ -19,7 +19,7 @@ jobs:
           paths: html
   docs-deploy:
     docker:
-      - image: node:8.10.0
+      - image: node:24
     steps:
       - checkout
       - attach_workspace:
@@ -38,7 +38,7 @@ jobs:
             - "31:6a:94:d6:ec:2d:6c:fc:0c:9e:61:8e:49:b2:6f:1e"
       - run:
           name: Deploy docs to gh-pages branch
-          command: gh-pages -add --dotfiles --message "[skip ci] Update site" --dist _build/html
+          command: gh-pages --add --dotfiles --message "[skip ci] Update site" --dist _build/html
 
 workflows:
   version: 2
