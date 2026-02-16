@@ -2124,7 +2124,20 @@ for more details.
 
 Consider wrapping all I/O calls with the `io!` macro to avoid nasty
 surprises if you accidentally end up calling such code in a
-transaction.
+transaction. `io!` will throw an exception if it is called from within
+a transaction, making accidental side-effects fail loudly instead of
+silently executing (possibly more than once due to retries).
+
+[source,clojure]
+----
+;; good - I/O is guarded against accidental use in transactions
+(defn save-to-file [path content]
+  (io! (spit path content)))
+
+;; bad - could silently run multiple times if called inside dosync
+(defn save-to-file [path content]
+  (spit path content))
+----
 
 ==== Avoid `ref-set` [[refs-avoid-ref-set]]
 
@@ -2144,30 +2157,77 @@ Avoid the use of `ref-set` whenever possible.
 ==== Small Transactions [[refs-small-transactions]]
 
 Try to keep the size of transactions (the amount of work encapsulated in them)
-as small as possible.
+as small as possible. Long transactions increase the chance of conflicts
+with other transactions, leading to retries and reduced throughput.
+
+[source,clojure]
+----
+;; good - transaction only covers the coordinated update
+(let [data (fetch-data source)]
+  (dosync (alter results conj data)))
+
+;; bad - slow I/O inside the transaction holds it open
+(dosync
+  (let [data (fetch-data source)]
+    (alter results conj data)))
+----
 
 ==== Avoid Short Long Transactions With Same Ref [[refs-avoid-short-long-transactions-with-same-ref]]
 
 Avoid having both short- and long-running transactions interacting
-with the same Ref.
+with the same Ref. When a short transaction commits a change, any
+long-running transaction touching the same Ref must retry from the
+beginning, effectively starving it.
 
 === Agents [[Agents]]
 
 ==== Agents Send [[agents-send]]
 
 Use `send` only for actions that are CPU bound and don't block on I/O
-or other threads.
+or other threads. `send` dispatches to a fixed-size thread pool, so a
+blocking action would prevent other agents from making progress.
+
+[source,clojure]
+----
+;; good - pure computation, no blocking
+(send agent-a + 42)
+----
 
 ==== Agents Send Off [[agents-send-off]]
 
 Use `send-off` for actions that might block, sleep, or otherwise tie
-up the thread.
+up the thread. `send-off` uses an unbounded thread pool, so blocking
+actions won't starve other agents.
+
+[source,clojure]
+----
+;; good - potentially blocking I/O uses send-off
+(send-off agent-b (fn [state] (assoc state :data (slurp url))))
+
+;; bad - blocking I/O via send can exhaust the fixed thread pool
+(send agent-b (fn [state] (assoc state :data (slurp url))))
+----
 
 === Atoms [[Atoms]]
 
 ==== No Updates Within Transactions [[atoms-no-update-within-transactions]]
 
-Avoid atom updates inside STM transactions.
+Avoid atom updates inside STM transactions. Atoms are not coordinated
+by the STM, so an atom `swap!` inside a `dosync` will execute on every
+retry — not just the final successful commit.
+
+[source,clojure]
+----
+;; good - atom update happens after the transaction
+(dosync (alter account-a - 100)
+        (alter account-b + 100))
+(swap! transfer-log conj {:from :a :to :b :amount 100})
+
+;; bad - the log entry is appended on every retry
+(dosync (alter account-a - 100)
+        (alter account-b + 100)
+        (swap! transfer-log conj {:from :a :to :b :amount 100}))
+----
 
 ==== Prefer `swap!` over `reset!` [[atoms-prefer-swap-over-reset]]
 
