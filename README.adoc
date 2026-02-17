@@ -1236,11 +1236,25 @@ arities N > K provide a fold of the K arity over varargs.
 === Function Length [[function-length]]
 
 Avoid functions longer than 10 LOC (lines of code). Ideally, most
-functions will be shorter than 5 LOC.
+functions will be shorter than 5 LOC. Short functions are easier to
+understand, test, and compose.
 
 === Function Positional Parameters Limit [[function-positional-parameter-limit]]
 
 Avoid parameter lists with more than three or four positional parameters.
+Long parameter lists are hard to remember and easy to get wrong at the
+call site. Prefer a map of options instead.
+
+[source,clojure]
+----
+;; good
+(defn create-user [{:keys [name email role admin?]}]
+  ...)
+
+;; bad - callers must remember the exact order
+(defn create-user [name email role admin?]
+  ...)
+----
 
 === Pre and Post Conditions [[pre-post-conditions]]
 
@@ -1268,19 +1282,58 @@ Avoid the use of namespace-manipulating functions like `require` and
 `refer`. They are entirely unnecessary outside of a REPL
 environment.
 
+[source,clojure]
+----
+;; good - use the ns form
+(ns my-app.core
+  (:require [clojure.string :as str]))
+
+;; bad - calling require as a function in source files
+(require '[clojure.string :as str])
+----
+
 === Forward References [[forward-references]]
 
-Avoid forward references.  They are occasionally necessary, but such occasions
-are rare in practice.
+Avoid forward references. They are occasionally necessary, but such occasions
+are rare in practice. Forward references make code harder to follow
+top-down and can mask circular dependencies.
 
 === Declare [[declare]]
 
 Use `declare` to enable forward references when forward references are
 necessary.
 
+[source,clojure]
+----
+;; good - when a forward reference is truly needed, use declare
+(declare process-children)
+
+(defn process-node [node]
+  (when (:children node)
+    (process-children node)))
+
+(defn process-children [node]
+  (mapv process-node (:children node)))
+----
+
 === Higher-order Functions [[higher-order-fns]]
 
 Prefer higher-order functions like `map` to `loop/recur`.
+Higher-order functions are more declarative — they express *what* you
+want, not *how* to iterate — and compose naturally with the rest of
+the sequence library.
+
+[source,clojure]
+----
+;; good
+(map inc [1 2 3 4 5])
+
+;; bad - manual loop to do the same thing
+(loop [xs [1 2 3 4 5] result []]
+  (if (empty? xs)
+    result
+    (recur (rest xs) (conj result (inc (first xs))))))
+----
 
 === Vars Inside Functions [[dont-def-vars-inside-fns]]
 
