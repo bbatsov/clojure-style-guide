@@ -960,6 +960,19 @@ acronyms like HTTP, RFC, XML uppercase.)
 NOTE: `CapitalCase` is also known as `UpperCamelCase`, `CapitalWords`
 and `PascalCase`.
 
+[source,clojure]
+----
+;; good
+(defprotocol Serializable ...)
+(defrecord HttpRequest ...)
+(deftype XMLParser ...)
+
+;; bad
+(defprotocol serializable ...)
+(defrecord http-request ...)
+(deftype xml_parser ...)
+----
+
 === Predicate Methods [[naming-predicates]]
 
 The names of predicate methods (methods that return a boolean value)
@@ -979,7 +992,20 @@ should end in a question mark
 === Unsafe Functions [[naming-unsafe-functions]]
 
 The names of functions/macros that are not safe in STM transactions
-should end with an exclamation mark (e.g. `reset!`).
+should end with an exclamation mark (e.g. `reset!`). The `!` signals
+to callers that the function has side-effects and should not be called
+inside a `dosync` block.
+
+[source,clojure]
+----
+;; good
+(defn save-user! [user]
+  (db/insert! user))
+
+;; bad - side-effecting function without the ! warning
+(defn save-user [user]
+  (db/insert! user))
+----
 
 === Conversion Functions [[naming-conversion-functions]]
 
@@ -2409,9 +2435,38 @@ throw an exception -- throws an exception of a standard type
 `java.lang.UnsupportedOperationException`,
 `java.lang.IllegalStateException`, `java.io.IOException`).
 
+[source,clojure]
+----
+;; good - use ex-info for data-carrying exceptions
+(throw (ex-info "Invalid input" {:value x :reason :negative}))
+
+;; good - use standard Java exception types
+(throw (IllegalArgumentException. "x must be positive"))
+
+;; bad - defining a custom exception type for no reason
+(deftype MyCustomException [msg]
+  ...)
+----
+
 === Prefer `with-open` Over `finally` [[prefer-with-open-over-finally]]
 
-Favor `with-open` over `finally`.
+Favor `with-open` over `finally`. `with-open` guarantees that the
+resource is closed even if an exception is thrown, with less
+boilerplate and no risk of forgetting the cleanup step.
+
+[source,clojure]
+----
+;; good
+(with-open [rdr (clojure.java.io/reader "file.txt")]
+  (slurp rdr))
+
+;; bad - verbose and easy to get wrong
+(let [rdr (clojure.java.io/reader "file.txt")]
+  (try
+    (slurp rdr)
+    (finally
+      (.close rdr))))
+----
 
 === Catching Throwables [[catching-throwables]]
 
@@ -3033,25 +3088,63 @@ with no note. This usage should be the exception and not the rule.
 Use `TODO` to note missing features or functionality that should be
 added at a later date.
 
+[source,clojure]
+----
+(defn process-order [order]
+  ;; TODO: Add support for discount codes.
+  (calculate-total order))
+----
+
 ==== `FIXME` [[fixme]]
 
 Use `FIXME` to note broken code that needs to be fixed.
+
+[source,clojure]
+----
+(defn calculate-total [order]
+  ;; FIXME: This doesn't account for tax in all regions.
+  (reduce + (map :price (:items order))))
+----
 
 ==== `OPTIMIZE` [[optimize]]
 
 Use `OPTIMIZE` to note slow or inefficient code that may cause
 performance problems.
 
+[source,clojure]
+----
+(defn find-duplicates [coll]
+  ;; OPTIMIZE: O(n^2) — consider using a set for large collections.
+  (for [x coll y coll :when (and (not (identical? x y)) (= x y))]
+    x))
+----
+
 ==== `HACK` [[hack]]
 
 Use `HACK` to note "code smells" where questionable coding practices
 were used and should be refactored away.
+
+[source,clojure]
+----
+(defn user-name [request]
+  ;; HACK: Parsing the token manually until we add proper auth middleware.
+  (-> request :headers (get "authorization") (subs 7) decode-token :name))
+----
 
 ==== `REVIEW` [[review]]
 
 Use `REVIEW` to note anything that should be looked at to confirm it
 is working as intended. For example: `REVIEW: Are we sure this is how the
 client does X currently?`
+
+[source,clojure]
+----
+(defn retry [f n]
+  ;; REVIEW: Should we add exponential backoff here?
+  (loop [i n]
+    (or (try (f) (catch Exception _ nil))
+        (when (pos? i) (recur (dec i))))))
+----
 
 ==== Document Custom Annotations [[document-annotations]]
 
