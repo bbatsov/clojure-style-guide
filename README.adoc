@@ -2267,15 +2267,71 @@ catch specific Errors.
 
 === Don't Write a Macro If a Function Will Do [[dont-write-macro-if-fn-will-do]]
 
-Don't write a macro if a function will do.
+Don't write a macro if a function will do. Macros cannot be passed to
+higher-order functions like `map`, `filter`, or `comp`, and they make
+code harder to reason about. Reserve macros for when you truly need
+control over evaluation.
+
+[source,clojure]
+----
+;; good - a plain function works fine here
+(defn square [x]
+  (* x x))
+
+;; bad - a macro that does nothing a function can't do
+(defmacro square [x]
+  `(* ~x ~x))
+----
 
 === Write Macro Usage before Writing the Macro [[write-macro-usage-before-writing-the-macro]]
 
 Create an example of a macro usage first and the macro afterwards.
+Writing the desired call site first helps you design a clean API and
+avoids over-engineering the macro.
+
+[source,clojure]
+----
+;; Step 1: Write down how you want the macro to be used
+(with-retry {:retries 3 :delay 1000}
+  (fetch-data url))
+
+;; Step 2: Then implement the macro to support that usage
+(defmacro with-retry [{:keys [retries delay]} & body]
+  ...)
+----
 
 === Break Complicated Macros [[break-complicated-macros]]
 
 Break complicated macros into smaller functions whenever possible.
+Helper functions can be tested independently and called from other
+code, while macro internals cannot.
+
+[source,clojure]
+----
+;; good - helper functions handle parts of the code generation
+(defn- emit-constructor [name fields]
+  `(defn ~(symbol (str "make-" name)) [~@fields]
+     (new ~name ~@fields)))
+
+(defn- emit-predicate [name]
+  `(defn ~(symbol (str name "?")) [x#]
+     (instance? ~name x#)))
+
+(defmacro defentity [name & fields]
+  `(do
+     (defrecord ~name [~@fields])
+     ~(emit-constructor name fields)
+     ~(emit-predicate name)))
+
+;; bad - everything inlined in one large macro
+(defmacro defentity [name & fields]
+  `(do
+     (defrecord ~name [~@fields])
+     (defn ~(symbol (str "make-" name)) [~@fields]
+       (new ~name ~@fields))
+     (defn ~(symbol (str name "?")) [x#]
+       (instance? ~name x#))))
+----
 
 === Macros as Syntactic Sugar [[macros-as-syntactic-sugar]]
 
@@ -2283,9 +2339,60 @@ A macro should usually just provide syntactic sugar and the core of
 the macro should be a plain function. Doing so will improve
 composability.
 
+[source,clojure]
+----
+;; good - the macro is thin sugar over a function
+(defn perform-transaction [db-spec func]
+  (let [conn (get-connection db-spec)]
+    (try
+      (.setAutoCommit conn false)
+      (let [result (func conn)]
+        (.commit conn)
+        result)
+      (catch Exception e
+        (.rollback conn)
+        (throw e))
+      (finally
+        (.close conn)))))
+
+(defmacro with-transaction [binding & body]
+  `(perform-transaction ~(second binding)
+                        (fn [~(first binding)] ~@body)))
+
+;; bad - all logic lives in the macro
+(defmacro with-transaction [binding & body]
+  `(let [conn# (get-connection ~(second binding))]
+     (try
+       (.setAutoCommit conn# false)
+       (let [~(first binding) conn#
+             result# (do ~@body)]
+         (.commit conn#)
+         result#)
+       (catch Exception e#
+         (.rollback conn#)
+         (throw e#))
+       (finally
+         (.close conn#)))))
+----
+
 === Syntax Quoted Forms [[syntax-quoted-forms]]
 
 Prefer syntax-quoted forms over building lists manually.
+Syntax-quote (backtick) auto-qualifies symbols, preventing accidental
+capture, and is far easier to read than nested `list`/`cons` calls.
+
+[source,clojure]
+----
+;; good - syntax-quote makes the output structure obvious
+(defmacro when-not [test & body]
+  `(when (not ~test)
+     ~@body))
+
+;; bad - manual list construction is hard to follow
+(defmacro when-not [test & body]
+  (list 'when (list 'not test)
+        (cons 'do body)))
+----
 
 == Common Metadata
 
