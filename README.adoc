@@ -1947,11 +1947,24 @@ ____
 === Avoid Lists [[avoid-lists]]
 
 Avoid the use of lists for generic data storage (unless a list is
-exactly what you need).
+exactly what you need). Vectors provide O(1) indexed access, efficient
+`conj` at the end, and work better with the rest of the standard
+library.
+
+[source,clojure]
+----
+;; good
+[1 2 3]
+
+;; bad - a list used as a mere container
+'(1 2 3)
+----
 
 === Keywords For Hash Keys [[keywords-for-hash-keys]]
 
-Prefer the use of keywords for hash keys.
+Prefer the use of keywords for hash keys. Keywords are interned (fast
+equality checks), can be used as functions to look themselves up in a
+map, and stand out visually from values.
 
 [source,clojure]
 ----
@@ -1984,6 +1997,18 @@ when the values are compile-time constants.
 === Avoid Index Based Collection Access [[avoid-index-based-coll-access]]
 
 Avoid accessing collection members by index whenever possible.
+Destructuring and sequence functions convey intent more clearly and
+don't break when the collection order changes.
+
+[source,clojure]
+----
+;; good - destructuring makes the meaning clear
+(let [[x y] point]
+  (process x y))
+
+;; bad - fragile and says nothing about what's at index 0 and 1
+(process (nth point 0) (nth point 1))
+----
 
 === Keywords as Functions for Map Values Retrieval [[keywords-as-fn-to-get-map-values]]
 
@@ -2028,16 +2053,51 @@ Leverage the fact that keywords can be used as functions of a collection.
 === Avoid Transient Collections [[avoid-transient-colls]]
 
 Avoid the use of transient collections, except for
-performance-critical portions of the code.
+performance-critical portions of the code. Transients add complexity
+(they must not be shared across threads and require a different set of
+mutation functions) while persistent collections are already quite fast
+for most use cases.
+
+[source,clojure]
+----
+;; good - persistent collections are fine for everyday code
+(reduce conj [] (range 1000))
+
+;; ok in a hot path where benchmarks justify it
+(persistent! (reduce conj! (transient []) (range 1000)))
+----
 
 === Avoid Java Collections [[avoid-java-colls]]
 
-Avoid the use of Java collections.
+Avoid the use of Java collections. Java collections are mutable and do
+not implement Clojure's sequence abstractions, making them incompatible
+with the standard library.
+
+[source,clojure]
+----
+;; good
+{:name "Bruce" :age 30}
+
+;; bad
+(doto (java.util.HashMap.)
+  (.put :name "Bruce")
+  (.put :age 30))
+----
 
 === Avoid Java Arrays [[avoid-java-arrays]]
 
 Avoid the use of Java arrays, except for interop scenarios and
-performance-critical code dealing heavily with primitive types.
+performance-critical code dealing heavily with primitive types. Arrays
+are mutable, have no literal syntax, and don't print readably.
+
+[source,clojure]
+----
+;; good
+[1 2 3]
+
+;; bad - unless required for interop or primitive performance
+(int-array [1 2 3])
+----
 
 == Types & Records
 
