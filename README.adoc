@@ -3412,6 +3412,105 @@ with `deftest` and name them `something-test`.
 (deftest something ...)
 ----
 
+=== Use `testing` Blocks for Context [[use-testing-blocks]]
+
+Group related assertions under `testing` to provide context in
+failure output. This makes it clear which scenario failed without
+having to read the assertion itself.
+
+[source,clojure]
+----
+;; good
+(deftest user-validation-test
+  (testing "rejects blank names"
+    (is (not (valid? {:name ""}))))
+  (testing "accepts valid names"
+    (is (valid? {:name "Bruce"}))))
+
+;; bad - no context when an assertion fails
+(deftest user-validation-test
+  (is (not (valid? {:name ""})))
+  (is (valid? {:name "Bruce"})))
+----
+
+=== Prefer Informative Assertion Messages [[informative-assertion-messages]]
+
+Add messages to `is` when the assertion alone doesn't explain the
+failure.
+
+[source,clojure]
+----
+;; good - the failure message explains what went wrong
+(is (= 200 (:status response)) "Expected HTTP 200 for valid input")
+
+;; ok - obvious assertions don't need a message
+(is (true? (even? 4)))
+----
+
+=== Use `are` for Tabular Tests [[use-are-for-tabular-tests]]
+
+When testing the same logic with many inputs, prefer `are` over
+repetitive `is` forms.
+
+[source,clojure]
+----
+;; good
+(deftest palindrome?-test
+  (are [s expected] (= expected (palindrome? s))
+    "racecar" true
+    "hello"   false
+    "madam"   true
+    ""        true))
+
+;; bad - repetitive
+(deftest palindrome?-test
+  (is (true? (palindrome? "racecar")))
+  (is (false? (palindrome? "hello")))
+  (is (true? (palindrome? "madam")))
+  (is (true? (palindrome? ""))))
+----
+
+=== Test One Concept per `deftest` [[one-concept-per-deftest]]
+
+Each `deftest` should cover one logical behavior. Use `testing`
+blocks for sub-cases rather than separate `deftest` forms for every
+edge case.
+
+=== Use `with-redefs` Sparingly [[use-with-redefs-sparingly]]
+
+Use `with-redefs` only for external boundaries (HTTP, database,
+clock). Prefer designing functions to take dependencies as arguments
+instead.
+
+[source,clojure]
+----
+;; good - inject the dependency
+(defn fetch-users [http-get]
+  (http-get "/api/users"))
+
+(deftest fetch-users-test
+  (is (= [{:name "Bruce"}]
+         (fetch-users (constantly [{:name "Bruce"}])))))
+
+;; ok for integration-level tests
+(deftest fetch-users-integration-test
+  (with-redefs [http/get (constantly {:body [{:name "Bruce"}]})]
+    (is (= [{:name "Bruce"}] (fetch-users)))))
+----
+
+=== Test Expected Exceptions [[test-expected-exceptions]]
+
+Use `thrown?` and `thrown-with-msg?` to assert that code raises the
+expected exception.
+
+[source,clojure]
+----
+;; good
+(deftest division-test
+  (is (thrown? ArithmeticException (/ 1 0)))
+  (is (thrown-with-msg? ExceptionInfo #"Invalid" (validate! nil))))
+----
+
 == Library Organization
 
 === Library Coordinates [[lib-coordinates]]
