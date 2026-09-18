@@ -3494,6 +3494,9 @@ instead.
          (fetch-users (constantly [{:name "Bruce"}])))))
 
 ;; ok for integration-level tests
+(defn fetch-users []
+  (http/get "/api/users"))
+
 (deftest fetch-users-integration-test
   (with-redefs [http/get (constantly {:body [{:name "Bruce"}]})]
     (is (= [{:name "Bruce"}] (fetch-users)))))
