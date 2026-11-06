@@ -1434,6 +1434,9 @@ empty (this technique is sometimes called _nil punning_).
     (recur (rest s))))
 ----
 
+Note that when using Clojure 1.12 or later, and checking a counted collection
+(e.g., a map, a set, a vector, rather than a sequence), using `empty?` is more efficient.
+
 === Converting Sequences to Vectors [[to-vector]]
 
 Prefer `vec` over `into` when you need to convert a sequence into a vector.
