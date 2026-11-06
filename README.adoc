@@ -386,14 +386,19 @@ Vertically align `let` (and `let`-like) bindings.
 [source,clojure]
 ----
 ;; good
-(let [thing1 "some stuff"
-      thing2 "other stuff"]
-  (foo thing1 thing2))
+(let [thing "some stuff"
+      another-thing "other stuff"]
+  (foo thing another-thing))
+
+;; acceptable if you feel it improves readability
+(let [thing         "some stuff"
+      another-thing "other stuff"]
+  (foo thing another-thing))
 
 ;; bad
-(let [thing1 "some stuff"
-  thing2 "other stuff"]
-  (foo thing1 thing2))
+(let [thing "some stuff"
+  another-thing "other stuff"]
+  (foo thing another-thing))
 ----
 
 === Map Keys Alignment [[map-keys-alignment]]
@@ -403,16 +408,20 @@ Align vertically map keys.
 [source,clojure]
 ----
 ;; good
-{:thing1 thing1
- :thing2 thing2}
+{:thing thing1
+ :another-thing thing2}
+
+;; acceptable if you feel it improves readability
+{:thing         thing1
+ :another-thing thing2}
 
 ;; bad
-{:thing1 thing1
-:thing2 thing2}
+{:thing thing1
+:another-thing thing2}
 
 ;; bad
-{:thing1 thing1
-  :thing2 thing2}
+{:thing thing1
+  :another-thing thing2}
 ----
 
 === Line Endings [[crlf]]
