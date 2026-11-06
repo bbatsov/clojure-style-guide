@@ -2904,11 +2904,34 @@ Write margin comments with one semicolon.
 [source,clojure]
 ----
 (defn foo [x]
+  (x println) ; I'm a line/code fragment comment.
+  x)
+----
+
+Avoid using those in situations that would result in hanging closing parentheses.
+
+[source,clojure]
+----
+;; good margin comment placement
+(defn foo [x]
+  x) ; I'm a line/code fragment comment.
+  
+;; bad margin comment placement
+(defn foo [x]
   x ; I'm a line/code fragment comment.
   )
 ----
 
-Avoid using those in situations that would result in hanging closing parentheses.
+An exception to the rule is a rich comment for REPL-oriented programming, as
+noted in <<gather-trailing-parens>>:
+
+[source,clojure]
+----
+;; good margin comment placement (an exception)
+(comment
+  (println x) ; I'm a line/code fragment comment.
+  )
+----
 
 === Semicolon Space [[semicolon-space]]
 
