@@ -3223,7 +3223,7 @@ If a form supports docstrings directly prefer them over using `:doc` metadata:
   []
   ...)
 
-(ns ^{:doc "That's an awesome library.")
+(ns ^{:doc "That's an awesome library."})
   foo.bar.core)
 ----
 
@@ -3363,7 +3363,18 @@ Indent multi-line docstrings by two spaces.
 It's a nice place to describe the purpose of the namespace and maybe even
 the overall conventions used. Note how _not_ indenting the docstring makes
 it easier for tooling to display it correctly.")
+
+;; also bad
+(ns my.ns
+  "It is actually possible to document a ns.
+   It's a nice place to describe the purpose of the namespace and maybe even
+   the overall conventions used. Note how _not_ indenting the docstring makes
+   it easier for tooling to display it correctly.")
 ----
+
+Why this indentation? Because `clojure.repl/doc` expects the docstring to be
+indented exactly two spaces and that is assumption is relied upon when printing
+the docstring in the REPL!
 
 === Docstring Leading Trailing Whitespace [[docstring-leading-trailing-whitespace]]
 
