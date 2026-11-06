@@ -955,8 +955,10 @@ Use `lisp-case` for function and variable names.
 
 === Protocols, Records, Structs and Types [[naming-protocols-records-structs-and-types]]
 
-Use `CapitalCase` for protocols, records, structs, and types. (Keep
-acronyms like HTTP, RFC, XML uppercase.)
+Use `CapitalCase` for protocols, records, structs, and types.
+Keep widely used acronyms like HTTP, RFC, XML, etc., uppercase
+unless that would make a compound word difficult to understand,
+such as when there are successive acronyms.
 
 NOTE: `CapitalCase` is also known as `UpperCamelCase`, `CapitalWords`
 and `PascalCase`.
@@ -965,12 +967,12 @@ and `PascalCase`.
 ----
 ;; good
 (defprotocol Serializable ...)
-(defrecord HttpRequest ...)
+(defrecord LdapURIConnection ...) ; successive acronyms
 (deftype XMLParser ...)
 
 ;; bad
 (defprotocol serializable ...)
-(defrecord http-request ...)
+(defrecord ldap-uri-connection ...)
 (deftype xml_parser ...)
 ----
 
