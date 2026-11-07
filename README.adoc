@@ -2500,12 +2500,14 @@ catch specific Errors.
 [source,clojure]
 ----
 ;; good
-(try (foo)
+(try 
+  (foo)
   (catch ExceptionInfo ex ...)
   (catch AssertionError t ...))
 
 ;; bad
-(try (foo)
+(try 
+  (foo)
   (catch Throwable t ...))
 ----
 
@@ -3615,10 +3617,11 @@ exception data map structurally, just like `match?`.
 
 ;; bad - verbose and easy to get wrong
 (is (thrown? ExceptionInfo
-       (try (validate! {:email "bad"})
-            (catch ExceptionInfo e
-              (is (= :validation-error (:type (ex-data e))))
-              (throw e)))))
+      (try 
+        (validate! {:email "bad"})
+        (catch ExceptionInfo e
+          (is (= :validation-error (:type (ex-data e))))
+          (throw e)))))
 ----
 
 == Library Organization
