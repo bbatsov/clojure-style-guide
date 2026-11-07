@@ -1019,6 +1019,9 @@ inside a `dosync` block.
   (db/insert! user))
 ----
 
+See the [Clojure FAQ](https://clojure.org/guides/faq#qmark_bang) for more
+information about this convention.
+
 === Conversion Functions [[naming-conversion-functions]]
 
 Use `+->+` instead of `to` in the names of conversion functions.
