@@ -784,12 +784,12 @@ NOTE: This may appear to mask
 [source,clojure]
 ----
 ;; good
-(ns ... (:require [clojure.string :as str] ...)
+(ns ... (:require [clojure.string :as str] ...))
 
 (str/join ...)
 
 ;; not as good - just be idiomatic and use as `str/`
-(ns ... (:require [clojure.string :as string] ...)
+(ns ... (:require [clojure.string :as string] ...))
 
 (string/join ...)
 ----
@@ -989,7 +989,8 @@ and `PascalCase`.
 
 The names of predicate methods (methods that return a boolean value)
 should end in a question mark
-(e.g., `even?`).
+(e.g., `even?`). In addition, if a function name ends in a question mark
+then it should only return a boolean value (specifically `true` or `false`).
 
 [source,clojure]
 ----
@@ -1203,15 +1204,15 @@ function body.
 (defn foo
   ([x] (bar x))
   ([x y]
-   (if (predicate? x)
+   (if (predicate? y)
      (bar x)
      (baz x))))
 
 ;; bad
 (defn foo
-  [x] (if (predicate? x)
-        (bar x)
-        (baz x)))
+  [x y] (if (predicate? y)
+          (bar x)
+          (baz x)))
 ----
 
 === Multiple Arity Indentation [[multiple-arity-indentation]]
