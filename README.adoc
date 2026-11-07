@@ -1118,8 +1118,9 @@ Follow ``clojure.core``'s example for idiomatic names like `pred` and `coll`.
  ** `f`, `g`, `h` - function input
  ** `n` - integer input usually a size
  ** `index`, `i` - integer index
- ** `x`, `y` - numbers
- ** `xs` - sequence
+ ** `x` - an arbitrary value (when used on its own)
+ ** `x`, `y` - numbers (typically when `x` and `y` are used together, sometimes with `z`)
+ ** `xs` - sequence (sometimes as `x & xs`)
  ** `m` - map
  ** `k`, `ks` - key, keys
  ** `v`, `vs` - value, values (as in a key/value pair)
