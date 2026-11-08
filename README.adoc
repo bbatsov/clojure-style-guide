@@ -1020,7 +1020,7 @@ inside a `dosync` block.
   (db/insert! user))
 ----
 
-See the [Clojure FAQ](https://clojure.org/guides/faq#qmark_bang) for more
+See the https://clojure.org/guides/faq#qmark_bang[Clojure FAQ] for more
 information about this convention.
 
 === Conversion Functions [[naming-conversion-functions]]
