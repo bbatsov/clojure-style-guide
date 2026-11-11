@@ -681,7 +681,7 @@ Start every namespace with a comprehensive `ns` form, comprised of
 ----
 (ns examples.ns
   (:refer-clojure :exclude [next replace remove])
-  (:require [clojure.string :as s :refer [blank?]])
+  (:require [clojure.string :as str :refer [blank?]])
   (:import java.util.Date))
 ----
 
@@ -695,7 +695,7 @@ This facilitates sorting, readability, and cleaner diffs for dependency changes.
 ;; better
 (ns examples.ns
   (:require
-   [clojure.string :as s :refer [blank?]]
+   [clojure.string :as str :refer [blank?]]
    [clojure.set :as set]
    [clojure.java.shell :as sh])
   (:import
@@ -706,7 +706,7 @@ This facilitates sorting, readability, and cleaner diffs for dependency changes.
 
 ;; good
 (ns examples.ns
-  (:require [clojure.string :as s :refer [blank?]]
+  (:require [clojure.string :as str :refer [blank?]]
             [clojure.set :as set]
             [clojure.java.shell :as sh])
   (:import java.util.Date
@@ -716,7 +716,7 @@ This facilitates sorting, readability, and cleaner diffs for dependency changes.
 
 ;; bad
 (ns examples.ns
-  (:require [clojure.string :as s :refer [blank?]] [clojure.set :as set] [clojure.java.shell :as sh])
+  (:require [clojure.string :as str :refer [blank?]] [clojure.set :as set] [clojure.java.shell :as sh])
   (:import java.util.Date java.text.SimpleDateFormat [java.util.concurrent Executors LinkedBlockingQueue]))
 ----
 
@@ -757,13 +757,13 @@ In the `ns` form, sort your requirements and imports. This facilitates readabili
    [baz.core :as baz]
    [clojure.java.shell :as sh]
    [clojure.set :as set]
-   [clojure.string :as s :refer [blank?]]
+   [clojure.string :as str :refer [blank?]]
    [foo.bar :as foo]))
 
 ;; bad
 (ns examples.ns
   (:require
-   [clojure.string :as s :refer [blank?]]
+   [clojure.string :as str :refer [blank?]]
    [clojure.set :as set]
    [baz.core :as baz]
    [foo.bar :as foo]
@@ -2408,6 +2408,14 @@ Try to use `swap!` rather than `reset!`, where possible.
 === Prefer `clojure.math` Functions Over Interop [[prefer-clojure-math-over-interop]]
 
 Prefer math functions from `clojure.math` over (Java) interop or rolling your own.
+The JDK package `java.lang.Math` provides access to many useful math
+functions. Prior to version 1.11, Clojure relied on using these via interop, but this had
+issues with discoverability, primitive performance, higher order application,
+and portability. The new `clojure.math` namespace provides wrapper functions for
+the methods available in `java.lang.Math` for `long` and `double` overloads with fast
+primitive invocation.
+
+In addition, code using `clojure.math` is portable between Clojure and ClojureScript.
 
 [source,clojure]
 ----
@@ -2418,32 +2426,59 @@ Prefer math functions from `clojure.math` over (Java) interop or rolling your ow
 (Math/pow 2 5)
 ----
 
-The JDK package `java.lang.Math` provides access to many useful math
-functions. Prior to version 1.11, Clojure relied on using these via interop, but this had
-issues with discoverability, primitive performance, higher order application,
-and portability. The new `clojure.math` namespace provides wrapper functions for
-the methods available in `java.lang.Math` for `long` and `double` overloads with fast
-primitive invocation.
-
 == Strings
 
 === Prefer `clojure.string` Functions Over Interop [[prefer-clojure-string-over-interop]]
 
 Prefer string manipulation functions from `clojure.string` over Java interop or rolling your own.
+`clojure.string` provides portability, readability, and avoids potential
+reflection performance issues.
 
 [source,clojure]
 ----
+;; Assuming `(:require [clojure.string :as str])`...
+
 ;; good
-(clojure.string/upper-case "bruce")
+(str/join ", " ["apple" "banana" "orange"])
 
 ;; bad
-(.toUpperCase "bruce")
+(String/join ", " ["apple" "banana" "orange"])
 ----
 
-NOTE: Several new functions were added to `clojure.string` in Clojure
-1.8 (`index-of`, `last-index-of`, `starts-with?`, `ends-with?` and
-`includes?`). You should avoid using those if you need to support
-older Clojure releases.
+`clojure.string` is portable across various Clojure dialects. For example, for
+ClojureScript, the `clojure.string/join` invocation would be the same but the
+interop would be different:
+
+[source,clojure]
+----
+;; bad
+(.join (into-array ["apple" "banana" "orange"]) ", ")
+(.join (clj->js ["apple" "banana" "orange"]) ", ")
+----
+
+Using `clojure.string` helps avoid reflection warnings without needing type hints:
+
+[source,clojure]
+----
+(set! *warn-on-reflection* true)
+
+;; good
+(defn my-fn [s]
+  (let [S (str/upper-case s)]
+    ...))
+
+;; bad
+(defn my-fn [s]
+  (let [S (.toUpperCase s)]
+    ...))
+Reflection warning ... - reference to field toUpperCase can't be resolved.
+
+;; also bad
+(defn my-fn [s]
+  (let [S (.toUpperCase ^String s)] ; no warning, but requires type hint
+    ...))
+----
+
 
 == Exceptions
 
