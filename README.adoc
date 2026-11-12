@@ -777,7 +777,7 @@ encouraged to use within your projects - e.g. the most common way to
 require `clojure.string` is: `[clojure.string :as str]`.
 
 NOTE: This may appear to mask
-`clojure.core.str`, but it doesn't. It's expected that
+`clojure.core/str`, but it doesn't. It's expected that
 `clojure.core/str` and `clojure.string/*` to be used in a namespace as
 `str` and `str/whatever` without conflict.
 
