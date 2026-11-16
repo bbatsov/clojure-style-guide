@@ -2536,6 +2536,8 @@ catch specific Errors.
 
 [source,clojure]
 ----
+;; Prior to Clojure 1.13, assume that (:import clojure.lang.ExceptionInfo) has been specified.
+
 ;; good
 (try 
   (foo)
@@ -3599,6 +3601,8 @@ expected exception.
 
 [source,clojure]
 ----
+;; Prior to Clojure 1.13, assume that (:import clojure.lang.ExceptionInfo) has been specified.
+
 ;; good
 (deftest division-test
   (is (thrown? ArithmeticException (/ 1 0)))
@@ -3647,6 +3651,8 @@ exception data map structurally, just like `match?`.
 
 [source,clojure]
 ----
+;; Prior to Clojure 1.13, assume that (:import clojure.lang.ExceptionInfo) has been specified.
+
 ;; good
 (is (thrown-match? ExceptionInfo
                    {:type :validation-error :field :email}
