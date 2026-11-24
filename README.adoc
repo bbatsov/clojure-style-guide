@@ -801,8 +801,10 @@ or else the two segments, typically dropping redundant parts like `clj` or `core
 Amongst Clojure's core and Contrib namespaces, the following namespaces have
 idiomatic aliases following that pattern:
 
+[options="autowidth", role=center, cols="m,m", frame=ends, grid=rows]
 |===
 | Namespace | Idiomatic Alias
+
 | clojure.datafy
 | datafy
 | clojure.edn
@@ -829,8 +831,10 @@ idiomatic aliases following that pattern:
 
 Then there are some core and Contrib namespaces that have shorter idiomatic aliases:
 
+[options="autowidth", role=center, cols="m,m", frame=ends, grid=rows]
 |===
 | Namespace | Idiomatic Alias
+
 | clojure.java.shell
 | sh
 | clojure.pprint
@@ -852,8 +856,10 @@ Then there are some core and Contrib namespaces that have shorter idiomatic alia
 And amongst commonly used community libraries, there are also many that have
 widely-used, idiomatic aliases for several namespaces:
 
+[options="autowidth", role=center, cols="m,m", frame=ends, grid=rows]
 |===
 | Namespace | Idiomatic Alias
+
 | cheshire.core
 | json
 | clj-yaml.core
