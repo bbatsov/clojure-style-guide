@@ -1,0 +1,17 @@
+name: Build
+
+on: [pull_request]
+
+jobs:
+  build:
+    name: Build the guide with AsciiDoctor
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+      - name: Install AsciiDoctor & Rouge
+        run: gem install asciidoctor rouge
+      - name: Build site
+        run: asciidoctor --failure-level WARN -a toc="left" -a toclevels=2 README.adoc -o _build/html/index.html
