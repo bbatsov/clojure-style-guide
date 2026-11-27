@@ -2001,29 +2001,6 @@ slots whose keys are keywords and whose value is boolean `true`.
 (def ^{:private true} a 5)
 ----
 
-=== Private [[private]]
-
-Denote private parts of your code.
-
-[source,clojure]
-----
-;; good
-(defn- private-fun [] ...)
-
-(def ^:private private-var ...)
-
-;; bad
-(defn private-fun [] ...) ; not private at all
-
-(defn ^:private private-fun [] ...) ; overly verbose
-
-(def private-var ...) ; not private at all
-----
-
-=== Access Private Var [[access-private-var]]
-
-To access a private var (e.g. for testing), use the `@#'some.ns/var` form.
-
 === Attach Metadata Carefully [[attach-metadata-carefully]]
 
 Be careful regarding what exactly you attach metadata to.
